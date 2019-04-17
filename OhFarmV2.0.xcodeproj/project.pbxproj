@@ -132,8 +132,8 @@
 		00DA8647226455A600049557 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				00DA8629226453F100049557 /* Main.storyboard */,
 				00DA862C226453F200049557 /* Assets.xcassets */,
+				00DA8629226453F100049557 /* Main.storyboard */,
 				00DA862E226453F200049557 /* LaunchScreen.storyboard */,
 			);
 			path = View;
