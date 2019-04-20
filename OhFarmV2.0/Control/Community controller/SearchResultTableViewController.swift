@@ -102,6 +102,9 @@ class SearchResultTableViewController: UITableViewController {
          presented view controller hierarchy.
          */
         definesPresentationContext = true
+        
+        // Table view footer
+        tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(_ animated: Bool) {

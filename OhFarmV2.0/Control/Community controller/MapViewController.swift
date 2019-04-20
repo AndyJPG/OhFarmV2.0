@@ -89,9 +89,8 @@ extension MapViewController: MKMapViewDelegate {
         // If the annotation has an address, add an extra Info button to the annotation so users can open the Address.
         let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
         mapsButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: UIControl.State())
-        //        let infoButton = UIButton(type: .detailDisclosure)
         view?.rightCalloutAccessoryView = mapsButton
-        
+                
         return view
     }
     

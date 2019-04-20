@@ -33,7 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		002E047B22671B27000871F5 /* communityFarmData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = communityFarmData.json; path = ../../../../Downloads/communityFarmData.json; sourceTree = "<group>"; };
+		002E047B22671B27000871F5 /* communityFarmData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = communityFarmData.json; path = ../communityFarmData.json; sourceTree = "<group>"; };
 		002E047D22671E68000871F5 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableTableViewController.swift; sourceTree = "<group>"; };
 		002E048222671F92000871F5 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
