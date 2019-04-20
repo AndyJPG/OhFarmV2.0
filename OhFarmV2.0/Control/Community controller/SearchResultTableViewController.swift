@@ -195,7 +195,7 @@ extension SearchResultTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard locationManager.currentLocation != nil else {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.textLabel?.text = NSLocalizedString("LOCATION_SERVICES_WAITING", comment: "Waiting for location table cell")
+            cell.textLabel?.text = NSLocalizedString("LOCATING COMMUNITY FARMS", comment: "Waiting for location table cell")
             let spinner = UIActivityIndicatorView(style: .gray)
             spinner.startAnimating()
             cell.accessoryView = spinner

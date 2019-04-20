@@ -12,8 +12,9 @@
 		002E048022671EA8000871F5 /* SuggestionsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */; };
 		002E048322671F92000871F5 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E048222671F92000871F5 /* LocationManager.swift */; };
 		002E048522671FEA000871F5 /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E048422671FEA000871F5 /* MKPlacemark+Extension.swift */; };
+		00C7135C226ADD6700E1EA36 /* SearchPlantUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */; };
+		00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7135E226ADE3400E1EA36 /* Plant.swift */; };
 		00DA8624226453F100049557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA8623226453F100049557 /* AppDelegate.swift */; };
-		00DA8626226453F100049557 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA8625226453F100049557 /* FirstViewController.swift */; };
 		00DA8628226453F100049557 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA8627226453F100049557 /* MapViewController.swift */; };
 		00DA862B226453F100049557 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DA8629226453F100049557 /* Main.storyboard */; };
 		00DA862D226453F200049557 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00DA862C226453F200049557 /* Assets.xcassets */; };
@@ -38,9 +39,10 @@
 		002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableTableViewController.swift; sourceTree = "<group>"; };
 		002E048222671F92000871F5 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		002E048422671FEA000871F5 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
+		00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlantUI.swift; sourceTree = "<group>"; };
+		00C7135E226ADE3400E1EA36 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		00DA8620226453F100049557 /* OhFarmV2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhFarmV2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DA8623226453F100049557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		00DA8625226453F100049557 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		00DA8627226453F100049557 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		00DA862A226453F100049557 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00DA862C226453F200049557 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +80,13 @@
 				002E048222671F92000871F5 /* LocationManager.swift */,
 			);
 			path = "Community Model";
+			sourceTree = "<group>";
+		};
+		00C7135D226ADDB400E1EA36 /* Search controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Search controller";
 			sourceTree = "<group>";
 		};
 		00DA8617226453F100049557 = {
@@ -123,7 +132,7 @@
 		00DA86462264555400049557 /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				00DA8625226453F100049557 /* FirstViewController.swift */,
+				00C7135D226ADDB400E1EA36 /* Search controller */,
 				00DA864922646C9F00049557 /* Community controller */,
 			);
 			path = Control;
@@ -142,6 +151,8 @@
 		00DA864822646C9800049557 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */,
+				00C7135E226ADE3400E1EA36 /* Plant.swift */,
 				002E048122671F71000871F5 /* Community Model */,
 			);
 			path = Model;
@@ -260,9 +271,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				00DA8628226453F100049557 /* MapViewController.swift in Sources */,
+				00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */,
 				00DA8624226453F100049557 /* AppDelegate.swift in Sources */,
-				00DA8626226453F100049557 /* FirstViewController.swift in Sources */,
 				002E048322671F92000871F5 /* LocationManager.swift in Sources */,
+				00C7135C226ADD6700E1EA36 /* SearchPlantUI.swift in Sources */,
 				002E048022671EA8000871F5 /* SuggestionsTableTableViewController.swift in Sources */,
 				00DA864B22646CE800049557 /* Community.swift in Sources */,
 				002E048522671FEA000871F5 /* MKPlacemark+Extension.swift in Sources */,

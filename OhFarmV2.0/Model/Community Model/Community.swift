@@ -30,15 +30,9 @@ class Community: NSObject, MKAnnotation {
     }
     
     //MARK: Set up annoation information
-    //Set up subtitle for annoation
-    var subtitle: String? {
-        let text = "Contact Email: " + self.contactEmail
-        return text
-    }
-    
     // Annotation right callout accessory opens this mapItem in Maps app
     func mapItem() -> MKMapItem {
-        let addressDict = [CNPostalAddressStreetKey: subtitle!]
+        let addressDict = [CNPostalAddressStreetKey: title!]
         let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = title
