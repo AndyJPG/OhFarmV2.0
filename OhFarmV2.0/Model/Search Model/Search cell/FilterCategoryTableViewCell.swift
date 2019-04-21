@@ -9,6 +9,11 @@
 import UIKit
 
 class FilterCategoryTableViewCell: UITableViewCell {
+    
+    //MARK: Variable
+    @IBOutlet weak var bothButton: UIButton!
+    @IBOutlet weak var vegetableButton: UIButton!
+    @IBOutlet weak var herbButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

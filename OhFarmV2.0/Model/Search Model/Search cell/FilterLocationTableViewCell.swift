@@ -10,6 +10,11 @@ import UIKit
 
 class FilterLocationTableViewCell: UITableViewCell {
 
+    //MARK: Variable
+    @IBOutlet weak var bothButton: UIButton!
+    @IBOutlet weak var indoorButton: UIButton!
+    @IBOutlet weak var outdoorButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

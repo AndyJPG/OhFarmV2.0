@@ -9,6 +9,10 @@
 import UIKit
 
 class FilterSpacingTableViewCell: UITableViewCell {
+    
+    //MARK: Variable
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var rangeSlider: RangeSeekSlider!    
 
     override func awakeFromNib() {
         super.awakeFromNib()

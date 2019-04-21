@@ -61,74 +61,79 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="cdF-nP-iyI">
-                                            <rect key="frame" x="31" y="18" width="312" height="103.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IMA-Dk-mXI">
+                                            <rect key="frame" x="31.5" y="19" width="80" height="102"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IMA-Dk-mXI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="103.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-Wu-M4X">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="81.5"/>
-                                                            <state key="normal" title="Both"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Both Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-ia-Dyz">
-                                                            <rect key="frame" x="1" y="89.5" width="78" height="14"/>
-                                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oNY-Cy-7DP">
-                                                    <rect key="frame" x="116" y="0.0" width="80" height="103.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cg-rk-HwR">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="81.5"/>
-                                                            <state key="normal" title="Vegetable"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vegetable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukf-NE-73v">
-                                                            <rect key="frame" x="13" y="89.5" width="54.5" height="14"/>
-                                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kIk-ZM-Zcz">
-                                                    <rect key="frame" x="232" y="0.0" width="80" height="103.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nu6-HP-m9e">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="81.5"/>
-                                                            <state key="normal" title="Herb"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Herb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeP-vG-Qan">
-                                                            <rect key="frame" x="26.5" y="89.5" width="27" height="14"/>
-                                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-Wu-M4X">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <state key="normal" title="Both"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Both Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-ia-Dyz">
+                                                    <rect key="frame" x="1" y="88" width="78" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kIk-ZM-Zcz" firstAttribute="top" secondItem="cdF-nP-iyI" secondAttribute="top" id="IpL-ik-0X5"/>
-                                                <constraint firstAttribute="bottom" secondItem="oNY-Cy-7DP" secondAttribute="bottom" id="LxI-TX-p5W"/>
-                                                <constraint firstAttribute="bottom" secondItem="IMA-Dk-mXI" secondAttribute="bottom" id="O16-it-gIg"/>
-                                                <constraint firstAttribute="trailing" secondItem="kIk-ZM-Zcz" secondAttribute="trailing" id="VO7-ag-ho0"/>
-                                                <constraint firstItem="IMA-Dk-mXI" firstAttribute="top" secondItem="cdF-nP-iyI" secondAttribute="top" id="Yul-BQ-8Y2"/>
-                                                <constraint firstItem="oNY-Cy-7DP" firstAttribute="top" secondItem="cdF-nP-iyI" secondAttribute="top" id="vc6-Wt-9f2"/>
-                                                <constraint firstAttribute="bottom" secondItem="kIk-ZM-Zcz" secondAttribute="bottom" id="whq-Uz-c2Y"/>
-                                                <constraint firstItem="IMA-Dk-mXI" firstAttribute="leading" secondItem="cdF-nP-iyI" secondAttribute="leading" id="yiA-sr-IW9"/>
+                                                <constraint firstAttribute="width" constant="80" id="hFs-hm-hNv"/>
+                                            </constraints>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oNY-Cy-7DP">
+                                            <rect key="frame" x="147.5" y="19" width="80" height="102"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cg-rk-HwR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <state key="normal" title="Vegetable"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vegetable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukf-NE-73v">
+                                                    <rect key="frame" x="13" y="88" width="54.5" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="L2x-nx-bWM"/>
+                                            </constraints>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kIk-ZM-Zcz">
+                                            <rect key="frame" x="263.5" y="19" width="80" height="102"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nu6-HP-m9e">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <state key="normal" title="Herb"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Herb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeP-vG-Qan">
+                                                    <rect key="frame" x="26.5" y="88" width="27" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="Qit-QS-HX2"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="cdF-nP-iyI" firstAttribute="leading" secondItem="YIv-Cd-nHa" secondAttribute="leading" constant="31" id="JgI-XB-6BH"/>
-                                        <constraint firstItem="cdF-nP-iyI" firstAttribute="top" secondItem="YIv-Cd-nHa" secondAttribute="top" constant="18" id="Sxu-lF-fKJ"/>
-                                        <constraint firstAttribute="bottom" secondItem="cdF-nP-iyI" secondAttribute="bottom" constant="18" id="fQr-j8-6O0"/>
-                                        <constraint firstAttribute="trailing" secondItem="cdF-nP-iyI" secondAttribute="trailing" constant="32" id="xWg-Ir-WwV"/>
+                                        <constraint firstItem="kIk-ZM-Zcz" firstAttribute="top" secondItem="YIv-Cd-nHa" secondAttribute="topMargin" constant="8" id="36Q-XE-Gqv"/>
+                                        <constraint firstItem="IMA-Dk-mXI" firstAttribute="top" secondItem="YIv-Cd-nHa" secondAttribute="topMargin" constant="8" id="9p7-oe-hTU"/>
+                                        <constraint firstItem="kIk-ZM-Zcz" firstAttribute="leading" secondItem="oNY-Cy-7DP" secondAttribute="trailing" constant="36" id="G1X-jc-OHF"/>
+                                        <constraint firstItem="oNY-Cy-7DP" firstAttribute="leading" secondItem="IMA-Dk-mXI" secondAttribute="trailing" constant="36" id="GSk-oi-pyH"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="kIk-ZM-Zcz" secondAttribute="trailing" constant="15.5" id="KJ6-Sf-xzJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="IMA-Dk-mXI" secondAttribute="bottom" constant="8" id="NdQ-Yl-G1T"/>
+                                        <constraint firstItem="oNY-Cy-7DP" firstAttribute="top" secondItem="YIv-Cd-nHa" secondAttribute="topMargin" constant="8" id="b26-0W-fLm"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="oNY-Cy-7DP" secondAttribute="bottom" constant="8" id="bLH-hB-n2y"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="kIk-ZM-Zcz" secondAttribute="bottom" constant="8" id="gg9-rm-EYJ"/>
+                                        <constraint firstItem="IMA-Dk-mXI" firstAttribute="leading" secondItem="YIv-Cd-nHa" secondAttribute="leadingMargin" constant="15.5" id="oXy-5Z-KCd"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bothButton" destination="GJf-Wu-M4X" id="gUi-SP-Bmm"/>
+                                    <outlet property="herbButton" destination="nu6-HP-m9e" id="BOj-VP-Uor"/>
+                                    <outlet property="vegetableButton" destination="6Cg-rk-HwR" id="FUA-gA-B7b"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="140" id="09x-Qa-ot7" customClass="FilterLocationTableViewCell" customModule="OhFarmV2_0" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="168" width="375" height="140"/>
@@ -137,74 +142,84 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="CDG-ir-3zf">
-                                            <rect key="frame" x="31" y="18" width="312" height="103.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QT8-Bl-wXw">
+                                            <rect key="frame" x="31" y="19" width="80" height="102"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QT8-Bl-wXw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="103.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05Y-aM-QA0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="81.5"/>
-                                                            <state key="normal" title="Both"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Both Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1R-Hn-Icr">
-                                                            <rect key="frame" x="3" y="89.5" width="74.5" height="14"/>
-                                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="O1S-3r-PW5">
-                                                    <rect key="frame" x="116" y="0.0" width="80" height="103.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcA-SW-pEG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="81.5"/>
-                                                            <state key="normal" title="Indoor"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indoor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hud-g1-aBA">
-                                                            <rect key="frame" x="22.5" y="89.5" width="35" height="14"/>
-                                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="plg-Ae-xQf">
-                                                    <rect key="frame" x="232" y="0.0" width="80" height="103.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEg-uq-Waf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="81.5"/>
-                                                            <state key="normal" title="Outdoor"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outdoor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8O-YJ-VPF">
-                                                            <rect key="frame" x="18" y="89.5" width="44.5" height="14"/>
-                                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05Y-aM-QA0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="cvs-Y8-ecs"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Both"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Both Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1R-Hn-Icr">
+                                                    <rect key="frame" x="3" y="88" width="74.5" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="QT8-Bl-wXw" secondAttribute="bottom" id="4Xp-JC-ESV"/>
-                                                <constraint firstItem="QT8-Bl-wXw" firstAttribute="leading" secondItem="CDG-ir-3zf" secondAttribute="leading" id="ACk-TH-muD"/>
-                                                <constraint firstItem="plg-Ae-xQf" firstAttribute="top" secondItem="CDG-ir-3zf" secondAttribute="top" id="Eak-d7-sKk"/>
-                                                <constraint firstAttribute="bottom" secondItem="plg-Ae-xQf" secondAttribute="bottom" id="b9x-4q-Zdr"/>
-                                                <constraint firstItem="QT8-Bl-wXw" firstAttribute="top" secondItem="CDG-ir-3zf" secondAttribute="top" id="bLi-NU-ixB"/>
-                                                <constraint firstAttribute="trailing" secondItem="plg-Ae-xQf" secondAttribute="trailing" id="j9t-ZA-8W2"/>
-                                                <constraint firstAttribute="bottom" secondItem="O1S-3r-PW5" secondAttribute="bottom" id="nWA-Ai-TL3"/>
-                                                <constraint firstItem="O1S-3r-PW5" firstAttribute="top" secondItem="CDG-ir-3zf" secondAttribute="top" id="zWO-vN-8RE"/>
+                                                <constraint firstAttribute="width" constant="80" id="Cf0-Tn-8LA"/>
+                                            </constraints>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="O1S-3r-PW5">
+                                            <rect key="frame" x="147.5" y="19" width="80" height="102"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcA-SW-pEG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="TUG-Xh-RZp"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Indoor"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indoor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hud-g1-aBA">
+                                                    <rect key="frame" x="22.5" y="88" width="35" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="OhB-cu-26Z"/>
+                                            </constraints>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="plg-Ae-xQf">
+                                            <rect key="frame" x="263" y="19" width="80" height="102"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEg-uq-Waf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="rmW-Iy-UR0"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Outdoor"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outdoor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8O-YJ-VPF">
+                                                    <rect key="frame" x="18" y="88" width="44.5" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="lVa-Ub-262"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="CDG-ir-3zf" firstAttribute="top" secondItem="Vl2-A7-7Re" secondAttribute="top" constant="18" id="Diy-CD-xe9"/>
-                                        <constraint firstAttribute="trailing" secondItem="CDG-ir-3zf" secondAttribute="trailing" constant="32" id="Juc-Mf-iiP"/>
-                                        <constraint firstAttribute="bottom" secondItem="CDG-ir-3zf" secondAttribute="bottom" constant="18" id="WT1-66-eIv"/>
-                                        <constraint firstItem="CDG-ir-3zf" firstAttribute="leading" secondItem="Vl2-A7-7Re" secondAttribute="leading" constant="31" id="i5h-8K-6yf"/>
+                                        <constraint firstItem="O1S-3r-PW5" firstAttribute="centerY" secondItem="Vl2-A7-7Re" secondAttribute="centerY" id="Ads-mH-haw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="plg-Ae-xQf" secondAttribute="trailing" constant="16" id="PxS-Q7-MRw"/>
+                                        <constraint firstItem="O1S-3r-PW5" firstAttribute="centerX" secondItem="Vl2-A7-7Re" secondAttribute="centerX" id="eoR-gj-yYC"/>
+                                        <constraint firstItem="QT8-Bl-wXw" firstAttribute="centerY" secondItem="Vl2-A7-7Re" secondAttribute="centerY" id="mZ9-jy-eYX"/>
+                                        <constraint firstItem="plg-Ae-xQf" firstAttribute="centerY" secondItem="Vl2-A7-7Re" secondAttribute="centerY" id="pmR-g6-Yhe"/>
+                                        <constraint firstItem="QT8-Bl-wXw" firstAttribute="leading" secondItem="Vl2-A7-7Re" secondAttribute="leadingMargin" constant="15" id="wxU-xk-JC7"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bothButton" destination="05Y-aM-QA0" id="9H4-TK-ocm"/>
+                                    <outlet property="indoorButton" destination="wcA-SW-pEG" id="idB-50-EjS"/>
+                                    <outlet property="outdoorButton" destination="tEg-uq-Waf" id="xK0-xe-Z65"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="spacingCell" rowHeight="120" id="xO8-oq-XFk" customClass="FilterSpacingTableViewCell" customModule="OhFarmV2_0" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="308" width="375" height="120"/>
@@ -214,13 +229,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spacing range" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUr-Gq-rNg">
-                                            <rect key="frame" x="16" y="11" width="103.5" height="19"/>
+                                            <rect key="frame" x="16" y="16" width="103.5" height="19"/>
                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgG-aX-XmW" customClass="RangeSeekSlider" customModule="OhFarmV2_0" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="74" width="343" height="35"/>
+                                            <rect key="frame" x="16" y="69" width="343" height="35"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="dyX-BX-qdX"/>
@@ -236,14 +251,18 @@
                                     <constraints>
                                         <constraint firstItem="mgG-aX-XmW" firstAttribute="leading" secondItem="GLi-A8-Ly4" secondAttribute="leadingMargin" id="2f3-qP-g8Q"/>
                                         <constraint firstItem="5Qa-FN-v9c" firstAttribute="centerX" secondItem="GLi-A8-Ly4" secondAttribute="centerX" id="2nH-8z-78E"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="mgG-aX-XmW" secondAttribute="bottom" id="KHl-LF-efp"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mgG-aX-XmW" secondAttribute="bottom" constant="5" id="KHl-LF-efp"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="tUr-Gq-rNg" secondAttribute="trailing" constant="200" id="Nr1-k4-4PU"/>
                                         <constraint firstItem="mgG-aX-XmW" firstAttribute="trailing" secondItem="GLi-A8-Ly4" secondAttribute="trailingMargin" id="XZN-gC-Xo8"/>
                                         <constraint firstItem="tUr-Gq-rNg" firstAttribute="leading" secondItem="GLi-A8-Ly4" secondAttribute="leadingMargin" id="bM6-wU-Rlp"/>
-                                        <constraint firstItem="tUr-Gq-rNg" firstAttribute="top" secondItem="GLi-A8-Ly4" secondAttribute="topMargin" id="sow-jz-uqs"/>
+                                        <constraint firstItem="tUr-Gq-rNg" firstAttribute="top" secondItem="GLi-A8-Ly4" secondAttribute="topMargin" constant="5" id="sow-jz-uqs"/>
                                         <constraint firstItem="5Qa-FN-v9c" firstAttribute="centerY" secondItem="GLi-A8-Ly4" secondAttribute="centerY" constant="-3" id="ulb-dd-z7y"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="rangeSlider" destination="mgG-aX-XmW" id="sk9-TH-Lkh"/>
+                                    <outlet property="valueLabel" destination="5Qa-FN-v9c" id="a5Z-ly-LBz"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="harvestCell" rowHeight="120" id="7go-is-cpn" customClass="FilterHarvestTableViewCell" customModule="OhFarmV2_0" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="428" width="375" height="120"/>
@@ -253,36 +272,40 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harvest Time range" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="un7-7f-EOf">
-                                            <rect key="frame" x="16" y="11" width="140" height="19"/>
+                                            <rect key="frame" x="16" y="16" width="140" height="19"/>
                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3h-ZR-edo" customClass="RangeSeekSlider" customModule="OhFarmV2_0" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="74" width="343" height="35"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="GvR-NP-5lg"/>
-                                            </constraints>
-                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaT-61-aqZ">
                                             <rect key="frame" x="156" y="48" width="63" height="18"/>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3h-ZR-edo" customClass="RangeSeekSlider" customModule="OhFarmV2_0" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="69" width="343" height="35"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="GvR-NP-5lg"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="un7-7f-EOf" firstAttribute="top" secondItem="jzo-xF-59I" secondAttribute="topMargin" id="Cke-fs-3b8"/>
+                                        <constraint firstItem="un7-7f-EOf" firstAttribute="top" secondItem="jzo-xF-59I" secondAttribute="topMargin" constant="5" id="Cke-fs-3b8"/>
                                         <constraint firstItem="un7-7f-EOf" firstAttribute="leading" secondItem="jzo-xF-59I" secondAttribute="leadingMargin" id="Jga-Y0-Ugs"/>
                                         <constraint firstItem="WaT-61-aqZ" firstAttribute="centerX" secondItem="jzo-xF-59I" secondAttribute="centerX" id="MpV-Vi-L1D"/>
                                         <constraint firstItem="j3h-ZR-edo" firstAttribute="leading" secondItem="jzo-xF-59I" secondAttribute="leadingMargin" id="S1c-Ca-Op6"/>
                                         <constraint firstItem="WaT-61-aqZ" firstAttribute="centerY" secondItem="jzo-xF-59I" secondAttribute="centerY" constant="-3" id="iK4-PB-qXf"/>
                                         <constraint firstItem="j3h-ZR-edo" firstAttribute="trailing" secondItem="jzo-xF-59I" secondAttribute="trailingMargin" id="j80-jP-4nB"/>
-                                        <constraint firstItem="j3h-ZR-edo" firstAttribute="bottom" secondItem="jzo-xF-59I" secondAttribute="bottomMargin" id="tFv-Jt-RG4"/>
+                                        <constraint firstItem="j3h-ZR-edo" firstAttribute="bottom" secondItem="jzo-xF-59I" secondAttribute="bottomMargin" constant="-5" id="tFv-Jt-RG4"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="un7-7f-EOf" secondAttribute="trailing" constant="200" id="vaM-AY-nfz"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="rangeSlider" destination="j3h-ZR-edo" id="gUt-Mw-NwD"/>
+                                    <outlet property="valueLabel" destination="WaT-61-aqZ" id="4OC-kc-3NI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

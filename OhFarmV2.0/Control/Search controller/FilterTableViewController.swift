@@ -21,6 +21,13 @@ class FilterTableViewController: UITableViewController {
         case outdoor
     }
     
+    enum FilterCell: String {
+        case categoryCell
+        case locationCell
+        case spacingCell
+        case harvestCell
+    }
+    
     //MARK: Variable
     var filter: Filter?
 
@@ -41,15 +48,25 @@ class FilterTableViewController: UITableViewController {
         return 4
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        var cell = UITableViewCell()
+        
+        switch indexPath.row {
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: FilterCell.categoryCell.rawValue, for: indexPath)
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: FilterCell.locationCell.rawValue, for: indexPath)
+        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: FilterCell.spacingCell.rawValue, for: indexPath)
+        case 3:
+            cell = tableView.dequeueReusableCell(withIdentifier: FilterCell.harvestCell.rawValue, for: indexPath)
+        default: break
+        }
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
