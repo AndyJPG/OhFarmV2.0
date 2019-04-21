@@ -9,19 +9,35 @@
 import UIKit
 
 class PlantSearchTableViewController: UITableViewController {
+    
+    //MARK: Filter attribute
+    enum CategoryID: String {
+        case vegetable
+        case herb
+    }
+    
+    enum PlantLocationID: String {
+        case indoor
+        case outdoor
+    }
+    
+    enum SegueID: String {
+        case filterSegue
+        case filterUnwindSegue
+    }
+    
+    //MARK: Variable
+    var filter: Filter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if filter == nil {
+            filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,100,0,100])
+        }
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -77,14 +93,24 @@ class PlantSearchTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == SegueID.filterSegue.rawValue {
+            guard let nv = segue.destination as? UINavigationController, let filterVC = nv.topViewController as? FilterTableViewController else {return}
+            filterVC.filter = filter
+        }
     }
-    */
-
+    
+    // Pass back filter object
+    @IBAction func unwindToPlantSearch(sender: UIStoryboardSegue) {
+        if sender.identifier == SegueID.filterUnwindSegue.rawValue {
+            guard let filterVC = sender.source as? FilterTableViewController else {return}
+            filter = filterVC.filter
+            
+            //test
+            print("Category: \(filter?.category), Location: \(filter?.location), Spacing: \(filter?.minSpacing), \(filter?.maxSpacing), Harvest: \(filter?.minHarvest), \(filter?.maxHarvest)")
+        }
+    }
 }

@@ -11,12 +11,12 @@ import UIKit
 class Filter {
     
     //MARK: Variable
-    let category: [String]
-    let location: [String]
-    let minSpacing: Int
-    let maxSpacing: Int
-    let minHarvest: Int
-    let maxHarvest: Int
+    var category: [String]
+    var location: [String]
+    var minSpacing: Int
+    var maxSpacing: Int
+    var minHarvest: Int
+    var maxHarvest: Int
     
     //Initialisation
     init(_ dic: [Any]){

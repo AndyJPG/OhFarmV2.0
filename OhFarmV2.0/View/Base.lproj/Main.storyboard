@@ -36,7 +36,7 @@
                     <navigationItem key="navigationItem" id="wbV-pS-oVs">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="oLJ-ze-UXo">
                             <connections>
-                                <segue destination="hc0-B1-2GL" kind="presentation" id="k0k-xb-bg4"/>
+                                <segue destination="hc0-B1-2GL" kind="presentation" identifier="filterSegue" id="k0k-xb-bg4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -102,6 +102,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nu6-HP-m9e">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Herb"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Herb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeP-vG-Qan">
@@ -314,10 +315,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ni9-br-px4">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="NaD-fm-8nJ"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NaD-fm-8nJ">
+                            <connections>
+                                <action selector="cancelAction:" destination="SQA-L8-0hH" id="fls-wL-3LR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Reset" id="T5d-f7-hM7">
+                            <connections>
+                                <action selector="resetAction:" destination="SQA-L8-0hH" id="FKR-vd-mk6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="U99-Er-aED" kind="unwind" identifier="filterUnwindSegue" unwindAction="unwindToPlantSearchWithSender:" id="08v-dh-eMI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCB-2A-JOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="U99-Er-aED" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4127.1999999999998" y="1073.6131934032985"/>
         </scene>
