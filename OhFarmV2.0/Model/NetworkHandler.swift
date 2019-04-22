@@ -10,6 +10,7 @@ import UIKit
 
 class NetworkHandler {
     
+    // MARK: Fetch plant data
     func fetchPlantData() -> [Plant] {
         var plants = [Plant]()
         guard let fileName = Bundle.main.path(forResource: "plantData", ofType: "json") else {fatalError("Can not get plant data json file")}

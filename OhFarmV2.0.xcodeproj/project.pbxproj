@@ -27,6 +27,10 @@
 		00C7137A226CB7F500E1EA36 /* plantData.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C71379226CB7F500E1EA36 /* plantData.json */; };
 		00C7137C226CBD2100E1EA36 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7137B226CBD2100E1EA36 /* NetworkHandler.swift */; };
 		00C7137E226D88B800E1EA36 /* SearchPlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7137D226D88B800E1EA36 /* SearchPlantTableViewCell.swift */; };
+		00C71380226DDCF200E1EA36 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7137F226DDCF200E1EA36 /* User.swift */; };
+		00C71383226DE6E100E1EA36 /* HomeFarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71382226DE6E100E1EA36 /* HomeFarmTableViewCell.swift */; };
+		00C71386226DE7E500E1EA36 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71385226DE7E500E1EA36 /* HomeTableViewController.swift */; };
+		00C71388226DE83000E1EA36 /* HomeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71387226DE83000E1EA36 /* HomeUI.swift */; };
 		00DA8624226453F100049557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA8623226453F100049557 /* AppDelegate.swift */; };
 		00DA8628226453F100049557 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA8627226453F100049557 /* MapViewController.swift */; };
 		00DA862B226453F100049557 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DA8629226453F100049557 /* Main.storyboard */; };
@@ -67,6 +71,10 @@
 		00C71379226CB7F500E1EA36 /* plantData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plantData.json; sourceTree = SOURCE_ROOT; };
 		00C7137B226CBD2100E1EA36 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		00C7137D226D88B800E1EA36 /* SearchPlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlantTableViewCell.swift; sourceTree = "<group>"; };
+		00C7137F226DDCF200E1EA36 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		00C71382226DE6E100E1EA36 /* HomeFarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFarmTableViewCell.swift; sourceTree = "<group>"; };
+		00C71385226DE7E500E1EA36 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		00C71387226DE83000E1EA36 /* HomeUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUI.swift; sourceTree = "<group>"; };
 		00DA8620226453F100049557 /* OhFarmV2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhFarmV2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DA8623226453F100049557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00DA8627226453F100049557 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +156,31 @@
 			path = "Range Seek Slider";
 			sourceTree = "<group>";
 		};
+		00C71381226DE6C800E1EA36 /* Home Model */ = {
+			isa = PBXGroup;
+			children = (
+				00C71382226DE6E100E1EA36 /* HomeFarmTableViewCell.swift */,
+			);
+			path = "Home Model";
+			sourceTree = "<group>";
+		};
+		00C71384226DE75600E1EA36 /* Home controller */ = {
+			isa = PBXGroup;
+			children = (
+				00C71385226DE7E500E1EA36 /* HomeTableViewController.swift */,
+			);
+			path = "Home controller";
+			sourceTree = "<group>";
+		};
+		00C71389226DE83B00E1EA36 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */,
+				00C71387226DE83000E1EA36 /* HomeUI.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		00DA8617226453F100049557 = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				00DA8623226453F100049557 /* AppDelegate.swift */,
+				00C71389226DE83B00E1EA36 /* UI */,
 				00DA864822646C9800049557 /* Model */,
 				00DA86462264555400049557 /* Control */,
 				00DA8647226455A600049557 /* View */,
@@ -192,6 +226,7 @@
 		00DA86462264555400049557 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				00C71384226DE75600E1EA36 /* Home controller */,
 				00C7135D226ADDB400E1EA36 /* Search controller */,
 				00DA864922646C9F00049557 /* Community controller */,
 			);
@@ -212,8 +247,9 @@
 			isa = PBXGroup;
 			children = (
 				00C7135E226ADE3400E1EA36 /* Plant.swift */,
+				00C7137F226DDCF200E1EA36 /* User.swift */,
 				00C7137B226CBD2100E1EA36 /* NetworkHandler.swift */,
-				00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */,
+				00C71381226DE6C800E1EA36 /* Home Model */,
 				00C71372226BF54C00E1EA36 /* Range Seek Slider */,
 				00C71362226AFBF500E1EA36 /* Search Model */,
 				002E048122671F71000871F5 /* Community Model */,
@@ -334,16 +370,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C71386226DE7E500E1EA36 /* HomeTableViewController.swift in Sources */,
 				00C7136D226B4CC600E1EA36 /* FilterLocationTableViewCell.swift in Sources */,
 				00C71366226AFF5F00E1EA36 /* FilterTableViewController.swift in Sources */,
+				00C71383226DE6E100E1EA36 /* HomeFarmTableViewCell.swift in Sources */,
 				00C71374226BF56500E1EA36 /* RangeSeekSlider.swift in Sources */,
 				00C7137C226CBD2100E1EA36 /* NetworkHandler.swift in Sources */,
+				00C71388226DE83000E1EA36 /* HomeUI.swift in Sources */,
 				00C71371226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift in Sources */,
 				00DA8628226453F100049557 /* MapViewController.swift in Sources */,
 				00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */,
 				00C71368226AFF8900E1EA36 /* PlantSearchTableViewController.swift in Sources */,
 				00C7136F226B4CE900E1EA36 /* FilterHarvestTableViewCell.swift in Sources */,
 				00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */,
+				00C71380226DDCF200E1EA36 /* User.swift in Sources */,
 				00C7137E226D88B800E1EA36 /* SearchPlantTableViewCell.swift in Sources */,
 				00C71376226BF59D00E1EA36 /* RangeSeekSliderDelegate.swift in Sources */,
 				00DA8624226453F100049557 /* AppDelegate.swift in Sources */,

@@ -12,10 +12,25 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let user = User(name: "User", plants: [])
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //Share data across tab bar controllers
+        guard let tabBarController = window?.rootViewController as? UITabBarController,
+            let viewControllers = tabBarController.viewControllers else {
+                return true
+        }
+        
+        for (_, viewController) in viewControllers.enumerated() {
+            if let navigationController = viewController as? UINavigationController {
+                if let homeTableVC = navigationController.topViewController as? HomeTableViewController {
+                    homeTableVC.user = user
+                } else if let searchTableVC = navigationController.topViewController as? PlantSearchTableViewController {
+                    searchTableVC.user = user
+                }
+            }
+        }
         return true
     }
 

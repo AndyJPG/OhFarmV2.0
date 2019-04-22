@@ -113,7 +113,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0u-Lk-KfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2149.5999999999999" y="1073.6131934032985"/>
+            <point key="canvasLocation" x="2150" y="1549"/>
         </scene>
         <!--Filter Table View Controller-->
         <scene sceneID="TkU-Va-8I1">
@@ -403,7 +403,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCB-2A-JOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="U99-Er-aED" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4127.1999999999998" y="1073.6131934032985"/>
+            <point key="canvasLocation" x="3790" y="1549"/>
         </scene>
         <!--First-->
         <scene sceneID="hNz-n2-bh7">
@@ -442,43 +442,83 @@
             </objects>
             <point key="canvasLocation" x="1265" y="-1255"/>
         </scene>
-        <!--Third-->
-        <scene sceneID="UBX-mZ-mmn">
+        <!--Home Table View Controller-->
+        <scene sceneID="ECD-RN-QVL">
             <objects>
-                <viewController id="WEc-2V-fx3" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Cas-fM-5RV">
+                <tableViewController id="Hcn-ir-Snn" customClass="HomeTableViewController" customModule="OhFarmV2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="159" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cna-im-rZV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Third View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zh0-Qd-nPP">
-                                <rect key="frame" x="87" y="299" width="201" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by ThirdViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cv-u5-jRP">
-                                <rect key="frame" x="87.5" y="350" width="200" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Zh0-Qd-nPP" firstAttribute="top" secondItem="SEn-9M-eKN" secondAttribute="top" constant="279" id="0gL-PY-AcW"/>
-                            <constraint firstItem="2cv-u5-jRP" firstAttribute="top" secondItem="Zh0-Qd-nPP" secondAttribute="bottom" constant="8" symbolic="YES" id="1Me-FJ-IkY"/>
-                            <constraint firstItem="Zh0-Qd-nPP" firstAttribute="leading" secondItem="SEn-9M-eKN" secondAttribute="leading" constant="87" id="Dhn-1p-R3O"/>
-                            <constraint firstItem="2cv-u5-jRP" firstAttribute="centerX" secondItem="Zh0-Qd-nPP" secondAttribute="centerX" id="oc6-Th-Maf"/>
-                            <constraint firstItem="Zh0-Qd-nPP" firstAttribute="centerX" secondItem="Cas-fM-5RV" secondAttribute="centerX" id="xwt-Xw-hbG"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="SEn-9M-eKN"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Third" image="first" id="sVP-Ul-hce"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qdx-xv-ygP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyFarmCell" rowHeight="159" id="4hz-qi-cIF" customClass="HomeFarmTableViewCell" customModule="OhFarmV2_0" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="159"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4hz-qi-cIF" id="7Qc-ZW-NG1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="158.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spM-hB-8Fl">
+                                            <rect key="frame" x="16" y="12" width="343" height="134.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gV-o2-Tdu">
+                                                    <rect key="frame" x="112" y="14" width="181" height="23"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6gv-P0-5Oj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="96" height="134.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="96" id="FAK-Bm-NfZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Noc-0j-AV5">
+                                                    <rect key="frame" x="112" y="102.5" width="160" height="19"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="6gv-P0-5Oj" secondAttribute="bottom" id="1LY-aC-LC4"/>
+                                                <constraint firstItem="8gV-o2-Tdu" firstAttribute="top" secondItem="spM-hB-8Fl" secondAttribute="top" constant="14" id="8ZZ-BM-byM"/>
+                                                <constraint firstItem="8gV-o2-Tdu" firstAttribute="leading" secondItem="6gv-P0-5Oj" secondAttribute="trailing" constant="16" id="BEk-Bd-35k"/>
+                                                <constraint firstItem="6gv-P0-5Oj" firstAttribute="leading" secondItem="spM-hB-8Fl" secondAttribute="leading" id="CGo-w6-Rr7"/>
+                                                <constraint firstItem="Noc-0j-AV5" firstAttribute="leading" secondItem="6gv-P0-5Oj" secondAttribute="trailing" constant="16" id="KkI-ZD-sFd"/>
+                                                <constraint firstAttribute="trailing" secondItem="Noc-0j-AV5" secondAttribute="trailing" constant="71" id="Oyi-ux-wk1"/>
+                                                <constraint firstAttribute="trailing" secondItem="8gV-o2-Tdu" secondAttribute="trailing" constant="50" id="P0Y-XP-iId"/>
+                                                <constraint firstItem="6gv-P0-5Oj" firstAttribute="top" secondItem="spM-hB-8Fl" secondAttribute="top" id="YFq-e7-Y7b"/>
+                                                <constraint firstAttribute="bottom" secondItem="Noc-0j-AV5" secondAttribute="bottom" constant="13" id="iRr-zS-pzZ"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="spM-hB-8Fl" firstAttribute="leading" secondItem="7Qc-ZW-NG1" secondAttribute="leading" constant="16" id="3HL-it-HcV"/>
+                                        <constraint firstAttribute="trailing" secondItem="spM-hB-8Fl" secondAttribute="trailing" constant="16" id="B68-6X-Zj5"/>
+                                        <constraint firstItem="spM-hB-8Fl" firstAttribute="top" secondItem="7Qc-ZW-NG1" secondAttribute="top" constant="12" id="D4f-9M-Avm"/>
+                                        <constraint firstAttribute="bottom" secondItem="spM-hB-8Fl" secondAttribute="bottom" constant="12" id="zGN-x5-aBD"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryLabel" destination="Noc-0j-AV5" id="WFV-3A-Fd2"/>
+                                    <outlet property="cellBackground" destination="spM-hB-8Fl" id="6tj-Rx-DZb"/>
+                                    <outlet property="plantImage" destination="6gv-P0-5Oj" id="cKt-hc-b3M"/>
+                                    <outlet property="plantNameLabel" destination="8gV-o2-Tdu" id="zNz-cK-XiL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Hcn-ir-Snn" id="tDg-D1-AVX"/>
+                            <outlet property="delegate" destination="Hcn-ir-Snn" id="tIq-Mc-RkI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="xUh-ZK-D0F"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="run-VZ-y58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1265" y="245"/>
+            <point key="canvasLocation" x="2033" y="241"/>
         </scene>
         <!--Fifth-->
         <scene sceneID="cIR-wV-Wfb">
@@ -531,7 +571,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Ye5-jX-7bE" kind="relationship" relationship="viewControllers" id="B5Z-LM-9Am"/>
-                        <segue destination="WEc-2V-fx3" kind="relationship" relationship="viewControllers" id="KKE-ri-ug3"/>
+                        <segue destination="sw1-NC-CfE" kind="relationship" relationship="viewControllers" id="FlB-dq-HWp"/>
                         <segue destination="jBN-sy-gP7" kind="relationship" relationship="viewControllers" id="mE8-oX-be2"/>
                         <segue destination="SjQ-sL-uIE" kind="relationship" relationship="viewControllers" id="VFD-Z6-hVn"/>
                     </connections>
@@ -659,7 +699,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6e-00-vtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1264.8" y="1073.6131934032985"/>
+            <point key="canvasLocation" x="1265" y="1549"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="O0a-S9-BVS">
@@ -677,7 +717,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvf-3Y-ptg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3188" y="1073.6131934032985"/>
+            <point key="canvasLocation" x="3017" y="1549"/>
+        </scene>
+        <!--My Farm-->
+        <scene sceneID="B4X-xp-GMa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sw1-NC-CfE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Farm" id="ldp-ZK-ae3"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OYG-rb-2bD">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hcn-ir-Snn" kind="relationship" relationship="rootViewController" id="dO9-7z-29b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rKO-xP-iTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1264.8" y="240.62968515742131"/>
         </scene>
     </scenes>
     <resources>

@@ -28,14 +28,25 @@ class PlantSearchTableViewController: UITableViewController {
     
     //MARK: Variable
     var filter: Filter?
-    var plants = [Plant]()
+    var originalPlants = [Plant]()
     var filterPlants = [Plant]()
     var networkHandler = NetworkHandler()
+    var user: User?
     let plantTableUI = SearchPlantUI()
     
     //Search bar properites
     var searchPlants = [Plant]()
     let searchController = UISearchController(searchResultsController: nil)
+    
+    //Plants properites to handle change
+    var plants: [Plant] {
+        if isFiltering() {
+            return searchPlants
+        } else if filterApplied {
+            return filterPlants
+        }
+        return originalPlants
+    }
     
     var filterApplied = false
 
@@ -46,10 +57,9 @@ class PlantSearchTableViewController: UITableViewController {
             filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,100,0,100])
         }
         
-        plants = networkHandler.fetchPlantData()
+        originalPlants = networkHandler.fetchPlantData()
         
-        tableView.separatorStyle = .none
-        
+        setUpAppearance()
         setUpSearchBar()
     }
 
@@ -59,26 +69,13 @@ class PlantSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering() {
-            return searchPlants.count
-        } else if filterApplied {
-            return filterPlants.count
-        }
         return plants.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
-        var plant: Plant
-        
-        if isFiltering() {
-            plant = searchPlants[indexPath.row]
-        } else if filterApplied {
-            plant = filterPlants[indexPath.row]
-        } else {
-            plant = plants[indexPath.row]
-        }
+        let plant = plants[indexPath.row]
         
         guard let uiCell = plantTableUI.searchPlantCell(cell, name: plant.cropName, category: plant.plantCategory, plantStyle: plant.plantStyle) as? SearchPlantTableViewCell else {fatalError()}
         
@@ -88,53 +85,12 @@ class PlantSearchTableViewController: UITableViewController {
         return uiCell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-    
     //MARK: Main functions
     //MARK: Filter functions
     private func applyFilter() {
-        guard let category = filter?.category else {return}
-        guard let location = filter?.location else {return}
-        guard let minSpacing = filter?.minSpacing else {return}
-        guard let maxSpacing = filter?.maxSpacing else {return}
-        guard let minHarvest = filter?.minHarvest else {return}
-        guard let maxHarvest = filter?.maxHarvest else {return}
+        guard let category = filter?.category, let location = filter?.location, let minSpacing = filter?.minSpacing, let maxSpacing = filter?.maxSpacing, let minHarvest = filter?.minHarvest, let maxHarvest = filter?.maxHarvest else {return}
         
-        filterPlants = plants.filter({ (plant : Plant) -> Bool in
+        filterPlants = originalPlants.filter({ (plant : Plant) -> Bool in
             return category.contains(plant.plantCategory.lowercased()) && location.contains(plant.plantStyle.lowercased()) && minSpacing <= plant.maxSpacing && plant.maxSpacing <= maxSpacing && minHarvest <= plant.maxHarvestTime && plant.maxHarvestTime <= maxHarvest
         })
         
@@ -149,7 +105,7 @@ class PlantSearchTableViewController: UITableViewController {
                 return plant.cropName.lowercased().contains(searchText.lowercased())
             })
         } else {
-            searchPlants = plants.filter({( plant : Plant) -> Bool in
+            searchPlants = originalPlants.filter({( plant : Plant) -> Bool in
                 return plant.cropName.lowercased().contains(searchText.lowercased())
             })
         }
@@ -170,13 +126,8 @@ class PlantSearchTableViewController: UITableViewController {
     
     // MARK: Action handle functions
     @objc private func addPlant(_ sender: UIButton) {
-        if isFiltering() {
-            print("\(searchPlants[sender.tag].cropName) added")
-        } else if filterApplied {
-            print("\(filterPlants[sender.tag].cropName) added")
-        } else {
-            print("\(plants[sender.tag].cropName) added")
-        }
+        user?.farmPlants.append(plants[sender.tag])
+        print("\(plants[sender.tag].cropName) added")
     }
     
     
@@ -213,6 +164,11 @@ class PlantSearchTableViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
 //        UISearchBar.appearance().tintColor = UIColor.white
+    }
+    
+    private func setUpAppearance() {
+        tableView.separatorStyle = .none
+        navigationItem.title = "Plants search"
     }
 }
 
