@@ -24,6 +24,9 @@
 		00C71374226BF56500E1EA36 /* RangeSeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71373226BF56500E1EA36 /* RangeSeekSlider.swift */; };
 		00C71376226BF59D00E1EA36 /* RangeSeekSliderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71375226BF59D00E1EA36 /* RangeSeekSliderDelegate.swift */; };
 		00C71378226BF5D700E1EA36 /* TapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71377226BF5D700E1EA36 /* TapticEngine.swift */; };
+		00C7137A226CB7F500E1EA36 /* plantData.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C71379226CB7F500E1EA36 /* plantData.json */; };
+		00C7137C226CBD2100E1EA36 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7137B226CBD2100E1EA36 /* NetworkHandler.swift */; };
+		00C7137E226D88B800E1EA36 /* SearchPlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7137D226D88B800E1EA36 /* SearchPlantTableViewCell.swift */; };
 		00DA8624226453F100049557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA8623226453F100049557 /* AppDelegate.swift */; };
 		00DA8628226453F100049557 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA8627226453F100049557 /* MapViewController.swift */; };
 		00DA862B226453F100049557 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DA8629226453F100049557 /* Main.storyboard */; };
@@ -61,6 +64,9 @@
 		00C71373226BF56500E1EA36 /* RangeSeekSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSeekSlider.swift; sourceTree = "<group>"; };
 		00C71375226BF59D00E1EA36 /* RangeSeekSliderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSeekSliderDelegate.swift; sourceTree = "<group>"; };
 		00C71377226BF5D700E1EA36 /* TapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticEngine.swift; sourceTree = "<group>"; };
+		00C71379226CB7F500E1EA36 /* plantData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plantData.json; sourceTree = SOURCE_ROOT; };
+		00C7137B226CBD2100E1EA36 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		00C7137D226D88B800E1EA36 /* SearchPlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlantTableViewCell.swift; sourceTree = "<group>"; };
 		00DA8620226453F100049557 /* OhFarmV2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhFarmV2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DA8623226453F100049557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00DA8627226453F100049557 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				00C71369226B4C8600E1EA36 /* Search cell */,
-				00C7135E226ADE3400E1EA36 /* Plant.swift */,
 				00C71363226AFC2C00E1EA36 /* Filter.swift */,
 			);
 			path = "Search Model";
@@ -124,6 +129,7 @@
 		00C71369226B4C8600E1EA36 /* Search cell */ = {
 			isa = PBXGroup;
 			children = (
+				00C7137D226D88B800E1EA36 /* SearchPlantTableViewCell.swift */,
 				00C7136A226B4CB600E1EA36 /* FilterCategoryTableViewCell.swift */,
 				00C7136C226B4CC600E1EA36 /* FilterLocationTableViewCell.swift */,
 				00C71370226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift */,
@@ -168,6 +174,7 @@
 				00DA86462264555400049557 /* Control */,
 				00DA8647226455A600049557 /* View */,
 				00DA8631226453F200049557 /* Info.plist */,
+				00C71379226CB7F500E1EA36 /* plantData.json */,
 				002E047B22671B27000871F5 /* communityFarmData.json */,
 			);
 			path = OhFarmV2.0;
@@ -204,6 +211,8 @@
 		00DA864822646C9800049557 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				00C7135E226ADE3400E1EA36 /* Plant.swift */,
+				00C7137B226CBD2100E1EA36 /* NetworkHandler.swift */,
 				00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */,
 				00C71372226BF54C00E1EA36 /* Range Seek Slider */,
 				00C71362226AFBF500E1EA36 /* Search Model */,
@@ -303,6 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C7137A226CB7F500E1EA36 /* plantData.json in Resources */,
 				00DA8630226453F200049557 /* LaunchScreen.storyboard in Resources */,
 				00DA862D226453F200049557 /* Assets.xcassets in Resources */,
 				00DA862B226453F100049557 /* Main.storyboard in Resources */,
@@ -327,12 +337,14 @@
 				00C7136D226B4CC600E1EA36 /* FilterLocationTableViewCell.swift in Sources */,
 				00C71366226AFF5F00E1EA36 /* FilterTableViewController.swift in Sources */,
 				00C71374226BF56500E1EA36 /* RangeSeekSlider.swift in Sources */,
+				00C7137C226CBD2100E1EA36 /* NetworkHandler.swift in Sources */,
 				00C71371226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift in Sources */,
 				00DA8628226453F100049557 /* MapViewController.swift in Sources */,
 				00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */,
 				00C71368226AFF8900E1EA36 /* PlantSearchTableViewController.swift in Sources */,
 				00C7136F226B4CE900E1EA36 /* FilterHarvestTableViewCell.swift in Sources */,
 				00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */,
+				00C7137E226D88B800E1EA36 /* SearchPlantTableViewCell.swift in Sources */,
 				00C71376226BF59D00E1EA36 /* RangeSeekSliderDelegate.swift in Sources */,
 				00DA8624226453F100049557 /* AppDelegate.swift in Sources */,
 				002E048322671F92000871F5 /* LocationManager.swift in Sources */,

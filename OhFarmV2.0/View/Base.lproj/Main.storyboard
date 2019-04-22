@@ -14,18 +14,88 @@
         <scene sceneID="HD5-WA-I1N">
             <objects>
                 <tableViewController id="Scq-QI-33i" customClass="PlantSearchTableViewController" customModule="OhFarmV2_0" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7pg-sW-zFP">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="159" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7pg-sW-zFP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchPlantCell" id="ePX-xR-Ru2">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchPlantCell" rowHeight="159" id="ePX-xR-Ru2" customClass="SearchPlantTableViewCell" customModule="OhFarmV2_0" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="159"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ePX-xR-Ru2" id="19r-IW-l7I">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="158.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1M-qH-yeI">
+                                            <rect key="frame" x="16" y="12" width="343" height="134.5"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxV-fy-2lx">
+                                                    <rect key="frame" x="288" y="90.5" width="55" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="VuL-MY-wyr"/>
+                                                        <constraint firstAttribute="width" constant="55" id="XSl-Dy-6vS"/>
+                                                    </constraints>
+                                                    <state key="normal" image="plus"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plant Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3Q-fx-qte">
+                                                    <rect key="frame" x="112" y="14" width="181" height="23"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RJM-p1-qZF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="96" height="134.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="96" id="5zt-Hm-Exf"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suitable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M7-8H-lfh">
+                                                    <rect key="frame" x="112" y="107.5" width="160" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54e-Ty-qdg">
+                                                    <rect key="frame" x="112" y="80.5" width="160" height="19"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="6M7-8H-lfh" firstAttribute="leading" secondItem="RJM-p1-qZF" secondAttribute="trailing" constant="16" id="1zT-7B-CPM"/>
+                                                <constraint firstAttribute="bottom" secondItem="RJM-p1-qZF" secondAttribute="bottom" id="3SM-sm-7dt"/>
+                                                <constraint firstAttribute="trailing" secondItem="LxV-fy-2lx" secondAttribute="trailing" id="5dN-ux-lhG"/>
+                                                <constraint firstItem="54e-Ty-qdg" firstAttribute="leading" secondItem="RJM-p1-qZF" secondAttribute="trailing" constant="16" id="8h5-aA-b3i"/>
+                                                <constraint firstItem="RJM-p1-qZF" firstAttribute="top" secondItem="s1M-qH-yeI" secondAttribute="top" id="FBf-mk-d6O"/>
+                                                <constraint firstItem="LxV-fy-2lx" firstAttribute="leading" secondItem="6M7-8H-lfh" secondAttribute="trailing" constant="16" id="L1w-w8-PDA"/>
+                                                <constraint firstAttribute="bottom" secondItem="6M7-8H-lfh" secondAttribute="bottom" constant="13" id="U1N-fn-jsI"/>
+                                                <constraint firstItem="RJM-p1-qZF" firstAttribute="leading" secondItem="s1M-qH-yeI" secondAttribute="leading" id="b3p-dv-Xph"/>
+                                                <constraint firstItem="R3Q-fx-qte" firstAttribute="leading" secondItem="RJM-p1-qZF" secondAttribute="trailing" constant="16" id="bAD-lQ-BHg"/>
+                                                <constraint firstItem="R3Q-fx-qte" firstAttribute="top" secondItem="s1M-qH-yeI" secondAttribute="top" constant="14" id="eRT-nx-CKO"/>
+                                                <constraint firstItem="6M7-8H-lfh" firstAttribute="top" secondItem="54e-Ty-qdg" secondAttribute="bottom" constant="8" id="pnr-ev-dFK"/>
+                                                <constraint firstItem="LxV-fy-2lx" firstAttribute="leading" secondItem="54e-Ty-qdg" secondAttribute="trailing" constant="16" id="rNa-6D-upx"/>
+                                                <constraint firstAttribute="bottom" secondItem="LxV-fy-2lx" secondAttribute="bottom" id="wX8-eL-B33"/>
+                                                <constraint firstAttribute="trailing" secondItem="R3Q-fx-qte" secondAttribute="trailing" constant="50" id="xYd-wO-dAT"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="s1M-qH-yeI" secondAttribute="bottom" constant="12" id="d9m-8C-ovj"/>
+                                        <constraint firstItem="s1M-qH-yeI" firstAttribute="top" secondItem="19r-IW-l7I" secondAttribute="top" constant="12" id="six-Wd-Rls"/>
+                                        <constraint firstAttribute="trailing" secondItem="s1M-qH-yeI" secondAttribute="trailing" constant="16" id="ve6-BG-RsO"/>
+                                        <constraint firstItem="s1M-qH-yeI" firstAttribute="leading" secondItem="19r-IW-l7I" secondAttribute="leading" constant="16" id="xjO-NH-Bdh"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellBackground" destination="s1M-qH-yeI" id="yjC-ey-mS1"/>
+                                    <outlet property="plantCategoryLabel" destination="54e-Ty-qdg" id="pRC-hL-VuI"/>
+                                    <outlet property="plantImage" destination="RJM-p1-qZF" id="8z7-2v-aBJ"/>
+                                    <outlet property="plantNameLabel" destination="R3Q-fx-qte" id="NGl-2M-jXK"/>
+                                    <outlet property="plantStyleLabel" destination="6M7-8H-lfh" id="D6d-b8-Ns5"/>
+                                    <outlet property="plusButton" destination="LxV-fy-2lx" id="psy-EQ-Var"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -43,7 +113,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0u-Lk-KfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2151" y="1074"/>
+            <point key="canvasLocation" x="2149.5999999999999" y="1073.6131934032985"/>
         </scene>
         <!--Filter Table View Controller-->
         <scene sceneID="TkU-Va-8I1">
@@ -613,6 +683,7 @@
     <resources>
         <image name="community" width="30" height="30"/>
         <image name="first" width="30" height="30"/>
+        <image name="plus" width="125" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RHu-No-wDA"/>

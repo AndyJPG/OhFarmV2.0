@@ -67,6 +67,7 @@ class SearchPlantUI: UIViewController {
         return cell
     }
     
+    //Filter Bottom Button
     func filterBottomButton() -> UIButton {
         let button = UIButton(frame: CGRect(origin: CGPoint(x:view.frame.width/2-143.5, y: view.frame.height-80), size: CGSize(width: 287, height: 54)))
         button.layer.cornerRadius = 27
@@ -75,6 +76,42 @@ class SearchPlantUI: UIViewController {
         button.tintColor = .white
         button.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 13)
         return button
+    }
+    
+    //MARK: Search Plant Cell Style
+    func searchPlantCell(_ cell: UITableViewCell, name: String, category: String, plantStyle: String) -> UITableViewCell {
+        guard let plantCell = cell as? SearchPlantTableViewCell else {fatalError()}
+        plantCell.selectionStyle = .none
+        plantCell.backgroundColor = .clear
+        
+        plantCell.cellBackground.layer.cornerRadius = 24
+        plantCell.cellBackground.layer.shadowColor = UIColor(red: 117/255, green: 117/255, blue: 117/255, alpha: 1).cgColor
+        plantCell.cellBackground.layer.shadowRadius = 17
+        plantCell.cellBackground.layer.shadowOpacity = 0.2
+        plantCell.cellBackground.layer.shadowOffset = CGSize.zero
+        
+        plantCell.plantNameLabel.text = name
+        plantCell.plantCategoryLabel.text = category
+        
+        if category == "vegetable" {
+            plantCell.plantCategoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        } else {
+            plantCell.plantCategoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        }
+        
+        plantCell.plantStyleLabel.numberOfLines = 2
+        if plantStyle == "Both" {
+            plantCell.plantStyleLabel.text = "Suitable for\nIndoor and Outdoor"
+            plantCell.plantStyleLabel.sizeToFit()
+        } else {
+            plantCell.plantStyleLabel.text = "Suitable for \(plantStyle)"
+        }
+        
+        plantCell.plantImage.image = UIImage(named: name)
+        plantCell.plantImage.contentMode = .scaleAspectFill
+        plantCell.plantImage.layer.cornerRadius = 24
+        
+        return plantCell
     }
     
 }

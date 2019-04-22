@@ -11,6 +11,7 @@ import UIKit
 class FilterTableViewController: UITableViewController {
     
     //MARK: Filter type enum
+    
     enum CategoryID: String {
         case vegetable
         case herb
@@ -29,6 +30,7 @@ class FilterTableViewController: UITableViewController {
     }
     
     //MARK: Variable
+    
     var filter: Filter!
     var searchUi = SearchPlantUI()
 
@@ -41,6 +43,7 @@ class FilterTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -134,53 +137,8 @@ class FilterTableViewController: UITableViewController {
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     //MARK: Add button to table view
+    
     private func addBottomButton() {
         let button = searchUi.filterBottomButton()
         button.addTarget(self, action: #selector(bottomButtonAction(_:)), for: .touchUpInside)
@@ -189,6 +147,7 @@ class FilterTableViewController: UITableViewController {
     
     
     //MARK: Filter activities handler
+    
     //This function can be improve by use array in where it update the filter object attribute
     //Can improve with array when button increases
     @objc func filterButton(_ sender: UIButton) {
@@ -259,6 +218,7 @@ class FilterTableViewController: UITableViewController {
 }
 
 //MARK: Class extension
+
 extension FilterTableViewController: RangeSeekSliderDelegate {
     
     //Tracking value change

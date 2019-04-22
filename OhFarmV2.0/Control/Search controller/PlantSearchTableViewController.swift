@@ -28,6 +28,9 @@ class PlantSearchTableViewController: UITableViewController {
     
     //MARK: Variable
     var filter: Filter?
+    var plants = [Plant]()
+    var networkHandler = NetworkHandler()
+    let plantTableUI = SearchPlantUI()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,28 +38,40 @@ class PlantSearchTableViewController: UITableViewController {
         if filter == nil {
             filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,100,0,100])
         }
+        
+        plants = networkHandler.fetchPlantData()
+        while plants.isEmpty {
+            tableView.reloadData()
+        }
+        
+        tableView.separatorStyle = .none
+        
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return plants.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
+        var plant: Plant
+        
+        plant = plants[indexPath.row]
+        print("\(plant.cropName)")
+        guard let uiCell = plantTableUI.searchPlantCell(cell, name: plant.cropName, category: plant.plantCategory, plantStyle: plant.plantStyle) as? SearchPlantTableViewCell else {fatalError()}
+        
+        uiCell.plusButton.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
+        uiCell.plusButton.tag =  indexPath.row
+        
+        return uiCell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -92,7 +107,12 @@ class PlantSearchTableViewController: UITableViewController {
         return true
     }
     */
-
+    
+    // MARK: Action handle functions
+    @objc private func addPlant(_ sender: UIButton) {
+        print("\(plants[sender.tag].cropName) added")
+    }
+    
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -108,9 +128,6 @@ class PlantSearchTableViewController: UITableViewController {
         if sender.identifier == SegueID.filterUnwindSegue.rawValue {
             guard let filterVC = sender.source as? FilterTableViewController else {return}
             filter = filterVC.filter
-            
-            //test
-            print("Category: \(filter?.category), Location: \(filter?.location), Spacing: \(filter?.minSpacing), \(filter?.maxSpacing), Harvest: \(filter?.minHarvest), \(filter?.maxHarvest)")
         }
     }
 }
