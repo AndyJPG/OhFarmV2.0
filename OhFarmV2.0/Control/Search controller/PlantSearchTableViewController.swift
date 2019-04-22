@@ -29,8 +29,11 @@ class PlantSearchTableViewController: UITableViewController {
     //MARK: Variable
     var filter: Filter?
     var plants = [Plant]()
+    var filterPlants = [Plant]()
     var networkHandler = NetworkHandler()
     let plantTableUI = SearchPlantUI()
+    
+    var filterApplied = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +43,6 @@ class PlantSearchTableViewController: UITableViewController {
         }
         
         plants = networkHandler.fetchPlantData()
-        while plants.isEmpty {
-            tableView.reloadData()
-        }
         
         tableView.separatorStyle = .none
         
@@ -54,6 +54,9 @@ class PlantSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if filterApplied {
+            return filterPlants.count
+        }
         return plants.count
     }
 
@@ -62,8 +65,11 @@ class PlantSearchTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
         var plant: Plant
         
-        plant = plants[indexPath.row]
-        print("\(plant.cropName)")
+        if filterApplied {
+            plant = filterPlants[indexPath.row]
+        } else {
+            plant = plants[indexPath.row]
+        }
         guard let uiCell = plantTableUI.searchPlantCell(cell, name: plant.cropName, category: plant.plantCategory, plantStyle: plant.plantStyle) as? SearchPlantTableViewCell else {fatalError()}
         
         uiCell.plusButton.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
@@ -108,6 +114,26 @@ class PlantSearchTableViewController: UITableViewController {
     }
     */
     
+    //MARK: Filter functions
+    private func applyFilter() {
+        guard let category = filter?.category else {return}
+        guard let location = filter?.location else {return}
+        guard let minSpacing = filter?.minSpacing else {return}
+        guard let maxSpacing = filter?.maxSpacing else {return}
+        guard let minHarvest = filter?.minHarvest else {return}
+        guard let maxHarvest = filter?.maxHarvest else {return}
+        
+        filterPlants = [Plant]()
+        for plant in plants {
+            if category.contains(plant.plantCategory.lowercased()) && location.contains(plant.plantStyle.lowercased()) && minSpacing <= plant.maxSpacing && plant.maxSpacing <= maxSpacing && minHarvest <= plant.maxHarvestTime && plant.maxHarvestTime <= maxHarvest {
+                filterPlants.append(plant)
+            }
+        }
+
+        filterApplied = true
+        tableView.reloadData()
+    }
+    
     // MARK: Action handle functions
     @objc private func addPlant(_ sender: UIButton) {
         print("\(plants[sender.tag].cropName) added")
@@ -128,6 +154,8 @@ class PlantSearchTableViewController: UITableViewController {
         if sender.identifier == SegueID.filterUnwindSegue.rawValue {
             guard let filterVC = sender.source as? FilterTableViewController else {return}
             filter = filterVC.filter
+            
+            applyFilter()
         }
     }
 }

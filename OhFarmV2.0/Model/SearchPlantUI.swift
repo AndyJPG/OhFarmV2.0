@@ -69,13 +69,26 @@ class SearchPlantUI: UIViewController {
     
     //Filter Bottom Button
     func filterBottomButton() -> UIButton {
-        let button = UIButton(frame: CGRect(origin: CGPoint(x:view.frame.width/2-143.5, y: view.frame.height-80), size: CGSize(width: 287, height: 54)))
+        let button = UIButton(frame: CGRect(origin: CGPoint(x:view.frame.width/2-143.5, y: view.frame.height-64), size: CGSize(width: 287, height: 54)))
         button.layer.cornerRadius = 27
         button.backgroundColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         button.setTitle("APPLY FILTER", for: .normal)
         button.tintColor = .white
         button.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 13)
         return button
+    }
+    
+    func filterBottomButtonBackground() -> UIView {
+        let background = UIView(frame: CGRect(origin: CGPoint(x: 0, y: view.frame.height-74), size: CGSize(width: view.frame.width, height: 74)))
+        
+        background.backgroundColor = .clear
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        background.insertSubview(blurView, at: 0)
+        NSLayoutConstraint.activate([blurView.heightAnchor.constraint(equalTo: background.heightAnchor),blurView.widthAnchor.constraint(equalTo: background.widthAnchor),])
+        
+        return background
     }
     
     //MARK: Search Plant Cell Style

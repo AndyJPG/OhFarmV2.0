@@ -141,7 +141,9 @@ class FilterTableViewController: UITableViewController {
     
     private func addBottomButton() {
         let button = searchUi.filterBottomButton()
+        let back = searchUi.filterBottomButtonBackground()
         button.addTarget(self, action: #selector(bottomButtonAction(_:)), for: .touchUpInside)
+        navigationController?.view.addSubview(back)
         navigationController?.view.addSubview(button)
     }
     
