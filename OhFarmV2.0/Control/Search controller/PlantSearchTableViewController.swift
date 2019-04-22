@@ -33,6 +33,10 @@ class PlantSearchTableViewController: UITableViewController {
     var networkHandler = NetworkHandler()
     let plantTableUI = SearchPlantUI()
     
+    //Search bar properites
+    var searchPlants = [Plant]()
+    let searchController = UISearchController(searchResultsController: nil)
+    
     var filterApplied = false
 
     override func viewDidLoad() {
@@ -46,6 +50,7 @@ class PlantSearchTableViewController: UITableViewController {
         
         tableView.separatorStyle = .none
         
+        setUpSearchBar()
     }
 
     // MARK: - Table view data source
@@ -54,7 +59,9 @@ class PlantSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if filterApplied {
+        if isFiltering() {
+            return searchPlants.count
+        } else if filterApplied {
             return filterPlants.count
         }
         return plants.count
@@ -65,11 +72,14 @@ class PlantSearchTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
         var plant: Plant
         
-        if filterApplied {
+        if isFiltering() {
+            plant = searchPlants[indexPath.row]
+        } else if filterApplied {
             plant = filterPlants[indexPath.row]
         } else {
             plant = plants[indexPath.row]
         }
+        
         guard let uiCell = plantTableUI.searchPlantCell(cell, name: plant.cropName, category: plant.plantCategory, plantStyle: plant.plantStyle) as? SearchPlantTableViewCell else {fatalError()}
         
         uiCell.plusButton.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
@@ -114,6 +124,7 @@ class PlantSearchTableViewController: UITableViewController {
     }
     */
     
+    //MARK: Main functions
     //MARK: Filter functions
     private func applyFilter() {
         guard let category = filter?.category else {return}
@@ -123,20 +134,49 @@ class PlantSearchTableViewController: UITableViewController {
         guard let minHarvest = filter?.minHarvest else {return}
         guard let maxHarvest = filter?.maxHarvest else {return}
         
-        filterPlants = [Plant]()
-        for plant in plants {
-            if category.contains(plant.plantCategory.lowercased()) && location.contains(plant.plantStyle.lowercased()) && minSpacing <= plant.maxSpacing && plant.maxSpacing <= maxSpacing && minHarvest <= plant.maxHarvestTime && plant.maxHarvestTime <= maxHarvest {
-                filterPlants.append(plant)
-            }
-        }
-
+        filterPlants = plants.filter({ (plant : Plant) -> Bool in
+            return category.contains(plant.plantCategory.lowercased()) && location.contains(plant.plantStyle.lowercased()) && minSpacing <= plant.maxSpacing && plant.maxSpacing <= maxSpacing && minHarvest <= plant.maxHarvestTime && plant.maxHarvestTime <= maxHarvest
+        })
+        
         filterApplied = true
         tableView.reloadData()
     }
     
+    // MARK: Search bar functions
+    private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        if filterApplied {
+            searchPlants = filterPlants.filter({( plant : Plant) -> Bool in
+                return plant.cropName.lowercased().contains(searchText.lowercased())
+            })
+        } else {
+            searchPlants = plants.filter({( plant : Plant) -> Bool in
+                return plant.cropName.lowercased().contains(searchText.lowercased())
+            })
+        }
+        
+        tableView.reloadData()
+    }
+    
+    // Search bar update view method
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    // Private instance methods for search bar
+    private func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    
     // MARK: Action handle functions
     @objc private func addPlant(_ sender: UIButton) {
-        print("\(plants[sender.tag].cropName) added")
+        if isFiltering() {
+            print("\(searchPlants[sender.tag].cropName) added")
+        } else if filterApplied {
+            print("\(filterPlants[sender.tag].cropName) added")
+        } else {
+            print("\(plants[sender.tag].cropName) added")
+        }
     }
     
     
@@ -157,5 +197,29 @@ class PlantSearchTableViewController: UITableViewController {
             
             applyFilter()
         }
+    }
+    
+    
+    
+    // MARK: Appearence
+    // Set up search bar
+    private func setUpSearchBar() {
+        //Search bar code
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Plant"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+//        UISearchBar.appearance().tintColor = UIColor.white
+    }
+}
+
+// MARK: UI Search bar controller extension
+extension PlantSearchTableViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
     }
 }
