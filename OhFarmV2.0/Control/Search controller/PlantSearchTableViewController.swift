@@ -24,6 +24,7 @@ class PlantSearchTableViewController: UITableViewController {
     enum SegueID: String {
         case filterSegue
         case filterUnwindSegue
+        case PlantDetailSegue
     }
     
     //MARK: Variable
@@ -83,6 +84,10 @@ class PlantSearchTableViewController: UITableViewController {
         uiCell.plusButton.tag =  indexPath.row
         
         return uiCell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: SegueID.PlantDetailSegue.rawValue, sender: self)
     }
     
     //MARK: Main functions
