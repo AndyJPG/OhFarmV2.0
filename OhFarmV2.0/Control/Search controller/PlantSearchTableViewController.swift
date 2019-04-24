@@ -24,7 +24,7 @@ class PlantSearchTableViewController: UITableViewController {
     enum SegueID: String {
         case filterSegue
         case filterUnwindSegue
-        case PlantDetailSegue
+        case viewDetailFromSearch
     }
     
     //MARK: Variable
@@ -78,16 +78,12 @@ class PlantSearchTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
         let plant = plants[indexPath.row]
         
-        guard let uiCell = plantTableUI.searchPlantCell(cell, name: plant.cropName, category: plant.plantCategory, plantStyle: plant.plantStyle) as? SearchPlantTableViewCell else {fatalError()}
+        guard let uiCell = plantTableUI.searchPlantCell(cell, plant: plant) as? SearchPlantTableViewCell else {fatalError()}
         
         uiCell.plusButton.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
         uiCell.plusButton.tag =  indexPath.row
         
         return uiCell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueID.PlantDetailSegue.rawValue, sender: self)
     }
     
     //MARK: Main functions
@@ -139,9 +135,18 @@ class PlantSearchTableViewController: UITableViewController {
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
         if segue.identifier == SegueID.filterSegue.rawValue {
             guard let nv = segue.destination as? UINavigationController, let filterVC = nv.topViewController as? FilterTableViewController else {return}
             filterVC.filter = filter
+        }
+        
+        if segue.identifier == SegueID.viewDetailFromSearch.rawValue {
+            guard let nv = segue.destination as? PlantDetailViewController else {fatalError()}
+            guard let selectedCell = sender as? SearchPlantTableViewCell else {fatalError()}
+            guard let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
+            nv.plant = plants[indexPath.row]
         }
     }
     

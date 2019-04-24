@@ -95,6 +95,7 @@
                                     <outlet property="plantNameLabel" destination="R3Q-fx-qte" id="NGl-2M-jXK"/>
                                     <outlet property="plantStyleLabel" destination="6M7-8H-lfh" id="D6d-b8-Ns5"/>
                                     <outlet property="plusButton" destination="LxV-fy-2lx" id="psy-EQ-Var"/>
+                                    <segue destination="01p-US-HuA" kind="show" identifier="viewDetailFromSearch" id="0tJ-ZS-aag"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -701,6 +702,47 @@
             </objects>
             <point key="canvasLocation" x="1265" y="1549"/>
         </scene>
+        <!--Plant Detail View Controller-->
+        <scene sceneID="TcF-JC-CgW">
+            <objects>
+                <viewController id="01p-US-HuA" customClass="PlantDetailViewController" customModule="OhFarmV2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3EE-Ua-uS4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNb-iI-WZn">
+                                <rect key="frame" x="0.0" y="264" width="375" height="354"/>
+                                <connections>
+                                    <segue destination="Lsa-nC-vYV" kind="embed" identifier="containerSegue" id="fI4-Xu-uCc"/>
+                                </connections>
+                            </containerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-sJ-Yhs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="7nB-EJ-66q"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hwE-sJ-Yhs" firstAttribute="top" secondItem="4UD-3T-uD5" secondAttribute="top" id="Ajm-iX-aiE"/>
+                            <constraint firstItem="hwE-sJ-Yhs" firstAttribute="leading" secondItem="4UD-3T-uD5" secondAttribute="leading" id="FV0-aj-gWq"/>
+                            <constraint firstItem="sNb-iI-WZn" firstAttribute="leading" secondItem="4UD-3T-uD5" secondAttribute="leading" id="G72-tM-xUe"/>
+                            <constraint firstItem="4UD-3T-uD5" firstAttribute="trailing" secondItem="hwE-sJ-Yhs" secondAttribute="trailing" id="Pmm-ga-Aio"/>
+                            <constraint firstItem="4UD-3T-uD5" firstAttribute="trailing" secondItem="sNb-iI-WZn" secondAttribute="trailing" id="fDQ-S7-y2b"/>
+                            <constraint firstItem="4UD-3T-uD5" firstAttribute="bottom" secondItem="sNb-iI-WZn" secondAttribute="bottom" id="gZp-7c-VO8"/>
+                            <constraint firstItem="sNb-iI-WZn" firstAttribute="top" secondItem="4UD-3T-uD5" secondAttribute="top" constant="200" id="xE4-Pl-wW7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4UD-3T-uD5"/>
+                    </view>
+                    <connections>
+                        <outlet property="plantImage" destination="hwE-sJ-Yhs" id="bFo-6A-Wka"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="teJ-PV-NHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3017" y="761"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="O0a-S9-BVS">
             <objects>
@@ -737,6 +779,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKO-xP-iTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1264.8" y="240.62968515742131"/>
+        </scene>
+        <!--Plant Info Slide View Controller-->
+        <scene sceneID="2x9-rK-OTM">
+            <objects>
+                <viewController id="Lsa-nC-vYV" customClass="PlantInfoSlideViewController" customModule="OhFarmV2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MAH-WP-HF0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="354"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8nj-u7-Z3Y" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                <color key="backgroundColor" red="0.027450980390000001" green="0.72549019609999998" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="kkY-t2-3MR"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ejt-0d-PYa">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lET-8Q-Rva">
+                                <rect key="frame" x="0.0" y="43" width="375" height="311"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="lET-8Q-Rva" secondAttribute="bottom" id="I18-YP-8PP"/>
+                            <constraint firstItem="lET-8Q-Rva" firstAttribute="top" secondItem="MAH-WP-HF0" secondAttribute="top" constant="43" id="UDp-Ne-0Sr"/>
+                            <constraint firstAttribute="trailing" secondItem="8nj-u7-Z3Y" secondAttribute="trailing" id="ez7-if-KdN"/>
+                            <constraint firstItem="lET-8Q-Rva" firstAttribute="leading" secondItem="MAH-WP-HF0" secondAttribute="leading" id="lrz-h0-NOj"/>
+                            <constraint firstItem="8nj-u7-Z3Y" firstAttribute="top" secondItem="MAH-WP-HF0" secondAttribute="top" id="nJz-Du-eev"/>
+                            <constraint firstAttribute="trailing" secondItem="lET-8Q-Rva" secondAttribute="trailing" id="y8f-Jr-rK8"/>
+                            <constraint firstItem="8nj-u7-Z3Y" firstAttribute="leading" secondItem="MAH-WP-HF0" secondAttribute="leading" id="yfX-K9-6vz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PQB-Cx-fXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3971" y="847"/>
         </scene>
     </scenes>
     <resources>

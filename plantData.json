@@ -9,7 +9,8 @@
    "compatiblePlants": "onion, corn, eggplant, tomato",
    "culinaryHints": "Use leaves and seeds to cook, Avoid excessive intake",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 30°C",
+   "fertilizerName": "ammonium-nitrate(33-34%)"
  },
  {
    "cropName": "Angelica",
@@ -21,7 +22,8 @@
    "compatiblePlants": "mint, lemonbalm",
    "culinaryHints": "Stems can be candied and used to decorate cakes and pastries",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "urea(45-46%)"
  },
  {
    "cropName": "Artichokes (Globe)",
@@ -33,7 +35,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Pick buds before scales develop brown tips, Fry small buds in olive oil and eat as whole, Rinse in cold water to remove insects",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 18°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 18°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Asparagus",
@@ -45,7 +48,8 @@
    "compatiblePlants": "Parsley, Basil, Nasturtiums, Lettuce",
    "culinaryHints": "Steaming is traditional, Coating with melted butter or hollandaise sauce, Break in short lengths and cook quickly in hot oil and sprinkle with soy sauce or balsamic vinegar, NOTE: The asparagus berries are poisonous Only the young shoots are edible",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant as crowns, Best planted at soil temperatures between 16°C and 30°C"
+   "plantingTechnique": "Plant as crowns, Best planted at soil temperatures between 16°C and 30°C",
+   "fertilizerName": "diammonium phosphate (18-46-0 ppm)"
  },
  {
    "cropName": "Asparagus Pea",
@@ -57,7 +61,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Cook quickly by steaming, Serve with just a touch of butter",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 20°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 20°C",
+   "fertilizerName": "ammonium polyphosphate (10-34-0 ppm)"
  },
  {
    "cropName": "Basil",
@@ -69,7 +74,8 @@
    "compatiblePlants": "Tomato",
    "culinaryHints": "Use fresh in cooked recipes, Use for garnishing, Tear rather than chop, Store for a short time in plastic bags in the refrigerator or for a longer period in the freezer",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 35°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 35°C",
+   "fertilizerName": "ammonium nitrate (30-34% N) ')"
  },
  {
    "cropName": "Beetroot",
@@ -81,7 +87,8 @@
    "compatiblePlants": "onion, Silverbeet, Lettuce, Cabbage, DwarfBeans, Dill, Peas, Strawberries",
    "culinaryHints": "Boil whole for salads, Can be roasted well, Cut in wedges, Make a tasty salad grated raw with carrot and a little fresh orange juice",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 7°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 7°C and 25°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Borage",
@@ -93,7 +100,8 @@
    "compatiblePlants": "Strawberries, tomato, zucchini",
    "culinaryHints": "Has a slight cucumber taste which goes well in salads and when cooked with silver beet or cabbage, The flowers make a pretty drink decoration when frozen in an iceblock",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Broad beans",
@@ -105,7 +113,8 @@
    "compatiblePlants": "Dill, Potato",
    "culinaryHints": "The fresh beans are eaten steamed or boiled, As the beans mature it is better to remove their tough outer skins after cooking, The leafy top shoots of the adult plants can be picked and steamed after flowering, Small beans can be eaten whole in the pods",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 6°C and 24°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 6°C and 24°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Broccoli",
@@ -117,7 +126,8 @@
    "compatiblePlants": "Bushbean, beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, chamomile, oregano",
    "culinaryHints": "All parts are edible, Steam for best flavour, Peel large stalks and slice and steam, Goes well with blue cheese sauce",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 7°C and 30°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 7°C and 30°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Brussels sprouts",
@@ -129,7 +139,8 @@
    "compatiblePlants": "Bushbean, beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, chamomile",
    "culinaryHints": "Remove any discoloured outer leaves, Cut in half and steam with other vegetables, Do not overcook as that produces the distinctive smell that puts people off eating Brussels sprouts! They go well with a chopped tomato and onion mix",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 7°C and 30°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 7°C and 30°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Burdock",
@@ -141,7 +152,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Harvest in the first year when the burdock root is very crisp and has a mild and pungent flavour, Soak julienne/shredded roots in water for five to ten minutes to remove odour, Immature flower stalks may also be harvested in late spring",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Cabbage",
@@ -153,7 +165,8 @@
    "compatiblePlants": "Bushbean , beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, chamomile, thyme",
    "culinaryHints": "Young spring cabbage can be chopped and added to salad greens, Steaming preserves the goodness and flavour of cabbage, Can also be used in stir-fry, Chopped and cooked with brown sugar and red wine and onions and vinegar and stock is served with boiled bacon or pork",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 5°C and 18°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 5°C and 18°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Cape Gooseberry",
@@ -165,7 +178,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Is very aromatic and full of tiny seeds, They are delicious eaten fresh or can be made into jam, They can be added to salads or desserts and cooked dishes, They are delicious stewed with other fruit, They also go well in savoury dishes with meat or seafood",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Capsicum",
@@ -177,7 +191,8 @@
    "compatiblePlants": "Eggplant, Nasturtiums, Basil, Parsley, Amaranth",
    "culinaryHints": "Can be sliced and seeded and used raw in salads, Roast at a high temperature until the skin changes colour then put in a covered dish until cool and rub off the skin and remove seeds",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 35°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 35°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Cardoon",
@@ -189,7 +204,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Cut off the base and leaves and the stalks into pieces, Boil the stalks for around 20 minutes until tender, Drain and peel off the surface of the stalks, Add precooked cardoons to a variety of dishes, They go well with mushrooms",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 13°C and 25°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 13°C and 25°C",
+   "fertilizerName": "urea (45-50% N)"
  },
  {
    "cropName": "Carrot",
@@ -201,7 +217,8 @@
    "compatiblePlants": "onion, Leeks, Lettuce, Sage, Peas, Radishes, tomato, Broad beans, Celery, Rosemary",
    "culinaryHints": "Steamed or raw carrots are tasty, Cook them in a small amount of water until nearly dry then add a pat of butter and teasp of brown sugar to glaze, They can be added to most casserole-type dishes, Grate raw carrots and add to salads",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Easy to grow, Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C"
+   "plantingTechnique": "Easy to grow, Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Cauliflower",
@@ -213,7 +230,8 @@
    "compatiblePlants": "Dwarfbeans, beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, chamomile",
    "culinaryHints": "Cauliflower can be steamed, Young ones can be broken into small pieces and added raw to salad, Cook briefly and add to curry mix, Served with cheese sauce, Add tomato slices for colour",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Celeriac",
@@ -225,7 +243,8 @@
    "compatiblePlants": "Broad beans, brassicas, carrot, leeks, lettuce, peas, sage, tomato, onion",
    "culinaryHints": "Scrub and peel and use as whole, Can slice or dice, Tastes like celery",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 21°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 21°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Celery",
@@ -237,7 +256,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Chop and use raw in salad or braised in hot dishes",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 12°C and 21°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 12°C and 21°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Chicory",
@@ -249,7 +269,8 @@
    "compatiblePlants": "carrot, onion, Florence fennel, tomato.",
    "culinaryHints": "Good in salads, Grill lightly with butter Bake with ham and cheese",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C",
+   "fertilizerName": "ammonium polyphosphate (10-34-0 ppm)"
  },
  {
    "cropName": "Chilli peppers",
@@ -261,7 +282,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Wash and dry the produce, Use them direct from the freezer (no need to defrost)",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 35°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 35°C",
+   "fertilizerName": "ammonium polyphosphate (10-34-0 ppm)"
  },
  {
    "cropName": "Chinese cabbage",
@@ -273,7 +295,8 @@
    "compatiblePlants": "Dwarf beans, beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, chamomile, coriander, lettuce, Potato",
    "culinaryHints": "Use in stir-fry, Has a milder flavour than regular cabbage, Shred the inner leaves and stems to use in coleslaw salad",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow direct in the garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C"
+   "plantingTechnique": "Sow direct in the garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C",
+   "fertilizerName": "ammonium polyphosphate (10-34-0 ppm)"
  },
  {
    "cropName": "Chives",
@@ -285,7 +308,8 @@
    "compatiblePlants": "Carrot, tomato, Parsley",
    "culinaryHints": "Use raw in salads, Use as a mild onion flavour in cooked dishes",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C",
+   "fertilizerName": "ammonium polyphosphate (10-34-0 ppm)"
  },
  {
    "cropName": "Choko",
@@ -297,7 +321,8 @@
    "compatiblePlants": "Cucumber",
    "culinaryHints": "Peel and chopped to use in stews or soup or as a stir fry vegetable, It has a very mild flavour and is commonly served with seasonings or in a dish with other vegetables, It can also be boiled or stuffed and mashed",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant whole mature fruit when one produces a shoot at one end,, Best planted at soil temperatures between 15°C and 30°C"
+   "plantingTechnique": "Plant whole mature fruit when one produces a shoot at one end,, Best planted at soil temperatures between 15°C and 30°C",
+   "fertilizerName": "ammonium polyphosphate (10-34-0 ppm)"
  },
  {
    "cropName": "Climbing beans",
@@ -309,7 +334,8 @@
    "compatiblePlants": "Sweetcorn, spinach, lettuce, summer savory, dill, carrot, brassicas, beetroot, radish, strawberry, cucumber, zucchini",
    "culinaryHints": "Use young in salads - blanch and cool",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 30°C",
+   "fertilizerName": "ammonium polyphosphate (10-34-0 ppm)"
  },
  {
    "cropName": "Collards",
@@ -321,7 +347,8 @@
    "compatiblePlants": "Dwarf beans, beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, chamomile",
    "culinaryHints": "Slice and steam, use in stir-fry",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C",
+   "fertilizerName": "ammonium polyphosphate (10-34-0 ppm)"
  },
  {
    "cropName": "Coriander",
@@ -333,7 +360,8 @@
    "compatiblePlants": "Dill, Chervil, Anise, cabbage, carrot",
    "culinaryHints": "Use the leaves to flavour hot meals,Add fresh to salads",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "ammonium polyphosphate (10-34-0 ppm)"
  },
  {
    "cropName": "Corn Salad",
@@ -345,7 +373,8 @@
    "compatiblePlants": "onion",
    "culinaryHints": "Pick individual leaves or harvest the whole plant as required",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C",
+   "fertilizerName": "Terrificag"
  },
  {
    "cropName": "Cowpeas",
@@ -357,7 +386,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Young leaves can be cooked and used like spinach and are very high in protein, The young pods are edible",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "When soil begins to warm up, After frosts finish,, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 35°C"
+   "plantingTechnique": "When soil begins to warm up, After frosts finish,, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 35°C",
+   "fertilizerName": "Microfarm"
  },
  {
    "cropName": "Cucumber",
@@ -369,7 +399,8 @@
    "compatiblePlants": "Nasturtiums, Broad beans, Celery, Lettuce, Sweet Corn, cabbage, Sunflowers, Coriander, Fennel, Dill",
    "culinaryHints": "Pick frequently before the fruit become too big, Use raw in salads",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 35°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 35°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Daikon",
@@ -381,7 +412,8 @@
    "compatiblePlants": "Chervil, cress, lettuce, leeks, spinach, strawberries, tomato",
    "culinaryHints": "Can be eaten simmered or stir fried or grated or pickled or baked, Leaves are also edible and can be used in recipes, Use seeds to make sprouts to eat in salads or in sandwiches",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Direct in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C"
+   "plantingTechnique": "Direct in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Dill",
@@ -393,7 +425,8 @@
    "compatiblePlants": "Cabbage, Coriander, Fennel, tomato, broccoli",
    "culinaryHints": "Can be used fresh or dried in salads or meats or vegetable dishes and soups, Freshly cut leaves enhance the flavour of dips or soups or salads and dishes",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Dwarf beans",
@@ -405,7 +438,8 @@
    "compatiblePlants": "Sweetcorn, spinach, lettuce, summer savory, dill, carrot, brassicas, beetroot, radish, strawberry, cucumber",
    "culinaryHints": "Can be used in salads when young and cooled",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 30°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Eggplant",
@@ -417,7 +451,8 @@
    "compatiblePlants": "Broad beans, capsicum, lettuce, amaranth, thyme",
    "culinaryHints": "Cut and use the same day if possible, Slice and fry in olive oil, Brush with oil and grill or bake for about 4 minutes on high, Makes a good substitute for pasta in lasagne or moussaka, Can be smoked over a gas ring or barbecue, Cooled and peeled and used to make dips",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 24°C and 32°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 24°C and 32°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Endive",
@@ -429,7 +464,8 @@
    "compatiblePlants": "Broad beans, brassicas, carrot, cucumber, chervil, sage",
    "culinaryHints": "Very tasty topped with grated swiss cheese and grilled for a couple of minutes, Can use in salads additional to lettuce but needs a flavoursome dressing",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 25°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Fennel",
@@ -441,7 +477,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Cut off leaves as required, Use leaves fresh or dried, Particularly good with fish, The seeds can be used in pickling mixes",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "French tarragon",
@@ -453,7 +490,8 @@
    "compatiblePlants": "Eggplant, Capsicum",
    "culinaryHints": "Tarragon goes well with fish or pork or beef or poultry, Cook with most vegetables, Can be used in cream sauces or herbed butters and vinegars, Use in soups or sour creams and yogurt",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant cuttings or root division, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Plant cuttings or root division, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Garlic",
@@ -465,7 +503,8 @@
    "compatiblePlants": "beetroot, carrot, cucumber, Dill, tomato, Parsnips",
    "culinaryHints": "Cut the growing shoots or use the entire young garlic plants as 'garlic greens' in stirfry",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant cloves, Best planted at soil temperatures between 10°C and 35°C"
+   "plantingTechnique": "Plant cloves, Best planted at soil temperatures between 10°C and 35°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Ginger",
@@ -477,7 +516,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Use in any recipes requiring fresh ginger, Widely used in Asian cooking, Used to make spicy dishes without the 'burn' of chilli",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant pieces of fresh root showing signs of shoots, Best planted at soil temperatures between 20°C and 30°C"
+   "plantingTechnique": "Plant pieces of fresh root showing signs of shoots, Best planted at soil temperatures between 20°C and 30°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Horseradish",
@@ -489,7 +529,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Strong and spicy flavour traditionally used with roast beef, Used grated for horseradish sauce or horseradish cream",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant root pieces, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Plant root pieces, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "Magnesium-oxide(10%)"
  },
  {
    "cropName": "Jerusalem Artichokes",
@@ -501,7 +542,8 @@
    "compatiblePlants": "tomato, cucumber",
    "culinaryHints": "Scrape clean or peel (add a tsp of lemon or vinegar to the water to stop the tubers browning), Steam or boil or use in artichoke soup, Since they contain 'resistent starch' Jerusalem Artichokes are a great promoter of flatulence in some individuals",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant tubers about 5cm deep, Best planted at soil temperatures between 8°C and 15°C"
+   "plantingTechnique": "Plant tubers about 5cm deep, Best planted at soil temperatures between 8°C and 15°C",
+   "fertilizerName": "Nitrogen(60-140 kg N/ha)"
  },
  {
    "cropName": "Kale",
@@ -513,7 +555,8 @@
    "compatiblePlants": "Dwarf beans, beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, camomile",
    "culinaryHints": "Strong flavoured and nutritious vegetable, Wash well and chop finely then steam, A tomato or cheese sauce will mask the flavour if too strong",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C",
+   "fertilizerName": "phosphorous pentaoxide( 30 kg/ha)"
  },
  {
    "cropName": "Kohlrabi",
@@ -525,7 +568,8 @@
    "compatiblePlants": "beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, chamomile",
    "culinaryHints": "Use when young Scrub well, Cut off leaf stalks or roots and woody parts, Young ones do not need peeling, Can be grated raw for salads or cut in pieces and steam, Use in casseroles",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C",
+   "fertilizerName": "calcium-oxide(20%)')"
  },
  {
    "cropName": "Leeks",
@@ -537,7 +581,8 @@
    "compatiblePlants": "carrot",
    "culinaryHints": "Trim off the roots and any damaged leaves, Young ones can be used whole with some of the green leaves, Wash thoroughly and fry in butter (or olive oil) until tender, Can be added to casserole meals, Allow time to cook through",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C"
+   "plantingTechnique": "Grow in seed trays, and plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C",
+   "fertilizerName": "Boron"
  },
  {
    "cropName": "Lemon Balm",
@@ -549,7 +594,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Use as a herb tea or added to fruit punch, Can be used to replace lemon, Used sparingly in desserts and with stewed fruit, Chop leaves into salad, Better used fresh than dried",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "Compost(50%)"
  },
  {
    "cropName": "Lettuce",
@@ -561,7 +607,8 @@
    "compatiblePlants": "carrot, onion, Strawberries, beetroot, Brassicas, Radish, Marigold, Borage, Chervil, Florence fennel, leeks.",
    "culinaryHints": "Wash well, Spin or shake dry and use in salads and sandwiches",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 27°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 27°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Luffa",
@@ -573,7 +620,8 @@
    "compatiblePlants": "Peas, Broad beans, onion, Sweetcorn",
    "culinaryHints": "Flowers and fruits are soft and edible when young, Cooked and eaten like squash or okra, The leaves and vines should not be eaten",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 30°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 30°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Marrow",
@@ -585,7 +633,8 @@
    "compatiblePlants": "Peas, Broad beans, onion, Sweetcorn",
    "culinaryHints": "Cut in thick slices, Seeds removed and stuffed with mince or spicy vegetable mix then baked in the oven",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 35°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 35°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Mint",
@@ -597,7 +646,8 @@
    "compatiblePlants": "cabbage, tomato",
    "culinaryHints": "Mint adds a fresh flavour if chopped and sprinkled over salads, Mixed with vinegar and sugar to make mint sauce for lamb",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in trays Plant out or start from cuttings, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 24°C"
+   "plantingTechnique": "Grow in trays Plant out or start from cuttings, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 24°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Mizuna",
@@ -609,7 +659,8 @@
    "compatiblePlants": "Radish, lettuce",
    "culinaryHints": "Leaves used raw, stir-fried, in soups, Young flowering stems can be cooked like broccoli",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Mustard greens",
@@ -621,7 +672,8 @@
    "compatiblePlants": "Dwarf beans, beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, camomile",
    "culinaryHints": "Use young leaves in salad for a 'spicy kick', Add to stir fry",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 35°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 35°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Okra",
@@ -633,7 +685,8 @@
    "compatiblePlants": "capsicum, Chili, Eggplant",
    "culinaryHints": "Use pods fresh or dried in soups or casseroles, Use as a boiled vegetable",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 35°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 35°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Onion",
@@ -645,7 +698,8 @@
    "compatiblePlants": "Lemon Balm, Borage, carrot, beetroot, Silverbeet, Lettuce, Amaranth",
    "culinaryHints": "Brown onions roasted whole with other vegetables are delicious, Red onions add colour to salads or stir-fry",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C",
+   "fertilizerName": "Boron"
  },
  {
    "cropName": "Oregano",
@@ -657,7 +711,8 @@
    "compatiblePlants": "Broccoli",
    "culinaryHints": "Used to flavour tomato dishes and soups, Used in sauces and Greek dishes like moussaka",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, or start in seed trays, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 25°C"
+   "plantingTechnique": "Sow in garden, or start in seed trays, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 25°C",
+   "fertilizerName": "Compost(50%)"
  },
  {
    "cropName": "Pak Choy",
@@ -669,7 +724,8 @@
    "compatiblePlants": "Dwarf beans, beetroot, celery, cucumber, onion, marigold, nasturtium, rhubarb, sage, dill, chamomile, coriander, lettuce, Potato",
    "culinaryHints": "Canbecut and used in small chips, Use the whole plant in one go as well",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 30°C",
+   "fertilizerName": "Compost(50%)"
  },
  {
    "cropName": "Parsley",
@@ -681,7 +737,8 @@
    "compatiblePlants": "Carrot, Chives, tomato, Asparagus",
    "culinaryHints": "Use the leaves and stems to add flavour and colour, Can be cooked in dishes such as ratatouille, Traditionally used in white sauce",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C",
+   "fertilizerName": "Compost(50%)"
  },
  {
    "cropName": "Parsnip",
@@ -693,7 +750,8 @@
    "compatiblePlants": "Silverbeet, Capsicum, Peas, Potato, Broad beans, Radishes, Garlic",
    "culinaryHints": "Peel and roast with vegetables or meat, The sweetish flavour of parsnips enhances most other vegetables",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 6°C and 21°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 6°C and 21°C",
+   "fertilizerName": "Compost(50%)"
  },
  {
    "cropName": "Peas",
@@ -705,7 +763,8 @@
    "compatiblePlants": "Potato",
    "culinaryHints": "Raw straight from the pod in the garden is best, Raw in salads Steamed lightly Small pods can be steamed whole",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 24°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 24°C",
+   "fertilizerName": "Compost(50%)"
  },
  {
    "cropName": "Potato",
@@ -717,7 +776,8 @@
    "compatiblePlants": "Peas, Brassicas, Sweet corn, Broad Beans, Nasturtiums, Marigolds",
    "culinaryHints": "Peeled or unpeeled and scrubbed, potatoes can be boiled or baked or fried and roasted, Keep in a pot of cold water after peeling, otherwise they will discolour",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant tuber, Best planted at soil temperatures between 10°C and 30°C"
+   "plantingTechnique": "Plant tuber, Best planted at soil temperatures between 10°C and 30°C",
+   "fertilizerName": "Compost(50%)"
  },
  {
    "cropName": "Pumpkin",
@@ -729,7 +789,8 @@
    "compatiblePlants": "Sweet Corn",
    "culinaryHints": "Cut up and remove the skin and roast with other vegetables or meat, Young crisp shoots with young leaves can be cooked and eaten, Stewed in coconut milk they are popular in Melanesia, Cook as a vegetable in boiling water 43588 minutes",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 32°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 32°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Radish",
@@ -741,7 +802,8 @@
    "compatiblePlants": "Chervil, cress, lettuce, leeks, spinach, strawberries, tomato",
    "culinaryHints": "Wash well and remove leaves and roots, Use raw in salads or on their own with bread and butter",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 30°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Rhubarb",
@@ -753,7 +815,8 @@
    "compatiblePlants": "Cabbage, Broccoli, Cauliflower",
    "culinaryHints": "Pick stems about the thickness of your finger, Large stems will have tough 'strings' down the length of them, Use in pies or crumbles and jams, Goes well with orange, Will usually need sweetener",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant pieces of rhizome or roots 8 - 10 cm deep, Best planted at soil temperatures between 5°C and 20°C"
+   "plantingTechnique": "Plant pieces of rhizome or roots 8 - 10 cm deep, Best planted at soil temperatures between 5°C and 20°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Rocket",
@@ -765,7 +828,8 @@
    "compatiblePlants": "Lettuce",
    "culinaryHints": "Use in salads and stir-fry",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Rockmelon",
@@ -777,7 +841,8 @@
    "compatiblePlants": "Sweetcorn, Sunflower",
    "culinaryHints": "Cut in half and scoop out and discard the seeds, Sprinkle with some ground ginger or serve plain",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 32°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 32°C",
+   "fertilizerName": "Magnesium-oxide(10%)"
  },
  {
    "cropName": "Rosella",
@@ -789,7 +854,8 @@
    "compatiblePlants": "Feverfew, Coriander, Nasturtium",
    "culinaryHints": "Use the fleshy red calyx without the green seed pod to make jam or jelly",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, or start in seed trays, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 35°C"
+   "plantingTechnique": "Sow in garden, or start in seed trays, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 20°C and 35°C",
+   "fertilizerName": "Nitrogen(60-140 kg N/ha)"
  },
  {
    "cropName": "Rosemary",
@@ -801,7 +867,8 @@
    "compatiblePlants": "Broad beans, Carrot, Cabbage, Sage",
    "culinaryHints": "Sprinkle leaves on roast potatoes or meat and barbeque food to make them extra tasty, Used to add flavour to vinegars and oils",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant cuttings , Best planted at soil temperatures between 15°C and 20°C"
+   "plantingTechnique": "Plant cuttings , Best planted at soil temperatures between 15°C and 20°C",
+   "fertilizerName": "phosphorous pentaoxide( 30 kg/ha)"
  },
  {
    "cropName": "Rutabaga",
@@ -813,7 +880,8 @@
    "compatiblePlants": "Peas, Broad beans, Chives",
    "culinaryHints": "Use when about the size of a tennis ball, Cook leaves like cabbage when young",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 7°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 7°C and 25°C",
+   "fertilizerName": "calcium-oxide(20%)')"
  },
  {
    "cropName": "Sage",
@@ -825,7 +893,8 @@
    "compatiblePlants": "Broccoli, Cauliflower, Rosemary, Cabbage, Carrot",
    "culinaryHints": "The leaves are used to flavour stuffing and meat dishes, Sage keeps well if dried",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "Boron"
  },
  {
    "cropName": "Salsify",
@@ -837,7 +906,8 @@
    "compatiblePlants": "Broad beans, Brassicas, carrot, Celeriac, Endive, Kohlrabi, Leeks, Lettuce, Alliums, Spinach",
    "culinaryHints": "Wash and scrape the roots then boil before frying or roasting, Used to make a creamed soup",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C",
+   "fertilizerName": "Compost(50%)"
  },
  {
    "cropName": "Savory - summer",
@@ -849,7 +919,8 @@
    "compatiblePlants": "Broad beans, onion",
    "culinaryHints": "Add to peas or beans or lentils, Can be used as spices",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in Garden, Lightly cover, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 30°C"
+   "plantingTechnique": "Sow in Garden, Lightly cover, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 30°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Savory - winter",
@@ -861,7 +932,8 @@
    "compatiblePlants": "Broad beans",
    "culinaryHints": "Use as seasoning for beans and other green vegetables",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Start in trays, Cover seed lightly, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 30°C"
+   "plantingTechnique": "Start in trays, Cover seed lightly, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 18°C and 30°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Shallots",
@@ -873,7 +945,8 @@
    "compatiblePlants": "Lemon Balm, Borage, carrot, beetroot, Silverbeet, Lettuce, Amaranth",
    "culinaryHints": "Use in any recipe instead of onions, Can be cooked as a whole, Braise gently with other vegetables",
    "plantStyle": "Both",
-   "plantingTechnique": "Plant small bulblets, with stem just showing above ground, Best planted at soil temperatures between 8°C and 30°C"
+   "plantingTechnique": "Plant small bulblets, with stem just showing above ground, Best planted at soil temperatures between 8°C and 30°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Silverbeet",
@@ -885,7 +958,8 @@
    "compatiblePlants": "Broad beans, cabbage, cauliflower, tomato, onion, garlic, chives, lavender, parsnip",
    "culinaryHints": "Wash thoroughly and inspect the back of the leaves for insects, Chop and put in a saucepan with very little water, Cover and cook over a low to medium heat until the leaves collapse",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Snow Peas",
@@ -897,7 +971,8 @@
    "compatiblePlants": "Carrot, Endive, Florence fennel, lettuce, Brassicas",
    "culinaryHints": "Cook whole or eat raw in salads",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 20°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 8°C and 20°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Spinach",
@@ -909,7 +984,8 @@
    "compatiblePlants": "Broad beans, cabbage, cauliflower, celery, eggplant, onion, peas, strawberry, santolina",
    "culinaryHints": "Use young leaves in salad, Steam and add to other vegetables",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Spring onions",
@@ -921,7 +997,8 @@
    "compatiblePlants": "Lemon Balm, Borage, Carrot, beetroot, Silverbeet, Lettuce, Amaranth",
    "culinaryHints": "Can be eaten raw in salads, Used chopped and sprinkled on Asian stir-fry",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Squash",
@@ -933,7 +1010,8 @@
    "compatiblePlants": "Sweet corn",
    "culinaryHints": "Use whole or sliced, Steam or fry",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 35°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 35°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Strawberries (from seeds)",
@@ -945,7 +1023,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Can be used in any dessert needing soft fruit or berries, Use with pudding with other berries, Use with mousse or trifle by dipping in melted chocolate or just with cream, Sprinkle a bowl of strawberries with balsamic vinegar and a little sugar to enhance the flavour and colour",
    "plantStyle": "Indoor",
-   "plantingTechnique": "Start inside in pots or trays after chilling seeds, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C"
+   "plantingTechnique": "Start inside in pots or trays after chilling seeds, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Strawberry Plants",
@@ -957,7 +1036,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Pick and eat straight from the garden, Can be used in any dessert needing soft fruit or berries, Use with pudding with other berries, Use with mousse or trifle by dipping in melted chocolate or just with cream, Sprinkle a bowl of strawberries with balsamic vinegar and a little sugar to enhance the flavour and colour",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant with crown (of roots) just covered,, Best planted at soil temperatures between 10°C and 20°C"
+   "plantingTechnique": "Plant with crown (of roots) just covered,, Best planted at soil temperatures between 10°C and 20°C",
+   "fertilizerName": "Silicon dioxide(30%)"
  },
  {
    "cropName": "Sunflower",
@@ -969,7 +1049,8 @@
    "compatiblePlants": "cucumber, Melons, Sweetcorn, Squash",
    "culinaryHints": "Use seeds fresh or toasted",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C"
+   "plantingTechnique": "Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C",
+   "fertilizerName": "Magnesium-oxide(10%)"
  },
  {
    "cropName": "Sweet corn",
@@ -981,7 +1062,8 @@
    "compatiblePlants": "Dwarfbeans, climbingbeans, Broadbeans, cucumber, melons, peas, pumpkin, squash, amaranth",
    "culinaryHints": "Pick and cook within an hour, Remove the silks and outer leaves, Best flavour if microwave about 4 minutes per cob, Can be barbequed wrapped in foil, Cook large amounts in a stock pot until test soft, Sprinkle with black pepper and dip in butter",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 35°C"
+   "plantingTechnique": "Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 35°C",
+   "fertilizerName": "Nitrogen(60-140 kg N/ha)"
  },
  {
    "cropName": "Sweet Marjoram",
@@ -993,7 +1075,8 @@
    "compatiblePlants": "Capsicum, Chilis, Sage",
    "culinaryHints": "Has a mild oregano flavor with a hint of balsam, Use as a substitute for oregano in sauces for pizza or lasagna and eggplant parmigiana",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "phosphorous pentaoxide( 30 kg/ha)"
  },
  {
    "cropName": "Sweet Potato",
@@ -1005,7 +1088,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Use mashed or boiled or roasted or baked or fried, Use in soups, Use in pies, Use in casseroles, Add to curries and salads",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant shoots or cuttings (Slips), Best planted at soil temperatures between 17°C and 35°C"
+   "plantingTechnique": "Plant shoots or cuttings (Slips), Best planted at soil temperatures between 17°C and 35°C",
+   "fertilizerName": "calcium-oxide(20%)')"
  },
  {
    "cropName": "Taro",
@@ -1017,7 +1101,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Taro can be cooked like potatoes, boiled, roasted, fried or steamed It is not eaten raw",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant small pieces of tuber or suckers, 5-8cm deep, Best planted at soil temperatures between 20°C and 35°C"
+   "plantingTechnique": "Plant small pieces of tuber or suckers, 5-8cm deep, Best planted at soil temperatures between 20°C and 35°C",
+   "fertilizerName": "Boron"
  },
  {
    "cropName": "Thyme",
@@ -1029,7 +1114,8 @@
    "compatiblePlants": "oregano,sage, Eggplant, Cabbage",
    "culinaryHints": "Thyme is mainly used with meat and fish, Use with vegetables while cooking, Best used sparingly because of intense flavor",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays and plant out 6-8 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 25°C"
+   "plantingTechnique": "Grow in seed trays and plant out 6-8 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 15°C and 25°C",
+   "fertilizerName": "Compost(50%)"
  },
  {
    "cropName": "Tomatillo",
@@ -1041,7 +1127,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Use in spicy sauces with or to replace tomatoes, Use as base of salsa verde in Mexican cookery",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 27°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 27°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Tomato",
@@ -1053,7 +1140,8 @@
    "compatiblePlants": "Asparagus, Chervil, Carrot, Celery, Chives, Parsley, Marigold, Basil",
    "culinaryHints": "Use in sauces with fried meals, Use in sandwiches",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 35°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 35°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Turnip",
@@ -1065,7 +1153,8 @@
    "compatiblePlants": "Peas, Broad beans, Chives, Spinach, Carrot, Chicory",
    "culinaryHints": "Grate young turnips and use raw in salads, Use older turnips in casseroles and stews",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 12°C and 30°C"
+   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 12°C and 30°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Watermelon",
@@ -1077,7 +1166,8 @@
    "compatiblePlants": "Sweetcorn, Sunflower",
    "culinaryHints": "Cut up and eat in slices, Use to make fruit drinks, Use in fruit salads",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 35°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 35°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Yacon",
@@ -1089,7 +1179,8 @@
    "compatiblePlants": "None",
    "culinaryHints": "Use roots in salads, Sprinkle with lemon juice to prevent browning, Grate and squeeze through a cloth to yield a sweet refreshing drink, Boil juice to produce a syrup",
    "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant sprouting root or tuber to a depth of about 4cm and mulch to cover, Best planted at soil temperatures between 10°C and 25°C"
+   "plantingTechnique": "Plant sprouting root or tuber to a depth of about 4cm and mulch to cover, Best planted at soil temperatures between 10°C and 25°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  },
  {
    "cropName": "Zucchini",
@@ -1101,6 +1192,7 @@
    "compatiblePlants": "Corn, Broad beans, nasturtiums, parsley, Silverbeet, tomato",
    "culinaryHints": "Zucchini are best picked or cut off the stem at about 15cm, Pick frequently to keep the plant producing new flowers, Store in refrigerator",
    "plantStyle": "Both",
-   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 35°C"
+   "plantingTechnique": "Grow in seed trays, Plant out in 4-6 weeks, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 21°C and 35°C",
+   "fertilizerName": "Monoammonium phosphate (11-52-0 ppm)"
  }
 ]

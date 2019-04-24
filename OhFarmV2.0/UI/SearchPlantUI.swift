@@ -92,7 +92,7 @@ class SearchPlantUI: UIViewController {
     }
     
     //MARK: Search Plant Cell Style
-    func searchPlantCell(_ cell: UITableViewCell, name: String, category: String, plantStyle: String) -> UITableViewCell {
+    func searchPlantCell(_ cell: UITableViewCell, plant: Plant) -> UITableViewCell {
         guard let plantCell = cell as? SearchPlantTableViewCell else {fatalError()}
         plantCell.selectionStyle = .none
         plantCell.backgroundColor = .clear
@@ -103,24 +103,24 @@ class SearchPlantUI: UIViewController {
         plantCell.cellBackground.layer.shadowOpacity = 0.2
         plantCell.cellBackground.layer.shadowOffset = CGSize.zero
         
-        plantCell.plantNameLabel.text = name
-        plantCell.plantCategoryLabel.text = category
+        plantCell.plantNameLabel.text = plant.cropName
+        plantCell.plantCategoryLabel.text = plant.plantCategory
         
-        if category == "vegetable" {
+        if plant.plantCategory == "vegetable" {
             plantCell.plantCategoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
         } else {
             plantCell.plantCategoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         }
         
         plantCell.plantStyleLabel.numberOfLines = 2
-        if plantStyle == "Both" {
+        if plant.plantStyle == "Both" {
             plantCell.plantStyleLabel.text = "Suitable for\nIndoor and Outdoor"
             plantCell.plantStyleLabel.sizeToFit()
         } else {
-            plantCell.plantStyleLabel.text = "Suitable for \(plantStyle)"
+            plantCell.plantStyleLabel.text = "Suitable for \(plant.plantStyle)"
         }
         
-        plantCell.plantImage.image = UIImage(named: name)
+        plantCell.plantImage.image = plant.plantImage
         plantCell.plantImage.contentMode = .scaleAspectFill
         plantCell.plantImage.layer.cornerRadius = 24
         
