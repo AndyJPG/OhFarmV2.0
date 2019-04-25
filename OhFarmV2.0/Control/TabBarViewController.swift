@@ -41,7 +41,7 @@ extension TabBarViewController: UITabBarControllerDelegate  {
         }
         
         if fromView != toView {
-            UIView.transition(from: fromView, to: toView, duration: 0.3, options: [.transitionCrossDissolve], completion: nil)
+            UIView.transition(from: fromView, to: toView, duration: 0.2, options: [.transitionCrossDissolve], completion: nil)
         }
         
         return true

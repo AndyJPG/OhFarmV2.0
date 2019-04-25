@@ -31,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     searchTableVC.user = user
                 }
             }
+            
+            if let profileTableVC = viewController as? ProfileTableViewController {
+                profileTableVC.user = user
+            }
         }
         
         if let userInfo = localData.loadUser() {

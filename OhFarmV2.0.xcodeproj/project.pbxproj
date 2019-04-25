@@ -54,6 +54,9 @@
 		00DA863B226453F200049557 /* OhFarmV2_0Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA863A226453F200049557 /* OhFarmV2_0Tests.swift */; };
 		00DA864B22646CE800049557 /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA864A22646CE800049557 /* Community.swift */; };
 		00FCC0812271914E00CD3D20 /* PopAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC0802271914E00CD3D20 /* PopAlert.swift */; };
+		00FCC0842271F49D00CD3D20 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC0832271F49D00CD3D20 /* ProfileTableViewController.swift */; };
+		00FCC0872271F52700CD3D20 /* ProfileTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC0862271F52700CD3D20 /* ProfileTopTableViewCell.swift */; };
+		00FCC0892271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC0882271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift */; };
 		D010DAAED5FF760655F16663 /* Pods_OhFarmV2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B1B8750CFCBC6E6F8F8EE7 /* Pods_OhFarmV2_0.framework */; };
 		F4D55D93C5972FFC1BD52313 /* Pods_OhFarmV2_0Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFAA1AFC211582FE6581FF5 /* Pods_OhFarmV2_0Tests.framework */; };
 /* End PBXBuildFile section */
@@ -120,6 +123,9 @@
 		00DA863C226453F200049557 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00DA864A22646CE800049557 /* Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		00FCC0802271914E00CD3D20 /* PopAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAlert.swift; sourceTree = "<group>"; };
+		00FCC0832271F49D00CD3D20 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		00FCC0862271F52700CD3D20 /* ProfileTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTopTableViewCell.swift; sourceTree = "<group>"; };
+		00FCC0882271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOptionTableViewCell.swift; sourceTree = "<group>"; };
 		157E634BE2ED7B110C67DB55 /* Pods-OhFarmV2.0Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhFarmV2.0Tests.debug.xcconfig"; path = "Target Support Files/Pods-OhFarmV2.0Tests/Pods-OhFarmV2.0Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		179FF70CAADDD892CEA7CCFA /* Pods-OhFarmV2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhFarmV2.0.release.xcconfig"; path = "Target Support Files/Pods-OhFarmV2.0/Pods-OhFarmV2.0.release.xcconfig"; sourceTree = "<group>"; };
 		18B1B8750CFCBC6E6F8F8EE7 /* Pods_OhFarmV2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OhFarmV2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,6 +321,7 @@
 			children = (
 				00A77B0B22709E690033ED8A /* TabBarViewController.swift */,
 				00C71384226DE75600E1EA36 /* Home controller */,
+				00FCC0822271F46B00CD3D20 /* Profile Controller */,
 				00A77AF722700D6E0033ED8A /* Plant Detail Controller */,
 				00C7135D226ADDB400E1EA36 /* Search controller */,
 				00DA864922646C9F00049557 /* Community controller */,
@@ -340,6 +347,7 @@
 				00C7137B226CBD2100E1EA36 /* NetworkHandler.swift */,
 				00A77B22227181860033ED8A /* LocalData.swift */,
 				00FCC0802271914E00CD3D20 /* PopAlert.swift */,
+				00FCC0852271F4F600CD3D20 /* Profile Model */,
 				00C71372226BF54C00E1EA36 /* Range Seek Slider */,
 				00C71381226DE6C800E1EA36 /* Home Model */,
 				00A77AFA227027DC0033ED8A /* Plant Detail Model */,
@@ -357,6 +365,23 @@
 				002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */,
 			);
 			path = "Community controller";
+			sourceTree = "<group>";
+		};
+		00FCC0822271F46B00CD3D20 /* Profile Controller */ = {
+			isa = PBXGroup;
+			children = (
+				00FCC0832271F49D00CD3D20 /* ProfileTableViewController.swift */,
+			);
+			path = "Profile Controller";
+			sourceTree = "<group>";
+		};
+		00FCC0852271F4F600CD3D20 /* Profile Model */ = {
+			isa = PBXGroup;
+			children = (
+				00FCC0862271F52700CD3D20 /* ProfileTopTableViewCell.swift */,
+				00FCC0882271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift */,
+			);
+			path = "Profile Model";
 			sourceTree = "<group>";
 		};
 		3C3523F6B9A3AA772221DD31 /* Frameworks */ = {
@@ -568,12 +593,15 @@
 				00C7137C226CBD2100E1EA36 /* NetworkHandler.swift in Sources */,
 				00C71388226DE83000E1EA36 /* HomeUI.swift in Sources */,
 				00C71371226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift in Sources */,
+				00FCC0842271F49D00CD3D20 /* ProfileTableViewController.swift in Sources */,
 				00A77B00227032440033ED8A /* PlantInfoSlideViewController.swift in Sources */,
 				00A77AFC22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift in Sources */,
 				00DA8628226453F100049557 /* MapViewController.swift in Sources */,
 				00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */,
 				00A77B1E227154400033ED8A /* PlantAvoidTableViewCell.swift in Sources */,
+				00FCC0892271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift in Sources */,
 				00C71368226AFF8900E1EA36 /* PlantSearchTableViewController.swift in Sources */,
+				00FCC0872271F52700CD3D20 /* ProfileTopTableViewCell.swift in Sources */,
 				00FCC0812271914E00CD3D20 /* PopAlert.swift in Sources */,
 				00A77B132270A4CE0033ED8A /* PhotoSlide.swift in Sources */,
 				00C7136F226B4CE900E1EA36 /* FilterHarvestTableViewCell.swift in Sources */,
