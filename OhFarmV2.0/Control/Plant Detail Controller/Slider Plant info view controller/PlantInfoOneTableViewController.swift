@@ -13,11 +13,13 @@ class PlantInfoOneTableViewController: UITableViewController, IndicatorInfoProvi
 
     // MARK: Variable
     var plant: Plant!
+    var isFromHome: Bool!
     let cellIdentifier = "defaultPlantInfoCell"
     var blackTheme = false
     var itemInfo = IndicatorInfo(title: "View")
     
-    init(style: UITableView.Style, itemInfo: IndicatorInfo, plant: Plant) {
+    init(style: UITableView.Style, itemInfo: IndicatorInfo, plant: Plant, fromHome: Bool) {
+        self.isFromHome = fromHome
         self.plant = plant
         self.itemInfo = itemInfo
         super.init(style: style)
@@ -123,7 +125,11 @@ class PlantInfoOneTableViewController: UITableViewController, IndicatorInfoProvi
     private func setupTableStyle() {
         tableView.register(UINib(nibName: "DefaultPlantCell", bundle: Bundle.main), forCellReuseIdentifier: cellIdentifier)
 //        tableView.separatorStyle = .none
-        tableView.tableFooterView = UIView()
+        if isFromHome {
+            tableView.tableFooterView = UIView(frame: CGRect.zero)
+        } else {
+            tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 75))
+        }
         tableView.showsVerticalScrollIndicator = false
         tableView.estimatedRowHeight = 600.0
         tableView.rowHeight = UITableView.automaticDimension

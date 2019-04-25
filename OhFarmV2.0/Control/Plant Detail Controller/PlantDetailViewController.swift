@@ -14,9 +14,11 @@ class PlantDetailViewController: UIViewController {
     // MARK: Variable
     var plant: Plant!
     var slides: [PhotoSlide] = []
+    let buttonUI = SearchPlantUI()
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    var isFromHome =  false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,14 @@ class PlantDetailViewController: UIViewController {
         
         slides = createSlides()
         setupSlideScrollView(slides: slides)
+        
+        if !isFromHome {
+            addPlantButtonUI()
+        }
+        
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        view.addGestureRecognizer(edgePan)
     }
     
     
@@ -41,10 +51,24 @@ class PlantDetailViewController: UIViewController {
         if segue.identifier == "containerSegue" {
             guard let containerVC = segue.destination as? PlantInfoSlideViewController else {fatalError()}
             containerVC.plant = plant
-            print("data passed")
+            containerVC.isFromHome = isFromHome
         }
     }
     
+    // MARK: Action
+    @objc private func addPlant(_ sender: UIButton) {
+        print("added")
+    }
+    
+    @objc private func screenEdgeSwiped(_ sender: UIScreenEdgePanGestureRecognizer) {
+        if sender.state == .recognized {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func backAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // MARK: Appearence
     // Plant Photo gallery view
@@ -80,6 +104,16 @@ class PlantDetailViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+
+    // Add plant button ui
+    private func addPlantButtonUI() {
+        let button = buttonUI.filterBottomButton()
+        button.setTitle("Add to My Farm", for: .normal)
+        button.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
+        view.addSubview(buttonUI.filterBottomButtonBackground())
+        view.addSubview(button)
+    }
+    
 }
 
 extension PlantDetailViewController: UIScrollViewDelegate {

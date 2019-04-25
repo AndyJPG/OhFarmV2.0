@@ -105,6 +105,13 @@ class SearchResultTableViewController: UITableViewController {
         
         // Table view footer
         tableView.tableFooterView = UIView()
+        
+        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+        searchController.searchBar.tintColor = .white
+        tableView.backgroundView = UIImageView(image: UIImage(named: "bgcommunity"))
+        tableView.backgroundView?.contentMode = .scaleAspectFit
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

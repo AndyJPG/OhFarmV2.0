@@ -95,7 +95,7 @@
                                     <outlet property="plantNameLabel" destination="R3Q-fx-qte" id="NGl-2M-jXK"/>
                                     <outlet property="plantStyleLabel" destination="6M7-8H-lfh" id="D6d-b8-Ns5"/>
                                     <outlet property="plusButton" destination="LxV-fy-2lx" id="psy-EQ-Var"/>
-                                    <segue destination="01p-US-HuA" kind="show" identifier="viewDetailFromSearch" id="0tJ-ZS-aag"/>
+                                    <segue destination="1Ym-gD-Ga0" kind="presentation" identifier="viewDetailFromSearch" id="0tJ-ZS-aag"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -406,7 +406,7 @@
             </objects>
             <point key="canvasLocation" x="4102" y="1549"/>
         </scene>
-        <!--First-->
+        <!--Animation-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" sceneMemberID="viewController">
@@ -437,7 +437,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Animation" image="agronomy" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -507,6 +507,7 @@
                                     <outlet property="cellBackground" destination="spM-hB-8Fl" id="6tj-Rx-DZb"/>
                                     <outlet property="plantImage" destination="6gv-P0-5Oj" id="cKt-hc-b3M"/>
                                     <outlet property="plantNameLabel" destination="8gV-o2-Tdu" id="zNz-cK-XiL"/>
+                                    <segue destination="1Ym-gD-Ga0" kind="presentation" identifier="HomeToDetailSegue" id="sZ9-NW-KyD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -515,13 +516,19 @@
                             <outlet property="delegate" destination="Hcn-ir-Snn" id="tIq-Mc-RkI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xUh-ZK-D0F"/>
+                    <navigationItem key="navigationItem" id="xUh-ZK-D0F">
+                        <barButtonItem key="rightBarButtonItem" title="Manage" id="dm4-Lj-dkA">
+                            <connections>
+                                <action selector="startEditing:" destination="Hcn-ir-Snn" id="yes-xk-aeA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="run-VZ-y58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2033" y="241"/>
         </scene>
-        <!--Fifth-->
+        <!--User-->
         <scene sceneID="cIR-wV-Wfb">
             <objects>
                 <viewController id="SjQ-sL-uIE" sceneMemberID="viewController">
@@ -554,7 +561,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zKI-y8-wxm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Fifth" image="first" id="HI1-Pt-GQw"/>
+                    <tabBarItem key="tabBarItem" title="User" image="user" id="HI1-Pt-GQw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFD-82-128" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -671,7 +678,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="Ye5-jX-7bE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Community" image="community" id="iCu-Ji-PtP"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="urY-hv-Qnw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" largeTitles="YES" id="urY-hv-Qnw">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -683,13 +690,13 @@
             </objects>
             <point key="canvasLocation" x="1265" y="-513"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="jPL-sp-OQm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jBN-sy-gP7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="5fJ-Ze-fFJ"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="5fJ-Ze-fFJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1E8-lW-HaC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="1E8-lW-HaC">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -711,7 +718,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNb-iI-WZn">
-                                <rect key="frame" x="0.0" y="264" width="375" height="354"/>
+                                <rect key="frame" x="0.0" y="264" width="375" height="403"/>
                                 <connections>
                                     <segue destination="Lsa-nC-vYV" kind="embed" identifier="containerSegue" id="fI4-Xu-uCc"/>
                                 </connections>
@@ -739,6 +746,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4UD-3T-uD5"/>
                     </view>
+                    <navigationItem key="navigationItem" id="SOS-UF-5nF">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="ASU-BN-8np">
+                            <connections>
+                                <action selector="backAction:" destination="01p-US-HuA" id="yjB-R6-zkf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="pageControl" destination="Fp1-s1-MfO" id="WS9-UF-XAu"/>
                         <outlet property="scrollView" destination="mpg-0y-GNZ" id="sTD-Ol-ipB"/>
@@ -746,7 +760,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teJ-PV-NHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3380" y="770"/>
+            <point key="canvasLocation" x="4319.1999999999998" y="769.56521739130437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="O0a-S9-BVS">
@@ -770,9 +784,9 @@
         <scene sceneID="B4X-xp-GMa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sw1-NC-CfE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Farm" id="ldp-ZK-ae3"/>
+                    <tabBarItem key="tabBarItem" title="My Farm" image="home" id="ldp-ZK-ae3"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OYG-rb-2bD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="OYG-rb-2bD">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -790,7 +804,7 @@
             <objects>
                 <viewController id="Lsa-nC-vYV" customClass="PlantInfoSlideViewController" customModule="OhFarmV2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MAH-WP-HF0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="354"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8nj-u7-Z3Y" customClass="ButtonBarView" customModule="XLPagerTabStrip">
@@ -808,7 +822,7 @@
                                 <cells/>
                             </collectionView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lET-8Q-Rva">
-                                <rect key="frame" x="0.0" y="43" width="375" height="311"/>
+                                <rect key="frame" x="0.0" y="43" width="375" height="360"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -821,19 +835,42 @@
                             <constraint firstAttribute="trailing" secondItem="lET-8Q-Rva" secondAttribute="trailing" id="y8f-Jr-rK8"/>
                             <constraint firstItem="8nj-u7-Z3Y" firstAttribute="leading" secondItem="MAH-WP-HF0" secondAttribute="leading" id="yfX-K9-6vz"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="2FB-oD-ObC"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PQB-Cx-fXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4449" y="770"/>
+            <point key="canvasLocation" x="5388" y="769.56521739130437"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="W32-KE-nBX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Ym-gD-Ga0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h2w-gs-IjV">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="01p-US-HuA" kind="relationship" relationship="rootViewController" id="l0g-lY-HZA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFB-QM-YXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3380" y="769.56521739130437"/>
         </scene>
     </scenes>
     <resources>
+        <image name="agronomy" width="30" height="30"/>
         <image name="community" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
+        <image name="home" width="30" height="30"/>
         <image name="plus" width="125" height="100"/>
+        <image name="search" width="30" height="30"/>
+        <image name="user" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="sZ9-NW-KyD"/>
         <segue reference="RHu-No-wDA"/>
     </inferredMetricsTieBreakers>
 </document>

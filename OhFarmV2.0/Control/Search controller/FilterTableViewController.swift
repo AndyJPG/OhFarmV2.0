@@ -137,6 +137,7 @@ class FilterTableViewController: UITableViewController {
         return cell
     }
     
+    //MARK: Action
     //MARK: Add button to table view
     
     private func addBottomButton() {
@@ -146,7 +147,6 @@ class FilterTableViewController: UITableViewController {
         navigationController?.view.addSubview(back)
         navigationController?.view.addSubview(button)
     }
-    
     
     //MARK: Filter activities handler
     

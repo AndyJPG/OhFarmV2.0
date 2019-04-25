@@ -12,7 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let user = User(name: "User")
+    var user = User(name: "User")
+    let localData = LocalData()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     searchTableVC.user = user
                 }
             }
+        }
+        
+        if let userInfo = localData.loadUser() {
+            user = userInfo[0]
+        }
+        
+        if let plantData = localData.loadPlants() {
+            user.farmPlants = plantData
         }
         
         return true

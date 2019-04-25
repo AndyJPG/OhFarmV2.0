@@ -38,4 +38,17 @@ class HomeUI: UIViewController {
         return plantCell
     }
     
+    func addPlantImage() -> UIView {
+        let background = UIView(frame: CGRect(origin: CGPoint(x: view.frame.width/2-100, y: view.frame.height/2-150), size: CGSize(width: 200, height: 200)))
+        background.backgroundColor = .clear
+        
+        let image = UIImage(named: "addPlant")
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFill
+        background.addSubview(imageView)
+        
+        return background
+    }
+    
 }

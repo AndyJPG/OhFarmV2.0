@@ -32,8 +32,9 @@ class PlantSearchTableViewController: UITableViewController {
     var originalPlants = [Plant]()
     var filterPlants = [Plant]()
     var networkHandler = NetworkHandler()
-    var user: User?
+    var user: User!
     let plantTableUI = SearchPlantUI()
+    let localData = LocalData()
     
     //Search bar properites
     var searchPlants = [Plant]()
@@ -127,8 +128,24 @@ class PlantSearchTableViewController: UITableViewController {
     
     // MARK: Action handle functions
     @objc private func addPlant(_ sender: UIButton) {
-        user?.farmPlants.append(plants[sender.tag])
-        print("\(plants[sender.tag].cropName) added")
+        let plant = plants[sender.tag]
+        var exist = false
+        
+        if !user.farmPlants.isEmpty {
+            for i in user.farmPlants {
+                if i.cropName == plant.cropName {
+                    exist = true
+                }
+            }
+        }
+        
+        if exist {
+            uiAlert(plant.cropName, alertIndex: 0)
+        } else {
+            user?.farmPlants.append(plant)
+            localData.savePlants(user?.farmPlants ?? [])
+            uiAlert(plant.cropName, alertIndex: 1)
+        }
     }
     
     
@@ -143,8 +160,8 @@ class PlantSearchTableViewController: UITableViewController {
         }
         
         if segue.identifier == SegueID.viewDetailFromSearch.rawValue {
-            guard let nv = segue.destination as? PlantDetailViewController, let selectedCell = sender as? SearchPlantTableViewCell, let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
-            nv.plant = plants[indexPath.row]
+            guard let nv = segue.destination as? UINavigationController, let detailVC = nv.topViewController as? PlantDetailViewController, let selectedCell = sender as? SearchPlantTableViewCell, let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
+            detailVC.plant = plants[indexPath.row]
         }
     }
     
@@ -171,12 +188,38 @@ class PlantSearchTableViewController: UITableViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
-//        UISearchBar.appearance().tintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+        UISearchBar.appearance().tintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
     }
     
     private func setUpAppearance() {
         tableView.separatorStyle = .none
         navigationItem.title = "Plants search"
+    }
+    
+    
+    // MARK: Alert functions
+    private func uiAlert(_ plant: String, alertIndex: Int)  {
+        if alertIndex == 0 {
+            let alert = UIAlertController(title: "Oops!", message: "\(plant) is already in your farm", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+        
+        if alertIndex == 1 {
+            let alert = UIAlertController(title: "New Plant!", message: "\(plant) has added to your farm", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
     }
 }
 

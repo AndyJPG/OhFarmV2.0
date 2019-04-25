@@ -15,6 +15,7 @@ class PlantInfoSlideViewController: ButtonBarPagerTabStripViewController {
     
     // MARK: Variable
     var plant: Plant!
+    var isFromHome: Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,8 @@ class PlantInfoSlideViewController: ButtonBarPagerTabStripViewController {
     
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let child_1 = PlantInfoOneTableViewController(style: .plain, itemInfo: "Sow", plant: plant)
-        let child_2 = PlantingInfoTableViewController(style: .plain, itemInfo: "Planting", plant: plant)
+        let child_1 = PlantInfoOneTableViewController(style: .plain, itemInfo: "Sow", plant: plant, fromHome: isFromHome)
+        let child_2 = PlantingInfoTableViewController(style: .plain, itemInfo: "Planting", plant: plant, fromHome: isFromHome)
         let child_3 = CulinaryHintsViewController(itemInfo: "Culinary Hints", plant: plant)
         
         guard isReload else {

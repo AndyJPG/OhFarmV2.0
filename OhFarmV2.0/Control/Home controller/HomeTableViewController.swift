@@ -14,6 +14,9 @@ class HomeTableViewController: UITableViewController {
     // Style instance
     let homeTableUI = HomeUI()
     var user: User?
+    let localData = LocalData()
+    let alert = PopAlert()
+    var addPlantImage = UIView()
     
     var plants: [Plant] {
         return user?.farmPlants ?? []
@@ -29,6 +32,8 @@ class HomeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        localData.savePlants(user?.farmPlants ?? [])
+        updateAppearance()
     }
 
     // MARK: - Table view data source
@@ -61,43 +66,115 @@ class HomeTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            user?.farmPlants.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            deleteConfirmation(indexPath)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
     
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        let plant = plants[fromIndexPath.row]
+        user?.farmPlants.remove(at: fromIndexPath.row)
+        user?.farmPlants.insert(plant, at: to.row)
     }
-    */
+    
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
+    
+    //MARK: Action
+    @IBAction func startEditing(_ sender: UIBarButtonItem) {
+        if isEditing == false && plants.isEmpty {
+            uiAlert()
+        } else {
+            isEditing = !isEditing
+        }
+    }
 
-    /*
+    @objc private func addPlantTap(_ sender: UITapGestureRecognizer) {
+        self.tabBarController?.selectedIndex = 3
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "HomeToDetailSegue" {
+            guard let nv = segue.destination as? UINavigationController, let detailVC = nv.topViewController as? PlantDetailViewController, let selectedCell = sender as? HomeFarmTableViewCell, let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
+            detailVC.plant = plants[indexPath.row]
+            detailVC.isFromHome = true
+        }
     }
-    */
+    
 
     
     // MARK: Appearance methods
     private func setUpAppearance() {
         tableView.separatorStyle = .none
-        navigationItem.title = "\(user?.userName ?? "")'s farm"
+        if user?.userName == "User" {
+            navigationItem.title = "Your farm"
+        } else {
+            navigationItem.title = "\(user?.userName ?? "")'s farm"
+        }
+        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addPlantTap(_:)))
+        addPlantImage = homeTableUI.addPlantImage()
+        addPlantImage.isUserInteractionEnabled = true
+        addPlantImage.addGestureRecognizer(tapGestureRecognizer)
+        tableView.addSubview(addPlantImage)
     }
+    
+    private func updateAppearance() {
+        if plants.isEmpty {
+            addPlantImage.isHidden = false
+        } else {
+            addPlantImage.isHidden = true
+        }
+    }
+    
+    //MARK: Delete pop up confirmation
+    private func deleteConfirmation(_ indexPath: IndexPath) {
+        
+        let alert = UIAlertController(title: "Delete plant", message: "Are you sure you want to delete this plant ?", preferredStyle: UIAlertController.Style.actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (_) in
+            self.user?.farmPlants.remove(at: indexPath.row)
+            self.localData.savePlants(self.user?.farmPlants ?? [])
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            if self.plants.isEmpty {
+                self.isEditing = false
+            }
+            self.updateAppearance()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.cancel, handler: { (_) in
+            print("Delete dismiss")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
+    }
+    
+    private func uiAlert()  {
+        let alert = UIAlertController(title: "Oops!", message: "Your farm is empty, please add plant first", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+            //Cancel Action
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
