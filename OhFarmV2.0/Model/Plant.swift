@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import os.log
 
-class Plant {
+class Plant: NSObject, NSCoding {
     
     //MARK: Variable
     let cropName: String
@@ -17,29 +18,48 @@ class Plant {
     let maxSpacing: Int
     let minHarvestTime: Int
     let maxHarvestTime: Int
-    let compatiblePlants: [String]
-    let culinaryHints: [String]
+    let compatiblePlants: String
+    let avoidInstructions: String
+    let culinaryHints: String
     let plantStyle: String
-    let plantingTechnique: [String]
+    let plantingTechnique: String
     let fertilizer: String
     
-    init(_ dic:[String:Any]) {
-        self.cropName = dic["cropName"] as? String ?? ""
-        self.plantCategory = dic["plantCategory"] as? String ?? ""
-        self.minSpacing = dic["minSpace"] as? Int ?? 0
-        self.maxSpacing = dic["maxSpace"] as? Int ?? 0
-        self.minHarvestTime = dic["minHarvestTime"] as? Int ?? 0
-        self.maxHarvestTime = dic["maxHarvestTime"] as? Int ?? 0
-        self.plantStyle = dic["plantStyle"] as? String ?? ""
-        self.fertilizer = dic["fertilizerName"] as? String ?? ""
-        
-        let cp = dic["compatiblePlants"] as? String ?? ""
-        self.compatiblePlants = cp.components(separatedBy: ", ")
-        let ch = dic["culinaryHints"] as? String ?? ""
-        self.culinaryHints = ch.components(separatedBy: ", ")
-        let pt = dic["plantingTechnique"] as? String ?? ""
-        self.plantingTechnique = pt.components(separatedBy: ", ")
+    //MARK: Archiving Paths
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("plants")
+    
+    //MARK: Types
+    struct PropertyKey {
+        static let name = "name"
+        static let plantCategory = "plantCategory"
+        static let minSpace = "minSpace"
+        static let maxSpace = "maxSpace"
+        static let minHarvest = "minHarvest"
+        static let maxHarvest = "maxHarvest"
+        static let compatiblePlants = "compatiblePlants"
+        static let avoidInstructions = "avoidInstructions"
+        static let culinaryHints = "culinaryHints"
+        static let plantStyle = "plantStyle"
+        static let plantingTechnique = "plantingTechnique"
+        static let fertilizer = "fertilizer"
     }
+    
+    init(cropName: String, plantCategory: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String) {
+        self.cropName = cropName
+        self.plantCategory = plantCategory
+        self.minSpacing = minSpacing
+        self.maxSpacing = maxSpacing
+        self.minHarvestTime = minHarvestTime
+        self.maxHarvestTime = maxHarvestTime
+        self.plantStyle = plantStyle
+        self.fertilizer = fertilizer
+        self.compatiblePlants = compatiblePlants
+        self.avoidInstructions = avoidInstructions
+        self.culinaryHints = culinaryHints
+        self.plantingTechnique = plantingTechnique
+    }
+    
     
     var plantImage: UIImage {
         return UIImage(named: cropName) ?? UIImage()
@@ -63,7 +83,10 @@ class Plant {
         
         plantingInfo.append(["Fertilizer", fertilizer])
         
-        for item in plantingTechnique {
+        //Planting techniques
+        let plantingTech = plantingTechnique.components(separatedBy: ", ")
+        
+        for item in plantingTech {
             if item.contains("depth") {
                 plantingInfo.append(["Depth",item])
             }
@@ -73,7 +96,84 @@ class Plant {
             }
         }
         
+        //Avoid and compatiable
+        let plantC: [String] = compatiblePlants.components(separatedBy: ", ")
+        
+        var cpText = ""
+        if plantC[0].lowercased() == "none" {
+            cpText = "None"
+        } else {
+            for cp in plantC {
+                cpText += "- \(cp)\n"
+            }
+        }
+        plantingInfo.append(["Compatiable Plants", cpText])
+        
+        let plantA: [String] = avoidInstructions.components(separatedBy: ", ")
+        
+        var apText = ""
+        if plantA[0].lowercased() == "none" {
+            apText = "None"
+        } else {
+            for ap in plantA {
+                apText += "- \(ap)\n"
+            }
+        }
+        plantingInfo.append(["Avoid Plants", apText])
+        
         return plantingInfo
+    }
+    
+    var culinaryHintsInfo: String {
+        let info = culinaryHints.components(separatedBy: ", ")
+        var text = ""
+        for hint in info {
+            text += "- \(hint)\n"
+        }
+        return text
+    }
+    
+    //MARK: NSCoding
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(cropName, forKey: PropertyKey.name)
+        aCoder.encode(plantCategory, forKey: PropertyKey.plantCategory)
+        aCoder.encode(minSpacing, forKey: PropertyKey.minSpace)
+        aCoder.encode(maxSpacing, forKey: PropertyKey.maxSpace)
+        aCoder.encode(minHarvestTime, forKey: PropertyKey.minHarvest)
+        aCoder.encode(maxHarvestTime, forKey: PropertyKey.maxHarvest)
+        aCoder.encode(compatiblePlants, forKey: PropertyKey.compatiblePlants)
+        aCoder.encode(avoidInstructions, forKey: PropertyKey.avoidInstructions)
+        aCoder.encode(culinaryHints, forKey: PropertyKey.culinaryHints)
+        aCoder.encode(plantStyle, forKey: PropertyKey.plantStyle)
+        aCoder.encode(plantingTechnique, forKey: PropertyKey.plantingTechnique)
+        aCoder.encode(fertilizer, forKey: PropertyKey.fertilizer)
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        
+        // The name is required. If we cannot decode a name string, the initializer should fail.
+        guard let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String else {
+            os_log("Unable to decode the name for a User object.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
+        guard let plantCategory = aDecoder.decodeObject(forKey: PropertyKey.plantCategory) as? String else {return nil}
+        
+        let minSpace = aDecoder.decodeInteger(forKey: PropertyKey.minSpace)
+        let maxSpace = aDecoder.decodeInteger(forKey: PropertyKey.maxSpace)
+        let minHarvest = aDecoder.decodeInteger(forKey: PropertyKey.minHarvest)
+        let maxHarvest = aDecoder.decodeInteger(forKey: PropertyKey.maxHarvest)
+        
+        guard let compatiblePlants = aDecoder.decodeObject(forKey: PropertyKey.compatiblePlants) as? String else {return nil}
+        guard let avoidInstructions = aDecoder.decodeObject(forKey: PropertyKey.avoidInstructions) as? String else {return nil}
+        guard let culinaryHints = aDecoder.decodeObject(forKey: PropertyKey.culinaryHints) as? String else {return nil}
+        guard let plantStyle = aDecoder.decodeObject(forKey: PropertyKey.plantStyle) as? String else {return nil}
+        guard let plantingTechnique = aDecoder.decodeObject(forKey: PropertyKey.plantingTechnique) as? String else {return nil}
+        guard let fertilizer = aDecoder.decodeObject(forKey: PropertyKey.fertilizer) as? String else {return nil}
+        
+        // Must call designated initializer.
+        self.init(cropName: name, plantCategory: plantCategory, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTechnique, fertilizer: fertilizer)
+        
     }
     
 }

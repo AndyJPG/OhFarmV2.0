@@ -12,8 +12,11 @@ import XLPagerTabStrip
 class PlantDetailViewController: UIViewController {
     
     // MARK: Variable
-    var plant: Plant?
-    @IBOutlet weak var plantImage: UIImageView!
+    var plant: Plant!
+    var slides: [PhotoSlide] = []
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +26,13 @@ class PlantDetailViewController: UIViewController {
         }
         
         navigationItem.title = plant?.cropName
-        plantImage.image = plant?.plantImage
-        plantImage.contentMode = .scaleAspectFill
+        
+        scrollView.delegate = self
+        
+        slides = createSlides()
+        setupSlideScrollView(slides: slides)
     }
     
-
     
     // MARK: - Navigation
 
@@ -41,7 +46,47 @@ class PlantDetailViewController: UIViewController {
     }
     
     
+    // MARK: Appearence
+    // Plant Photo gallery view
+    func createSlides() -> [PhotoSlide] {
+        let slide1: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
+        slide1.configureWithData(plant.cropName)
+        
+        let slide2: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
+        slide2.configureWithData("test1")
+        
+        let slide3: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
+        slide3.configureWithData("test2")
+        
+        return [slide1, slide2, slide3]
+    }
+    
+    func setupSlideScrollView(slides: [PhotoSlide]) {
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
+        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: 200)
+        scrollView.isPagingEnabled = true
+        
+        for i in 0 ..< slides.count {
+            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: 200)
+            scrollView.addSubview(slides[i])
+        }
+        
+        pageControl.numberOfPages = slides.count
+        pageControl.currentPage = 0
+        view.bringSubviewToFront(pageControl)
+    }
+    
+    // Set status bar style
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+}
+
+extension PlantDetailViewController: UIScrollViewDelegate {
+    
+    //MARK: default fucntion of scroll view
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
+        pageControl.currentPage = Int(pageIndex)
     }
 }

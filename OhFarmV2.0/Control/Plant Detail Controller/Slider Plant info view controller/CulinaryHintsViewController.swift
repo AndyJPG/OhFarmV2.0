@@ -51,13 +51,7 @@ class CulinaryHintsViewController: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var hintsText = ""
-        
-        for text in plant.culinaryHints {
-            hintsText += "- \(text)\n\n"
-        }
-        
-        hintsBody.text = hintsText
+        hintsBody.text = plant.culinaryHintsInfo
         
         setupScrollView()
         setupViews()

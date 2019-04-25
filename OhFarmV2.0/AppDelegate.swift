@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let user = User(name: "User", plants: [])
+    let user = User(name: "User")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+        
         return true
     }
 

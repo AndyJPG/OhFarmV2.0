@@ -51,6 +51,7 @@ class PlantingInfoTableViewController: UITableViewController, IndicatorInfoProvi
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: defaultCellIdentifier, for: indexPath) as? DefaultPlantInfoTableViewCell else { return DefaultPlantInfoTableViewCell() }
         let data = plant.plantingInfo[indexPath.row]
         
@@ -58,6 +59,7 @@ class PlantingInfoTableViewController: UITableViewController, IndicatorInfoProvi
         if blackTheme {
             cell.changeStylToBlack()
         }
+        
         return cell
     }
     

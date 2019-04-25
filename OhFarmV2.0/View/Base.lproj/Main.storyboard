@@ -404,7 +404,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCB-2A-JOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="U99-Er-aED" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3790" y="1549"/>
+            <point key="canvasLocation" x="4102" y="1549"/>
         </scene>
         <!--First-->
         <scene sceneID="hNz-n2-bh7">
@@ -560,10 +560,10 @@
             </objects>
             <point key="canvasLocation" x="-1" y="1074"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarViewController" customModule="OhFarmV2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -716,32 +716,37 @@
                                     <segue destination="Lsa-nC-vYV" kind="embed" identifier="containerSegue" id="fI4-Xu-uCc"/>
                                 </connections>
                             </containerView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-sJ-Yhs">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Fp1-s1-MfO">
+                                <rect key="frame" x="120" y="219" width="135" height="37"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpg-0y-GNZ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="7nB-EJ-66q"/>
-                                </constraints>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hwE-sJ-Yhs" firstAttribute="top" secondItem="4UD-3T-uD5" secondAttribute="top" id="Ajm-iX-aiE"/>
-                            <constraint firstItem="hwE-sJ-Yhs" firstAttribute="leading" secondItem="4UD-3T-uD5" secondAttribute="leading" id="FV0-aj-gWq"/>
+                            <constraint firstItem="mpg-0y-GNZ" firstAttribute="top" secondItem="4UD-3T-uD5" secondAttribute="top" id="BkQ-0P-HAd"/>
+                            <constraint firstItem="mpg-0y-GNZ" firstAttribute="trailing" secondItem="4UD-3T-uD5" secondAttribute="trailing" id="Eci-2G-bcf"/>
+                            <constraint firstItem="Fp1-s1-MfO" firstAttribute="top" secondItem="4UD-3T-uD5" secondAttribute="top" constant="155" id="Ffo-0G-kPn"/>
                             <constraint firstItem="sNb-iI-WZn" firstAttribute="leading" secondItem="4UD-3T-uD5" secondAttribute="leading" id="G72-tM-xUe"/>
-                            <constraint firstItem="4UD-3T-uD5" firstAttribute="trailing" secondItem="hwE-sJ-Yhs" secondAttribute="trailing" id="Pmm-ga-Aio"/>
+                            <constraint firstItem="Fp1-s1-MfO" firstAttribute="leading" secondItem="4UD-3T-uD5" secondAttribute="leading" constant="120" id="WbI-pz-YNE"/>
                             <constraint firstItem="4UD-3T-uD5" firstAttribute="trailing" secondItem="sNb-iI-WZn" secondAttribute="trailing" id="fDQ-S7-y2b"/>
                             <constraint firstItem="4UD-3T-uD5" firstAttribute="bottom" secondItem="sNb-iI-WZn" secondAttribute="bottom" id="gZp-7c-VO8"/>
+                            <constraint firstItem="4UD-3T-uD5" firstAttribute="trailing" secondItem="Fp1-s1-MfO" secondAttribute="trailing" constant="120" id="mAO-Ry-Hia"/>
+                            <constraint firstItem="sNb-iI-WZn" firstAttribute="top" secondItem="mpg-0y-GNZ" secondAttribute="bottom" id="wvu-CT-Hns"/>
                             <constraint firstItem="sNb-iI-WZn" firstAttribute="top" secondItem="4UD-3T-uD5" secondAttribute="top" constant="200" id="xE4-Pl-wW7"/>
+                            <constraint firstItem="mpg-0y-GNZ" firstAttribute="leading" secondItem="4UD-3T-uD5" secondAttribute="leading" id="yeL-HE-C8d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4UD-3T-uD5"/>
                     </view>
                     <connections>
-                        <outlet property="plantImage" destination="hwE-sJ-Yhs" id="bFo-6A-Wka"/>
+                        <outlet property="pageControl" destination="Fp1-s1-MfO" id="WS9-UF-XAu"/>
+                        <outlet property="scrollView" destination="mpg-0y-GNZ" id="sTD-Ol-ipB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teJ-PV-NHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3017" y="761"/>
+            <point key="canvasLocation" x="3380" y="770"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="O0a-S9-BVS">
@@ -759,7 +764,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvf-3Y-ptg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3017" y="1549"/>
+            <point key="canvasLocation" x="3142" y="1549"/>
         </scene>
         <!--My Farm-->
         <scene sceneID="B4X-xp-GMa">
@@ -820,7 +825,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PQB-Cx-fXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3971" y="847"/>
+            <point key="canvasLocation" x="4449" y="770"/>
         </scene>
     </scenes>
     <resources>

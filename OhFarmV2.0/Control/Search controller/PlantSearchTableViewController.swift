@@ -143,9 +143,7 @@ class PlantSearchTableViewController: UITableViewController {
         }
         
         if segue.identifier == SegueID.viewDetailFromSearch.rawValue {
-            guard let nv = segue.destination as? PlantDetailViewController else {fatalError()}
-            guard let selectedCell = sender as? SearchPlantTableViewCell else {fatalError()}
-            guard let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
+            guard let nv = segue.destination as? PlantDetailViewController, let selectedCell = sender as? SearchPlantTableViewCell, let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
             nv.plant = plants[indexPath.row]
         }
     }

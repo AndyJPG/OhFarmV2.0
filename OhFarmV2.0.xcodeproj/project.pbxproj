@@ -19,6 +19,13 @@
 		00A77B02227032CD0033ED8A /* PlantInfoOneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77B01227032CD0033ED8A /* PlantInfoOneTableViewController.swift */; };
 		00A77B06227045B80033ED8A /* PlantingInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77B05227045B80033ED8A /* PlantingInfoTableViewController.swift */; };
 		00A77B08227045E80033ED8A /* CulinaryHintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77B07227045E80033ED8A /* CulinaryHintsViewController.swift */; };
+		00A77B0C22709E690033ED8A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77B0B22709E690033ED8A /* TabBarViewController.swift */; };
+		00A77B112270A36D0033ED8A /* PhotoSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A77B102270A36D0033ED8A /* PhotoSlide.xib */; };
+		00A77B132270A4CE0033ED8A /* PhotoSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77B122270A4CE0033ED8A /* PhotoSlide.swift */; };
+		00A77B1A227141550033ED8A /* AvoidCompanionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77B19227141550033ED8A /* AvoidCompanionSlide.swift */; };
+		00A77B1C227141650033ED8A /* AvoidCompanionSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A77B1B227141650033ED8A /* AvoidCompanionSlide.xib */; };
+		00A77B1E227154400033ED8A /* PlantAvoidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77B1D227154400033ED8A /* PlantAvoidTableViewCell.swift */; };
+		00A77B21227156180033ED8A /* PlantAvoidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A77B20227156180033ED8A /* PlantAvoidCell.xib */; };
 		00C7135C226ADD6700E1EA36 /* SearchPlantUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */; };
 		00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7135E226ADE3400E1EA36 /* Plant.swift */; };
 		00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71363226AFC2C00E1EA36 /* Filter.swift */; };
@@ -72,6 +79,13 @@
 		00A77B01227032CD0033ED8A /* PlantInfoOneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantInfoOneTableViewController.swift; sourceTree = "<group>"; };
 		00A77B05227045B80033ED8A /* PlantingInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantingInfoTableViewController.swift; sourceTree = "<group>"; };
 		00A77B07227045E80033ED8A /* CulinaryHintsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CulinaryHintsViewController.swift; sourceTree = "<group>"; };
+		00A77B0B22709E690033ED8A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		00A77B102270A36D0033ED8A /* PhotoSlide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoSlide.xib; sourceTree = "<group>"; };
+		00A77B122270A4CE0033ED8A /* PhotoSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSlide.swift; sourceTree = "<group>"; };
+		00A77B19227141550033ED8A /* AvoidCompanionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvoidCompanionSlide.swift; sourceTree = "<group>"; };
+		00A77B1B227141650033ED8A /* AvoidCompanionSlide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvoidCompanionSlide.xib; sourceTree = "<group>"; };
+		00A77B1D227154400033ED8A /* PlantAvoidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantAvoidTableViewCell.swift; sourceTree = "<group>"; };
+		00A77B20227156180033ED8A /* PlantAvoidCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantAvoidCell.xib; sourceTree = "<group>"; };
 		00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlantUI.swift; sourceTree = "<group>"; };
 		00C7135E226ADE3400E1EA36 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		00C71363226AFC2C00E1EA36 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
@@ -155,6 +169,9 @@
 			children = (
 				00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */,
 				00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */,
+				00A77B122270A4CE0033ED8A /* PhotoSlide.swift */,
+				00A77B102270A36D0033ED8A /* PhotoSlide.xib */,
+				00A77B1822713E670033ED8A /* Avoid and companion cell */,
 			);
 			path = "Plant Detail Model";
 			sourceTree = "<group>";
@@ -167,6 +184,17 @@
 				00A77B07227045E80033ED8A /* CulinaryHintsViewController.swift */,
 			);
 			path = "Slider Plant info view controller";
+			sourceTree = "<group>";
+		};
+		00A77B1822713E670033ED8A /* Avoid and companion cell */ = {
+			isa = PBXGroup;
+			children = (
+				00A77B1D227154400033ED8A /* PlantAvoidTableViewCell.swift */,
+				00A77B20227156180033ED8A /* PlantAvoidCell.xib */,
+				00A77B19227141550033ED8A /* AvoidCompanionSlide.swift */,
+				00A77B1B227141650033ED8A /* AvoidCompanionSlide.xib */,
+			);
+			path = "Avoid and companion cell";
 			sourceTree = "<group>";
 		};
 		00C7135D226ADDB400E1EA36 /* Search controller */ = {
@@ -281,6 +309,7 @@
 		00DA86462264555400049557 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				00A77B0B22709E690033ED8A /* TabBarViewController.swift */,
 				00C71384226DE75600E1EA36 /* Home controller */,
 				00A77AF722700D6E0033ED8A /* Plant Detail Controller */,
 				00C7135D226ADDB400E1EA36 /* Search controller */,
@@ -428,11 +457,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A77B21227156180033ED8A /* PlantAvoidCell.xib in Resources */,
 				00C7137A226CB7F500E1EA36 /* plantData.json in Resources */,
 				00DA8630226453F200049557 /* LaunchScreen.storyboard in Resources */,
 				00DA862D226453F200049557 /* Assets.xcassets in Resources */,
+				00A77B1C227141650033ED8A /* AvoidCompanionSlide.xib in Resources */,
 				00A77AFE22702B8E0033ED8A /* DefaultPlantCell.xib in Resources */,
 				00DA862B226453F100049557 /* Main.storyboard in Resources */,
+				00A77B112270A36D0033ED8A /* PhotoSlide.xib in Resources */,
 				002E047C22671B27000871F5 /* communityFarmData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,11 +552,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A77B0C22709E690033ED8A /* TabBarViewController.swift in Sources */,
 				00C71386226DE7E500E1EA36 /* HomeTableViewController.swift in Sources */,
 				00C7136D226B4CC600E1EA36 /* FilterLocationTableViewCell.swift in Sources */,
 				00C71366226AFF5F00E1EA36 /* FilterTableViewController.swift in Sources */,
 				00C71383226DE6E100E1EA36 /* HomeFarmTableViewCell.swift in Sources */,
 				00C71374226BF56500E1EA36 /* RangeSeekSlider.swift in Sources */,
+				00A77B1A227141550033ED8A /* AvoidCompanionSlide.swift in Sources */,
 				00C7137C226CBD2100E1EA36 /* NetworkHandler.swift in Sources */,
 				00C71388226DE83000E1EA36 /* HomeUI.swift in Sources */,
 				00C71371226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift in Sources */,
@@ -532,7 +566,9 @@
 				00A77AFC22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift in Sources */,
 				00DA8628226453F100049557 /* MapViewController.swift in Sources */,
 				00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */,
+				00A77B1E227154400033ED8A /* PlantAvoidTableViewCell.swift in Sources */,
 				00C71368226AFF8900E1EA36 /* PlantSearchTableViewController.swift in Sources */,
+				00A77B132270A4CE0033ED8A /* PhotoSlide.swift in Sources */,
 				00C7136F226B4CE900E1EA36 /* FilterHarvestTableViewCell.swift in Sources */,
 				00A77B08227045E80033ED8A /* CulinaryHintsViewController.swift in Sources */,
 				00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */,
