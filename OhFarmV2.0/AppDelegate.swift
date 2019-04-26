@@ -12,10 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var user = User(name: "User")
+    var user = User(name: "User", userImage: UIImage(named: "userProfile") ?? nil)
     let localData = LocalData()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        if let userInfo = localData.loadUser() {
+            user = userInfo[0]
+        }
+        
+        if let plantData = localData.loadPlants() {
+            user.farmPlants = plantData
+        }
+        
         // Override point for customization after application launch.
         //Share data across tab bar controllers
         guard let tabBarController = window?.rootViewController as? UITabBarController,
@@ -31,18 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     searchTableVC.user = user
                 }
             }
-            
             if let profileTableVC = viewController as? ProfileTableViewController {
                 profileTableVC.user = user
             }
-        }
-        
-        if let userInfo = localData.loadUser() {
-            user = userInfo[0]
-        }
-        
-        if let plantData = localData.loadPlants() {
-            user.farmPlants = plantData
         }
         
         return true

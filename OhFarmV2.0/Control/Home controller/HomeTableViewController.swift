@@ -13,7 +13,7 @@ class HomeTableViewController: UITableViewController {
     // MARK: Variable
     // Style instance
     let homeTableUI = HomeUI()
-    var user: User?
+    var user: User!
     let localData = LocalData()
     let alert = PopAlert()
     var addPlantImage = UIView()
@@ -31,9 +31,15 @@ class HomeTableViewController: UITableViewController {
     // Keep updating the table
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
-        localData.savePlants(user?.farmPlants ?? [])
+        
+        if user.userName == "User" {
+            navigationItem.title = "Your farm"
+        } else {
+            navigationItem.title = "\(user.userName)'s farm"
+        }
+        
         updateAppearance()
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -119,11 +125,6 @@ class HomeTableViewController: UITableViewController {
     // MARK: Appearance methods
     private func setUpAppearance() {
         tableView.separatorStyle = .none
-        if user?.userName == "User" {
-            navigationItem.title = "Your farm"
-        } else {
-            navigationItem.title = "\(user?.userName ?? "")'s farm"
-        }
         navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .white
         
@@ -148,8 +149,9 @@ class HomeTableViewController: UITableViewController {
         let alert = UIAlertController(title: "Delete plant", message: "Are you sure you want to delete this plant ?", preferredStyle: UIAlertController.Style.actionSheet)
         
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (_) in
-            self.user?.farmPlants.remove(at: indexPath.row)
-            self.localData.savePlants(self.user?.farmPlants ?? [])
+            self.user.farmPlants.remove(at: indexPath.row)
+            self.localData.savePlants(self.user.farmPlants)
+            
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             if self.plants.isEmpty {
                 self.isEditing = false

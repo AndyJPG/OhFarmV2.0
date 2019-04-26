@@ -13,6 +13,7 @@ class User: NSObject, NSCoding {
     
     // MARK: Variable
     var userName: String
+    var userImage: UIImage
     var farmPlants: [Plant] = []
     var favoritePlants: [Plant] = []
     
@@ -23,15 +24,18 @@ class User: NSObject, NSCoding {
     //MARK: Types
     struct PropertyKey {
         static let userName = "userName"
+        static let image = "profileImage"
     }
     
-    init(name: String) {
+    init(name: String, userImage: UIImage?) {
         self.userName = name
+        self.userImage = userImage ?? UIImage()
     }
     
     //MARK: NSCoding
     func encode(with aCoder: NSCoder) {
         aCoder.encode(userName, forKey: PropertyKey.userName)
+        aCoder.encode(userImage, forKey: PropertyKey.image)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -42,8 +46,13 @@ class User: NSObject, NSCoding {
             return nil
         }
         
+        guard let image = aDecoder.decodeObject(forKey: PropertyKey.image) as? UIImage else {
+            os_log("Unable to decode the image", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
         // Must call designated initializer.
-        self.init(name: userName)
+        self.init(name: userName, userImage: image)
         
     }
     

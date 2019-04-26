@@ -27,6 +27,8 @@
 		00A77B1E227154400033ED8A /* PlantAvoidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77B1D227154400033ED8A /* PlantAvoidTableViewCell.swift */; };
 		00A77B21227156180033ED8A /* PlantAvoidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A77B20227156180033ED8A /* PlantAvoidCell.xib */; };
 		00A77B23227181860033ED8A /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77B22227181860033ED8A /* LocalData.swift */; };
+		00A79F29227309A0008D4424 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A79F28227309A0008D4424 /* SettingTableViewController.swift */; };
+		00A79F2B2273164D008D4424 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A79F2A2273164D008D4424 /* SettingTableViewCell.swift */; };
 		00C7135C226ADD6700E1EA36 /* SearchPlantUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */; };
 		00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7135E226ADE3400E1EA36 /* Plant.swift */; };
 		00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71363226AFC2C00E1EA36 /* Filter.swift */; };
@@ -92,6 +94,8 @@
 		00A77B1D227154400033ED8A /* PlantAvoidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantAvoidTableViewCell.swift; sourceTree = "<group>"; };
 		00A77B20227156180033ED8A /* PlantAvoidCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantAvoidCell.xib; sourceTree = "<group>"; };
 		00A77B22227181860033ED8A /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
+		00A79F28227309A0008D4424 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		00A79F2A2273164D008D4424 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlantUI.swift; sourceTree = "<group>"; };
 		00C7135E226ADE3400E1EA36 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		00C71363226AFC2C00E1EA36 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
@@ -371,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				00FCC0832271F49D00CD3D20 /* ProfileTableViewController.swift */,
+				00A79F28227309A0008D4424 /* SettingTableViewController.swift */,
 			);
 			path = "Profile Controller";
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 			children = (
 				00FCC0862271F52700CD3D20 /* ProfileTopTableViewCell.swift */,
 				00FCC0882271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift */,
+				00A79F2A2273164D008D4424 /* SettingTableViewCell.swift */,
 			);
 			path = "Profile Model";
 			sourceTree = "<group>";
@@ -606,12 +612,14 @@
 				00A77B132270A4CE0033ED8A /* PhotoSlide.swift in Sources */,
 				00C7136F226B4CE900E1EA36 /* FilterHarvestTableViewCell.swift in Sources */,
 				00A77B08227045E80033ED8A /* CulinaryHintsViewController.swift in Sources */,
+				00A79F29227309A0008D4424 /* SettingTableViewController.swift in Sources */,
 				00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */,
 				00A77B02227032CD0033ED8A /* PlantInfoOneTableViewController.swift in Sources */,
 				00A77AF922700D940033ED8A /* PlantDetailViewController.swift in Sources */,
 				00C71380226DDCF200E1EA36 /* User.swift in Sources */,
 				00C7137E226D88B800E1EA36 /* SearchPlantTableViewCell.swift in Sources */,
 				00C71376226BF59D00E1EA36 /* RangeSeekSliderDelegate.swift in Sources */,
+				00A79F2B2273164D008D4424 /* SettingTableViewCell.swift in Sources */,
 				00DA8624226453F100049557 /* AppDelegate.swift in Sources */,
 				002E048322671F92000871F5 /* LocationManager.swift in Sources */,
 				00A77B23227181860033ED8A /* LocalData.swift in Sources */,

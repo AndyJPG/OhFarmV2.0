@@ -22,6 +22,7 @@ class ProfileTopTableViewCell: UITableViewCell {
         profileImage.layer.borderColor = UIColor.black.cgColor
         profileImage.layer.cornerRadius = profileImage.frame.height/2
         profileImage.clipsToBounds = true
+        profileImage.isUserInteractionEnabled = true
         self.selectionStyle = .none
     }
 
@@ -32,7 +33,13 @@ class ProfileTopTableViewCell: UITableViewCell {
     }
     
     func configCell(_ user: User) {
-        userName.text = user.userName
+        if user.userName == "User" {
+            userName.text = "Name"
+        } else {
+            userName.text = user.userName
+        }
+        
+        profileImage.image = user.userImage
     }
 
 }

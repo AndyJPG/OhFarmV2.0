@@ -24,8 +24,11 @@ class ProfileOptionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(_ name: String) {
+    func configCell(_ name: String, icon: String) {
         optionName.text = name
+        optionIcon.image = UIImage(named: icon)
+        optionIcon.image = optionIcon.image?.withRenderingMode(.alwaysTemplate)
+        optionIcon.tintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
     }
 
 }

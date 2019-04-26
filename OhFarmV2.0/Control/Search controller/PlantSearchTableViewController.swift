@@ -142,8 +142,8 @@ class PlantSearchTableViewController: UITableViewController {
         if exist {
             uiAlert(plant.cropName, alertIndex: 0)
         } else {
-            user?.farmPlants.append(plant)
-            localData.savePlants(user?.farmPlants ?? [])
+            user.farmPlants.append(plant)
+            localData.savePlants(user.farmPlants)
             uiAlert(plant.cropName, alertIndex: 1)
         }
     }
