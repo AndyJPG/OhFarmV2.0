@@ -74,7 +74,7 @@ class SearchPlantUI: UIViewController {
         button.backgroundColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         button.setTitle("APPLY FILTER", for: .normal)
         button.tintColor = .white
-        button.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 13)
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 13)
         return button
     }
     

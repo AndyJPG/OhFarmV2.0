@@ -162,6 +162,7 @@ class PlantSearchTableViewController: UITableViewController {
         if segue.identifier == SegueID.viewDetailFromSearch.rawValue {
             guard let nv = segue.destination as? UINavigationController, let detailVC = nv.topViewController as? PlantDetailViewController, let selectedCell = sender as? SearchPlantTableViewCell, let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
             detailVC.plant = plants[indexPath.row]
+            detailVC.user = user
         }
     }
     

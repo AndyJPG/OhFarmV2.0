@@ -84,9 +84,9 @@ class Plant: NSObject, NSCoding {
         var plantingInfo: [[String]] = []
         
         if plantStyle == "Both" {
-            plantingInfo.append(["Location", "Suitable for Indoor and Outdoor"])
+            plantingInfo.append(["Location", "Suitable for both Indoor and Outdoor"])
         } else {
-            plantingInfo.append(["Location", plantStyle])
+            plantingInfo.append(["Location", "Suitable for \(plantStyle)"])
         }
         
         plantingInfo.append(["Fertilizer", fertilizer])

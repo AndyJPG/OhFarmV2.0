@@ -21,7 +21,12 @@ class PhotoSlide: UIView {
     */
     
     func configureWithData(_ data: String) {
-        plantImage.image = UIImage(named: data)
+        let image = UIImage(named: data)
+        if image != nil {
+            plantImage.image = image
+        } else {
+            plantImage.image = UIImage(named: "default")
+        }
         plantImage.contentMode = .scaleAspectFill
     }
 }

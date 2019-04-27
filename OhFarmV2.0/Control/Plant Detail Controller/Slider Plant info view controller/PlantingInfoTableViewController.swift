@@ -120,10 +120,12 @@ class PlantingInfoTableViewController: UITableViewController, IndicatorInfoProvi
     
     // MARK: Appearence
     private func setupTableStyle() {
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 93, bottom: 0, right: 0)
+        
         tableView.register(UINib(nibName: "DefaultPlantCell", bundle: Bundle.main), forCellReuseIdentifier: defaultCellIdentifier)
 //      tableView.separatorStyle = .none
         if isFromHome {
-            tableView.tableFooterView = UIView(frame: CGRect.zero)
+            tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
         } else {
             tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 75))
         }
@@ -134,6 +136,10 @@ class PlantingInfoTableViewController: UITableViewController, IndicatorInfoProvi
         if blackTheme {
             tableView.backgroundColor = UIColor(red: 15/255.0, green: 16/255.0, blue: 16/255.0, alpha: 1.0)
         }
+        
+        let image = UIImageView(image: UIImage(named: "background"))
+        image.contentMode = .scaleAspectFill
+        tableView.backgroundView = image
     }
 
 }

@@ -28,6 +28,10 @@ class HomeTableViewController: UITableViewController {
         setUpAppearance()
     }
     
+    enum segueID: String {
+        case HomeToDetailSegue
+    }
+    
     // Keep updating the table
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -113,10 +117,11 @@ class HomeTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "HomeToDetailSegue" {
+        if segue.identifier == segueID.HomeToDetailSegue.rawValue {
             guard let nv = segue.destination as? UINavigationController, let detailVC = nv.topViewController as? PlantDetailViewController, let selectedCell = sender as? HomeFarmTableViewCell, let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
             detailVC.plant = plants[indexPath.row]
             detailVC.isFromHome = true
+            detailVC.user = user
         }
     }
     

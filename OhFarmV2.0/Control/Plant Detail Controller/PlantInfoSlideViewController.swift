@@ -18,17 +18,23 @@ class PlantInfoSlideViewController: ButtonBarPagerTabStripViewController {
     var isFromHome: Bool!
 
     override func viewDidLoad() {
-        super.viewDidLoad()
 
-        buttonBarView.selectedBar.backgroundColor = .orange
-        buttonBarView.backgroundColor = UIColor(red: 7/255, green: 185/255, blue: 155/255, alpha: 1)
+        settings.style.buttonBarBackgroundColor = .white
+        settings.style.buttonBarItemBackgroundColor = .white
+        settings.style.buttonBarItemTitleColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        settings.style.selectedBarHeight = 2.0
+        settings.style.buttonBarMinimumLineSpacing = 10
+        settings.style.selectedBarBackgroundColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+//        buttonBarView.backgroundColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        
+        super.viewDidLoad()
     }
     
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let child_1 = PlantInfoOneTableViewController(style: .plain, itemInfo: "Sow", plant: plant, fromHome: isFromHome)
         let child_2 = PlantingInfoTableViewController(style: .plain, itemInfo: "Planting", plant: plant, fromHome: isFromHome)
-        let child_3 = CulinaryHintsViewController(itemInfo: "Culinary Hints", plant: plant)
+        let child_3 = CulinaryHintsViewController(itemInfo: "Hints", plant: plant)
         
         guard isReload else {
             return [child_1, child_2, child_3]

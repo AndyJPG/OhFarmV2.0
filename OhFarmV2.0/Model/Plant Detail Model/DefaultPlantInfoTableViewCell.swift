@@ -17,7 +17,7 @@ class DefaultPlantInfoTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        infoIcon.layer.cornerRadius = 10.0
+        infoLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,6 +29,8 @@ class DefaultPlantInfoTableViewCell: UITableViewCell {
     func configureWithData(_ data: [String]) {
         infoLabel.text = data[0]
         infoDetailLabel.text = data[1]
+        infoIcon.contentMode = .scaleAspectFit
+        infoIcon.image = UIImage(named: data[0])
     }
     
     func changeStylToBlack() {

@@ -11,12 +11,21 @@ import XLPagerTabStrip
 
 class PlantDetailViewController: UIViewController {
     
+    enum imageID: String {
+        case favourite
+        case favouriteFill
+    }
+    
     // MARK: Variable
     var plant: Plant!
+    var user: User!
+    var favourite = false
     var slides: [PhotoSlide] = []
     let buttonUI = SearchPlantUI()
+    let localData = LocalData()
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var favouriteButton: UIBarButtonItem!
     
     var isFromHome =  false
     
@@ -41,6 +50,8 @@ class PlantDetailViewController: UIViewController {
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         view.addGestureRecognizer(edgePan)
+        
+        setUpAppearance()
     }
     
     
@@ -57,7 +68,13 @@ class PlantDetailViewController: UIViewController {
     
     // MARK: Action
     @objc private func addPlant(_ sender: UIButton) {
-        print("added")
+        if isExist(user.farmPlants) {
+            uiAlert(plant.cropName, alertIndex: 0)
+        } else {
+            user.farmPlants.append(plant)
+            localData.savePlants(user.farmPlants)
+            uiAlert(plant.cropName, alertIndex: 1)
+        }
     }
     
     @objc private func screenEdgeSwiped(_ sender: UIScreenEdgePanGestureRecognizer) {
@@ -70,6 +87,41 @@ class PlantDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    //MARK: Functions for favourite plant
+    @IBAction func addToFavourite(_ sender: Any) {
+        favourite = !favourite
+        
+        let plantName = user.favoritePlants.map { (plant: Plant) -> String in
+            return plant.cropName
+        }
+        
+        if favourite {
+            user.favoritePlants.append(plant)
+            localData.saveFavouritesPlants(user.favoritePlants)
+            favouriteButton.image = UIImage(named: imageID.favouriteFill.rawValue)
+        } else {
+            if let index = plantName.firstIndex(of: plant.cropName) {
+                user.favoritePlants.remove(at: index)
+                localData.saveFavouritesPlants(user.favoritePlants)
+            }
+            favouriteButton.image = UIImage(named: imageID.favourite.rawValue)
+        }
+    }
+    
+    private func isExist(_ list: [Plant]) -> Bool {
+        
+        let plantName = list.map { (plant: Plant) -> String in
+            return plant.cropName
+        }
+                
+        if plantName.contains(plant.cropName) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // MARK: Appearence
     // Plant Photo gallery view
     func createSlides() -> [PhotoSlide] {
@@ -77,12 +129,21 @@ class PlantDetailViewController: UIViewController {
         slide1.configureWithData(plant.cropName)
         
         let slide2: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
-        slide2.configureWithData("test1")
+        slide2.configureWithData("\(plant.cropName)1")
         
         let slide3: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
-        slide3.configureWithData("test2")
+        slide3.configureWithData("\(plant.cropName)3")
         
         return [slide1, slide2, slide3]
+    }
+    
+    private func setUpAppearance() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+        if isExist(user.favoritePlants) {
+            favouriteButton.image = UIImage(named: imageID.favouriteFill.rawValue)
+            favourite = true
+        }
     }
     
     func setupSlideScrollView(slides: [PhotoSlide]) {
@@ -123,4 +184,32 @@ extension PlantDetailViewController: UIScrollViewDelegate {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         pageControl.currentPage = Int(pageIndex)
     }
+}
+
+// MARK: UI alert section
+extension PlantDetailViewController {
+    
+    // MARK: Alert functions
+    private func uiAlert(_ plant: String, alertIndex: Int)  {
+        if alertIndex == 0 {
+            let alert = UIAlertController(title: "Oops!", message: "\(plant) is already in your farm", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+        
+        if alertIndex == 1 {
+            let alert = UIAlertController(title: "New Plant!", message: "\(plant) has added to your farm", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
