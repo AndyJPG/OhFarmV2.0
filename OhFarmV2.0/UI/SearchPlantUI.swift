@@ -69,17 +69,17 @@ class SearchPlantUI: UIViewController {
     
     //Filter Bottom Button
     func filterBottomButton() -> UIButton {
-        let button = UIButton(frame: CGRect(origin: CGPoint(x:view.frame.width/2-143.5, y: view.frame.height-64), size: CGSize(width: 287, height: 54)))
-        button.layer.cornerRadius = 27
+        let button = UIButton(frame: CGRect(origin: CGPoint(x:view.frame.width/2-143.5, y: view.frame.height-50), size: CGSize(width: 287, height: 40)))
+        button.layer.cornerRadius = button.frame.height/2
         button.backgroundColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-        button.setTitle("APPLY FILTER", for: .normal)
+        button.setTitle("Apply Filter", for: .normal)
         button.tintColor = .white
         button.titleLabel?.font = UIFont(name: "Helvetica", size: 13)
         return button
     }
     
     func filterBottomButtonBackground() -> UIView {
-        let background = UIView(frame: CGRect(origin: CGPoint(x: 0, y: view.frame.height-74), size: CGSize(width: view.frame.width, height: 74)))
+        let background = UIView(frame: CGRect(origin: CGPoint(x: 0, y: view.frame.height-60), size: CGSize(width: view.frame.width, height: 60)))
         
         background.backgroundColor = .clear
         let blurEffect = UIBlurEffect(style: .light)

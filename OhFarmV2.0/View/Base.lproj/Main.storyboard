@@ -135,9 +135,12 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IMA-Dk-mXI">
                                             <rect key="frame" x="31.5" y="19" width="80" height="102"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-Wu-M4X">
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-Wu-M4X">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                    <state key="normal" title="Both"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="ITs-ZO-lcr"/>
+                                                        <constraint firstAttribute="height" constant="80" id="gKo-F4-2rS"/>
+                                                    </constraints>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Both Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-ia-Dyz">
                                                     <rect key="frame" x="1" y="88" width="78" height="14"/>
@@ -153,9 +156,12 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oNY-Cy-7DP">
                                             <rect key="frame" x="147.5" y="19" width="80" height="102"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cg-rk-HwR">
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cg-rk-HwR">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                    <state key="normal" title="Vegetable"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="Fw1-gt-r5n"/>
+                                                        <constraint firstAttribute="height" constant="80" id="Lhx-0M-jkU"/>
+                                                    </constraints>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vegetable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukf-NE-73v">
                                                     <rect key="frame" x="13" y="88" width="54.5" height="14"/>
@@ -171,10 +177,12 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kIk-ZM-Zcz">
                                             <rect key="frame" x="263.5" y="19" width="80" height="102"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nu6-HP-m9e">
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nu6-HP-m9e">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="Herb"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="d5T-oI-jfE"/>
+                                                        <constraint firstAttribute="height" constant="80" id="wEm-SX-OlL"/>
+                                                    </constraints>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Herb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeP-vG-Qan">
                                                     <rect key="frame" x="26.5" y="88" width="27" height="14"/>
@@ -217,9 +225,10 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QT8-Bl-wXw">
                                             <rect key="frame" x="31" y="19" width="80" height="102"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05Y-aM-QA0">
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05Y-aM-QA0">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="XQq-Fa-3LZ"/>
                                                         <constraint firstAttribute="height" constant="80" id="cvs-Y8-ecs"/>
                                                     </constraints>
                                                     <state key="normal" title="Both"/>
@@ -238,9 +247,10 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="O1S-3r-PW5">
                                             <rect key="frame" x="147.5" y="19" width="80" height="102"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcA-SW-pEG">
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcA-SW-pEG">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="SLN-Sk-DEu"/>
                                                         <constraint firstAttribute="height" constant="80" id="TUG-Xh-RZp"/>
                                                     </constraints>
                                                     <state key="normal" title="Indoor"/>
@@ -259,9 +269,10 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="plg-Ae-xQf">
                                             <rect key="frame" x="263" y="19" width="80" height="102"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEg-uq-Waf">
+                                                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="80" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEg-uq-Waf">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="8FM-Of-AJ6"/>
                                                         <constraint firstAttribute="height" constant="80" id="rmW-Iy-UR0"/>
                                                     </constraints>
                                                     <state key="normal" title="Outdoor"/>
@@ -333,6 +344,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="rangeSlider" destination="mgG-aX-XmW" id="sk9-TH-Lkh"/>
+                                    <outlet property="titleLabel" destination="tUr-Gq-rNg" id="D1t-p9-cTb"/>
                                     <outlet property="valueLabel" destination="5Qa-FN-v9c" id="a5Z-ly-LBz"/>
                                 </connections>
                             </tableViewCell>
@@ -376,6 +388,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="rangeSlider" destination="j3h-ZR-edo" id="gUt-Mw-NwD"/>
+                                    <outlet property="titleLabel" destination="un7-7f-EOf" id="d93-WH-Upt"/>
                                     <outlet property="valueLabel" destination="WaT-61-aqZ" id="4OC-kc-3NI"/>
                                 </connections>
                             </tableViewCell>
@@ -654,7 +667,7 @@
                     <navigationItem key="navigationItem" id="wCH-7a-kaI"/>
                     <connections>
                         <segue destination="b14-55-k6y" kind="show" identifier="settingSegue" id="Ju7-qB-efj"/>
-                        <segue destination="dFo-82-EPf" kind="presentation" identifier="favouritePlantSegue" id="t4y-Tk-ixC"/>
+                        <segue destination="dFo-82-EPf" kind="show" identifier="favouritePlantSegue" id="t4y-Tk-ixC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKx-xq-Sj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -750,6 +763,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="1Ym-gD-Ga0" kind="show" identifier="favouriteToDetailSegue" id="ckY-p8-VHy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i4W-aU-lRm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1185,7 +1201,7 @@
         <image name="user" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0tJ-ZS-aag"/>
+        <segue reference="ckY-p8-VHy"/>
         <segue reference="RHu-No-wDA"/>
     </inferredMetricsTieBreakers>
 </document>

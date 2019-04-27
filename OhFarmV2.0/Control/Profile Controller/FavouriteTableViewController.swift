@@ -19,6 +19,11 @@ class FavouriteTableViewController: UITableViewController {
 
         setUpAppearance()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
@@ -38,15 +43,21 @@ class FavouriteTableViewController: UITableViewController {
         return plantCell
     }
 
-    /*
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "favouriteToDetailSegue", sender: indexPath)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "favouriteToDetailSegue" {
+            guard let nv = segue.destination as? UINavigationController, let detailVC = nv.topViewController as? PlantDetailViewController, let indexPath = sender as? IndexPath else {fatalError()}
+            detailVC.plant = user.favoritePlants[indexPath.row]
+            detailVC.user = user
+        }
     }
-    */
+    
     
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)

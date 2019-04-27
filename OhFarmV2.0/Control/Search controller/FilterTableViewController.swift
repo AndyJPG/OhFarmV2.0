@@ -40,6 +40,7 @@ class FilterTableViewController: UITableViewController {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 120))
         
         addBottomButton()
+        setupApearance()
     }
 
     // MARK: - Table view data source
@@ -215,6 +216,16 @@ class FilterTableViewController: UITableViewController {
     @IBAction func resetAction(_ sender: UIBarButtonItem) {
         filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200])
         tableView.reloadData()
+    }
+    
+}
+
+//MARK: Appearence
+extension FilterTableViewController {
+    
+    private func setupApearance() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
     }
     
 }

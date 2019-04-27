@@ -205,7 +205,7 @@ extension PlantDetailViewController {
             let alert = UIAlertController(title: "New Plant!", message: "\(plant) has added to your farm", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                //Cancel Action
+                self.dismiss(animated: true, completion: nil)
             }))
             
             present(alert, animated: true, completion: nil)
