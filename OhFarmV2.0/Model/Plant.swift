@@ -65,6 +65,14 @@ class Plant: NSObject, NSCoding {
         return UIImage(named: cropName) ?? UIImage()
     }
     
+    var getSpacingString: String {
+        return "Spacing:\n\(minSpacing) cm - \(maxSpacing) cm"
+    }
+    
+    var getHarvestString: String {
+        return "Harvest Time:\n\(minHarvestTime) weeks - \(maxHarvestTime) weeks"
+    }
+    
     var plantInfoOne: [[String]] {
         let spacing = ["Spacing","\(minSpacing) cm - \(maxSpacing) cm"]
         let harvest = ["Harvest Time","\(minHarvestTime) weeks - \(maxHarvestTime) weeks"]

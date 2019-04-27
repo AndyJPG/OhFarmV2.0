@@ -128,19 +128,26 @@ class HomeTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .white
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addPlantTap(_:)))
-        addPlantImage = homeTableUI.addPlantImage()
-        addPlantImage.isUserInteractionEnabled = true
-        addPlantImage.addGestureRecognizer(tapGestureRecognizer)
-        tableView.addSubview(addPlantImage)
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addPlantTap(_:)))
+//        addPlantImage = homeTableUI.addPlantImage()
+//        addPlantImage.isUserInteractionEnabled = true
+//        addPlantImage.addGestureRecognizer(tapGestureRecognizer)
+//        tableView.addSubview(addPlantImage)
     }
     
     private func updateAppearance() {
+        let image = UIImageView(image: UIImage(named: "background"))
+        let image2 = UIImageView(image: UIImage(named: "background1"))
+        image.contentMode = .scaleAspectFill
+        image2.contentMode = .scaleAspectFill
         if plants.isEmpty {
-            addPlantImage.isHidden = false
+            tableView.backgroundView = image2
+//            addPlantImage.isHidden = false
         } else {
-            addPlantImage.isHidden = true
+            tableView.backgroundView = image
+//            addPlantImage.isHidden = true
         }
+        
     }
     
     //MARK: Delete pop up confirmation

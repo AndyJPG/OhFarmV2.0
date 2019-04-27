@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             user.farmPlants = plantData
         }
         
+        if let favouritePlant = localData.loadFavouritesPlants() {
+            user.favoritePlants = favouritePlant
+        }
+        
         // Override point for customization after application launch.
         //Share data across tab bar controllers
         guard let tabBarController = window?.rootViewController as? UITabBarController,

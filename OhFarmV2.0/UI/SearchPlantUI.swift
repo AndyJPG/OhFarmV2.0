@@ -104,21 +104,40 @@ class SearchPlantUI: UIViewController {
         plantCell.cellBackground.layer.shadowOffset = CGSize.zero
         
         plantCell.plantNameLabel.text = plant.cropName
-        plantCell.plantCategoryLabel.text = plant.plantCategory
         
-        if plant.plantCategory == "vegetable" {
-            plantCell.plantCategoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        } else {
-            plantCell.plantCategoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-        }
+        plantCell.plantHarvestLabel.numberOfLines = 2
+        plantCell.plantSpacingLabel.numberOfLines = 2
+        let attributedString = NSMutableAttributedString(string: plant.getHarvestString)
+        let spacingString = NSMutableAttributedString(string: plant.getSpacingString)
+        // *** Create instance of `NSMutableParagraphStyle`
+        let paragraphStyle = NSMutableParagraphStyle()
         
-        plantCell.plantStyleLabel.numberOfLines = 2
-        if plant.plantStyle == "Both" {
-            plantCell.plantStyleLabel.text = "Suitable for\nIndoor and Outdoor"
-            plantCell.plantStyleLabel.sizeToFit()
-        } else {
-            plantCell.plantStyleLabel.text = "Suitable for \(plant.plantStyle)"
-        }
+        // *** set LineSpacing property in points ***
+        paragraphStyle.lineSpacing = 2 // Whatever line spacing you want in points
+        
+        // *** Apply attribute to string ***
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        spacingString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, spacingString.length))
+        
+        // *** Set Attributed String to your label ***
+        plantCell.plantHarvestLabel.attributedText = attributedString
+        plantCell.plantSpacingLabel.attributedText = spacingString
+        
+        
+        
+//        if plant.plantCategory == "vegetable" {
+//            plantCell.plantHarvestLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+//        } else {
+//            plantCell.plantHarvestLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+//        }
+        
+//        plantCell.plantSpacingLabel.numberOfLines = 2
+//        if plant.plantStyle == "Both" {
+//            plantCell.plantStyleLabel.text = "Suitable for\nIndoor and Outdoor"
+//            plantCell.plantStyleLabel.sizeToFit()
+//        } else {
+//            plantCell.plantStyleLabel.text = "Suitable for \(plant.plantStyle)"
+//        }
         
         plantCell.plantImage.image = plant.plantImage
         plantCell.plantImage.contentMode = .scaleAspectFill

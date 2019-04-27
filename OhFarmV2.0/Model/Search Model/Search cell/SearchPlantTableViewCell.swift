@@ -13,8 +13,8 @@ class SearchPlantTableViewCell: UITableViewCell {
     //MARK: Variable
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var plantNameLabel: UILabel!
-    @IBOutlet weak var plantCategoryLabel: UILabel!
-    @IBOutlet weak var plantStyleLabel: UILabel!
+    @IBOutlet weak var plantSpacingLabel: UILabel!
+    @IBOutlet weak var plantHarvestLabel: UILabel!
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var cellBackground: UIView!
     

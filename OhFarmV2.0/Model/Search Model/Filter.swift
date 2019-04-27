@@ -23,8 +23,8 @@ class Filter {
         self.category = dic[0] as? Array ?? ["vegetable","herb"]
         self.location = dic[1] as? Array ?? ["indoor","outdoor"]
         self.minSpacing = dic[2] as? Int ?? 0
-        self.maxSpacing = dic[3] as? Int ?? 100
+        self.maxSpacing = dic[3] as? Int ?? 200
         self.minHarvest = dic[4] as? Int ?? 0
-        self.maxHarvest = dic[5] as? Int ?? 100
+        self.maxHarvest = dic[5] as? Int ?? 200
     }
 }

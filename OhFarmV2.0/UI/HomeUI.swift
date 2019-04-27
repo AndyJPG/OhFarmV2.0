@@ -51,4 +51,44 @@ class HomeUI: UIViewController {
         return background
     }
     
+    //MARK: Favourite Plant Cell Style
+    func favouriteCell(_ cell: UITableViewCell, plant: Plant) -> UITableViewCell {
+        guard let plantCell = cell as? FavouriteTableViewCell else {fatalError()}
+        plantCell.selectionStyle = .none
+        plantCell.backgroundColor = .clear
+        
+        plantCell.cellBackground.layer.cornerRadius = 24
+        plantCell.cellBackground.layer.shadowColor = UIColor(red: 117/255, green: 117/255, blue: 117/255, alpha: 1).cgColor
+        plantCell.cellBackground.layer.shadowRadius = 17
+        plantCell.cellBackground.layer.shadowOpacity = 0.2
+        plantCell.cellBackground.layer.shadowOffset = CGSize.zero
+        
+        plantCell.plantNameLabel.text = plant.cropName
+        
+        plantCell.harvestTimeLabel.numberOfLines = 2
+        plantCell.spacingLabel.numberOfLines = 2
+        let attributedString = NSMutableAttributedString(string: plant.getHarvestString)
+        let spacingString = NSMutableAttributedString(string: plant.getSpacingString)
+        // *** Create instance of `NSMutableParagraphStyle`
+        let paragraphStyle = NSMutableParagraphStyle()
+        
+        // *** set LineSpacing property in points ***
+        paragraphStyle.lineSpacing = 2 // Whatever line spacing you want in points
+        
+        // *** Apply attribute to string ***
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        spacingString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, spacingString.length))
+        
+        // *** Set Attributed String to your label ***
+        plantCell.harvestTimeLabel.attributedText = attributedString
+        plantCell.spacingLabel.attributedText = spacingString
+        
+        
+        plantCell.plantImage.image = plant.plantImage
+        plantCell.plantImage.contentMode = .scaleAspectFill
+        plantCell.plantImage.layer.cornerRadius = 24
+        
+        return plantCell
+    }
+    
 }

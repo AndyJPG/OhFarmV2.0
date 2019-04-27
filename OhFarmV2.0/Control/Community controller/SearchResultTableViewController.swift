@@ -109,8 +109,9 @@ class SearchResultTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .white
         searchController.searchBar.tintColor = .white
-        tableView.backgroundView = UIImageView(image: UIImage(named: "bgcommunity"))
-        tableView.backgroundView?.contentMode = .scaleAspectFit
+        let image = UIImageView(image: UIImage(named: "background"))
+        image.contentMode = .scaleAspectFill
+        tableView.backgroundView = image
         
     }
     

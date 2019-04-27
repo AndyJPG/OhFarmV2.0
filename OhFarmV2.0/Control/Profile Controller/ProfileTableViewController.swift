@@ -17,6 +17,7 @@ class ProfileTableViewController: UITableViewController {
     
     enum segueID: String {
         case settingSegue
+        case favouritePlantSegue
         case unwindToProfileSegue
     }
 
@@ -39,6 +40,10 @@ class ProfileTableViewController: UITableViewController {
         
         setTableFooter()
         setupOptionsArry()
+        
+        let backgroundImage = UIImageView(image: UIImage(named: "background"))
+        backgroundImage.contentMode = .scaleAspectFill
+        tableView.backgroundView = backgroundImage
     }
 
     // MARK: - Table view data source
@@ -46,12 +51,6 @@ class ProfileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? -1.0 : 10
     }
-    
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 10))
-//        view.backgroundColor = UIColor.lightGray
-//        return view
-//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return options.count
@@ -94,8 +93,12 @@ class ProfileTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && indexPath.row == 0 {
-            self.tabBarController?.selectedIndex = 2
+        if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                self.tabBarController?.selectedIndex = 2
+            } else {
+                performSegue(withIdentifier: segueID.favouritePlantSegue.rawValue, sender: self)
+            }
         }
         
         if indexPath.section == 2 {
@@ -108,9 +111,12 @@ class ProfileTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueID.favouritePlantSegue.rawValue {
+            guard let nc = segue.destination as? UINavigationController, let favouriteVC = nc.topViewController as? FavouriteTableViewController else {fatalError()}
+            favouriteVC.user = user
+        }
+    }
     
     // Pass back filter object
     @IBAction func unwindToProfile(sender: UIStoryboardSegue) {
@@ -118,9 +124,16 @@ class ProfileTableViewController: UITableViewController {
             guard let settingVC = sender.source as? SettingTableViewController else {return}
             print("back from setting")
             if settingVC.restore {
+                user.userName = "User"
+                user.farmPlants = []
+                user.favoritePlants = []
+                localData.saveUserInfo(user)
+                localData.savePlants(user.farmPlants)
+                localData.saveFavouritesPlants(user.favoritePlants)
                 tableView.reloadData()
             }
         }
+        
     }
     
     //MAKR: Action
@@ -187,16 +200,16 @@ class ProfileTableViewController: UITableViewController {
         
         tableView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
         
-        let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
         tableViewFooter.backgroundColor = .clear
         let version = UILabel(frame: CGRect(x: 0, y: 10, width: tableView.frame.width, height: 14))
         version.font = version.font.withSize(12)
         version.text = "Version 2.0"
         version.tintColor = .lightGray
         version.textAlignment = .center
-        
+
         tableViewFooter.addSubview(version)
-        
+
         tableView.tableFooterView  = tableViewFooter
     }
 

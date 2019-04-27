@@ -56,7 +56,7 @@ class PlantSearchTableViewController: UITableViewController {
         super.viewDidLoad()
 
         if filter == nil {
-            filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,100,0,100])
+            filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200])
         }
         
         originalPlants = networkHandler.fetchPlantData()
@@ -170,7 +170,6 @@ class PlantSearchTableViewController: UITableViewController {
         if sender.identifier == SegueID.filterUnwindSegue.rawValue {
             guard let filterVC = sender.source as? FilterTableViewController else {return}
             filter = filterVC.filter
-            
             applyFilter()
         }
     }
@@ -185,17 +184,20 @@ class PlantSearchTableViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Plant"
+        searchController.searchBar.tintColor = .white
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
         navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .white
-        UISearchBar.appearance().tintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
     }
     
     private func setUpAppearance() {
         tableView.separatorStyle = .none
         navigationItem.title = "Plants search"
+        let image = UIImageView(image: UIImage(named: "background"))
+        image.contentMode = .scaleAspectFill
+        tableView.backgroundView = image
     }
     
     

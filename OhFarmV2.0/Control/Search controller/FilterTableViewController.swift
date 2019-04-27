@@ -107,7 +107,7 @@ class FilterTableViewController: UITableViewController {
             spacingCell.rangeSlider.selectedMinValue = CGFloat(filter.minSpacing)
             spacingCell.rangeSlider.selectedMaxValue = CGFloat(filter.maxSpacing)
             
-            if filter.minSpacing != 0 && filter.maxSpacing != 100 {
+            if filter.minSpacing != 0 && filter.maxSpacing != 200 {
                 spacingCell.valueLabel.text = "\(filter.minSpacing) cm to \(filter.maxHarvest)"
             } else {
                 spacingCell.valueLabel.text = "Any Spacing"
@@ -124,7 +124,7 @@ class FilterTableViewController: UITableViewController {
             harvestCell.rangeSlider.selectedMinValue = CGFloat(filter.minHarvest)
             harvestCell.rangeSlider.selectedMaxValue = CGFloat(filter.maxHarvest)
             
-            if filter.minHarvest != 0 && filter.maxHarvest != 100 {
+            if filter.minHarvest != 0 && filter.maxHarvest != 200 {
                 harvestCell.valueLabel.text = "\(filter.minHarvest) weeks to \(filter.maxHarvest) weeks"
             } else {
                 harvestCell.valueLabel.text = "Any Time"
@@ -213,7 +213,7 @@ class FilterTableViewController: UITableViewController {
     }
     
     @IBAction func resetAction(_ sender: UIBarButtonItem) {
-        filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,100,0,100])
+        filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200])
         tableView.reloadData()
     }
     
@@ -229,7 +229,7 @@ extension FilterTableViewController: RangeSeekSliderDelegate {
             guard let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? FilterSpacingTableViewCell else {fatalError()}
             let min = Int(slider.selectedMinValue)
             let max = Int(slider.selectedMaxValue)
-            if min == 0 && max == 100 {
+            if min == 0 && max == 200 {
                 cell.valueLabel.text = "Any Spacing"
             } else {
                 cell.valueLabel.text = "\(min) cm to \(max) cm"
@@ -240,7 +240,7 @@ extension FilterTableViewController: RangeSeekSliderDelegate {
             guard let cell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? FilterHarvestTableViewCell else {fatalError()}
             let min = Int(slider.selectedMinValue)
             let max = Int(slider.selectedMaxValue)
-            if min == 0 && max == 100 {
+            if min == 0 && max == 200 {
                 cell.valueLabel.text = "Any Time"
             } else {
                 cell.valueLabel.text = "\(min) weeks to \(max) weeks"

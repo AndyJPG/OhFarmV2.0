@@ -24,6 +24,10 @@ class SettingTableViewController: UITableViewController {
         
         setupApearence()
         setupCells()
+        
+        let backgroundImage = UIImageView(image: UIImage(named: "background"))
+        backgroundImage.contentMode = .scaleAspectFill
+        tableView.backgroundView = backgroundImage
     }
 
     // MARK: - Table view data source
@@ -57,6 +61,7 @@ class SettingTableViewController: UITableViewController {
         if indexPath.section == 1 {
             restoreConfirmation()
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     /*
@@ -103,7 +108,7 @@ class SettingTableViewController: UITableViewController {
     //MARK: Delete pop up confirmation
     private func restoreConfirmation() {
         
-        let alert = UIAlertController(title: "Restore", message: "Are you sure you want to restore the app?", preferredStyle: UIAlertController.Style.actionSheet)
+        let alert = UIAlertController(title: "Restore", message: "Are you sure you want to restore?\nThis will erase all your saved preferences", preferredStyle: UIAlertController.Style.actionSheet)
         
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (_) in
             self.restore = true

@@ -24,7 +24,7 @@ class LocalData {
         return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [User]
     }
     
-    //Save Plants
+    //Save Farm Plants
     func savePlants(_ plants: [Plant]) {
         let data = try? NSKeyedArchiver.archivedData(withRootObject: plants, requiringSecureCoding: false)
         UserDefaults.standard.set(data, forKey: "plants")
@@ -32,6 +32,19 @@ class LocalData {
     
     func loadPlants() -> [Plant]?  {
         guard let data = UserDefaults.standard.data(forKey: "plants") else {
+            return nil
+        }
+        return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Plant]
+    }
+    
+    //Save Favourites Plants
+    func saveFavouritesPlants(_ plants: [Plant]) {
+        let data = try? NSKeyedArchiver.archivedData(withRootObject: plants, requiringSecureCoding: false)
+        UserDefaults.standard.set(data, forKey: "favouritesPlants")
+    }
+    
+    func loadFavouritesPlants() -> [Plant]?  {
+        guard let data = UserDefaults.standard.data(forKey: "favouritesPlants") else {
             return nil
         }
         return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Plant]

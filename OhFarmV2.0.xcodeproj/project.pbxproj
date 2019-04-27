@@ -12,6 +12,8 @@
 		002E048022671EA8000871F5 /* SuggestionsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */; };
 		002E048322671F92000871F5 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E048222671F92000871F5 /* LocationManager.swift */; };
 		002E048522671FEA000871F5 /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E048422671FEA000871F5 /* MKPlacemark+Extension.swift */; };
+		00395DB42274322F00EC9293 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DB32274322F00EC9293 /* FavouriteTableViewCell.swift */; };
+		00395DB62274326A00EC9293 /* FavouriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DB52274326A00EC9293 /* FavouriteTableViewController.swift */; };
 		00A77AF922700D940033ED8A /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77AF822700D940033ED8A /* PlantDetailViewController.swift */; };
 		00A77AFC22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */; };
 		00A77AFE22702B8E0033ED8A /* DefaultPlantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */; };
@@ -79,6 +81,8 @@
 		002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableTableViewController.swift; sourceTree = "<group>"; };
 		002E048222671F92000871F5 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		002E048422671FEA000871F5 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
+		00395DB32274322F00EC9293 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
+		00395DB52274326A00EC9293 /* FavouriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewController.swift; sourceTree = "<group>"; };
 		00A77AF822700D940033ED8A /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
 		00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPlantInfoTableViewCell.swift; sourceTree = "<group>"; };
 		00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultPlantCell.xib; sourceTree = "<group>"; };
@@ -376,6 +380,7 @@
 			children = (
 				00FCC0832271F49D00CD3D20 /* ProfileTableViewController.swift */,
 				00A79F28227309A0008D4424 /* SettingTableViewController.swift */,
+				00395DB52274326A00EC9293 /* FavouriteTableViewController.swift */,
 			);
 			path = "Profile Controller";
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 				00FCC0862271F52700CD3D20 /* ProfileTopTableViewCell.swift */,
 				00FCC0882271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift */,
 				00A79F2A2273164D008D4424 /* SettingTableViewCell.swift */,
+				00395DB32274322F00EC9293 /* FavouriteTableViewCell.swift */,
 			);
 			path = "Profile Model";
 			sourceTree = "<group>";
@@ -590,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00A77B0C22709E690033ED8A /* TabBarViewController.swift in Sources */,
+				00395DB62274326A00EC9293 /* FavouriteTableViewController.swift in Sources */,
 				00C71386226DE7E500E1EA36 /* HomeTableViewController.swift in Sources */,
 				00C7136D226B4CC600E1EA36 /* FilterLocationTableViewCell.swift in Sources */,
 				00C71366226AFF5F00E1EA36 /* FilterTableViewController.swift in Sources */,
@@ -608,6 +615,7 @@
 				00FCC0892271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift in Sources */,
 				00C71368226AFF8900E1EA36 /* PlantSearchTableViewController.swift in Sources */,
 				00FCC0872271F52700CD3D20 /* ProfileTopTableViewCell.swift in Sources */,
+				00395DB42274322F00EC9293 /* FavouriteTableViewCell.swift in Sources */,
 				00FCC0812271914E00CD3D20 /* PopAlert.swift in Sources */,
 				00A77B132270A4CE0033ED8A /* PhotoSlide.swift in Sources */,
 				00C7136F226B4CE900E1EA36 /* FilterHarvestTableViewCell.swift in Sources */,
