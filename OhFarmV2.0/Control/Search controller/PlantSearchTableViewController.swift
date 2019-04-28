@@ -177,9 +177,63 @@ class PlantSearchTableViewController: UITableViewController {
         
         if segue.identifier == SegueID.viewDetailFromSearch.rawValue {
             guard let nv = segue.destination as? UINavigationController, let detailVC = nv.topViewController as? PlantDetailViewController, let selectedCell = sender as? SearchPlantTableViewCell, let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
-            detailVC.plant = plants[indexPath.row]
             detailVC.user = user
+            
+            let selectedPlant = plants[indexPath.row]
+            if let compatPlant = setCompatAndAvoid(selectedPlant.getCompatiable) {
+                selectedPlant.compPlantList = compatPlant
+            }
+            if let avoidPlant = setCompatAndAvoid(selectedPlant.getAvoid) {
+                selectedPlant.avoidPlantList = avoidPlant
+            }
+            
+            detailVC.plant = selectedPlant
         }
+    }
+    
+    // Setup compatiable plant and avoid plant
+    private func setCompatAndAvoid(_ plant: [String]) -> [Plant]? {
+        
+        var list = [Plant]()
+
+        if plant[0].lowercased() == "none" {
+            return nil
+        }
+
+        for originalP in originalPlants {
+            for name in plant {
+                if originalP.cropName.lowercased().contains(name.lowercased()) {
+                    list.append(originalP)
+                }
+            }
+        }
+        
+//        var pIndex = 0
+//        var oIndex = 0
+//        var list = [Plant]()
+//        var plantName = plant.sorted()
+//        print(plant)
+//        print(originalPlants)
+//        print(originalPlants.count)
+//        while pIndex < plant.count && oIndex < originalPlants.count {
+//            print(" plant \(pIndex)")
+//            print(oIndex)
+//            if originalPlants[oIndex].cropName.lowercased().contains(plantName[pIndex].lowercased()) {
+//                list.append(originalPlants[oIndex])
+//                pIndex += 1
+//                oIndex += 1
+//            } else {
+//                oIndex += 1
+//            }
+//        }
+//        print(plant.sorted())
+//        print(list)
+//        let a = list.map { (plant: Plant) -> String in
+//            return plant.cropName
+//        }
+//        print(a)
+        
+        return list
     }
     
     // Pass back filter object
@@ -231,7 +285,7 @@ class PlantSearchTableViewController: UITableViewController {
         }
         
         if alertIndex == 1 {
-            let alert = UIAlertController(title: "New Plant!", message: "\(plant) has added to your farm", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "New Plant!", message: "\(plant) has been added to your farm", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                 //Cancel Action

@@ -33,7 +33,7 @@ class ProfileTopTableViewCell: UITableViewCell {
     }
     
     func configCell(_ user: User) {
-        if user.userName == "User" {
+        if user.userName == "User" || user.userName == "First User" {
             userName.text = "Name"
         } else {
             userName.text = user.userName

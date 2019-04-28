@@ -26,6 +26,9 @@ class Plant: NSObject, NSCoding {
     let plantingTechnique: String
     let fertilizer: String
     
+    var compPlantList: [Plant] = []
+    var avoidPlantList: [Plant] = []
+    
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("plants")
@@ -148,6 +151,16 @@ class Plant: NSObject, NSCoding {
     var getSuitableMonth: [String] {
         let month = suitableMonth.components(separatedBy: ",")
         return month
+    }
+    
+    var getCompatiable: [String] {
+        let compat = compatiblePlants.components(separatedBy: ", ")
+        return compat
+    }
+    
+    var getAvoid: [String] {
+        let avoid = avoidInstructions.components(separatedBy: ", ")
+        return avoid
     }
     
     //MARK: NSCoding

@@ -22,7 +22,7 @@
    "maxSpace": 45,
    "minHarvestTime": 76,
    "maxHarvestTime": 76,
-   "compatiblePlants": "mint, lemonbalm",
+   "compatiblePlants": "mint, lemon balm",
    "avoidInstructions": "None",
    "culinaryHints": "Stems can be candied and used to decorate cakes and pastries",
    "plantStyle": "Outdoor",

@@ -124,7 +124,7 @@ class ProfileTableViewController: UITableViewController {
             guard let settingVC = sender.source as? SettingTableViewController else {return}
             print("back from setting")
             if settingVC.restore {
-                user.userName = "User"
+                user.userName = "First User"
                 user.farmPlants = []
                 user.favoritePlants = []
                 localData.saveUserInfo(user)

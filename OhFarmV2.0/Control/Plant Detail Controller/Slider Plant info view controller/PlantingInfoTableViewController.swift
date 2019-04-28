@@ -14,9 +14,13 @@ class PlantingInfoTableViewController: UITableViewController, IndicatorInfoProvi
     //MARK: Variable
     var plant: Plant!
     var isFromHome: Bool!
-    let defaultCellIdentifier = "defaultPlantInfoCell"
     var blackTheme = false
     var itemInfo = IndicatorInfo(title: "View")
+    
+    enum cellID: String {
+        case defaultPlantInfoCell
+        case compaPlantCell
+    }
     
     init(style: UITableView.Style, itemInfo: IndicatorInfo, plant: Plant, fromHome: Bool) {
         self.isFromHome = fromHome
@@ -54,8 +58,14 @@ class PlantingInfoTableViewController: UITableViewController, IndicatorInfoProvi
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: defaultCellIdentifier, for: indexPath) as? DefaultPlantInfoTableViewCell else { return DefaultPlantInfoTableViewCell() }
         let data = plant.plantingInfo[indexPath.row]
+        
+//        if data[0] == "Avoid Plants" || data[0] == "Compatiable Plants" {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID.compaPlantCell.rawValue, for: indexPath) as? CompaPlantCellTableViewCell else {fatalError()}
+//            
+//        }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID.defaultPlantInfoCell.rawValue, for: indexPath) as? DefaultPlantInfoTableViewCell else { return DefaultPlantInfoTableViewCell() }
         
         cell.configureWithData(data)
         if blackTheme {
@@ -76,8 +86,8 @@ class PlantingInfoTableViewController: UITableViewController, IndicatorInfoProvi
     private func setupTableStyle() {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 93, bottom: 0, right: 0)
         
-        tableView.register(UINib(nibName: "DefaultPlantCell", bundle: Bundle.main), forCellReuseIdentifier: defaultCellIdentifier)
-//      tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "DefaultPlantCell", bundle: Bundle.main), forCellReuseIdentifier: cellID.defaultPlantInfoCell.rawValue)
+        tableView.register(UINib(nibName: "CompaPlantCell", bundle: Bundle.main), forCellReuseIdentifier: cellID.compaPlantCell.rawValue)
         if isFromHome {
             tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
         } else {

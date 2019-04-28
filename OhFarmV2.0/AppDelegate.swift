@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var user = User(name: "User", userImage: UIImage(named: "userProfile") ?? nil)
+    var user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? nil)
     let localData = LocalData()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

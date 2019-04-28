@@ -13,6 +13,7 @@ class CompaPlantCellTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
+    let plants = [Plant]()
     
     override func awakeFromNib() {
         super.awakeFromNib()

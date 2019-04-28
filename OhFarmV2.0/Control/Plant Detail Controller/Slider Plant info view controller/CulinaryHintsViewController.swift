@@ -19,7 +19,7 @@ class CulinaryHintsViewController: UIViewController, IndicatorInfoProvider {
         label.text = "How to use"
         label.numberOfLines = 0
         label.sizeToFit()
-        label.font = UIFont(name: "Helvetica", size: 17)
+        label.font = UIFont(name: "Helvetica-Bold", size: 17)
         label.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

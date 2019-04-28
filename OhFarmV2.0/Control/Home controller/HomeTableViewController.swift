@@ -15,7 +15,6 @@ class HomeTableViewController: UITableViewController {
     let homeTableUI = HomeUI()
     var user: User!
     let localData = LocalData()
-    let alert = PopAlert()
     var addPlantImage = UIView()
     
     var plants: [Plant] {
@@ -25,7 +24,7 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if user.userName == "User" {
+        if user.userName == "First User" {
             performSegue(withIdentifier: segueID.LoginPageSegue.rawValue, sender: self)
         }
         
@@ -42,7 +41,7 @@ class HomeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if user.userName == "User" {
+        if user.userName == "User" || user.userName == "First User" {
             navigationItem.title = "Your farm"
         } else {
             navigationItem.title = "\(user.userName)'s farm"
@@ -136,7 +135,10 @@ class HomeTableViewController: UITableViewController {
             guard let loginVC = sender.source as? LoginViewController else {return}
             if !loginVC.name.isEmpty {
                 user.userName = loginVC.name
+            } else {
+                user.userName = "User"
             }
+            localData.saveUserInfo(user)
             tableView.reloadData()
         }
     }
