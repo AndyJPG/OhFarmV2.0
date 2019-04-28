@@ -20,6 +20,7 @@ class NetworkHandler {
         for dic in jsonArray {
             guard let cropName = dic["cropName"] as? String else {fatalError()}
             guard let plantCategory = dic["plantCategory"] as? String else {fatalError()}
+            guard let suitableMonth = dic["suitableMonth"] as? String else {fatalError()}
             guard let minSpacing = dic["minSpace"] as? Int else {fatalError()}
             guard let maxSpacing = dic["maxSpace"] as? Int else {fatalError()}
             guard let minHarvest = dic["minHarvestTime"] as? Int else {fatalError()}
@@ -31,7 +32,7 @@ class NetworkHandler {
             guard let plantingTech = dic["plantingTechnique"] as? String else {fatalError()}
             guard let fertilizer = dic["fertilizerName"] as? String else {fatalError()}
 
-            plants.append(Plant(cropName: cropName, plantCategory: plantCategory, minSpacing: minSpacing, maxSpacing: maxSpacing, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTech, fertilizer: fertilizer))
+            plants.append(Plant(cropName: cropName, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpacing, maxSpacing: maxSpacing, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTech, fertilizer: fertilizer))
         }
         return plants
     }

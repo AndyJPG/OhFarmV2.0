@@ -15,6 +15,7 @@ class PlantInfoOneTableViewController: UITableViewController, IndicatorInfoProvi
     var plant: Plant!
     var isFromHome: Bool!
     let cellIdentifier = "defaultPlantInfoCell"
+    let monthCellID = "suitableMonthCell"
     var blackTheme = false
     var itemInfo = IndicatorInfo(title: "View")
     
@@ -51,12 +52,21 @@ class PlantInfoOneTableViewController: UITableViewController, IndicatorInfoProvi
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? DefaultPlantInfoTableViewCell else { return DefaultPlantInfoTableViewCell() }
-        let data = plant.plantInfoOne[indexPath.row]
+        var cell = UITableViewCell()
         
-        cell.configureWithData(data)
-        if blackTheme {
-            cell.changeStylToBlack()
+        if indexPath.row == 0 {
+            guard let monthCell = tableView.dequeueReusableCell(withIdentifier: monthCellID, for: indexPath) as? MonthTableViewCell else { return MonthTableViewCell() }
+            monthCell.configWithData(plant)
+            cell = monthCell
+        } else {
+            guard let defaultCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? DefaultPlantInfoTableViewCell else { return DefaultPlantInfoTableViewCell() }
+            let data = plant.plantInfoOne[indexPath.row]
+            
+            defaultCell.configureWithData(data)
+            if blackTheme {
+                defaultCell.changeStylToBlack()
+            }
+            cell = defaultCell
         }
         return cell
     }
@@ -71,10 +81,12 @@ class PlantInfoOneTableViewController: UITableViewController, IndicatorInfoProvi
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 93, bottom: 0, right: 0)
         
         tableView.register(UINib(nibName: "DefaultPlantCell", bundle: Bundle.main), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName: "MonthCell", bundle: Bundle.main), forCellReuseIdentifier: monthCellID)
+        
         if isFromHome {
             tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
         } else {
-            tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 75))
+            tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 55))
         }
         tableView.showsVerticalScrollIndicator = false
         tableView.estimatedRowHeight = 600.0

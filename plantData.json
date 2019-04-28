@@ -1,6 +1,7 @@
 [
  {
    "cropName": "Amaranth",
+   "suitableMonth": "January,February,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 50,
    "maxSpace": 50,
@@ -15,6 +16,7 @@
  },
  {
    "cropName": "Angelica",
+   "suitableMonth": "October,November",
    "plantCategory": "vegetable",
    "minSpace": 45,
    "maxSpace": 45,
@@ -29,6 +31,7 @@
  },
  {
    "cropName": "Artichokes (Globe)",
+   "suitableMonth": "August,September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 160,
    "maxSpace": 200,
@@ -43,6 +46,7 @@
  },
  {
    "cropName": "Asparagus",
+   "suitableMonth": "August,September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 40,
@@ -57,6 +61,7 @@
  },
  {
    "cropName": "Asparagus Pea",
+   "suitableMonth": "January,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 25,
@@ -71,6 +76,7 @@
  },
  {
    "cropName": "Basil",
+   "suitableMonth": "September,October,November,December",
    "plantCategory": "herb",
    "minSpace": 20,
    "maxSpace": 25,
@@ -85,6 +91,7 @@
  },
  {
    "cropName": "Beetroot",
+   "suitableMonth": "March,April,October,November",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 30,
@@ -99,6 +106,7 @@
  },
  {
    "cropName": "Borage",
+   "suitableMonth": "October,November,December",
    "plantCategory": "herb",
    "minSpace": 20,
    "maxSpace": 20,
@@ -113,6 +121,7 @@
  },
  {
    "cropName": "Broad beans",
+   "suitableMonth": "March,April,May,June",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 25,
@@ -127,6 +136,7 @@
  },
  {
    "cropName": "Broccoli",
+   "suitableMonth": "February,March,April,September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 35,
    "maxSpace": 50,
@@ -141,6 +151,7 @@
  },
  {
    "cropName": "Brussels sprouts",
+   "suitableMonth": "February,March,April,May",
    "plantCategory": "vegetable",
    "minSpace": 45,
    "maxSpace": 60,
@@ -155,6 +166,7 @@
  },
  {
    "cropName": "Burdock",
+   "suitableMonth": "January,February,March,April,September,October,November,December",
    "plantCategory": "herb",
    "minSpace": 60,
    "maxSpace": 60,
@@ -169,6 +181,7 @@
  },
  {
    "cropName": "Cabbage",
+   "suitableMonth": "March,April,May,June,August,September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 50,
    "maxSpace": 76,
@@ -183,6 +196,7 @@
  },
  {
    "cropName": "Cape Gooseberry",
+   "suitableMonth": "August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 50,
    "maxSpace": 50,
@@ -197,6 +211,7 @@
  },
  {
    "cropName": "Capsicum",
+   "suitableMonth": "August,September",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 50,
@@ -211,6 +226,7 @@
  },
  {
    "cropName": "Cardoon",
+   "suitableMonth": "August,September,October,November,December",
    "plantCategory": "herb",
    "minSpace": 50,
    "maxSpace": 149,
@@ -225,6 +241,7 @@
  },
  {
    "cropName": "Carrot",
+   "suitableMonth": "September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 5,
    "maxSpace": 30,
@@ -239,6 +256,7 @@
  },
  {
    "cropName": "Cauliflower",
+   "suitableMonth": "February,March,April,May",
    "plantCategory": "vegetable",
    "minSpace": 60,
    "maxSpace": 99,
@@ -253,6 +271,7 @@
  },
  {
    "cropName": "Celeriac",
+   "suitableMonth": "September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 45,
    "maxSpace": 78,
@@ -267,6 +286,7 @@
  },
  {
    "cropName": "Celery",
+   "suitableMonth": "September,October",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 30,
@@ -281,6 +301,7 @@
  },
  {
    "cropName": "Chicory",
+   "suitableMonth": "September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 25,
    "maxSpace": 30,
@@ -295,6 +316,7 @@
  },
  {
    "cropName": "Chilli peppers",
+   "suitableMonth": "August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 40,
    "maxSpace": 50,
@@ -309,6 +331,7 @@
  },
  {
    "cropName": "Chinese cabbage",
+   "suitableMonth": "October,November",
    "plantCategory": "vegetable",
    "minSpace": 30,
    "maxSpace": 30,
@@ -323,6 +346,7 @@
  },
  {
    "cropName": "Chives",
+   "suitableMonth": "June,July,October,November",
    "plantCategory": "vegetable",
    "minSpace": 5,
    "maxSpace": 5,
@@ -337,6 +361,7 @@
  },
  {
    "cropName": "Choko",
+   "suitableMonth": "December",
    "plantCategory": "vegetable",
    "minSpace": 99,
    "maxSpace": 99,
@@ -351,6 +376,7 @@
  },
  {
    "cropName": "Climbing beans",
+   "suitableMonth": "January,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 10,
    "maxSpace": 20,
@@ -365,6 +391,7 @@
  },
  {
    "cropName": "Collards",
+   "suitableMonth": "February,March,April,May",
    "plantCategory": "vegetable",
    "minSpace": 40,
    "maxSpace": 50,
@@ -379,6 +406,7 @@
  },
  {
    "cropName": "Coriander",
+   "suitableMonth": "April, May, June,July,August,September",
    "plantCategory": "herb",
    "minSpace": 2,
    "maxSpace": 45,
@@ -393,6 +421,7 @@
  },
  {
    "cropName": "Corn Salad",
+   "suitableMonth": "April,May,September",
    "plantCategory": "vegetable",
    "minSpace": 10,
    "maxSpace": 15,
@@ -407,6 +436,7 @@
  },
  {
    "cropName": "Cowpeas",
+   "suitableMonth": "October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 100,
    "maxSpace": 100,
@@ -421,6 +451,7 @@
  },
  {
    "cropName": "Cucumber",
+   "suitableMonth": "January,February,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 40,
    "maxSpace": 60,
@@ -435,6 +466,7 @@
  },
  {
    "cropName": "Daikon",
+   "suitableMonth": "March,September,October",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 15,
@@ -449,6 +481,7 @@
  },
  {
    "cropName": "Dill",
+   "suitableMonth": "September,October",
    "plantCategory": "herb",
    "minSpace": 15,
    "maxSpace": 15,
@@ -463,6 +496,7 @@
  },
  {
    "cropName": "Dwarf beans",
+   "suitableMonth": "January,February,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 5,
    "maxSpace": 15,
@@ -477,6 +511,7 @@
  },
  {
    "cropName": "Eggplant",
+   "suitableMonth": "January,August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 60,
    "maxSpace": 76,
@@ -491,6 +526,7 @@
  },
  {
    "cropName": "Endive",
+   "suitableMonth": "February,March,April,September,October",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 30,
@@ -505,6 +541,7 @@
  },
  {
    "cropName": "Fennel",
+   "suitableMonth": "September,October",
    "plantCategory": "vegetable",
    "minSpace": 2,
    "maxSpace": 30,
@@ -519,6 +556,7 @@
  },
  {
    "cropName": "French tarragon",
+   "suitableMonth": "October,November,December",
    "plantCategory": "herb",
    "minSpace": 40,
    "maxSpace": 60,
@@ -533,6 +571,7 @@
  },
  {
    "cropName": "Garlic",
+   "suitableMonth": "April,May,June",
    "plantCategory": "vegetable",
    "minSpace": 10,
    "maxSpace": 12,
@@ -547,6 +586,7 @@
  },
  {
    "cropName": "Ginger",
+   "suitableMonth": "(Not recommended for growing in Australia)",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 15,
@@ -561,6 +601,7 @@
  },
  {
    "cropName": "Horseradish",
+   "suitableMonth": "September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 50,
    "maxSpace": 50,
@@ -575,6 +616,7 @@
  },
  {
    "cropName": "Jerusalem Artichokes",
+   "suitableMonth": "September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 30,
    "maxSpace": 45,
@@ -589,6 +631,7 @@
  },
  {
    "cropName": "Kale",
+   "suitableMonth": "March,April,May,June",
    "plantCategory": "vegetable",
    "minSpace": 50,
    "maxSpace": 99,
@@ -603,6 +646,7 @@
  },
  {
    "cropName": "Kohlrabi",
+   "suitableMonth": "January,February,March,April,May,August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 10,
    "maxSpace": 25,
@@ -617,6 +661,7 @@
  },
  {
    "cropName": "Leeks",
+   "suitableMonth": "February,March,April,May,August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 10,
    "maxSpace": 20,
@@ -631,6 +676,7 @@
  },
  {
    "cropName": "Lemon Balm",
+   "suitableMonth": "October,November",
    "plantCategory": "herb",
    "minSpace": 25,
    "maxSpace": 25,
@@ -645,6 +691,7 @@
  },
  {
    "cropName": "Lettuce",
+   "suitableMonth": "January,February,March,April,May,June,July,August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 20,
@@ -659,6 +706,7 @@
  },
  {
    "cropName": "Luffa",
+   "suitableMonth": "September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 45,
    "maxSpace": 76,
@@ -673,6 +721,7 @@
  },
  {
    "cropName": "Marrow",
+   "suitableMonth": "January,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 88,
    "maxSpace": 119,
@@ -687,6 +736,7 @@
  },
  {
    "cropName": "Mint",
+   "suitableMonth": "August,September,October,November",
    "plantCategory": "herb",
    "minSpace": 30,
    "maxSpace": 12,
@@ -701,6 +751,7 @@
  },
  {
    "cropName": "Mizuna",
+   "suitableMonth": "March,April,May",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 20,
@@ -715,6 +766,7 @@
  },
  {
    "cropName": "Mustard greens",
+   "suitableMonth": "January,February,March,April,May,June,July,August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 35,
    "maxSpace": 60,
@@ -729,6 +781,7 @@
  },
  {
    "cropName": "Okra",
+   "suitableMonth": "January,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 35,
    "maxSpace": 60,
@@ -743,6 +796,7 @@
  },
  {
    "cropName": "Onion",
+   "suitableMonth": "February,April,May,June,July,August",
    "plantCategory": "vegetable",
    "minSpace": 5,
    "maxSpace": 10,
@@ -757,6 +811,7 @@
  },
  {
    "cropName": "Oregano",
+   "suitableMonth": "January,February,March,April,May,September,October,November,December",
    "plantCategory": "herb",
    "minSpace": 15,
    "maxSpace": 15,
@@ -771,6 +826,7 @@
  },
  {
    "cropName": "Pak Choy",
+   "suitableMonth": "March,April,May",
    "plantCategory": "vegetable",
    "minSpace": 30,
    "maxSpace": 40,
@@ -785,6 +841,7 @@
  },
  {
    "cropName": "Parsley",
+   "suitableMonth": "January,February,March,April,May,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 30,
@@ -799,6 +856,7 @@
  },
  {
    "cropName": "Parsnip",
+   "suitableMonth": "August,October,November",
    "plantCategory": "vegetable",
    "minSpace": 7,
    "maxSpace": 10,
@@ -813,6 +871,7 @@
  },
  {
    "cropName": "Peas",
+   "suitableMonth": "April,May,June,July",
    "plantCategory": "vegetable",
    "minSpace": 5,
    "maxSpace": 5,
@@ -827,6 +886,7 @@
  },
  {
    "cropName": "Potato",
+   "suitableMonth": "January,February,March,April,May,August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 30,
    "maxSpace": 40,
@@ -841,6 +901,7 @@
  },
  {
    "cropName": "Pumpkin",
+   "suitableMonth": "September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 88,
    "maxSpace": 119,
@@ -855,6 +916,7 @@
  },
  {
    "cropName": "Radish",
+   "suitableMonth": "January,February,March,April,May,June,July,August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 2,
    "maxSpace": 5,
@@ -869,6 +931,7 @@
  },
  {
    "cropName": "Rhubarb",
+   "suitableMonth": "September,October",
    "plantCategory": "vegetable",
    "minSpace": 88,
    "maxSpace": 88,
@@ -883,6 +946,7 @@
  },
  {
    "cropName": "Rocket",
+   "suitableMonth": "May,June,July,August,September",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 20,
@@ -897,6 +961,7 @@
  },
  {
    "cropName": "Rockmelon",
+   "suitableMonth": "September,October",
    "plantCategory": "vegetable",
    "minSpace": 40,
    "maxSpace": 60,
@@ -911,6 +976,7 @@
  },
  {
    "cropName": "Rosella",
+   "suitableMonth": "January,February,October,November,December",
    "plantCategory": "herb",
    "minSpace": 140,
    "maxSpace": 140,
@@ -925,6 +991,7 @@
  },
  {
    "cropName": "Rosemary",
+   "suitableMonth": "October,November",
    "plantCategory": "herb",
    "minSpace": 99,
    "maxSpace": 149,
@@ -939,6 +1006,7 @@
  },
  {
    "cropName": "Rutabaga",
+   "suitableMonth": "January,February,March,April",
    "plantCategory": "vegetable",
    "minSpace": 10,
    "maxSpace": 20,
@@ -953,6 +1021,7 @@
  },
  {
    "cropName": "Sage",
+   "suitableMonth": "September,October,November",
    "plantCategory": "herb",
    "minSpace": 50,
    "maxSpace": 50,
@@ -967,6 +1036,7 @@
  },
  {
    "cropName": "Salsify",
+   "suitableMonth": "January,February,March,September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 20,
@@ -981,6 +1051,7 @@
  },
  {
    "cropName": "Savory - summer",
+   "suitableMonth": "October,November",
    "plantCategory": "herb",
    "minSpace": 25,
    "maxSpace": 25,
@@ -995,6 +1066,7 @@
  },
  {
    "cropName": "Savory - winter",
+   "suitableMonth": "September,October",
    "plantCategory": "herb",
    "minSpace": 30,
    "maxSpace": 40,
@@ -1009,6 +1081,7 @@
  },
  {
    "cropName": "Shallots",
+   "suitableMonth": "February,March,April,May,June,July,August,September",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 20,
@@ -1023,6 +1096,7 @@
  },
  {
    "cropName": "Silverbeet",
+   "suitableMonth": "January,February,March,April,May,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 30,
@@ -1037,6 +1111,7 @@
  },
  {
    "cropName": "Snow Peas",
+   "suitableMonth": " April,May,September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 7,
    "maxSpace": 10,
@@ -1051,6 +1126,7 @@
  },
  {
    "cropName": "Spinach",
+   "suitableMonth": "October,November",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 30,
@@ -1065,6 +1141,7 @@
  },
  {
    "cropName": "Spring onions",
+   "suitableMonth": "August,September,October",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 38,
@@ -1079,6 +1156,7 @@
  },
  {
    "cropName": "Squash",
+   "suitableMonth": "August,September",
    "plantCategory": "vegetable",
    "minSpace": 60,
    "maxSpace": 78,
@@ -1093,6 +1171,7 @@
  },
  {
    "cropName": "Strawberries (from seeds)",
+   "suitableMonth": "July,August,September",
    "plantCategory": "vegetable",
    "minSpace": 30,
    "maxSpace": 99,
@@ -1107,6 +1186,7 @@
  },
  {
    "cropName": "Strawberry Plants",
+   "suitableMonth": "July,August,September",
    "plantCategory": "vegetable",
    "minSpace": 30,
    "maxSpace": 99,
@@ -1121,6 +1201,7 @@
  },
  {
    "cropName": "Sunflower",
+   "suitableMonth": "January,August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 30,
@@ -1135,6 +1216,7 @@
  },
  {
    "cropName": "Sweet corn",
+   "suitableMonth": "January,February,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 30,
@@ -1149,6 +1231,7 @@
  },
  {
    "cropName": "Sweet Marjoram",
+   "suitableMonth": "June,July,September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 20,
    "maxSpace": 20,
@@ -1163,6 +1246,7 @@
  },
  {
    "cropName": "Sweet Potato",
+   "suitableMonth": "November,December",
    "plantCategory": "vegetable",
    "minSpace": 40,
    "maxSpace": 60,
@@ -1177,6 +1261,7 @@
  },
  {
    "cropName": "Taro",
+   "suitableMonth": "(Not recommended for growing in Australia)",
    "plantCategory": "vegetable",
    "minSpace": 78,
    "maxSpace": 78,
@@ -1191,6 +1276,7 @@
  },
  {
    "cropName": "Thyme",
+   "suitableMonth": "September,October,November",
    "plantCategory": "herb",
    "minSpace": 25,
    "maxSpace": 30,
@@ -1205,6 +1291,7 @@
  },
  {
    "cropName": "Tomatillo",
+   "suitableMonth": "September,November,December",
    "plantCategory": "vegetable",
    "minSpace": 71,
    "maxSpace": 71,
@@ -1219,6 +1306,7 @@
  },
  {
    "cropName": "Tomato",
+   "suitableMonth": "August,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 40,
    "maxSpace": 60,
@@ -1233,6 +1321,7 @@
  },
  {
    "cropName": "Turnip",
+   "suitableMonth": "January,February,March,April,May,September,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 30,
    "maxSpace": 50,
@@ -1247,6 +1336,7 @@
  },
  {
    "cropName": "Watermelon",
+   "suitableMonth": "August,October,November,December",
    "plantCategory": "vegetable",
    "minSpace": 60,
    "maxSpace": 76,
@@ -1261,6 +1351,7 @@
  },
  {
    "cropName": "Yacon",
+   "suitableMonth": "October,November",
    "plantCategory": "vegetable",
    "minSpace": 99,
    "maxSpace": 99,
@@ -1275,6 +1366,7 @@
  },
  {
    "cropName": "Zucchini",
+   "suitableMonth": "January,September,November,December",
    "plantCategory": "vegetable",
    "minSpace": 50,
    "maxSpace": 88,

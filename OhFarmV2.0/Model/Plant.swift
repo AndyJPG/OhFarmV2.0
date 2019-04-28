@@ -14,6 +14,7 @@ class Plant: NSObject, NSCoding {
     //MARK: Variable
     let cropName: String
     let plantCategory: String
+    let suitableMonth: String
     let minSpacing: Int
     let maxSpacing: Int
     let minHarvestTime: Int
@@ -33,6 +34,7 @@ class Plant: NSObject, NSCoding {
     struct PropertyKey {
         static let name = "name"
         static let plantCategory = "plantCategory"
+        static let suitableMonth = "suitableMonth"
         static let minSpace = "minSpace"
         static let maxSpace = "maxSpace"
         static let minHarvest = "minHarvest"
@@ -45,9 +47,10 @@ class Plant: NSObject, NSCoding {
         static let fertilizer = "fertilizer"
     }
     
-    init(cropName: String, plantCategory: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String) {
+    init(cropName: String, plantCategory: String, suitableMonth: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String) {
         self.cropName = cropName
         self.plantCategory = plantCategory
+        self.suitableMonth = suitableMonth
         self.minSpacing = minSpacing
         self.maxSpacing = maxSpacing
         self.minHarvestTime = minHarvestTime
@@ -74,9 +77,10 @@ class Plant: NSObject, NSCoding {
     }
     
     var plantInfoOne: [[String]] {
+        let month = getSuitableMonth
         let spacing = ["Spacing","\(minSpacing) cm - \(maxSpacing) cm"]
         let harvest = ["Harvest Time","\(minHarvestTime) weeks - \(maxHarvestTime) weeks"]
-        return [spacing,harvest]
+        return [month,spacing,harvest]
     }
     
     var plantingInfo: [[String]] {
@@ -141,10 +145,16 @@ class Plant: NSObject, NSCoding {
         return text
     }
     
+    var getSuitableMonth: [String] {
+        let month = suitableMonth.components(separatedBy: ",")
+        return month
+    }
+    
     //MARK: NSCoding
     func encode(with aCoder: NSCoder) {
         aCoder.encode(cropName, forKey: PropertyKey.name)
         aCoder.encode(plantCategory, forKey: PropertyKey.plantCategory)
+        aCoder.encode(suitableMonth, forKey: PropertyKey.suitableMonth)
         aCoder.encode(minSpacing, forKey: PropertyKey.minSpace)
         aCoder.encode(maxSpacing, forKey: PropertyKey.maxSpace)
         aCoder.encode(minHarvestTime, forKey: PropertyKey.minHarvest)
@@ -178,9 +188,10 @@ class Plant: NSObject, NSCoding {
         guard let plantStyle = aDecoder.decodeObject(forKey: PropertyKey.plantStyle) as? String else {return nil}
         guard let plantingTechnique = aDecoder.decodeObject(forKey: PropertyKey.plantingTechnique) as? String else {return nil}
         guard let fertilizer = aDecoder.decodeObject(forKey: PropertyKey.fertilizer) as? String else {return nil}
+        guard let suitableMonth = aDecoder.decodeObject(forKey: PropertyKey.suitableMonth) as? String else {return nil}
         
         // Must call designated initializer.
-        self.init(cropName: name, plantCategory: plantCategory, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTechnique, fertilizer: fertilizer)
+        self.init(cropName: name, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTechnique, fertilizer: fertilizer)
         
     }
     

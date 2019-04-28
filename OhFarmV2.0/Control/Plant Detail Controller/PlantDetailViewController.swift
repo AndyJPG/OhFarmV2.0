@@ -100,12 +100,14 @@ class PlantDetailViewController: UIViewController {
             user.favoritePlants.append(plant)
             localData.saveFavouritesPlants(user.favoritePlants)
             favouriteButton.image = UIImage(named: imageID.favouriteFill.rawValue)
+            favouriteAlert(plant.cropName, alertIndex: 0)
         } else {
             if let index = plantName.firstIndex(of: plant.cropName) {
                 user.favoritePlants.remove(at: index)
                 localData.saveFavouritesPlants(user.favoritePlants)
             }
             favouriteButton.image = UIImage(named: imageID.favourite.rawValue)
+            favouriteAlert(plant.cropName, alertIndex: 1)
         }
     }
     
@@ -206,6 +208,29 @@ extension PlantDetailViewController {
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                 self.dismiss(animated: true, completion: nil)
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    // Favourite alert
+    private func favouriteAlert(_ plant: String, alertIndex: Int) {
+        if alertIndex == 0 {
+            let alert = UIAlertController(title: "", message: "You have added \(plant) to your favourites", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+        
+        if alertIndex == 1 {
+            let alert = UIAlertController(title: "", message: "You have moved \(plant) from your favourites", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                
             }))
             
             present(alert, animated: true, completion: nil)

@@ -30,7 +30,14 @@ class DefaultPlantInfoTableViewCell: UITableViewCell {
         infoLabel.text = data[0]
         infoDetailLabel.text = data[1]
         infoIcon.contentMode = .scaleAspectFit
-        infoIcon.image = UIImage(named: data[0])
+        
+        if data[0] == "Compatiable Plants" {
+            infoIcon.image = UIImage(named: "compat")
+        } else if data[0] == "Avoid Plants" {
+            infoIcon.image = UIImage(named: "avoid")
+        } else {
+            infoIcon.image = UIImage(named: data[0])
+        }
     }
     
     func changeStylToBlack() {

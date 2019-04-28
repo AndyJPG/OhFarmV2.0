@@ -14,6 +14,14 @@
 		002E048522671FEA000871F5 /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E048422671FEA000871F5 /* MKPlacemark+Extension.swift */; };
 		00395DB42274322F00EC9293 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DB32274322F00EC9293 /* FavouriteTableViewCell.swift */; };
 		00395DB62274326A00EC9293 /* FavouriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DB52274326A00EC9293 /* FavouriteTableViewController.swift */; };
+		00395DB92275543C00EC9293 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DB82275543C00EC9293 /* LoginViewController.swift */; };
+		00395DBB2275667E00EC9293 /* MonthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00395DBA2275667E00EC9293 /* MonthCell.xib */; };
+		00395DBD22756A5000EC9293 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DBC22756A5000EC9293 /* MonthTableViewCell.swift */; };
+		00395DBF22757D6500EC9293 /* CompaPlantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00395DBE22757D6500EC9293 /* CompaPlantCell.xib */; };
+		00395DC122757FFD00EC9293 /* CompaPlantCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DC022757FFD00EC9293 /* CompaPlantCellTableViewCell.swift */; };
+		00395DC32275815A00EC9293 /* CellCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00395DC22275815A00EC9293 /* CellCollectionView.xib */; };
+		00395DC5227581B100EC9293 /* CompatPlantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DC4227581B100EC9293 /* CompatPlantCollectionViewCell.swift */; };
+		00395DC82275896300EC9293 /* NoResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DC72275896300EC9293 /* NoResultTableViewCell.swift */; };
 		00A77AF922700D940033ED8A /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77AF822700D940033ED8A /* PlantDetailViewController.swift */; };
 		00A77AFC22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */; };
 		00A77AFE22702B8E0033ED8A /* DefaultPlantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */; };
@@ -83,6 +91,14 @@
 		002E048422671FEA000871F5 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
 		00395DB32274322F00EC9293 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		00395DB52274326A00EC9293 /* FavouriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewController.swift; sourceTree = "<group>"; };
+		00395DB82275543C00EC9293 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		00395DBA2275667E00EC9293 /* MonthCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthCell.xib; sourceTree = "<group>"; };
+		00395DBC22756A5000EC9293 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
+		00395DBE22757D6500EC9293 /* CompaPlantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompaPlantCell.xib; sourceTree = "<group>"; };
+		00395DC022757FFD00EC9293 /* CompaPlantCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaPlantCellTableViewCell.swift; sourceTree = "<group>"; };
+		00395DC22275815A00EC9293 /* CellCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellCollectionView.xib; sourceTree = "<group>"; };
+		00395DC4227581B100EC9293 /* CompatPlantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatPlantCollectionViewCell.swift; sourceTree = "<group>"; };
+		00395DC72275896300EC9293 /* NoResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultTableViewCell.swift; sourceTree = "<group>"; };
 		00A77AF822700D940033ED8A /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
 		00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPlantInfoTableViewCell.swift; sourceTree = "<group>"; };
 		00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultPlantCell.xib; sourceTree = "<group>"; };
@@ -172,6 +188,17 @@
 			path = "Community Model";
 			sourceTree = "<group>";
 		};
+		00395DC62275874200EC9293 /* Compat plant cell */ = {
+			isa = PBXGroup;
+			children = (
+				00395DC4227581B100EC9293 /* CompatPlantCollectionViewCell.swift */,
+				00395DC22275815A00EC9293 /* CellCollectionView.xib */,
+				00395DC022757FFD00EC9293 /* CompaPlantCellTableViewCell.swift */,
+				00395DBE22757D6500EC9293 /* CompaPlantCell.xib */,
+			);
+			path = "Compat plant cell";
+			sourceTree = "<group>";
+		};
 		00A77AF722700D6E0033ED8A /* Plant Detail Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +212,9 @@
 		00A77AFA227027DC0033ED8A /* Plant Detail Model */ = {
 			isa = PBXGroup;
 			children = (
+				00395DC62275874200EC9293 /* Compat plant cell */,
+				00395DBC22756A5000EC9293 /* MonthTableViewCell.swift */,
+				00395DBA2275667E00EC9293 /* MonthCell.xib */,
 				00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */,
 				00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */,
 				00A77B122270A4CE0033ED8A /* PhotoSlide.swift */,
@@ -237,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				00C7137D226D88B800E1EA36 /* SearchPlantTableViewCell.swift */,
+				00395DC72275896300EC9293 /* NoResultTableViewCell.swift */,
 				00C7136A226B4CB600E1EA36 /* FilterCategoryTableViewCell.swift */,
 				00C7136C226B4CC600E1EA36 /* FilterLocationTableViewCell.swift */,
 				00C71370226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift */,
@@ -328,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				00A77B0B22709E690033ED8A /* TabBarViewController.swift */,
+				00395DB82275543C00EC9293 /* LoginViewController.swift */,
 				00C71384226DE75600E1EA36 /* Home controller */,
 				00FCC0822271F46B00CD3D20 /* Profile Controller */,
 				00A77AF722700D6E0033ED8A /* Plant Detail Controller */,
@@ -502,12 +534,15 @@
 			files = (
 				00A77B21227156180033ED8A /* PlantAvoidCell.xib in Resources */,
 				00C7137A226CB7F500E1EA36 /* plantData.json in Resources */,
+				00395DC32275815A00EC9293 /* CellCollectionView.xib in Resources */,
 				00DA8630226453F200049557 /* LaunchScreen.storyboard in Resources */,
+				00395DBF22757D6500EC9293 /* CompaPlantCell.xib in Resources */,
 				00DA862D226453F200049557 /* Assets.xcassets in Resources */,
 				00A77B1C227141650033ED8A /* AvoidCompanionSlide.xib in Resources */,
 				00A77AFE22702B8E0033ED8A /* DefaultPlantCell.xib in Resources */,
 				00DA862B226453F100049557 /* Main.storyboard in Resources */,
 				00A77B112270A36D0033ED8A /* PhotoSlide.xib in Resources */,
+				00395DBB2275667E00EC9293 /* MonthCell.xib in Resources */,
 				002E047C22671B27000871F5 /* communityFarmData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +636,7 @@
 				00C7136D226B4CC600E1EA36 /* FilterLocationTableViewCell.swift in Sources */,
 				00C71366226AFF5F00E1EA36 /* FilterTableViewController.swift in Sources */,
 				00C71383226DE6E100E1EA36 /* HomeFarmTableViewCell.swift in Sources */,
+				00395DBD22756A5000EC9293 /* MonthTableViewCell.swift in Sources */,
 				00C71374226BF56500E1EA36 /* RangeSeekSlider.swift in Sources */,
 				00A77B1A227141550033ED8A /* AvoidCompanionSlide.swift in Sources */,
 				00C7137C226CBD2100E1EA36 /* NetworkHandler.swift in Sources */,
@@ -613,6 +649,7 @@
 				00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */,
 				00A77B1E227154400033ED8A /* PlantAvoidTableViewCell.swift in Sources */,
 				00FCC0892271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift in Sources */,
+				00395DB92275543C00EC9293 /* LoginViewController.swift in Sources */,
 				00C71368226AFF8900E1EA36 /* PlantSearchTableViewController.swift in Sources */,
 				00FCC0872271F52700CD3D20 /* ProfileTopTableViewCell.swift in Sources */,
 				00395DB42274322F00EC9293 /* FavouriteTableViewCell.swift in Sources */,
@@ -624,14 +661,17 @@
 				00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */,
 				00A77B02227032CD0033ED8A /* PlantInfoOneTableViewController.swift in Sources */,
 				00A77AF922700D940033ED8A /* PlantDetailViewController.swift in Sources */,
+				00395DC82275896300EC9293 /* NoResultTableViewCell.swift in Sources */,
 				00C71380226DDCF200E1EA36 /* User.swift in Sources */,
 				00C7137E226D88B800E1EA36 /* SearchPlantTableViewCell.swift in Sources */,
 				00C71376226BF59D00E1EA36 /* RangeSeekSliderDelegate.swift in Sources */,
+				00395DC122757FFD00EC9293 /* CompaPlantCellTableViewCell.swift in Sources */,
 				00A79F2B2273164D008D4424 /* SettingTableViewCell.swift in Sources */,
 				00DA8624226453F100049557 /* AppDelegate.swift in Sources */,
 				002E048322671F92000871F5 /* LocationManager.swift in Sources */,
 				00A77B23227181860033ED8A /* LocalData.swift in Sources */,
 				00C7136B226B4CB700E1EA36 /* FilterCategoryTableViewCell.swift in Sources */,
+				00395DC5227581B100EC9293 /* CompatPlantCollectionViewCell.swift in Sources */,
 				00C7135C226ADD6700E1EA36 /* SearchPlantUI.swift in Sources */,
 				002E048022671EA8000871F5 /* SuggestionsTableTableViewController.swift in Sources */,
 				00DA864B22646CE800049557 /* Community.swift in Sources */,

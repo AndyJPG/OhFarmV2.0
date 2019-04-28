@@ -14,7 +14,11 @@ class FilterCategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var bothButton: UIButton!
     @IBOutlet weak var vegetableButton: UIButton!
     @IBOutlet weak var herbButton: UIButton!
-
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var bothLabel: UILabel!
+    @IBOutlet weak var vegetableLabel: UILabel!
+    @IBOutlet weak var herbLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,6 +32,8 @@ class FilterCategoryTableViewCell: UITableViewCell {
     }
     
     private func setimage() {
+        categoryLabel.text = "Category"
+        categoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         bothButton.setImage(UIImage(named: "both"), for: .normal)
         bothButton.setImage(UIImage(named: "bothFill"), for: .selected)
         vegetableButton.setImage(UIImage(named: "veg"), for: .normal)

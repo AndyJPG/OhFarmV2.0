@@ -25,11 +25,17 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if user.userName == "User" {
+            performSegue(withIdentifier: segueID.LoginPageSegue.rawValue, sender: self)
+        }
+        
         setUpAppearance()
     }
     
     enum segueID: String {
         case HomeToDetailSegue
+        case LoginPageSegue
+        case unwindToHomeSegue
     }
     
     // Keep updating the table
@@ -125,6 +131,15 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func unwindToHomeVC(sender: UIStoryboardSegue) {
+        if sender.identifier == segueID.unwindToHomeSegue.rawValue {
+            guard let loginVC = sender.source as? LoginViewController else {return}
+            if !loginVC.name.isEmpty {
+                user.userName = loginVC.name
+            }
+            tableView.reloadData()
+        }
+    }
 
     
     // MARK: Appearance methods

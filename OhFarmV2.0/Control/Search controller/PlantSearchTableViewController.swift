@@ -71,20 +71,36 @@ class PlantSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if plants.count == 0 {
+            return 1
+        }
         return plants.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
-        let plant = plants[indexPath.row]
+        var cell = UITableViewCell()
         
-        guard let uiCell = plantTableUI.searchPlantCell(cell, plant: plant) as? SearchPlantTableViewCell else {fatalError()}
+        if plants.count == 0 {
+            guard let noResultCell = tableView.dequeueReusableCell(withIdentifier: "NoResultCell", for: indexPath) as? NoResultTableViewCell else {fatalError()}
+            let searchText = searchController.searchBar.text ?? "the plant"
+            noResultCell.selectionStyle = .none
+            noResultCell.backgroundColor = .clear
+            noResultCell.noResultLabel.text = "Sorry we can't find \(searchText)"
+            cell = noResultCell
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
+            let plant = plants[indexPath.row]
+            
+            guard let uiCell = plantTableUI.searchPlantCell(cell, plant: plant) as? SearchPlantTableViewCell else {fatalError()}
+            
+            uiCell.plusButton.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
+            uiCell.plusButton.tag =  indexPath.row
+            
+            cell = uiCell
+        }
         
-        uiCell.plusButton.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
-        uiCell.plusButton.tag =  indexPath.row
-        
-        return uiCell
+        return cell
     }
     
     //MARK: Main functions

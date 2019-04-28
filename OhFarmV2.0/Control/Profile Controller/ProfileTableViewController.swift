@@ -138,6 +138,7 @@ class ProfileTableViewController: UITableViewController {
     
     //MAKR: Action
     @objc private func changeName(_ sender: UITapGestureRecognizer) {
+        print(sender)
         changeNameAlert()
     }
     
