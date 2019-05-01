@@ -32,9 +32,42 @@ class NetworkHandler {
             guard let plantingTech = dic["plantingTechnique"] as? String else {fatalError()}
             guard let fertilizer = dic["fertilizerName"] as? String else {fatalError()}
 
-            plants.append(Plant(cropName: cropName, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpacing, maxSpacing: maxSpacing, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTech, fertilizer: fertilizer))
+            plants.append(Plant(cropName: cropName, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpacing, maxSpacing: maxSpacing, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTech, fertilizer: fertilizer, compPlantList: [], avoidPlantList: []))
         }
         return plants
+    }
+    
+    // Add compa and avoid plant
+    func completeData(_ plants: [Plant]) -> [Plant] {
+                
+        for plant in plants {
+            if plant.getCompatiable[0].lowercased() != "none" {
+                let compatPlantString = plant.getCompatiable.map({ (name) -> String in
+                    return name.lowercased()
+                })
+                
+                let compaPlants = plants.filter { (plant) -> Bool in
+                    compatPlantString.contains(where: plant.cropName.lowercased().contains)
+                }
+                
+                plant.compPlantList = compaPlants
+            }
+            
+            if plant.getAvoid[0].lowercased() != "none" {
+                let avoidPlantString = plant.getAvoid.map({ (name) -> String in
+                    return name.lowercased()
+                })
+                
+                let avoidPlants = plants.filter { (plant) -> Bool in
+                    avoidPlantString.contains(where: plant.cropName.lowercased().contains)
+                }
+                
+                plant.avoidPlantList = avoidPlants
+            }
+        }
+        
+        return plants
+        
     }
     
 }

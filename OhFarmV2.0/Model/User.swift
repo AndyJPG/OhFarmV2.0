@@ -27,9 +27,9 @@ class User: NSObject, NSCoding {
         static let image = "profileImage"
     }
     
-    init(name: String, userImage: UIImage?) {
+    init(name: String, userImage: UIImage) {
         self.userName = name
-        self.userImage = userImage ?? UIImage()
+        self.userImage = userImage
     }
     
     //MARK: NSCoding

@@ -29,6 +29,10 @@ class MapViewController: UIViewController {
         
         if let region = boundingRegion {
             mapView.region = region
+        } else {
+            let initialLocation = CLLocation(latitude: -37.8136, longitude: 144.9631)
+            let coordinateRegion = MKCoordinateRegion(center: initialLocation.coordinate,latitudinalMeters: 20000, longitudinalMeters: 20000)
+            mapView.setRegion(coordinateRegion, animated: true)
         }
         mapView.delegate = self
         

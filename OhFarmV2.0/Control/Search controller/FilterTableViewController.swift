@@ -42,6 +42,12 @@ class FilterTableViewController: UITableViewController {
         addBottomButton()
         setupApearance()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
     
@@ -107,9 +113,8 @@ class FilterTableViewController: UITableViewController {
             spacingCell.rangeSlider.tag = 0
             spacingCell.rangeSlider.selectedMinValue = CGFloat(filter.minSpacing)
             spacingCell.rangeSlider.selectedMaxValue = CGFloat(filter.maxSpacing)
-            
-            if filter.minSpacing != 0 && filter.maxSpacing != 200 {
-                spacingCell.valueLabel.text = "\(filter.minSpacing) cm to \(filter.maxHarvest)"
+            if filter.minSpacing != 0 || filter.maxSpacing != 200 {
+                spacingCell.valueLabel.text = "\(filter.minSpacing) cm to \(filter.maxSpacing) cm"
             } else {
                 spacingCell.valueLabel.text = "Any Spacing"
             }
@@ -125,7 +130,7 @@ class FilterTableViewController: UITableViewController {
             harvestCell.rangeSlider.selectedMinValue = CGFloat(filter.minHarvest)
             harvestCell.rangeSlider.selectedMaxValue = CGFloat(filter.maxHarvest)
             
-            if filter.minHarvest != 0 && filter.maxHarvest != 200 {
+            if filter.minHarvest != 0 || filter.maxHarvest != 200 {
                 harvestCell.valueLabel.text = "\(filter.minHarvest) weeks to \(filter.maxHarvest) weeks"
             } else {
                 harvestCell.valueLabel.text = "Any Time"

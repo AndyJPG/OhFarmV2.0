@@ -29,44 +29,7 @@ class Plant: NSObject, NSCoding {
     var compPlantList: [Plant] = []
     var avoidPlantList: [Plant] = []
     
-    //MARK: Archiving Paths
-    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("plants")
-    
-    //MARK: Types
-    struct PropertyKey {
-        static let name = "name"
-        static let plantCategory = "plantCategory"
-        static let suitableMonth = "suitableMonth"
-        static let minSpace = "minSpace"
-        static let maxSpace = "maxSpace"
-        static let minHarvest = "minHarvest"
-        static let maxHarvest = "maxHarvest"
-        static let compatiblePlants = "compatiblePlants"
-        static let avoidInstructions = "avoidInstructions"
-        static let culinaryHints = "culinaryHints"
-        static let plantStyle = "plantStyle"
-        static let plantingTechnique = "plantingTechnique"
-        static let fertilizer = "fertilizer"
-    }
-    
-    init(cropName: String, plantCategory: String, suitableMonth: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String) {
-        self.cropName = cropName
-        self.plantCategory = plantCategory
-        self.suitableMonth = suitableMonth
-        self.minSpacing = minSpacing
-        self.maxSpacing = maxSpacing
-        self.minHarvestTime = minHarvestTime
-        self.maxHarvestTime = maxHarvestTime
-        self.plantStyle = plantStyle
-        self.fertilizer = fertilizer
-        self.compatiblePlants = compatiblePlants
-        self.avoidInstructions = avoidInstructions
-        self.culinaryHints = culinaryHints
-        self.plantingTechnique = plantingTechnique
-    }
-    
-    
+    //MARK: Return variable
     var plantImage: UIImage {
         return UIImage(named: cropName) ?? UIImage()
     }
@@ -143,24 +106,68 @@ class Plant: NSObject, NSCoding {
         let info = culinaryHints.components(separatedBy: ", ")
         var text = ""
         for hint in info {
-            text += "- \(hint)\n"
+            text += "\u{2022} \(hint)\n"
         }
         return text
     }
     
+    //Get suitable month string
     var getSuitableMonth: [String] {
         let month = suitableMonth.components(separatedBy: ",")
         return month
     }
     
+    //Get compatible plant only string
     var getCompatiable: [String] {
         let compat = compatiblePlants.components(separatedBy: ", ")
         return compat
     }
     
+    //Get avoid plant only string
     var getAvoid: [String] {
         let avoid = avoidInstructions.components(separatedBy: ", ")
         return avoid
+    }
+    
+    //MARK: Archiving Paths
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("plants")
+    
+    //MARK: Types
+    struct PropertyKey {
+        static let name = "name"
+        static let plantCategory = "plantCategory"
+        static let suitableMonth = "suitableMonth"
+        static let minSpace = "minSpace"
+        static let maxSpace = "maxSpace"
+        static let minHarvest = "minHarvest"
+        static let maxHarvest = "maxHarvest"
+        static let compatiblePlants = "compatiblePlants"
+        static let avoidInstructions = "avoidInstructions"
+        static let culinaryHints = "culinaryHints"
+        static let plantStyle = "plantStyle"
+        static let plantingTechnique = "plantingTechnique"
+        static let fertilizer = "fertilizer"
+        static let compPlantList = "compatiblePlant"
+        static let avoidPlantList = "avoidPlantList"
+    }
+    
+    init(cropName: String, plantCategory: String, suitableMonth: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String, compPlantList: [Plant]?, avoidPlantList: [Plant]?) {
+        self.cropName = cropName
+        self.plantCategory = plantCategory
+        self.suitableMonth = suitableMonth
+        self.minSpacing = minSpacing
+        self.maxSpacing = maxSpacing
+        self.minHarvestTime = minHarvestTime
+        self.maxHarvestTime = maxHarvestTime
+        self.plantStyle = plantStyle
+        self.fertilizer = fertilizer
+        self.compatiblePlants = compatiblePlants
+        self.avoidInstructions = avoidInstructions
+        self.culinaryHints = culinaryHints
+        self.plantingTechnique = plantingTechnique
+        self.compPlantList = compPlantList ?? []
+        self.avoidPlantList = avoidPlantList ?? []
     }
     
     //MARK: NSCoding
@@ -178,6 +185,9 @@ class Plant: NSObject, NSCoding {
         aCoder.encode(plantStyle, forKey: PropertyKey.plantStyle)
         aCoder.encode(plantingTechnique, forKey: PropertyKey.plantingTechnique)
         aCoder.encode(fertilizer, forKey: PropertyKey.fertilizer)
+        
+        aCoder.encode(compPlantList, forKey: PropertyKey.compPlantList)
+        aCoder.encode(avoidPlantList, forKey: PropertyKey.avoidPlantList)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -203,8 +213,12 @@ class Plant: NSObject, NSCoding {
         guard let fertilizer = aDecoder.decodeObject(forKey: PropertyKey.fertilizer) as? String else {return nil}
         guard let suitableMonth = aDecoder.decodeObject(forKey: PropertyKey.suitableMonth) as? String else {return nil}
         
+        guard let compPlants = aDecoder.decodeObject(forKey: PropertyKey.compPlantList) as? [Plant] else {return nil}
+        guard let avoidPlants = aDecoder.decodeObject(forKey: PropertyKey.avoidPlantList) as? [Plant] else {return nil}
+        
+        
         // Must call designated initializer.
-        self.init(cropName: name, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTechnique, fertilizer: fertilizer)
+        self.init(cropName: name, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTechnique, fertilizer: fertilizer, compPlantList: compPlants, avoidPlantList: avoidPlants)
         
     }
     

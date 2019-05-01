@@ -95,7 +95,7 @@ class ProfileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-                self.tabBarController?.selectedIndex = 2
+                self.tabBarController?.selectedIndex = 1
             } else {
                 performSegue(withIdentifier: segueID.favouritePlantSegue.rawValue, sender: self)
             }
@@ -125,6 +125,7 @@ class ProfileTableViewController: UITableViewController {
             print("back from setting")
             if settingVC.restore {
                 user.userName = "First User"
+                user.userImage = UIImage(named: "userProfile")!
                 user.farmPlants = []
                 user.favoritePlants = []
                 localData.saveUserInfo(user)

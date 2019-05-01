@@ -59,7 +59,7 @@ class PlantSearchTableViewController: UITableViewController {
             filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200])
         }
         
-        originalPlants = networkHandler.fetchPlantData()
+//        originalPlants = networkHandler.fetchPlantData()
         
         setUpAppearance()
         setUpSearchBar()
@@ -87,6 +87,9 @@ class PlantSearchTableViewController: UITableViewController {
             noResultCell.selectionStyle = .none
             noResultCell.backgroundColor = .clear
             noResultCell.noResultLabel.text = "Sorry we can't find \(searchText)"
+            if searchText.isEmpty {
+                noResultCell.noResultLabel.text = "Sorry we can't find anything with the input filter"
+            }
             cell = noResultCell
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
@@ -180,60 +183,9 @@ class PlantSearchTableViewController: UITableViewController {
             detailVC.user = user
             
             let selectedPlant = plants[indexPath.row]
-            if let compatPlant = setCompatAndAvoid(selectedPlant.getCompatiable) {
-                selectedPlant.compPlantList = compatPlant
-            }
-            if let avoidPlant = setCompatAndAvoid(selectedPlant.getAvoid) {
-                selectedPlant.avoidPlantList = avoidPlant
-            }
             
             detailVC.plant = selectedPlant
         }
-    }
-    
-    // Setup compatiable plant and avoid plant
-    private func setCompatAndAvoid(_ plant: [String]) -> [Plant]? {
-        
-        var list = [Plant]()
-
-        if plant[0].lowercased() == "none" {
-            return nil
-        }
-
-        for originalP in originalPlants {
-            for name in plant {
-                if originalP.cropName.lowercased().contains(name.lowercased()) {
-                    list.append(originalP)
-                }
-            }
-        }
-        
-//        var pIndex = 0
-//        var oIndex = 0
-//        var list = [Plant]()
-//        var plantName = plant.sorted()
-//        print(plant)
-//        print(originalPlants)
-//        print(originalPlants.count)
-//        while pIndex < plant.count && oIndex < originalPlants.count {
-//            print(" plant \(pIndex)")
-//            print(oIndex)
-//            if originalPlants[oIndex].cropName.lowercased().contains(plantName[pIndex].lowercased()) {
-//                list.append(originalPlants[oIndex])
-//                pIndex += 1
-//                oIndex += 1
-//            } else {
-//                oIndex += 1
-//            }
-//        }
-//        print(plant.sorted())
-//        print(list)
-//        let a = list.map { (plant: Plant) -> String in
-//            return plant.cropName
-//        }
-//        print(a)
-        
-        return list
     }
     
     // Pass back filter object
@@ -244,7 +196,6 @@ class PlantSearchTableViewController: UITableViewController {
             applyFilter()
         }
     }
-    
     
     
     // MARK: Appearence

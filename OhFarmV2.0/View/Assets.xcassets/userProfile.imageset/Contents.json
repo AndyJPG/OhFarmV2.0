@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "waterM.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "waterM.png",
       "scale" : "2x"
     },
     {

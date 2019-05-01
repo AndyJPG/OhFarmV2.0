@@ -12,8 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? nil)
+    var user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? UIImage())
     let localData = LocalData()
+    let netWork = NetworkHandler()
+    var plants = [Plant]()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -30,6 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             user.favoritePlants = favouritePlant
         }
         
+        let myGroup = DispatchGroup()
+        
+        //Thread to fetch and complete data
+        myGroup.enter()
+        plants = netWork.fetchPlantData()
+        plants = netWork.completeData(plants)
+        myGroup.leave()
+        
+        myGroup.notify(queue: .main) {
+            print("Finished complete data.")
+        }
+        
         // Override point for customization after application launch.
         //Share data across tab bar controllers
         guard let tabBarController = window?.rootViewController as? UITabBarController,
@@ -43,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     homeTableVC.user = user
                 } else if let searchTableVC = navigationController.topViewController as? PlantSearchTableViewController {
                     searchTableVC.user = user
+                    searchTableVC.originalPlants = plants
                 }
             }
             if let profileTableVC = viewController as? ProfileTableViewController {

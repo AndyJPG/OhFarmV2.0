@@ -18,6 +18,13 @@ class SettingTableViewController: UITableViewController {
     //MARK: Variable
     var restore = false
     var cells: [[Cell]] = []
+    
+    //Enum for cell name
+    enum cellName: String {
+        case lastLogin = "Last login day"
+        case timeZone = "Time zone"
+        case restore = "Restore app"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +54,7 @@ class SettingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath) as? SettingTableViewCell else {fatalError()}
         let cellInfo = cells[indexPath.section][indexPath.row]
-        if cellInfo.cellName == "Last login day" {
+        if cellInfo.cellName == cellName.lastLogin.rawValue || cellInfo.cellName == cellName.timeZone.rawValue {
             cell.arrowIcon.isHidden = true
             cell.selectionStyle = .none
         }
@@ -92,12 +99,11 @@ class SettingTableViewController: UITableViewController {
     }
     
     private func setupCells() {
-        let cell1 = Cell(cellName: "Last login day", cellValue: String(getCurrentDate().prefix(11)))
-        let cell2 = Cell(cellName: "Time zone", cellValue: getCurrentDate())
-        let cell3 = Cell(cellName: "Restore app", cellValue: "")
-        let cell4 = Cell(cellName: "Social Media", cellValue: "Comming soon")
+        let cell1 = Cell(cellName: cellName.lastLogin.rawValue, cellValue: String(getCurrentDate().prefix(11)))
+        let cell2 = Cell(cellName: cellName.timeZone.rawValue, cellValue: getCurrentDate())
+        let cell3 = Cell(cellName: cellName.restore.rawValue, cellValue: "")
         
-        cells = [[cell1,cell2],[cell3],[cell4]]
+        cells = [[cell1,cell2],[cell3]]
     }
     
     //MARK: Action

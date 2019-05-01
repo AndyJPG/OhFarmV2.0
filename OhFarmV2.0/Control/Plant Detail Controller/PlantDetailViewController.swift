@@ -40,6 +40,7 @@ class PlantDetailViewController: UIViewController {
         
         scrollView.delegate = self
         
+        //Create slides for plant photo
         slides = createSlides()
         setupSlideScrollView(slides: slides)
         
@@ -47,17 +48,19 @@ class PlantDetailViewController: UIViewController {
             addPlantButtonUI()
         }
         
+        //Create edge gesture for cancel action
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         view.addGestureRecognizer(edgePan)
         
         setUpAppearance()
+        
     }
-    
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // For transport data to slider view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "containerSegue" {
             guard let containerVC = segue.destination as? PlantInfoSlideViewController else {fatalError()}
@@ -67,6 +70,7 @@ class PlantDetailViewController: UIViewController {
     }
     
     // MARK: Action
+    //Add plant functions for add plant button
     @objc private func addPlant(_ sender: UIButton) {
         if isExist(user.farmPlants) {
             uiAlert(plant.cropName, alertIndex: 0)
@@ -77,18 +81,21 @@ class PlantDetailViewController: UIViewController {
         }
     }
     
+    //Create edge swipe recognizer
     @objc private func screenEdgeSwiped(_ sender: UIScreenEdgePanGestureRecognizer) {
         if sender.state == .recognized {
             dismiss(animated: true, completion: nil)
         }
     }
     
+    //Back button action
     @IBAction func backAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
     
     //MARK: Functions for favourite plant
+    //Add favourite plant function
     @IBAction func addToFavourite(_ sender: Any) {
         favourite = !favourite
         
@@ -111,6 +118,7 @@ class PlantDetailViewController: UIViewController {
         }
     }
     
+    //Check if the plant is already exsit
     private func isExist(_ list: [Plant]) -> Bool {
         
         let plantName = list.map { (plant: Plant) -> String in
@@ -139,6 +147,7 @@ class PlantDetailViewController: UIViewController {
         return [slide1, slide2, slide3]
     }
     
+    //Set up appearance for navigation bar
     private func setUpAppearance() {
         navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .white
@@ -148,6 +157,7 @@ class PlantDetailViewController: UIViewController {
         }
     }
     
+    // Set up slide scroll view for segmented section
     func setupSlideScrollView(slides: [PhotoSlide]) {
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
         scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: 200)

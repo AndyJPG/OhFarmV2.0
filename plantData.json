@@ -195,21 +195,6 @@
    "fertilizerName": "urea (45-50% N)"
  },
  {
-   "cropName": "Cape Gooseberry",
-   "suitableMonth": "August,September,October,November,December",
-   "plantCategory": "vegetable",
-   "minSpace": 50,
-   "maxSpace": 50,
-   "minHarvestTime": 14,
-   "maxHarvestTime": 16,
-   "compatiblePlants": "None",
-   "avoidInstructions": "None",
-   "culinaryHints": "Is very aromatic and full of tiny seeds, They are delicious eaten fresh or can be made into jam, They can be added to salads or desserts and cooked dishes, They are delicious stewed with other fruit, They also go well in savoury dishes with meat or seafood",
-   "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow in garden, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 25°C",
-   "fertilizerName": "urea (45-50% N)"
- },
- {
    "cropName": "Capsicum",
    "suitableMonth": "August,September",
    "plantCategory": "vegetable",
@@ -347,7 +332,7 @@
  {
    "cropName": "Chives",
    "suitableMonth": "June,July,October,November",
-   "plantCategory": "vegetable",
+   "plantCategory": "herb",
    "minSpace": 5,
    "maxSpace": 5,
    "minHarvestTime": 7,
@@ -586,7 +571,7 @@
  },
  {
    "cropName": "Ginger",
-   "suitableMonth": "(Not recommended for growing in Australia)",
+   "suitableMonth": "April,May,August,September,October,November",
    "plantCategory": "vegetable",
    "minSpace": 15,
    "maxSpace": 15,
@@ -1170,51 +1155,6 @@
    "fertilizerName": "Silicon dioxide(30%)"
  },
  {
-   "cropName": "Strawberries (from seeds)",
-   "suitableMonth": "July,August,September",
-   "plantCategory": "vegetable",
-   "minSpace": 30,
-   "maxSpace": 99,
-   "minHarvestTime": 52,
-   "maxHarvestTime": 52,
-   "compatiblePlants": "None",
-   "avoidInstructions": "tomato, potato, pepper, eggplant",
-   "culinaryHints": "Can be used in any dessert needing soft fruit or berries, Use with pudding with other berries, Use with mousse or trifle by dipping in melted chocolate or just with cream, Sprinkle a bowl of strawberries with balsamic vinegar and a little sugar to enhance the flavour and colour",
-   "plantStyle": "Indoor",
-   "plantingTechnique": "Start inside in pots or trays after chilling seeds, Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 20°C",
-   "fertilizerName": "Silicon dioxide(30%)"
- },
- {
-   "cropName": "Strawberry Plants",
-   "suitableMonth": "July,August,September",
-   "plantCategory": "vegetable",
-   "minSpace": 30,
-   "maxSpace": 99,
-   "minHarvestTime": 11,
-   "maxHarvestTime": 11,
-   "compatiblePlants": "None",
-   "avoidInstructions": "tomato, potato, pepper, eggplant",
-   "culinaryHints": "Pick and eat straight from the garden, Can be used in any dessert needing soft fruit or berries, Use with pudding with other berries, Use with mousse or trifle by dipping in melted chocolate or just with cream, Sprinkle a bowl of strawberries with balsamic vinegar and a little sugar to enhance the flavour and colour",
-   "plantStyle": "Outdoor",
-   "plantingTechnique": "Plant with crown (of roots) just covered,, Best planted at soil temperatures between 10°C and 20°C",
-   "fertilizerName": "Silicon dioxide(30%)"
- },
- {
-   "cropName": "Sunflower",
-   "suitableMonth": "January,August,September,October,November,December",
-   "plantCategory": "vegetable",
-   "minSpace": 20,
-   "maxSpace": 30,
-   "minHarvestTime": 10,
-   "maxHarvestTime": 11,
-   "compatiblePlants": "cucumber, Melons, Sweetcorn, Squash",
-   "avoidInstructions": "potato",
-   "culinaryHints": "Use seeds fresh or toasted",
-   "plantStyle": "Outdoor",
-   "plantingTechnique": "Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 10°C and 30°C",
-   "fertilizerName": "Magnesium-oxide(10%)"
- },
- {
    "cropName": "Sweet corn",
    "suitableMonth": "January,February,September,October,November,December",
    "plantCategory": "vegetable",
@@ -1261,7 +1201,7 @@
  },
  {
    "cropName": "Taro",
-   "suitableMonth": "(Not recommended for growing in Australia)",
+   "suitableMonth": "January,February,March,April",
    "plantCategory": "vegetable",
    "minSpace": 78,
    "maxSpace": 78,

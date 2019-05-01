@@ -34,7 +34,8 @@ class PlantInfoSlideViewController: ButtonBarPagerTabStripViewController {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let child_1 = PlantInfoOneTableViewController(style: .plain, itemInfo: "Sow", plant: plant, fromHome: isFromHome)
         let child_2 = PlantingInfoTableViewController(style: .plain, itemInfo: "Planting", plant: plant, fromHome: isFromHome)
-        let child_3 = CulinaryHintsViewController(itemInfo: "Hints", plant: plant)
+        let child_3 = HintsTableViewController(style: .plain, itemInfo: "Hints", plant: plant, fromHome: isFromHome)
+//        let child_3 = CulinaryHintsViewController(itemInfo: "Hints", plant: plant)
         
         guard isReload else {
             return [child_1, child_2, child_3]

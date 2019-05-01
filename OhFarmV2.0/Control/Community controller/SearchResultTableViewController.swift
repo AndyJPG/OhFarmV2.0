@@ -58,7 +58,7 @@ class SearchResultTableViewController: UITableViewController {
         searchController.searchBar.isUserInteractionEnabled = false
         searchController.searchBar.alpha = 0.5
         
-        viewAllButton.isEnabled = false
+        viewAllButton.isEnabled = true
         
         locationManagerObserver = locationManager.observe(\LocationManager.currentLocation) { [weak self] (_, _) in
             if let location = self?.locationManager.currentLocation {
