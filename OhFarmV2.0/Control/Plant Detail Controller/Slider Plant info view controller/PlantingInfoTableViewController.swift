@@ -12,6 +12,7 @@ import XLPagerTabStrip
 class PlantingInfoTableViewController: UITableViewController, IndicatorInfoProvider {
     
     //MARK: Variable
+    var selectedPlant = String()
     var plant: Plant!
     var isFromHome: Bool!
     var blackTheme = false
@@ -136,7 +137,12 @@ extension PlantingInfoTableViewController: UICollectionViewDelegate, UICollectio
     
     //TO DO: Need to implement how to interact with collection cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        if collectionView.tag == 0 {
+            selectedPlant = plant.avoidPlantList[indexPath.row]
+        } else {
+            selectedPlant = plant.compPlantList[indexPath.row]
+        }
+//        performSegue(withIdentifier: "unwindFromDetailSegue", sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

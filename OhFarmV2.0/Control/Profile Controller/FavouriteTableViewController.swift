@@ -18,6 +18,11 @@ class FavouriteTableViewController: UITableViewController {
         super.viewDidLoad()
 
         setUpAppearance()
+        
+        //Create edge gesture for cancel action
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        view.addGestureRecognizer(edgePan)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +50,7 @@ class FavouriteTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "favouriteToDetailSegue", sender: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Navigation
@@ -58,9 +64,16 @@ class FavouriteTableViewController: UITableViewController {
         }
     }
     
-    
+    //MARK: Actions
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    //Create edge swipe recognizer
+    @objc private func screenEdgeSwiped(_ sender: UIScreenEdgePanGestureRecognizer) {
+        if sender.state == .recognized {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     

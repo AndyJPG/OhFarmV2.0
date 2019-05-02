@@ -50,7 +50,11 @@ class NetworkHandler {
                     compatPlantString.contains(where: plant.cropName.lowercased().contains)
                 }
                 
-                plant.compPlantList = compaPlants
+                let compaPlantName = compaPlants.map { (plant) -> String in
+                    return plant.cropName
+                }
+                
+                plant.compPlantList = compaPlantName
             }
             
             if plant.getAvoid[0].lowercased() != "none" {
@@ -62,7 +66,11 @@ class NetworkHandler {
                     avoidPlantString.contains(where: plant.cropName.lowercased().contains)
                 }
                 
-                plant.avoidPlantList = avoidPlants
+                let avoidPlantName = avoidPlants.map { (plant) -> String in
+                    return plant.cropName
+                }
+                
+                plant.avoidPlantList = avoidPlantName
             }
         }
         

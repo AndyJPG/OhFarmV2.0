@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? UIImage())
+    var user: User?
     let localData = LocalData()
     let netWork = NetworkHandler()
     var plants = [Plant]()
@@ -22,14 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //MARK: Retrieve data
         if let userInfo = localData.loadUser() {
             user = userInfo[0]
-        }
-        
-        if let plantData = localData.loadPlants() {
-            user.farmPlants = plantData
-        }
-        
-        if let favouritePlant = localData.loadFavouritesPlants() {
-            user.favoritePlants = favouritePlant
+        } else {
+            user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? UIImage(), farm: [], favourite: [])
         }
         
         let myGroup = DispatchGroup()

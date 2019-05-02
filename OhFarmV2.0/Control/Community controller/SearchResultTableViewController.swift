@@ -55,6 +55,7 @@ class SearchResultTableViewController: UITableViewController {
         searchController = UISearchController(searchResultsController: suggestionController)
         searchController.searchResultsUpdater = suggestionController
         
+        searchController.searchBar.placeholder = "Search your location"
         searchController.searchBar.isUserInteractionEnabled = false
         searchController.searchBar.alpha = 0.5
         

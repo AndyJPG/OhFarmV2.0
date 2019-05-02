@@ -31,11 +31,17 @@ class FilterTableViewController: UITableViewController {
     
     //MARK: Variable
     
+    var orginFilter: Filter!
     var filter: Filter!
     var searchUi = SearchPlantUI()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Track orginal filter for cancel button action
+        if orginFilter == nil {
+            orginFilter = Filter([[filter.category],[filter.location],filter.minSpacing,filter.maxSpacing,filter.minHarvest,filter.maxHarvest])
+        }
         
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 55))
         
@@ -210,12 +216,15 @@ class FilterTableViewController: UITableViewController {
         }
     }
     
+    //apply filter action
     @objc func bottomButtonAction(_ sender: UIButton) {
         performSegue(withIdentifier: "filterUnwindSegue", sender: self)
     }
     
+    //Cancel action
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        filter = orginFilter
+        performSegue(withIdentifier: "filterUnwindSegue", sender: self)
     }
     
     @IBAction func resetAction(_ sender: UIBarButtonItem) {

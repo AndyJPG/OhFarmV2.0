@@ -1163,7 +1163,7 @@
    "minHarvestTime": 11,
    "maxHarvestTime": 14,
    "compatiblePlants": "Dwarfbeans, climbingbeans, Broadbeans, cucumber, melons, peas, pumpkin, squash, amaranth",
-   "avoidInstructions": "Celery.",
+   "avoidInstructions": "Celery",
    "culinaryHints": "Pick and cook within an hour, Remove the silks and outer leaves, Best flavour if microwave about 4 minutes per cob, Can be barbequed wrapped in foil, Cook large amounts in a stock pot until test soft, Sprinkle with black pepper and dip in butter",
    "plantStyle": "Outdoor",
    "plantingTechnique": "Sow seed at a depth approximately three times the diameter of the seed, Best planted at soil temperatures between 16°C and 35°C",

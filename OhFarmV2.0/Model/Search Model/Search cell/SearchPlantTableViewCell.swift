@@ -27,6 +27,15 @@ class SearchPlantTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        if selected {
+            UIView.animate(withDuration: 1.0) {
+                self.cellBackground.backgroundColor = .lightGray
+            }
+        } else {
+            UIView.animate(withDuration: 1.0) {
+                self.cellBackground.backgroundColor = .white
+            }
+        }
     }
 
 }

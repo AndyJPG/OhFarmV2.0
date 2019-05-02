@@ -35,6 +35,11 @@ class SettingTableViewController: UITableViewController {
         let backgroundImage = UIImageView(image: UIImage(named: "background"))
         backgroundImage.contentMode = .scaleAspectFill
         tableView.backgroundView = backgroundImage
+        
+        //Create edge gesture for cancel action
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        view.addGestureRecognizer(edgePan)
     }
 
     // MARK: - Table view data source
@@ -108,7 +113,14 @@ class SettingTableViewController: UITableViewController {
     
     //MARK: Action
     @IBAction func backButton(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToProfileSegue", sender: self)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //Create edge swipe recognizer
+    @objc private func screenEdgeSwiped(_ sender: UIScreenEdgePanGestureRecognizer) {
+        if sender.state == .recognized {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     //MARK: Delete pop up confirmation
@@ -118,6 +130,7 @@ class SettingTableViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (_) in
             self.restore = true
+            self.performSegue(withIdentifier: "unwindToProfileSegue", sender: self)
         }))
         
         alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.destructive, handler: { (_) in

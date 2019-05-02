@@ -25,7 +25,7 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         
         if user.userName == "First User" {
-            performSegue(withIdentifier: segueID.LoginPageSegue.rawValue, sender: self)
+            performSegue(withIdentifier: segueID.tutorialSegue.rawValue, sender: self)
         }
         
         setUpAppearance()
@@ -33,7 +33,7 @@ class HomeTableViewController: UITableViewController {
     
     enum segueID: String {
         case HomeToDetailSegue
-        case LoginPageSegue
+        case tutorialSegue
         case unwindToHomeSegue
     }
     
@@ -70,6 +70,10 @@ class HomeTableViewController: UITableViewController {
         return plantCell
     }
     
+    //give click feedback
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -149,12 +153,6 @@ class HomeTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .white
-        
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addPlantTap(_:)))
-//        addPlantImage = homeTableUI.addPlantImage()
-//        addPlantImage.isUserInteractionEnabled = true
-//        addPlantImage.addGestureRecognizer(tapGestureRecognizer)
-//        tableView.addSubview(addPlantImage)
     }
     
     private func updateAppearance() {
@@ -164,10 +162,8 @@ class HomeTableViewController: UITableViewController {
         image2.contentMode = .scaleAspectFill
         if plants.isEmpty {
             tableView.backgroundView = image2
-//            addPlantImage.isHidden = false
         } else {
             tableView.backgroundView = image
-//            addPlantImage.isHidden = true
         }
         
     }
@@ -179,7 +175,7 @@ class HomeTableViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (_) in
             self.user.farmPlants.remove(at: indexPath.row)
-            self.localData.savePlants(self.user.farmPlants)
+            self.localData.saveUserInfo(self.user)
             
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             if self.plants.isEmpty {

@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
         
         let label = UILabel(frame: CGRect(x: 24, y: 111, width: contentView.frame.width-48, height: 86))
         label.numberOfLines = 0
-        label.text = "Hello!\nWelcome to Oh! Farm."
+        label.text = "\nWelcome to Oh! Farm."
         label.textColor = .white
         label.font = UIFont(name: "Helvetica", size: 30)
         

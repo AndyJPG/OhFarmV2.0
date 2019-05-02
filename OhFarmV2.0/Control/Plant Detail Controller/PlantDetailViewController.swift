@@ -23,6 +23,8 @@ class PlantDetailViewController: UIViewController {
     var slides: [PhotoSlide] = []
     let buttonUI = SearchPlantUI()
     let localData = LocalData()
+    
+    //Photo slide variable
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
@@ -76,7 +78,7 @@ class PlantDetailViewController: UIViewController {
             uiAlert(plant.cropName, alertIndex: 0)
         } else {
             user.farmPlants.append(plant)
-            localData.savePlants(user.farmPlants)
+            localData.saveUserInfo(user)
             uiAlert(plant.cropName, alertIndex: 1)
         }
     }
@@ -105,13 +107,13 @@ class PlantDetailViewController: UIViewController {
         
         if favourite {
             user.favoritePlants.append(plant)
-            localData.saveFavouritesPlants(user.favoritePlants)
+            localData.saveUserInfo(user)
             favouriteButton.image = UIImage(named: imageID.favouriteFill.rawValue)
             favouriteAlert(plant.cropName, alertIndex: 0)
         } else {
             if let index = plantName.firstIndex(of: plant.cropName) {
                 user.favoritePlants.remove(at: index)
-                localData.saveFavouritesPlants(user.favoritePlants)
+                localData.saveUserInfo(user)
             }
             favouriteButton.image = UIImage(named: imageID.favourite.rawValue)
             favouriteAlert(plant.cropName, alertIndex: 1)
@@ -147,16 +149,6 @@ class PlantDetailViewController: UIViewController {
         return [slide1, slide2, slide3]
     }
     
-    //Set up appearance for navigation bar
-    private func setUpAppearance() {
-        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-        navigationController?.navigationBar.tintColor = .white
-        if isExist(user.favoritePlants) {
-            favouriteButton.image = UIImage(named: imageID.favouriteFill.rawValue)
-            favourite = true
-        }
-    }
-    
     // Set up slide scroll view for segmented section
     func setupSlideScrollView(slides: [PhotoSlide]) {
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
@@ -171,6 +163,16 @@ class PlantDetailViewController: UIViewController {
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
+    }
+    
+    //Set up appearance for navigation bar
+    private func setUpAppearance() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+        if isExist(user.favoritePlants) {
+            favouriteButton.image = UIImage(named: imageID.favouriteFill.rawValue)
+            favourite = true
+        }
     }
     
     // Set status bar style
@@ -240,7 +242,7 @@ extension PlantDetailViewController {
             let alert = UIAlertController(title: "", message: "You have moved \(plant) from your favourites", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                
+                //Cancel Action
             }))
             
             present(alert, animated: true, completion: nil)

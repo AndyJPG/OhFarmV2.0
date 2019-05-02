@@ -23,6 +23,9 @@
 		00395DF92278203A00EC9293 /* CACollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DF72278203A00EC9293 /* CACollectionViewCell.swift */; };
 		00395DFA2278203A00EC9293 /* CACollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00395DF82278203A00EC9293 /* CACollectionViewCell.xib */; };
 		0088748C2279B46600475095 /* HintsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0088748B2279B46600475095 /* HintsTableViewController.swift */; };
+		008874902279BBD700475095 /* IntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0088748F2279BBD700475095 /* IntroductionView.swift */; };
+		008874922279BBE300475095 /* IntroductionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008874912279BBE300475095 /* IntroductionView.xib */; };
+		008874942279BEA500475095 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008874932279BEA500475095 /* IntroductionViewController.swift */; };
 		00A77AF922700D940033ED8A /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77AF822700D940033ED8A /* PlantDetailViewController.swift */; };
 		00A77AFC22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */; };
 		00A77AFE22702B8E0033ED8A /* DefaultPlantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */; };
@@ -100,6 +103,9 @@
 		00395DF72278203A00EC9293 /* CACollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACollectionViewCell.swift; sourceTree = "<group>"; };
 		00395DF82278203A00EC9293 /* CACollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CACollectionViewCell.xib; sourceTree = "<group>"; };
 		0088748B2279B46600475095 /* HintsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsTableViewController.swift; sourceTree = "<group>"; };
+		0088748F2279BBD700475095 /* IntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionView.swift; sourceTree = "<group>"; };
+		008874912279BBE300475095 /* IntroductionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroductionView.xib; sourceTree = "<group>"; };
+		008874932279BEA500475095 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		00A77AF822700D940033ED8A /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
 		00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPlantInfoTableViewCell.swift; sourceTree = "<group>"; };
 		00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultPlantCell.xib; sourceTree = "<group>"; };
@@ -223,6 +229,24 @@
 				00395DF82278203A00EC9293 /* CACollectionViewCell.xib */,
 			);
 			path = "Collection view";
+			sourceTree = "<group>";
+		};
+		0088748D2279BB6700475095 /* Introduction and login */ = {
+			isa = PBXGroup;
+			children = (
+				0088748F2279BBD700475095 /* IntroductionView.swift */,
+				008874912279BBE300475095 /* IntroductionView.xib */,
+			);
+			path = "Introduction and login";
+			sourceTree = "<group>";
+		};
+		0088748E2279BB7A00475095 /* Introduction and login */ = {
+			isa = PBXGroup;
+			children = (
+				00395DB82275543C00EC9293 /* LoginViewController.swift */,
+				008874932279BEA500475095 /* IntroductionViewController.swift */,
+			);
+			path = "Introduction and login";
 			sourceTree = "<group>";
 		};
 		00A77AF722700D6E0033ED8A /* Plant Detail Controller */ = {
@@ -384,7 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				00A77B0B22709E690033ED8A /* TabBarViewController.swift */,
-				00395DB82275543C00EC9293 /* LoginViewController.swift */,
+				0088748E2279BB7A00475095 /* Introduction and login */,
 				00C71384226DE75600E1EA36 /* Home controller */,
 				00FCC0822271F46B00CD3D20 /* Profile Controller */,
 				00A77AF722700D6E0033ED8A /* Plant Detail Controller */,
@@ -411,6 +435,7 @@
 				00C7137F226DDCF200E1EA36 /* User.swift */,
 				00C7137B226CBD2100E1EA36 /* NetworkHandler.swift */,
 				00A77B22227181860033ED8A /* LocalData.swift */,
+				0088748D2279BB6700475095 /* Introduction and login */,
 				00FCC0852271F4F600CD3D20 /* Profile Model */,
 				00C71372226BF54C00E1EA36 /* Range Seek Slider */,
 				00C71381226DE6C800E1EA36 /* Home Model */,
@@ -558,6 +583,7 @@
 			files = (
 				00395DFA2278203A00EC9293 /* CACollectionViewCell.xib in Resources */,
 				00A77B21227156180033ED8A /* PlantAvoidCell.xib in Resources */,
+				008874922279BBE300475095 /* IntroductionView.xib in Resources */,
 				00C7137A226CB7F500E1EA36 /* plantData.json in Resources */,
 				00DA8630226453F200049557 /* LaunchScreen.storyboard in Resources */,
 				00DA862D226453F200049557 /* Assets.xcassets in Resources */,
@@ -664,6 +690,7 @@
 				00395DBD22756A5000EC9293 /* MonthTableViewCell.swift in Sources */,
 				00C71374226BF56500E1EA36 /* RangeSeekSlider.swift in Sources */,
 				00A77B1A227141550033ED8A /* AvoidCompanionSlide.swift in Sources */,
+				008874902279BBD700475095 /* IntroductionView.swift in Sources */,
 				00C7137C226CBD2100E1EA36 /* NetworkHandler.swift in Sources */,
 				00C71388226DE83000E1EA36 /* HomeUI.swift in Sources */,
 				00C71371226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift in Sources */,
@@ -693,6 +720,7 @@
 				00A79F2B2273164D008D4424 /* SettingTableViewCell.swift in Sources */,
 				00DA8624226453F100049557 /* AppDelegate.swift in Sources */,
 				002E048322671F92000871F5 /* LocationManager.swift in Sources */,
+				008874942279BEA500475095 /* IntroductionViewController.swift in Sources */,
 				00A77B23227181860033ED8A /* LocalData.swift in Sources */,
 				00C7136B226B4CB700E1EA36 /* FilterCategoryTableViewCell.swift in Sources */,
 				00C7135C226ADD6700E1EA36 /* SearchPlantUI.swift in Sources */,

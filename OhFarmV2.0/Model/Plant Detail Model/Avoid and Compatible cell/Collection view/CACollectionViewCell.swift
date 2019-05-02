@@ -18,11 +18,11 @@ class CACollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func configCell(_ plant: Plant) {
+    func configCell(_ name: String) {
         plantImage.layer.cornerRadius = 20
         plantImage.contentMode = .scaleAspectFill
-        plantImage.image = UIImage(named: plant.cropName)
-        plantName.text = plant.cropName
+        plantImage.image = UIImage(named: name)
+        plantName.text = name
     }
 
 }

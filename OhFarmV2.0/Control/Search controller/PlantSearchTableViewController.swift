@@ -25,6 +25,7 @@ class PlantSearchTableViewController: UITableViewController {
         case filterSegue
         case filterUnwindSegue
         case viewDetailFromSearch
+        case unwindFromDetailSegue
     }
     
     //MARK: Variable
@@ -58,8 +59,6 @@ class PlantSearchTableViewController: UITableViewController {
         if filter == nil {
             filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200])
         }
-        
-//        originalPlants = networkHandler.fetchPlantData()
         
         setUpAppearance()
         setUpSearchBar()
@@ -104,6 +103,10 @@ class PlantSearchTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //MARK: Main functions
@@ -162,7 +165,7 @@ class PlantSearchTableViewController: UITableViewController {
             uiAlert(plant.cropName, alertIndex: 0)
         } else {
             user.farmPlants.append(plant)
-            localData.savePlants(user.farmPlants)
+            localData.saveUserInfo(user)
             uiAlert(plant.cropName, alertIndex: 1)
         }
     }
@@ -195,6 +198,11 @@ class PlantSearchTableViewController: UITableViewController {
             filter = filterVC.filter
             applyFilter()
         }
+        
+//        if sender.identifier == SegueID.unwindFromDetailSegue.rawValue {
+//            guard let detailVC = sender.source as? PlantingInfoTableViewController else {return}
+//            searchController.searchBar.text = detailVC.selectedPlant
+//        }
     }
     
     
@@ -205,7 +213,10 @@ class PlantSearchTableViewController: UITableViewController {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Plant"
+        searchController.searchBar.placeholder = NSAttributedString(string: "Search Plant", attributes: [.foregroundColor: UIColor.white]).string
+        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Plant", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
         searchController.searchBar.tintColor = .white
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -239,7 +250,7 @@ class PlantSearchTableViewController: UITableViewController {
             let alert = UIAlertController(title: "New Plant!", message: "\(plant) has been added to your farm", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                //Cancel Action
+                self.tabBarController?.selectedIndex = 1
             }))
             
             present(alert, animated: true, completion: nil)

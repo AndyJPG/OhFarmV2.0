@@ -129,8 +129,6 @@ class ProfileTableViewController: UITableViewController {
                 user.farmPlants = []
                 user.favoritePlants = []
                 localData.saveUserInfo(user)
-                localData.savePlants(user.farmPlants)
-                localData.saveFavouritesPlants(user.favoritePlants)
                 tableView.reloadData()
             }
         }
@@ -148,7 +146,7 @@ class ProfileTableViewController: UITableViewController {
     private func setupOptionsArry() {
         let myGarden = Option(optionName: "My Garden", icon: "farm")
         let favourite = Option(optionName: "Favourites", icon: "heart")
-        let setting = Option(optionName: "Setting", icon: "setting")
+        let setting = Option(optionName: "Settings", icon: "setting")
         options = [[Option(optionName: "Profile", icon: "heart")],[myGarden,favourite],[setting]]
     }
     

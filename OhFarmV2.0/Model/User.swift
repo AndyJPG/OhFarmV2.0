@@ -25,17 +25,23 @@ class User: NSObject, NSCoding {
     struct PropertyKey {
         static let userName = "userName"
         static let image = "profileImage"
+        static let farm = "farm"
+        static let favourite = "favourite"
     }
     
-    init(name: String, userImage: UIImage) {
+    init(name: String, userImage: UIImage, farm: [Plant], favourite: [Plant]) {
         self.userName = name
         self.userImage = userImage
+        self.farmPlants = farm
+        self.favoritePlants = favourite
     }
     
     //MARK: NSCoding
     func encode(with aCoder: NSCoder) {
         aCoder.encode(userName, forKey: PropertyKey.userName)
         aCoder.encode(userImage, forKey: PropertyKey.image)
+        aCoder.encode(farmPlants, forKey: PropertyKey.farm)
+        aCoder.encode(favoritePlants, forKey: PropertyKey.favourite)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -51,8 +57,11 @@ class User: NSObject, NSCoding {
             return nil
         }
         
+        guard let farmPlants = aDecoder.decodeObject(forKey: PropertyKey.farm) as? [Plant] else {return nil}
+        guard let favouritePlants = aDecoder.decodeObject(forKey: PropertyKey.favourite) as? [Plant] else {return nil}
+        
         // Must call designated initializer.
-        self.init(name: userName, userImage: image)
+        self.init(name: userName, userImage: image, farm: farmPlants, favourite: favouritePlants)
         
     }
     

@@ -26,8 +26,8 @@ class Plant: NSObject, NSCoding {
     let plantingTechnique: String
     let fertilizer: String
     
-    var compPlantList: [Plant] = []
-    var avoidPlantList: [Plant] = []
+    var compPlantList: [String] = []
+    var avoidPlantList: [String] = []
     
     //MARK: Return variable
     var plantImage: UIImage {
@@ -152,7 +152,7 @@ class Plant: NSObject, NSCoding {
         static let avoidPlantList = "avoidPlantList"
     }
     
-    init(cropName: String, plantCategory: String, suitableMonth: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String, compPlantList: [Plant]?, avoidPlantList: [Plant]?) {
+    init(cropName: String, plantCategory: String, suitableMonth: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String, compPlantList: [String]?, avoidPlantList: [String]?) {
         self.cropName = cropName
         self.plantCategory = plantCategory
         self.suitableMonth = suitableMonth
@@ -213,8 +213,8 @@ class Plant: NSObject, NSCoding {
         guard let fertilizer = aDecoder.decodeObject(forKey: PropertyKey.fertilizer) as? String else {return nil}
         guard let suitableMonth = aDecoder.decodeObject(forKey: PropertyKey.suitableMonth) as? String else {return nil}
         
-        guard let compPlants = aDecoder.decodeObject(forKey: PropertyKey.compPlantList) as? [Plant] else {return nil}
-        guard let avoidPlants = aDecoder.decodeObject(forKey: PropertyKey.avoidPlantList) as? [Plant] else {return nil}
+        guard let compPlants = aDecoder.decodeObject(forKey: PropertyKey.compPlantList) as? [String] else {return nil}
+        guard let avoidPlants = aDecoder.decodeObject(forKey: PropertyKey.avoidPlantList) as? [String] else {return nil}
         
         
         // Must call designated initializer.
