@@ -77,7 +77,7 @@ class PlantDetailViewController: UIViewController {
         if isExist(user.farmPlants) {
             uiAlert(plant.cropName, alertIndex: 0)
         } else {
-            user.farmPlants.append(plant)
+            user.farmPlants.insert(plant, at: 0)
             localData.saveUserInfo(user)
             uiAlert(plant.cropName, alertIndex: 1)
         }
@@ -216,10 +216,14 @@ extension PlantDetailViewController {
         }
         
         if alertIndex == 1 {
-            let alert = UIAlertController(title: "New Plant!", message: "\(plant) has added to your farm", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "New Plant!", message: "\(plant) has being added to your farm", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //cancel
                 self.dismiss(animated: true, completion: nil)
+                if let tabBarController = self.presentingViewController as? UITabBarController {
+                    tabBarController.selectedIndex = 1
+                }
             }))
             
             present(alert, animated: true, completion: nil)

@@ -672,17 +672,32 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="461-ys-gZ2">
-                                            <rect key="frame" x="100" y="181" width="174" height="24"/>
+                                            <rect key="frame" x="180.33333333333334" y="181.33333333333334" width="53.666666666666657" height="24"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="174" id="DDA-hr-ruF"/>
                                                 <constraint firstAttribute="height" constant="24" id="j9c-YT-Mgt"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78o-v8-Hrc">
+                                            <rect key="frame" x="242" y="181.33333333333334" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="JgW-xE-THV"/>
+                                                <constraint firstAttribute="height" constant="24" id="dar-m5-mYW"/>
+                                            </constraints>
+                                            <state key="normal" image="edit"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ojr-xC-trN">
+                                            <rect key="frame" x="370" y="20" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="1mp-4b-JQ9"/>
+                                                <constraint firstAttribute="width" constant="24" id="kW1-6g-M4P"/>
+                                            </constraints>
+                                            <state key="normal" image="camera"/>
+                                        </button>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7bC-ZU-aJD">
-                                            <rect key="frame" x="137" y="53" width="100" height="100"/>
+                                            <rect key="frame" x="157" y="55" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="JIH-G2-duw"/>
                                                 <constraint firstAttribute="width" constant="100" id="pNV-kR-7BK"/>
@@ -690,16 +705,23 @@
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="7bC-ZU-aJD" secondAttribute="trailing" constant="138" id="1x9-hT-3Sj"/>
-                                        <constraint firstItem="461-ys-gZ2" firstAttribute="leading" secondItem="Law-yL-DZf" secondAttribute="leading" constant="100" id="3Yc-gW-v6H"/>
-                                        <constraint firstItem="7bC-ZU-aJD" firstAttribute="leading" secondItem="Law-yL-DZf" secondAttribute="leading" constant="137" id="S3G-JI-NcU"/>
-                                        <constraint firstItem="461-ys-gZ2" firstAttribute="top" secondItem="7bC-ZU-aJD" secondAttribute="bottom" constant="28" id="SlY-Vt-yIw"/>
-                                        <constraint firstItem="7bC-ZU-aJD" firstAttribute="top" secondItem="Law-yL-DZf" secondAttribute="top" constant="53" id="ard-pH-9lf"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="461-ys-gZ2" secondAttribute="trailing" constant="100" id="leG-z6-xd1"/>
+                                        <constraint firstItem="7bC-ZU-aJD" firstAttribute="centerY" secondItem="Law-yL-DZf" secondAttribute="centerY" constant="-20" id="5Q4-VQ-OsJ"/>
+                                        <constraint firstItem="461-ys-gZ2" firstAttribute="top" secondItem="7bC-ZU-aJD" secondAttribute="bottom" constant="26.329999999999998" id="MYJ-zy-DOd"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="461-ys-gZ2" secondAttribute="trailing" constant="107" id="N2n-jl-3mq"/>
+                                        <constraint firstItem="Ojr-xC-trN" firstAttribute="top" secondItem="Law-yL-DZf" secondAttribute="top" constant="20" id="PQk-N7-HSG"/>
+                                        <constraint firstItem="461-ys-gZ2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Law-yL-DZf" secondAttribute="leading" constant="107" id="XMP-h9-FLr"/>
+                                        <constraint firstItem="7bC-ZU-aJD" firstAttribute="centerX" secondItem="Law-yL-DZf" secondAttribute="centerX" id="aee-6V-VY2"/>
+                                        <constraint firstItem="461-ys-gZ2" firstAttribute="centerX" secondItem="Law-yL-DZf" secondAttribute="centerX" id="d1j-SX-ycq"/>
+                                        <constraint firstItem="7bC-ZU-aJD" firstAttribute="top" secondItem="Law-yL-DZf" secondAttribute="top" constant="55" id="dUy-uC-qbm"/>
+                                        <constraint firstItem="78o-v8-Hrc" firstAttribute="leading" secondItem="461-ys-gZ2" secondAttribute="trailing" constant="8" id="iRx-dM-b8b"/>
                                         <constraint firstAttribute="bottom" secondItem="461-ys-gZ2" secondAttribute="bottom" constant="44.5" id="pTK-XE-2zD"/>
+                                        <constraint firstItem="78o-v8-Hrc" firstAttribute="bottom" secondItem="461-ys-gZ2" secondAttribute="bottom" id="zu9-Gs-ngP"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ojr-xC-trN" secondAttribute="trailing" constant="20" id="zyU-LD-6bm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="camera" destination="Ojr-xC-trN" id="qV9-6R-zae"/>
+                                    <outlet property="edit" destination="78o-v8-Hrc" id="Pwf-OE-6cE"/>
                                     <outlet property="profileImage" destination="7bC-ZU-aJD" id="Bdy-Pw-TPQ"/>
                                     <outlet property="userName" destination="461-ys-gZ2" id="lSB-ch-ddj"/>
                                 </connections>
@@ -759,7 +781,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKx-xq-Sj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="1157"/>
+            <point key="canvasLocation" x="-1.4492753623188408" y="1156.7934782608697"/>
         </scene>
         <!--Favourite Table View Controller-->
         <scene sceneID="C1j-oe-0Nr">
@@ -961,7 +983,7 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Community Search-->
+        <!--Search for community farms-->
         <scene sceneID="EA5-oC-YLb">
             <objects>
                 <tableViewController id="4M6-RZ-mEd" customClass="SearchResultTableViewController" customModule="OhFarmV2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -999,8 +1021,8 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Community Search" id="gJM-9i-khe">
-                        <barButtonItem key="rightBarButtonItem" title="All Farms" id="x7s-Ym-dlz">
+                    <navigationItem key="navigationItem" title="Search for community farms" largeTitleDisplayMode="never" id="gJM-9i-khe">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="x7s-Ym-dlz">
                             <connections>
                                 <segue destination="tG7-Kf-Qfa" kind="show" identifier="showAll" id="RHu-No-wDA"/>
                             </connections>
@@ -1135,11 +1157,9 @@
                         <outlet property="favouriteButton" destination="9Bl-0x-K17" id="LQu-sG-Bqd"/>
                         <outlet property="pageControl" destination="Fp1-s1-MfO" id="WS9-UF-XAu"/>
                         <outlet property="scrollView" destination="mpg-0y-GNZ" id="sTD-Ol-ipB"/>
-                        <segue destination="tED-UR-aze" kind="unwind" identifier="unwindFromDetailSegue" unwindAction="unwindToPlantSearchWithSender:" id="g3T-X9-Lqi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teJ-PV-NHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="tED-UR-aze" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6098.3999999999996" y="769.56521739130437"/>
         </scene>
@@ -1279,7 +1299,9 @@
     </scenes>
     <resources>
         <image name="back" width="9.5" height="18"/>
+        <image name="camera" width="512" height="512"/>
         <image name="community" width="30" height="30"/>
+        <image name="edit" width="512" height="512"/>
         <image name="favourite" width="25.333333969116211" height="23"/>
         <image name="forward" width="25" height="25"/>
         <image name="home" width="30" height="30"/>
@@ -1289,6 +1311,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sZ9-NW-KyD"/>
-        <segue reference="RHu-No-wDA"/>
+        <segue reference="1cL-xF-cZA"/>
     </inferredMetricsTieBreakers>
 </document>

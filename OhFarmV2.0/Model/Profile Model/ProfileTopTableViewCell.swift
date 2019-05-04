@@ -12,6 +12,8 @@ class ProfileTopTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var camera: UIButton!
+    @IBOutlet weak var edit: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +26,8 @@ class ProfileTopTableViewCell: UITableViewCell {
         profileImage.clipsToBounds = true
         profileImage.isUserInteractionEnabled = true
         self.selectionStyle = .none
+        
+        setButtonImage()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,8 +42,23 @@ class ProfileTopTableViewCell: UITableViewCell {
         } else {
             userName.text = user.userName
         }
+        userName.sizeToFit()
         
         profileImage.image = user.userImage
+    }
+    
+    func setButtonImage() {
+        
+        let editImage = UIImage(named: "edit")
+        let tintedImage = editImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        edit.setImage(tintedImage, for: .normal)
+        edit.tintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        
+        let cameraImage = UIImage(named: "camera")
+        let cameraTintedImage = cameraImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        camera.setImage(cameraTintedImage, for: .normal)
+        camera.tintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        
     }
 
 }

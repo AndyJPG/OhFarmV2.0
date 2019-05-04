@@ -25,7 +25,6 @@ class PlantSearchTableViewController: UITableViewController {
         case filterSegue
         case filterUnwindSegue
         case viewDetailFromSearch
-        case unwindFromDetailSegue
     }
     
     //MARK: Variable
@@ -115,7 +114,7 @@ class PlantSearchTableViewController: UITableViewController {
         guard let category = filter?.category, let location = filter?.location, let minSpacing = filter?.minSpacing, let maxSpacing = filter?.maxSpacing, let minHarvest = filter?.minHarvest, let maxHarvest = filter?.maxHarvest else {return}
         
         filterPlants = originalPlants.filter({ (plant : Plant) -> Bool in
-            return category.contains(plant.plantCategory.lowercased()) && location.contains(plant.plantStyle.lowercased()) && minSpacing <= plant.maxSpacing && plant.maxSpacing <= maxSpacing && minHarvest <= plant.maxHarvestTime && plant.maxHarvestTime <= maxHarvest
+            return (category.contains(plant.plantCategory.lowercased()) || plant.plantCategory.lowercased() == "both") && (location.contains(plant.plantStyle.lowercased()) || plant.plantStyle.lowercased() == "both") && minSpacing <= plant.maxSpacing && plant.maxSpacing <= maxSpacing && minHarvest <= plant.maxHarvestTime && plant.maxHarvestTime <= maxHarvest
         })
         
         filterApplied = true
@@ -164,7 +163,7 @@ class PlantSearchTableViewController: UITableViewController {
         if exist {
             uiAlert(plant.cropName, alertIndex: 0)
         } else {
-            user.farmPlants.append(plant)
+            user.farmPlants.insert(plant, at: 0)
             localData.saveUserInfo(user)
             uiAlert(plant.cropName, alertIndex: 1)
         }
@@ -198,13 +197,48 @@ class PlantSearchTableViewController: UITableViewController {
             filter = filterVC.filter
             applyFilter()
         }
-        
-//        if sender.identifier == SegueID.unwindFromDetailSegue.rawValue {
-//            guard let detailVC = sender.source as? PlantingInfoTableViewController else {return}
-//            searchController.searchBar.text = detailVC.selectedPlant
-//        }
     }
     
+}
+
+// MARK: UI Search bar controller extension
+extension PlantSearchTableViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
+
+// MARK: Extension for ui Alert
+extension PlantSearchTableViewController {
+    
+    // MARK: Alert functions
+    private func uiAlert(_ plant: String, alertIndex: Int)  {
+        if alertIndex == 0 {
+            let alert = UIAlertController(title: "Oops!", message: "\(plant) is already in your farm", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+        
+        if alertIndex == 1 {
+            let alert = UIAlertController(title: "New Plant!", message: "\(plant) has been added to your farm", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                self.tabBarController?.selectedIndex = 1
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+}
+
+//MARK: Appearance section
+extension PlantSearchTableViewController {
     
     // MARK: Appearence
     // Set up search bar
@@ -233,35 +267,4 @@ class PlantSearchTableViewController: UITableViewController {
         tableView.backgroundView = image
     }
     
-    
-    // MARK: Alert functions
-    private func uiAlert(_ plant: String, alertIndex: Int)  {
-        if alertIndex == 0 {
-            let alert = UIAlertController(title: "Oops!", message: "\(plant) is already in your farm", preferredStyle: UIAlertController.Style.alert)
-            
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                //Cancel Action
-            }))
-            
-            present(alert, animated: true, completion: nil)
-        }
-        
-        if alertIndex == 1 {
-            let alert = UIAlertController(title: "New Plant!", message: "\(plant) has been added to your farm", preferredStyle: UIAlertController.Style.alert)
-            
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                self.tabBarController?.selectedIndex = 1
-            }))
-            
-            present(alert, animated: true, completion: nil)
-        }
-    }
-}
-
-// MARK: UI Search bar controller extension
-extension PlantSearchTableViewController: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
-    }
 }

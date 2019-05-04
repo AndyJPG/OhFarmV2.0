@@ -75,6 +75,9 @@ class ProfileTableViewController: UITableViewController {
             
             let imageTap = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(_:)))
             profileTopCell.profileImage.addGestureRecognizer(imageTap)
+            profileTopCell.camera.addGestureRecognizer(imageTap)
+            
+            profileTopCell.edit.addTarget(self, action: #selector(editButton(_:)), for: .touchUpInside)
             
             cell = profileTopCell
         case 1:
@@ -137,7 +140,10 @@ class ProfileTableViewController: UITableViewController {
     
     //MAKR: Action
     @objc private func changeName(_ sender: UITapGestureRecognizer) {
-        print(sender)
+        changeNameAlert()
+    }
+    
+    @objc private func editButton(_ sender: UIButton) {
         changeNameAlert()
     }
     
@@ -149,6 +155,54 @@ class ProfileTableViewController: UITableViewController {
         let setting = Option(optionName: "Settings", icon: "setting")
         options = [[Option(optionName: "Profile", icon: "heart")],[myGarden,favourite],[setting]]
     }
+    
+    // MARK: Appearance
+    private func setTableFooter() {
+        
+        tableView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+        
+        let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
+        tableViewFooter.backgroundColor = .clear
+        let version = UILabel(frame: CGRect(x: 0, y: 10, width: tableView.frame.width, height: 14))
+        version.font = version.font.withSize(12)
+        version.text = "Version 2.0"
+        version.tintColor = .lightGray
+        version.textAlignment = .center
+
+        tableViewFooter.addSubview(version)
+
+        tableView.tableFooterView  = tableViewFooter
+    }
+
+}
+
+//MARK: UI image picker delegate
+extension ProfileTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @objc private func profileImageTapped(_ sender: UITapGestureRecognizer) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // get the image
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
+        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ProfileTopTableViewCell else {return}
+        cell.profileImage.image = image
+        user.userImage = image
+        localData.saveUserInfo(user)
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: UI alert extension
+extension ProfileTableViewController {
     
     /**
      Simple Alert with Text input
@@ -194,47 +248,4 @@ class ProfileTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    
-    // MARK: Appearance
-    private func setTableFooter() {
-        
-        tableView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-        
-        let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
-        tableViewFooter.backgroundColor = .clear
-        let version = UILabel(frame: CGRect(x: 0, y: 10, width: tableView.frame.width, height: 14))
-        version.font = version.font.withSize(12)
-        version.text = "Version 2.0"
-        version.tintColor = .lightGray
-        version.textAlignment = .center
-
-        tableViewFooter.addSubview(version)
-
-        tableView.tableFooterView  = tableViewFooter
-    }
-
-}
-
-extension ProfileTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    @objc private func profileImageTapped(_ sender: UITapGestureRecognizer) {
-        
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            
-            imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = false
-            
-            present(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // get the image
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
-        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ProfileTopTableViewCell else {return}
-        cell.profileImage.image = image
-        user.userImage = image
-        localData.saveUserInfo(user)
-        dismiss(animated: true, completion: nil)
-    }
 }
