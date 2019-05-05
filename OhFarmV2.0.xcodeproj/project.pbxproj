@@ -62,6 +62,7 @@
 		00C71383226DE6E100E1EA36 /* HomeFarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71382226DE6E100E1EA36 /* HomeFarmTableViewCell.swift */; };
 		00C71386226DE7E500E1EA36 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71385226DE7E500E1EA36 /* HomeTableViewController.swift */; };
 		00C71388226DE83000E1EA36 /* HomeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71387226DE83000E1EA36 /* HomeUI.swift */; };
+		00C8CCD1227D8B7E00917787 /* FilterMonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C8CCD0227D8B7E00917787 /* FilterMonthTableViewCell.swift */; };
 		00DA8624226453F100049557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA8623226453F100049557 /* AppDelegate.swift */; };
 		00DA8628226453F100049557 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DA8627226453F100049557 /* MapViewController.swift */; };
 		00DA862B226453F100049557 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DA8629226453F100049557 /* Main.storyboard */; };
@@ -142,6 +143,7 @@
 		00C71382226DE6E100E1EA36 /* HomeFarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFarmTableViewCell.swift; sourceTree = "<group>"; };
 		00C71385226DE7E500E1EA36 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		00C71387226DE83000E1EA36 /* HomeUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUI.swift; sourceTree = "<group>"; };
+		00C8CCD0227D8B7E00917787 /* FilterMonthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMonthTableViewCell.swift; sourceTree = "<group>"; };
 		00DA8620226453F100049557 /* OhFarmV2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhFarmV2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DA8623226453F100049557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00DA8627226453F100049557 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -317,10 +319,7 @@
 			children = (
 				00C7137D226D88B800E1EA36 /* SearchPlantTableViewCell.swift */,
 				00395DC72275896300EC9293 /* NoResultTableViewCell.swift */,
-				00C7136A226B4CB600E1EA36 /* FilterCategoryTableViewCell.swift */,
-				00C7136C226B4CC600E1EA36 /* FilterLocationTableViewCell.swift */,
-				00C71370226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift */,
-				00C7136E226B4CE900E1EA36 /* FilterHarvestTableViewCell.swift */,
+				00FB47A3227D882A009F01F8 /* Filter cell */,
 			);
 			path = "Search cell";
 			sourceTree = "<group>";
@@ -454,6 +453,18 @@
 				002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */,
 			);
 			path = "Community controller";
+			sourceTree = "<group>";
+		};
+		00FB47A3227D882A009F01F8 /* Filter cell */ = {
+			isa = PBXGroup;
+			children = (
+				00C7136A226B4CB600E1EA36 /* FilterCategoryTableViewCell.swift */,
+				00C7136C226B4CC600E1EA36 /* FilterLocationTableViewCell.swift */,
+				00C71370226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift */,
+				00C7136E226B4CE900E1EA36 /* FilterHarvestTableViewCell.swift */,
+				00C8CCD0227D8B7E00917787 /* FilterMonthTableViewCell.swift */,
+			);
+			path = "Filter cell";
 			sourceTree = "<group>";
 		};
 		00FCC0822271F46B00CD3D20 /* Profile Controller */ = {
@@ -696,6 +707,7 @@
 				00C71371226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift in Sources */,
 				00FCC0842271F49D00CD3D20 /* ProfileTableViewController.swift in Sources */,
 				00A77B00227032440033ED8A /* PlantInfoSlideViewController.swift in Sources */,
+				00C8CCD1227D8B7E00917787 /* FilterMonthTableViewCell.swift in Sources */,
 				00A77AFC22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift in Sources */,
 				00DA8628226453F100049557 /* MapViewController.swift in Sources */,
 				00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */,

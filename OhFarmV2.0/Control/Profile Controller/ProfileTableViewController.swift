@@ -22,6 +22,7 @@ class ProfileTableViewController: UITableViewController {
     }
 
     //MARK: Variable
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     var user: User!
     let localData = LocalData()
     let imagePicker = UIImagePickerController()
@@ -35,6 +36,10 @@ class ProfileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if user == nil {
+            user = delegate.user
+        }
         
         imagePicker.delegate = self
         

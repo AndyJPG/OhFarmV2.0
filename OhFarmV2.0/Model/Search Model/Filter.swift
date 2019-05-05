@@ -17,6 +17,7 @@ class Filter {
     var maxSpacing: Int
     var minHarvest: Int
     var maxHarvest: Int
+    var month: [String]
     
     //Initialisation
     init(_ dic: [Any]){
@@ -26,5 +27,6 @@ class Filter {
         self.maxSpacing = dic[3] as? Int ?? 200
         self.minHarvest = dic[4] as? Int ?? 0
         self.maxHarvest = dic[5] as? Int ?? 200
+        self.month = dic[6] as? Array ?? ["all"]
     }
 }

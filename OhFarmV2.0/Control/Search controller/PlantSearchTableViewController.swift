@@ -39,6 +39,7 @@ class PlantSearchTableViewController: UITableViewController {
     //Search bar properites
     var searchPlants = [Plant]()
     let searchController = UISearchController(searchResultsController: nil)
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
     //Plants properites to handle change
     var plants: [Plant] {
@@ -56,7 +57,12 @@ class PlantSearchTableViewController: UITableViewController {
         super.viewDidLoad()
 
         if filter == nil {
-            filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200])
+            filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200,["All"]])
+        }
+        
+        if user == nil {
+            user = delegate.user
+            originalPlants = delegate.plants
         }
         
         setUpAppearance()
@@ -111,11 +117,40 @@ class PlantSearchTableViewController: UITableViewController {
     //MARK: Main functions
     //MARK: Filter functions
     private func applyFilter() {
-        guard let category = filter?.category, let location = filter?.location, let minSpacing = filter?.minSpacing, let maxSpacing = filter?.maxSpacing, let minHarvest = filter?.minHarvest, let maxHarvest = filter?.maxHarvest else {return}
+        guard let category = filter?.category, let location = filter?.location, let minSpacing = filter?.minSpacing, let maxSpacing = filter?.maxSpacing, let minHarvest = filter?.minHarvest, let maxHarvest = filter?.maxHarvest, let months = filter?.month else {return}
         
         filterPlants = originalPlants.filter({ (plant : Plant) -> Bool in
             return (category.contains(plant.plantCategory.lowercased()) || plant.plantCategory.lowercased() == "both") && (location.contains(plant.plantStyle.lowercased()) || plant.plantStyle.lowercased() == "both") && minSpacing <= plant.maxSpacing && plant.maxSpacing <= maxSpacing && minHarvest <= plant.maxHarvestTime && plant.maxHarvestTime <= maxHarvest
         })
+        
+        //Filter based on month
+        var monthFilterPlants = [Plant]()
+        if months[0].lowercased() != "all" {
+            
+            //Get rid of the invalid months plant
+            for plant in filterPlants {
+                
+                //Get prefix of plant months
+                let plantMonths = plant.getSuitableMonth.map { (month) -> String in
+                    return month.prefix(3).lowercased()
+                }
+                
+                //If the plant within month range set in range true
+                var inRange = false
+                for month in months {
+                    if plantMonths.contains(month.lowercased()) {
+                        inRange = true
+                    }
+                }
+                
+                //If not in range remove plant
+                if inRange {
+                    monthFilterPlants.append(plant)
+                }
+            }
+            
+            filterPlants = monthFilterPlants
+        }
         
         filterApplied = true
         tableView.reloadData()
@@ -248,10 +283,8 @@ extension PlantSearchTableViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = NSAttributedString(string: "Search Plant", attributes: [.foregroundColor: UIColor.white]).string
-        
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "Search Plant", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        
         searchController.searchBar.tintColor = .white
+        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
@@ -265,6 +298,10 @@ extension PlantSearchTableViewController {
         let image = UIImageView(image: UIImage(named: "background"))
         image.contentMode = .scaleAspectFill
         tableView.backgroundView = image
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
 }

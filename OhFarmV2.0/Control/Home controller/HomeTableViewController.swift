@@ -12,6 +12,7 @@ class HomeTableViewController: UITableViewController {
     
     // MARK: Variable
     // Style instance
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     let homeTableUI = HomeUI()
     var user: User!
     let localData = LocalData()
@@ -24,8 +25,8 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if user.userName == "First User" {
-            performSegue(withIdentifier: segueID.tutorialSegue.rawValue, sender: self)
+        if user == nil {
+            self.user = delegate.user
         }
         
         setUpAppearance()
@@ -33,7 +34,6 @@ class HomeTableViewController: UITableViewController {
     
     enum segueID: String {
         case HomeToDetailSegue
-        case tutorialSegue
         case unwindToHomeSegue
     }
     

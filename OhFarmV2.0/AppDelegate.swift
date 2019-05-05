@@ -38,26 +38,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Finished complete data.")
         }
         
-        // Override point for customization after application launch.
-        //Share data across tab bar controllers
-        guard let tabBarController = window?.rootViewController as? UITabBarController,
-            let viewControllers = tabBarController.viewControllers else {
-                return true
-        }
+        //Load screen
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        for (_, viewController) in viewControllers.enumerated() {
-            if let navigationController = viewController as? UINavigationController {
-                if let homeTableVC = navigationController.topViewController as? HomeTableViewController {
-                    homeTableVC.user = user
-                } else if let searchTableVC = navigationController.topViewController as? PlantSearchTableViewController {
-                    searchTableVC.user = user
-                    searchTableVC.originalPlants = plants
+        var initialViewController = storyBoard.instantiateViewController(withIdentifier: "Onboarding")
+        window?.rootViewController = initialViewController
+        
+        //Check if onboarding performed
+        if user?.userName != "First User" {
+            
+            initialViewController = storyBoard.instantiateViewController(withIdentifier: "Mainapp")
+            window?.rootViewController = initialViewController
+            
+            // Override point for customization after application launch.
+            //Share data across tab bar controllers
+            guard let tabBarController = window?.rootViewController as? UITabBarController,
+                let viewControllers = tabBarController.viewControllers else {
+                    return true
+            }
+            
+            for (_, viewController) in viewControllers.enumerated() {
+                if let navigationController = viewController as? UINavigationController {
+                    if let homeTableVC = navigationController.topViewController as? HomeTableViewController {
+                        homeTableVC.user = user
+                    } else if let searchTableVC = navigationController.topViewController as? PlantSearchTableViewController {
+                        searchTableVC.user = user
+                        searchTableVC.originalPlants = plants
+                    }
+                }
+                if let profileTableVC = viewController as? ProfileTableViewController {
+                    profileTableVC.user = user
                 }
             }
-            if let profileTableVC = viewController as? ProfileTableViewController {
-                profileTableVC.user = user
-            }
+            
         }
+        
+        window?.makeKeyAndVisible()
         
         return true
     }

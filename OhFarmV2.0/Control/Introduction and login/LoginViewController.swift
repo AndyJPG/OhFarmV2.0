@@ -14,11 +14,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     let themeColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
     let vcUI = SearchPlantUI()
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     var name = ""
     var button = UIButton()
+    var user: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.user = delegate.user
 
         nameField.delegate = self
         setupAppearence()
@@ -69,7 +73,14 @@ class LoginViewController: UIViewController {
     
     //MARK: Go next page action
     @objc private func buttonAction(_ sender: UIButton) {
-        performSegue(withIdentifier: "unwindToHomeSegue", sender: self)
+        
+        if !name.isEmpty {
+            user.userName = name
+        } else {
+            user.userName = "User"
+        }
+        
+        performSegue(withIdentifier: "toMainApp", sender: self)
     }
     
     //MARK: Alert for text input
