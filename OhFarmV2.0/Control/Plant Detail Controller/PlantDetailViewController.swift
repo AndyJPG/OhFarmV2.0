@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import XLPagerTabStrip
+//import XLPagerTabStrip
 
 class PlantDetailViewController: UIViewController {
     
@@ -134,7 +134,46 @@ class PlantDetailViewController: UIViewController {
         }
     }
     
+    
+    
     // MARK: Appearence
+    //Set up appearance for navigation bar
+    private func setUpAppearance() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+        if isExist(user.favoritePlants) {
+            favouriteButton.image = UIImage(named: imageID.favouriteFill.rawValue)
+            favourite = true
+        }
+    }
+    
+    // Set status bar style
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    // Add plant button ui
+    private func addPlantButtonUI() {
+        let button = buttonUI.filterBottomButton()
+        button.setTitle("Add to My Farm", for: .normal)
+        button.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
+        view.addSubview(buttonUI.filterBottomButtonBackground())
+        view.addSubview(button)
+    }
+    
+}
+
+
+
+//MARK: Photo gallery
+extension PlantDetailViewController: UIScrollViewDelegate {
+    
+    //MARK: default fucntion of scroll view
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+    }
+    
     // Plant Photo gallery view
     func createSlides() -> [PhotoSlide] {
         let slide1: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
@@ -164,41 +203,9 @@ class PlantDetailViewController: UIViewController {
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
     }
-    
-    //Set up appearance for navigation bar
-    private func setUpAppearance() {
-        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-        navigationController?.navigationBar.tintColor = .white
-        if isExist(user.favoritePlants) {
-            favouriteButton.image = UIImage(named: imageID.favouriteFill.rawValue)
-            favourite = true
-        }
-    }
-    
-    // Set status bar style
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
-    // Add plant button ui
-    private func addPlantButtonUI() {
-        let button = buttonUI.filterBottomButton()
-        button.setTitle("Add to My Farm", for: .normal)
-        button.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
-        view.addSubview(buttonUI.filterBottomButtonBackground())
-        view.addSubview(button)
-    }
-    
 }
 
-extension PlantDetailViewController: UIScrollViewDelegate {
-    
-    //MARK: default fucntion of scroll view
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
-        pageControl.currentPage = Int(pageIndex)
-    }
-}
+
 
 // MARK: UI alert section
 extension PlantDetailViewController {

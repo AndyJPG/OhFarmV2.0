@@ -16,6 +16,7 @@ class HomeFarmTableViewCell: UITableViewCell {
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var cellBackground: UIView!
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var checkListButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

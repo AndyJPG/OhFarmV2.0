@@ -1,0 +1,32 @@
+[
+ {
+   "checkListType": "outdoor",
+   "1": "Design the garden to plant seeds in rows",
+   "2": "Buy seeds or veggie starts from a garden centre",
+   "3": "Choose a spot which has at least 6 hours sunlight a day",
+   "4": "Ensure the spot can be reached with a hose for watering",
+   "5": "Till the soil",
+   "6": "Dig a long shallow trench for the seeds",
+   "7": "Plant the seeds",
+   "8": "Cover seeds and mark the row",
+   "9": "Water the plant -Provide more water for the first time",
+   "10": "Check and remove any weeds",
+   "11": "Add fertilizer based on instructions on the bag or box",
+   "12": "Keep watering till harvest"
+ },
+ {
+   "checkListType": "indoor",
+   "1": "Choose a spot which has at least 6 hours sunlight a day",
+   "2": "Buy a pot (10-20 cm) or container with drainage holes to plant the seeds",
+   "3": "Use new and damp potting mix as soil to maintain consistency",
+   "4": "Bury the seeds deep enough to ensure contact with soil",
+   "5": "Add water to keep the soil moist but not soggy",
+   "6": "Add fertilizer once two leaves sprout",
+   "7": "Cut the unwanted or extra plant growth at the soil line",
+   "8": "Use cotton swab to remove pollens or dirt",
+   "9": "Transfer to bigger containers if leaves outgrow",
+   "10": "Transfer seedling outdoors to encourage growth",
+   "11": "Keep watering till harvest",
+   "12": ""
+ }
+]

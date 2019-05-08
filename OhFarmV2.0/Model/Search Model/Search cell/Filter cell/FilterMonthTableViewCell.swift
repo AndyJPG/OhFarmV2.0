@@ -10,6 +10,7 @@ import UIKit
 
 class FilterMonthTableViewCell: UITableViewCell {
 
+    //MARK: Months button
     @IBOutlet weak var janButton: UIButton!
     @IBOutlet weak var febButton: UIButton!
     @IBOutlet weak var marButton: UIButton!
@@ -27,6 +28,22 @@ class FilterMonthTableViewCell: UITableViewCell {
     @IBOutlet weak var anyButton: UIButton!
     @IBOutlet weak var cellName: UILabel!
     
+    //MARK: Months tag
+    @IBOutlet weak var JanTag: UIView!
+    @IBOutlet weak var FebTag: UIView!
+    @IBOutlet weak var MarTag: UIView!
+    @IBOutlet weak var AprTag: UIView!
+    @IBOutlet weak var MayTag: UIView!
+    @IBOutlet weak var JunTag: UIView!
+    
+    @IBOutlet weak var JulTag: UIView!
+    @IBOutlet weak var AugTag: UIView!
+    @IBOutlet weak var SepTag: UIView!
+    @IBOutlet weak var OctTag: UIView!
+    @IBOutlet weak var NovTag: UIView!
+    @IBOutlet weak var DecTag: UIView!
+    
+    
     let color = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
     
     override func awakeFromNib() {
@@ -34,6 +51,7 @@ class FilterMonthTableViewCell: UITableViewCell {
         // Initialization code
         cellName.text = "Suitable Month"
         cellName.textColor = color
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,42 +63,45 @@ class FilterMonthTableViewCell: UITableViewCell {
     func setButton(_ months: [String]) {
         let buttons = [janButton,febButton,marButton,aprButton,mayButton,junButton,julButton,augButton,sepButton,octButton,novButton,decButton,anyButton]
         
-        janButton.setTitle("Jan", for: .normal)
-        febButton.setTitle("Feb", for: .normal)
-        marButton.setTitle("Mar", for: .normal)
-        aprButton.setTitle("Apr", for: .normal)
-        mayButton.setTitle("May", for: .normal)
-        junButton.setTitle("Jun", for: .normal)
-        julButton.setTitle("Jul", for: .normal)
-        augButton.setTitle("Aug", for: .normal)
-        sepButton.setTitle("Sep", for: .normal)
-        octButton.setTitle("Oct", for: .normal)
-        novButton.setTitle("Nov", for: .normal)
-        decButton.setTitle("Dec", for: .normal)
-        anyButton.setTitle("All", for: .normal)
+        let tags = [JanTag,FebTag,MarTag,AprTag,MayTag,JunTag,JulTag,AugTag,SepTag,OctTag,NovTag,DecTag]
+        let monthsText = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","All"]
         
         let monthsPrefix = months.map { (month) -> String in
             return month.prefix(3).lowercased()
         }
         
-        for button in buttons {
+        print(monthsPrefix)
+        
+        for (index,button) in buttons.enumerated() {
             button?.setTitleColor(.lightGray, for: .normal)
             button?.setTitleColor(color, for: .selected)
-        }
+            button?.setTitle(monthsText[index], for: .normal)
             
-        if months[0].lowercased() == "all" {
-            anyButton.isSelected = true
-        } else {
-            
-            for button in buttons {
-                if monthsPrefix.contains(button?.title(for: .normal)?.lowercased() ?? "") {
-                    button?.isSelected = true
-                } else {
-                    button?.isSelected = false
+            if monthsPrefix.contains(button?.title(for: .normal)?.lowercased() ?? "") {
+                button?.isSelected = true
+                if button?.title(for: .normal) != "All" {
+                    tags[index]?.backgroundColor = color
+                }
+            } else {
+                button?.isSelected = false
+                if button?.title(for: .normal) != "All" {
+                    tags[index]?.backgroundColor = .white
                 }
             }
-            
         }
+            
+//        if months[0].lowercased() == "all" {
+//            anyButton.isSelected = true
+//        } else {
+//
+//            for button in buttons {
+//                if monthsPrefix.contains(button?.title(for: .normal)?.lowercased() ?? "") {
+//                    button?.isSelected = true
+//                } else {
+//                    button?.isSelected = false
+//                }
+//            }
+//        }
     }
 
 }

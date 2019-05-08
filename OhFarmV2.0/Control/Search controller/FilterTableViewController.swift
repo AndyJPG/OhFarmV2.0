@@ -35,6 +35,7 @@ class FilterTableViewController: UITableViewController {
     var orginFilter: Filter!
     var filter: Filter!
     var searchUi = SearchPlantUI()
+    let color = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
     
     //Tracking selected buttons
     var selectedMonth = ["Jan": 0, "Feb": 0, "Mar": 0, "Apr": 0,"May": 0, "Jun": 0, "Jul": 0, "Aug": 0, "Sep": 0, "Oct": 0, "Nov": 0, "Dec": 0, "All": 0]
@@ -96,6 +97,7 @@ class FilterTableViewController: UITableViewController {
             }
             
             return categoryCell
+            
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.locationCell.rawValue, for: indexPath)
             guard let locationCell = searchUi.filterCellStyle(cell) as? FilterLocationTableViewCell else {fatalError()}
@@ -116,39 +118,6 @@ class FilterTableViewController: UITableViewController {
             }
             
             return locationCell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.spacingCell.rawValue, for: indexPath)
-            guard let spacingCell = searchUi.filterCellStyle(cell) as? FilterSpacingTableViewCell else {fatalError()}
-            
-            spacingCell.rangeSlider.setNeedsLayout()
-            spacingCell.rangeSlider.delegate = self
-            spacingCell.rangeSlider.tag = 0
-            spacingCell.rangeSlider.selectedMinValue = CGFloat(filter.minSpacing)
-            spacingCell.rangeSlider.selectedMaxValue = CGFloat(filter.maxSpacing)
-            if filter.minSpacing != 0 || filter.maxSpacing != 200 {
-                spacingCell.valueLabel.text = "\(filter.minSpacing) cm to \(filter.maxSpacing) cm"
-            } else {
-                spacingCell.valueLabel.text = "Any Spacing"
-            }
-            
-            return spacingCell
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.harvestCell.rawValue, for: indexPath)
-            guard let harvestCell = searchUi.filterCellStyle(cell) as? FilterHarvestTableViewCell else {fatalError()}
-            
-            harvestCell.rangeSlider.setNeedsLayout()
-            harvestCell.rangeSlider.delegate = self
-            harvestCell.rangeSlider.tag = 1
-            harvestCell.rangeSlider.selectedMinValue = CGFloat(filter.minHarvest)
-            harvestCell.rangeSlider.selectedMaxValue = CGFloat(filter.maxHarvest)
-            
-            if filter.minHarvest != 0 || filter.maxHarvest != 200 {
-                harvestCell.valueLabel.text = "\(filter.minHarvest) weeks to \(filter.maxHarvest) weeks"
-            } else {
-                harvestCell.valueLabel.text = "Any Time"
-            }
-            
-            return harvestCell
             
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.monthCell.rawValue, for: indexPath) as? FilterMonthTableViewCell else {fatalError()}
@@ -171,6 +140,42 @@ class FilterTableViewController: UITableViewController {
             }
             
             return cell
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.spacingCell.rawValue, for: indexPath)
+            guard let spacingCell = searchUi.filterCellStyle(cell) as? FilterSpacingTableViewCell else {fatalError()}
+            
+            spacingCell.rangeSlider.setNeedsLayout()
+            spacingCell.rangeSlider.delegate = self
+            spacingCell.rangeSlider.tag = 0
+            spacingCell.rangeSlider.selectedMinValue = CGFloat(filter.minSpacing)
+            spacingCell.rangeSlider.selectedMaxValue = CGFloat(filter.maxSpacing)
+            if filter.minSpacing != 0 || filter.maxSpacing != 200 {
+                spacingCell.valueLabel.text = "\(filter.minSpacing) cm to \(filter.maxSpacing) cm"
+            } else {
+                spacingCell.valueLabel.text = "Any Spacing"
+            }
+            
+            return spacingCell
+            
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.harvestCell.rawValue, for: indexPath)
+            guard let harvestCell = searchUi.filterCellStyle(cell) as? FilterHarvestTableViewCell else {fatalError()}
+            
+            harvestCell.rangeSlider.setNeedsLayout()
+            harvestCell.rangeSlider.delegate = self
+            harvestCell.rangeSlider.tag = 1
+            harvestCell.rangeSlider.selectedMinValue = CGFloat(filter.minHarvest)
+            harvestCell.rangeSlider.selectedMaxValue = CGFloat(filter.maxHarvest)
+            
+            if filter.minHarvest != 0 || filter.maxHarvest != 200 {
+                harvestCell.valueLabel.text = "\(filter.minHarvest) weeks to \(filter.maxHarvest) weeks"
+            } else {
+                harvestCell.valueLabel.text = "Any Time"
+            }
+            
+            return harvestCell
+        
         default: break
         }
 
@@ -291,20 +296,38 @@ extension FilterTableViewController {
         //Obtain cell and buttons
         guard let cell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as? FilterMonthTableViewCell else {fatalError()}
 
+        //Obtain all the button from the cell
         let cellButtons = [cell.janButton,cell.febButton,cell.marButton,cell.aprButton,cell.mayButton,cell.junButton,cell.julButton,cell.augButton,cell.sepButton,cell.octButton,cell.novButton,cell.decButton]
-
-        guard let label = sender.titleLabel?.text else {fatalError()}
         
+        //Obtain all the tags from the button
+        let buttonTags = [cell.JanTag,cell.FebTag,cell.MarTag,cell.AprTag,cell.MayTag,cell.JunTag,cell.JulTag,cell.AugTag,cell.SepTag,cell.OctTag,cell.NovTag,cell.DecTag]
+
+        //Obtain the label text
+        guard let label = sender.titleLabel?.text else {fatalError()}
+        let index = sender.tag
+        
+        //Check if the button is not all perform following
         if sender.tag != 12 {
             
-            if !sender.isSelected {
+            if selectedMonth["All"] == 1 {
                 
                 sender.isSelected = !sender.isSelected
+                buttonTags[index]?.backgroundColor = color
+                
+                selectedMonth["All"] = 0
+                selectedMonth[label] = 1
+                cell.anyButton.isSelected = false
+                
+            } else if !sender.isSelected {
+                
+                sender.isSelected = !sender.isSelected
+                buttonTags[index]?.backgroundColor = color
+                
                 count += 1
                 selectedMonth[label] = 1
                 
-                cell.anyButton.isSelected = false
-                selectedMonth["All"] = 0
+//                cell.anyButton.isSelected = false
+//                selectedMonth["All"] = 0
                 
             } else {
                 
@@ -313,6 +336,8 @@ extension FilterTableViewController {
                 if count == 1 {
                     
                     selectedMonth[label] = 0
+                    buttonTags[index]?.backgroundColor = .white
+                    
                     selectedMonth["All"] = 1
                     cell.anyButton.isSelected = true
                     
@@ -320,17 +345,20 @@ extension FilterTableViewController {
                     
                     count -= 1
                     selectedMonth[label] = 0
+                    buttonTags[index]?.backgroundColor = .white
                     
                 }
                 
             }
-            
+        
+        //If the button is all perform following
         } else if sender.tag == 12 && !sender.isSelected {
             
-            for button in cellButtons {
+            for (position,button) in cellButtons.enumerated() {
                 guard let label = button?.titleLabel?.text else {fatalError()}
                 button?.isSelected = false
                 selectedMonth[label] = 0
+                buttonTags[position]?.backgroundColor = .white
             }
             
             count = 1
@@ -338,6 +366,8 @@ extension FilterTableViewController {
             selectedMonth["All"] = 1
         }
         
+        print(selectedMonth)
+        print(count)
         
     }
     

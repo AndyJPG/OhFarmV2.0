@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let localData = LocalData()
     let netWork = NetworkHandler()
     var plants = [Plant]()
+    var checkList = [String:[String]]()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -32,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         myGroup.enter()
         plants = netWork.fetchPlantData()
         plants = netWork.completeData(plants)
+        checkList = netWork.fetchCheckListData()
         myGroup.leave()
         
         myGroup.notify(queue: .main) {

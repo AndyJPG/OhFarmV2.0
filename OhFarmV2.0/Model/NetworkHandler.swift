@@ -10,6 +10,30 @@ import UIKit
 
 class NetworkHandler {
     
+    // MARK: Fetch Check list data
+    func fetchCheckListData() -> [String:[String]] {
+        var checkList = [String:[String]]()
+        
+        guard let fileName = Bundle.main.path(forResource: "checkList", ofType: "json") else {fatalError("Can not get check list data")}
+        let optionalData = try? Data(contentsOf: URL(fileURLWithPath: fileName))
+        guard let data = optionalData, let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) else {fatalError("Can not get jsonResponse")}
+        guard let jsonArray = jsonResponse as? [[String: String]] else {fatalError()}
+        
+        for dic in jsonArray {
+            guard let checkListName = dic["checkListType"] else {fatalError()}
+            checkList[checkListName] = []
+            
+            for index in 1..<13 {
+                guard let value = dic[String(index)] else {fatalError()}
+                if !value.isEmpty {
+                    checkList[checkListName]?.append(value)
+                }
+            }
+        }
+        
+        return checkList
+    }
+    
     // MARK: Fetch plant data
     func fetchPlantData() -> [Plant] {
         var plants = [Plant]()
@@ -32,7 +56,7 @@ class NetworkHandler {
             guard let plantingTech = dic["plantingTechnique"] as? String else {fatalError()}
             guard let fertilizer = dic["fertilizerName"] as? String else {fatalError()}
 
-            plants.append(Plant(cropName: cropName, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpacing, maxSpacing: maxSpacing, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTech, fertilizer: fertilizer, compPlantList: [], avoidPlantList: []))
+            plants.append(Plant(cropName: cropName, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpacing, maxSpacing: maxSpacing, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTech, fertilizer: fertilizer, compPlantList: [], avoidPlantList: [], harvestTime: Date(), indoorList: 0, outdoorList: 0))
         }
         return plants
     }

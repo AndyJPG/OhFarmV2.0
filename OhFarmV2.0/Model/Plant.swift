@@ -26,6 +26,14 @@ class Plant: NSObject, NSCoding {
     let plantingTechnique: String
     let fertilizer: String
     
+    //Variable for harvest date
+    var harvestDate = Date()
+    
+    //Variable for check list
+    var indoorList = 0
+    var outdoorList = 0
+    
+    //Variable for compatible and avoid plants
     var compPlantList: [String] = []
     var avoidPlantList: [String] = []
     
@@ -129,6 +137,27 @@ class Plant: NSObject, NSCoding {
         return avoid
     }
     
+    //Progress
+    var progress: Float {
+        //Calculate progress
+        let calendar = Calendar.current
+        let current = Date()
+        
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDay(for: current)
+        let date2 = calendar.startOfDay(for: harvestDate)
+        
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        let daysToHavest = maxHarvestTime * 7
+        
+        print(daysToHavest-components.day!)
+        print(daysToHavest)
+        print(Float(daysToHavest)-Float(components.day!)+30/Float(daysToHavest))
+        
+        return Float(Float(daysToHavest)-Float(components.day!)+30/Float(daysToHavest))
+    }
+    
+    
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("plants")
@@ -150,9 +179,16 @@ class Plant: NSObject, NSCoding {
         static let fertilizer = "fertilizer"
         static let compPlantList = "compatiblePlant"
         static let avoidPlantList = "avoidPlantList"
+        
+        //Harvest time
+        static let harvestTime = "harvestTime"
+        
+        //Check list
+        static let indoorList = "indoorList"
+        static let outdoorList = "outdoorList"
     }
     
-    init(cropName: String, plantCategory: String, suitableMonth: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String, compPlantList: [String]?, avoidPlantList: [String]?) {
+    init(cropName: String, plantCategory: String, suitableMonth: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String, compPlantList: [String]?, avoidPlantList: [String]?, harvestTime: Date, indoorList: Int, outdoorList: Int) {
         self.cropName = cropName
         self.plantCategory = plantCategory
         self.suitableMonth = suitableMonth
@@ -168,6 +204,13 @@ class Plant: NSObject, NSCoding {
         self.plantingTechnique = plantingTechnique
         self.compPlantList = compPlantList ?? []
         self.avoidPlantList = avoidPlantList ?? []
+        
+        //Harvest time
+        self.harvestDate = harvestTime
+        
+        //Check list
+        self.indoorList = indoorList
+        self.outdoorList = outdoorList
     }
     
     //MARK: NSCoding
@@ -188,6 +231,13 @@ class Plant: NSObject, NSCoding {
         
         aCoder.encode(compPlantList, forKey: PropertyKey.compPlantList)
         aCoder.encode(avoidPlantList, forKey: PropertyKey.avoidPlantList)
+        
+        //Encode for harvest date
+        aCoder.encode(harvestDate, forKey: PropertyKey.harvestTime)
+        
+        //Encode for check list
+        aCoder.encode(indoorList, forKey: PropertyKey.indoorList)
+        aCoder.encode(outdoorList, forKey: PropertyKey.outdoorList)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -216,9 +266,15 @@ class Plant: NSObject, NSCoding {
         guard let compPlants = aDecoder.decodeObject(forKey: PropertyKey.compPlantList) as? [String] else {return nil}
         guard let avoidPlants = aDecoder.decodeObject(forKey: PropertyKey.avoidPlantList) as? [String] else {return nil}
         
+        //Harvest time
+        guard let harvestDate = aDecoder.decodeObject(forKey: PropertyKey.harvestTime) as? Date else {return nil}
+        
+        //Check list
+        let indoorList = aDecoder.decodeInteger(forKey: PropertyKey.indoorList)
+        let outdoorList = aDecoder.decodeInteger(forKey: PropertyKey.outdoorList)
         
         // Must call designated initializer.
-        self.init(cropName: name, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTechnique, fertilizer: fertilizer, compPlantList: compPlants, avoidPlantList: avoidPlants)
+        self.init(cropName: name, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTechnique, fertilizer: fertilizer, compPlantList: compPlants, avoidPlantList: avoidPlants, harvestTime: harvestDate, indoorList: indoorList, outdoorList: outdoorList)
         
     }
     

@@ -22,6 +22,12 @@
 		00395DF52278163100EC9293 /* CACellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00395DF32278163100EC9293 /* CACellTableViewCell.xib */; };
 		00395DF92278203A00EC9293 /* CACollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00395DF72278203A00EC9293 /* CACollectionViewCell.swift */; };
 		00395DFA2278203A00EC9293 /* CACollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00395DF82278203A00EC9293 /* CACollectionViewCell.xib */; };
+		0060658422829F6E00742147 /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0060658322829F6E00742147 /* CheckListViewController.swift */; };
+		006065882282A84F00742147 /* IndoorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006065872282A84F00742147 /* IndoorTableViewController.swift */; };
+		0060658A2282A9F000742147 /* checkList.json in Resources */ = {isa = PBXBuildFile; fileRef = 006065892282A9F000742147 /* checkList.json */; };
+		006065912282BDCA00742147 /* CheckListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0060658F2282BDCA00742147 /* CheckListTableViewCell.swift */; };
+		006065922282BDCA00742147 /* CheckListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006065902282BDCA00742147 /* CheckListTableViewCell.xib */; };
+		006065982282C88000742147 /* CheckListHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006065972282C88000742147 /* CheckListHolderViewController.swift */; };
 		0088748C2279B46600475095 /* HintsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0088748B2279B46600475095 /* HintsTableViewController.swift */; };
 		008874902279BBD700475095 /* IntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0088748F2279BBD700475095 /* IntroductionView.swift */; };
 		008874922279BBE300475095 /* IntroductionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008874912279BBE300475095 /* IntroductionView.xib */; };
@@ -93,6 +99,7 @@
 		002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableTableViewController.swift; sourceTree = "<group>"; };
 		002E048222671F92000871F5 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		002E048422671FEA000871F5 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
+		0033A015227EE14A00D3F879 /* OhFarmV2.0.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhFarmV2.0.entitlements; sourceTree = "<group>"; };
 		00395DB32274322F00EC9293 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		00395DB52274326A00EC9293 /* FavouriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewController.swift; sourceTree = "<group>"; };
 		00395DB82275543C00EC9293 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +110,12 @@
 		00395DF32278163100EC9293 /* CACellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CACellTableViewCell.xib; sourceTree = "<group>"; };
 		00395DF72278203A00EC9293 /* CACollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACollectionViewCell.swift; sourceTree = "<group>"; };
 		00395DF82278203A00EC9293 /* CACollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CACollectionViewCell.xib; sourceTree = "<group>"; };
+		0060658322829F6E00742147 /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewController.swift; sourceTree = "<group>"; };
+		006065872282A84F00742147 /* IndoorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndoorTableViewController.swift; sourceTree = "<group>"; };
+		006065892282A9F000742147 /* checkList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkList.json; sourceTree = SOURCE_ROOT; };
+		0060658F2282BDCA00742147 /* CheckListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListTableViewCell.swift; sourceTree = "<group>"; };
+		006065902282BDCA00742147 /* CheckListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckListTableViewCell.xib; sourceTree = "<group>"; };
+		006065972282C88000742147 /* CheckListHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListHolderViewController.swift; sourceTree = "<group>"; };
 		0088748B2279B46600475095 /* HintsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsTableViewController.swift; sourceTree = "<group>"; };
 		0088748F2279BBD700475095 /* IntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionView.swift; sourceTree = "<group>"; };
 		008874912279BBE300475095 /* IntroductionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroductionView.xib; sourceTree = "<group>"; };
@@ -231,6 +244,33 @@
 				00395DF82278203A00EC9293 /* CACollectionViewCell.xib */,
 			);
 			path = "Collection view";
+			sourceTree = "<group>";
+		};
+		0060658222829F4300742147 /* Check List */ = {
+			isa = PBXGroup;
+			children = (
+				006065972282C88000742147 /* CheckListHolderViewController.swift */,
+				0060658322829F6E00742147 /* CheckListViewController.swift */,
+				006065862282A82500742147 /* Sections */,
+			);
+			path = "Check List";
+			sourceTree = "<group>";
+		};
+		006065862282A82500742147 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				006065872282A84F00742147 /* IndoorTableViewController.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		0060658E2282BDAE00742147 /* Check List model */ = {
+			isa = PBXGroup;
+			children = (
+				0060658F2282BDCA00742147 /* CheckListTableViewCell.swift */,
+				006065902282BDCA00742147 /* CheckListTableViewCell.xib */,
+			);
+			path = "Check List model";
 			sourceTree = "<group>";
 		};
 		0088748D2279BB6700475095 /* Introduction and login */ = {
@@ -382,12 +422,14 @@
 		00DA8622226453F100049557 /* OhFarmV2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				0033A015227EE14A00D3F879 /* OhFarmV2.0.entitlements */,
 				00DA8623226453F100049557 /* AppDelegate.swift */,
 				00C71389226DE83B00E1EA36 /* UI */,
 				00DA864822646C9800049557 /* Model */,
 				00DA86462264555400049557 /* Control */,
 				00DA8647226455A600049557 /* View */,
 				00DA8631226453F200049557 /* Info.plist */,
+				006065892282A9F000742147 /* checkList.json */,
 				00C71379226CB7F500E1EA36 /* plantData.json */,
 				002E047B22671B27000871F5 /* communityFarmData.json */,
 			);
@@ -407,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				00A77B0B22709E690033ED8A /* TabBarViewController.swift */,
+				0060658222829F4300742147 /* Check List */,
 				0088748E2279BB7A00475095 /* Introduction and login */,
 				00C71384226DE75600E1EA36 /* Home controller */,
 				00FCC0822271F46B00CD3D20 /* Profile Controller */,
@@ -434,6 +477,7 @@
 				00C7137F226DDCF200E1EA36 /* User.swift */,
 				00C7137B226CBD2100E1EA36 /* NetworkHandler.swift */,
 				00A77B22227181860033ED8A /* LocalData.swift */,
+				0060658E2282BDAE00742147 /* Check List model */,
 				0088748D2279BB6700475095 /* Introduction and login */,
 				00FCC0852271F4F600CD3D20 /* Profile Model */,
 				00C71372226BF54C00E1EA36 /* Range Seek Slider */,
@@ -561,6 +605,14 @@
 				TargetAttributes = {
 					00DA861F226453F100049557 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					00DA8635226453F200049557 = {
 						CreatedOnToolsVersion = 10.2;
@@ -593,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00395DFA2278203A00EC9293 /* CACollectionViewCell.xib in Resources */,
+				006065922282BDCA00742147 /* CheckListTableViewCell.xib in Resources */,
 				00A77B21227156180033ED8A /* PlantAvoidCell.xib in Resources */,
 				008874922279BBE300475095 /* IntroductionView.xib in Resources */,
 				00C7137A226CB7F500E1EA36 /* plantData.json in Resources */,
@@ -602,6 +655,7 @@
 				00395DF52278163100EC9293 /* CACellTableViewCell.xib in Resources */,
 				00A77AFE22702B8E0033ED8A /* DefaultPlantCell.xib in Resources */,
 				00DA862B226453F100049557 /* Main.storyboard in Resources */,
+				0060658A2282A9F000742147 /* checkList.json in Resources */,
 				00A77B112270A36D0033ED8A /* PhotoSlide.xib in Resources */,
 				00395DBB2275667E00EC9293 /* MonthCell.xib in Resources */,
 				002E047C22671B27000871F5 /* communityFarmData.json in Resources */,
@@ -709,6 +763,7 @@
 				00A77B00227032440033ED8A /* PlantInfoSlideViewController.swift in Sources */,
 				00C8CCD1227D8B7E00917787 /* FilterMonthTableViewCell.swift in Sources */,
 				00A77AFC22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift in Sources */,
+				0060658422829F6E00742147 /* CheckListViewController.swift in Sources */,
 				00DA8628226453F100049557 /* MapViewController.swift in Sources */,
 				00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */,
 				00A77B1E227154400033ED8A /* PlantAvoidTableViewCell.swift in Sources */,
@@ -716,8 +771,10 @@
 				00395DB92275543C00EC9293 /* LoginViewController.swift in Sources */,
 				00C71368226AFF8900E1EA36 /* PlantSearchTableViewController.swift in Sources */,
 				00FCC0872271F52700CD3D20 /* ProfileTopTableViewCell.swift in Sources */,
+				006065912282BDCA00742147 /* CheckListTableViewCell.swift in Sources */,
 				00395DB42274322F00EC9293 /* FavouriteTableViewCell.swift in Sources */,
 				00A77B132270A4CE0033ED8A /* PhotoSlide.swift in Sources */,
+				006065982282C88000742147 /* CheckListHolderViewController.swift in Sources */,
 				00C7136F226B4CE900E1EA36 /* FilterHarvestTableViewCell.swift in Sources */,
 				00A77B08227045E80033ED8A /* CulinaryHintsViewController.swift in Sources */,
 				00A79F29227309A0008D4424 /* SettingTableViewController.swift in Sources */,
@@ -734,6 +791,7 @@
 				002E048322671F92000871F5 /* LocationManager.swift in Sources */,
 				008874942279BEA500475095 /* IntroductionViewController.swift in Sources */,
 				00A77B23227181860033ED8A /* LocalData.swift in Sources */,
+				006065882282A84F00742147 /* IndoorTableViewController.swift in Sources */,
 				00C7136B226B4CB700E1EA36 /* FilterCategoryTableViewCell.swift in Sources */,
 				00C7135C226ADD6700E1EA36 /* SearchPlantUI.swift in Sources */,
 				002E048022671EA8000871F5 /* SuggestionsTableTableViewController.swift in Sources */,
@@ -835,7 +893,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -890,7 +948,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

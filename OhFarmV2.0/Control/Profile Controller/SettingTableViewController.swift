@@ -23,7 +23,7 @@ class SettingTableViewController: UITableViewController {
     enum cellName: String {
         case lastLogin = "Last login day"
         case timeZone = "Time zone"
-        case restore = "Restore app"
+        case restore = "Reset"
     }
 
     override func viewDidLoad() {
@@ -151,7 +151,7 @@ class SettingTableViewController: UITableViewController {
     private func setupApearence() {
         navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationItem.title = "Setting"
+        navigationItem.title = "Settings"
         
         tableView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
         let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))

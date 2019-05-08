@@ -14,9 +14,17 @@ class HomeTableViewController: UITableViewController {
     // Style instance
     let delegate = UIApplication.shared.delegate as! AppDelegate
     let homeTableUI = HomeUI()
-    var user: User!
     let localData = LocalData()
+    var user: User!
     var addPlantImage = UIView()
+    var progressTracker = [Float]()
+    
+    enum segueID: String {
+        case HomeToDetailSegue
+        case checkListSegue
+        case unwindToHomeSegue
+        case unwindFromCheckList
+    }
     
     var plants: [Plant] {
         return user?.farmPlants ?? []
@@ -32,11 +40,6 @@ class HomeTableViewController: UITableViewController {
         setUpAppearance()
     }
     
-    enum segueID: String {
-        case HomeToDetailSegue
-        case unwindToHomeSegue
-    }
-    
     // Keep updating the table
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,6 +51,7 @@ class HomeTableViewController: UITableViewController {
         }
         
         updateAppearance()
+        updateProgressTracker()
         tableView.reloadData()
     }
 
@@ -65,7 +69,13 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyFarmCell", for: indexPath)
         let plant = plants[indexPath.row]
+        let progress = progressTracker[indexPath.row]
         guard let plantCell = homeTableUI.homePlantCellStyle(cell, plant: plant) as? HomeFarmTableViewCell else {fatalError()}
+        
+        plantCell.checkListButton.tag = indexPath.row
+        plantCell.checkListButton.addTarget(self, action: #selector(checkListButton(_:)), for: .touchUpInside)
+        
+        plantCell.progressBar.progress = progress
         
         return plantCell
     }
@@ -91,8 +101,6 @@ class HomeTableViewController: UITableViewController {
         }    
     }
     
-
-    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let plant = plants[fromIndexPath.row]
@@ -114,6 +122,12 @@ class HomeTableViewController: UITableViewController {
             uiAlert()
         } else {
             isEditing = !isEditing
+            if isEditing {
+                navigationItem.rightBarButtonItem?.title = "Cancel"
+            } else {
+                navigationItem.rightBarButtonItem?.title = "Manage"
+                tableView.reloadData()
+            }
         }
     }
 
@@ -121,9 +135,31 @@ class HomeTableViewController: UITableViewController {
         self.tabBarController?.selectedIndex = 3
     }
     
+    @objc private func checkListButton(_ sender: UIButton) {
+        performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
+    }
+    
+    //Update the progress tracking array
+    private func updateProgressTracker() {
+        var progresses = [Float]()
+        for plant in plants {
+            if plant.progress <= 1 && (plant.indoorList > 3 || plant.outdoorList > 6) {
+                progresses.append(plant.progress)
+            } else {
+                progresses.append(0.0)
+            }
+        }
+        progressTracker = progresses
+        
+    }
+    
+}
+
+//MARK: Navigation
+extension HomeTableViewController {
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueID.HomeToDetailSegue.rawValue {
@@ -131,6 +167,12 @@ class HomeTableViewController: UITableViewController {
             detailVC.plant = plants[indexPath.row]
             detailVC.isFromHome = true
             detailVC.user = user
+        }
+        
+        if segue.identifier == segueID.checkListSegue.rawValue {
+            guard let nv = segue.destination as? UINavigationController, let vc = nv.topViewController as? CheckListHolderViewController, let button = sender as? UIButton else {fatalError()}
+            vc.plant = plants[button.tag]
+            vc.checkList = delegate.checkList
         }
     }
     
@@ -145,28 +187,16 @@ class HomeTableViewController: UITableViewController {
             localData.saveUserInfo(user)
             tableView.reloadData()
         }
-    }
-
-    
-    // MARK: Appearance methods
-    private func setUpAppearance() {
-        tableView.separatorStyle = .none
-        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-        navigationController?.navigationBar.tintColor = .white
-    }
-    
-    private func updateAppearance() {
-        let image = UIImageView(image: UIImage(named: "background"))
-        let image2 = UIImageView(image: UIImage(named: "background1"))
-        image.contentMode = .scaleAspectFill
-        image2.contentMode = .scaleAspectFill
-        if plants.isEmpty {
-            tableView.backgroundView = image2
-        } else {
-            tableView.backgroundView = image
-        }
         
+        if sender.identifier == segueID.unwindFromCheckList.rawValue {
+            localData.saveUserInfo(user)
+        }
     }
+    
+}
+
+//MARK: UI alert
+extension HomeTableViewController {
     
     //MARK: Delete pop up confirmation
     private func deleteConfirmation(_ indexPath: IndexPath) {
@@ -202,6 +232,31 @@ class HomeTableViewController: UITableViewController {
         }))
         
         present(alert, animated: true, completion: nil)
+    }
+    
+}
+
+//MARK: Appearance
+extension HomeTableViewController {
+    
+    // MARK: Appearance methods
+    private func setUpAppearance() {
+        tableView.separatorStyle = .none
+        navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+    }
+    
+    private func updateAppearance() {
+        let image = UIImageView(image: UIImage(named: "background"))
+        let image2 = UIImageView(image: UIImage(named: "background1"))
+        image.contentMode = .scaleAspectFill
+        image2.contentMode = .scaleAspectFill
+        if plants.isEmpty {
+            tableView.backgroundView = image2
+        } else {
+            tableView.backgroundView = image
+        }
+        
     }
     
 }
