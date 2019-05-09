@@ -106,6 +106,7 @@ class HomeTableViewController: UITableViewController {
         let plant = plants[fromIndexPath.row]
         user?.farmPlants.remove(at: fromIndexPath.row)
         user?.farmPlants.insert(plant, at: to.row)
+        updateProgressTracker()
     }
     
 
@@ -136,7 +137,12 @@ class HomeTableViewController: UITableViewController {
     }
     
     @objc private func checkListButton(_ sender: UIButton) {
-        performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
+        let plant = plants[sender.tag]
+        if plant.plantStyle.lowercased() == "both" && plant.indoorList < 0 && plant.outdoorList < 0 {
+            choiceConfirmation(sender)
+        } else {
+            performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
+        }
     }
     
     //Update the progress tracking array
@@ -150,6 +156,7 @@ class HomeTableViewController: UITableViewController {
             }
         }
         progressTracker = progresses
+        tableView.reloadData()
         
     }
     
@@ -159,7 +166,6 @@ class HomeTableViewController: UITableViewController {
 extension HomeTableViewController {
     
     // MARK: - Navigation
-    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueID.HomeToDetailSegue.rawValue {
@@ -211,6 +217,7 @@ extension HomeTableViewController {
             if self.plants.isEmpty {
                 self.isEditing = false
             }
+            self.updateProgressTracker()
             self.updateAppearance()
         }))
         
@@ -234,6 +241,29 @@ extension HomeTableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    //Check list style confirmation
+    private func choiceConfirmation(_ sender: UIButton) {
+        let plant = self.user.farmPlants[sender.tag]
+        
+        print(plant.indoorList)
+        print(plant.outdoorList)
+        
+        let alert = UIAlertController(title: "Ready to plant?", message: "\(plant.cropName) can be grow in both indoor and outdoor, choose one option to start.", preferredStyle: UIAlertController.Style.actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Indoor", style: UIAlertAction.Style.default, handler: { _ in
+            plant.indoorList = 0
+            self.performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Outdoor", style: UIAlertAction.Style.default, handler: { _ in
+            plant.outdoorList = 0
+            self.performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
+        }))
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
 }
 
 //MARK: Appearance
@@ -253,6 +283,7 @@ extension HomeTableViewController {
         image2.contentMode = .scaleAspectFill
         if plants.isEmpty {
             tableView.backgroundView = image2
+            navigationItem.rightBarButtonItem?.title = "Manage"
         } else {
             tableView.backgroundView = image
         }

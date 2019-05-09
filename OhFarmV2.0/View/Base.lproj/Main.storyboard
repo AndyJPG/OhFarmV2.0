@@ -1312,13 +1312,14 @@
                                 <action selector="backButton:" destination="Gw6-vd-ZLq" id="aL7-rk-mHF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="RrL-HA-ax6">
+                        <barButtonItem key="rightBarButtonItem" title="Reset" id="RrL-HA-ax6">
                             <connections>
-                                <action selector="saveButton:" destination="Gw6-vd-ZLq" id="knp-qU-RMA"/>
+                                <action selector="resetButton:" destination="Gw6-vd-ZLq" id="Fah-qZ-5dP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="containerView" destination="keY-FI-Uo6" id="O2R-sc-hrc"/>
                         <segue destination="cTV-wR-ihY" kind="unwind" identifier="unwindFromCheckList" unwindAction="unwindToHomeVCWithSender:" id="UHT-pv-e5r"/>
                     </connections>
                 </viewController>
@@ -1591,6 +1592,7 @@
                             <constraint firstItem="veS-Qf-TrH" firstAttribute="leading" secondItem="EON-vm-TbS" secondAttribute="leading" id="vEk-Xs-MPy"/>
                             <constraint firstAttribute="trailing" secondItem="cg6-Qm-n3G" secondAttribute="trailing" id="xtD-Mw-cM0"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="cdU-Cz-aF2"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2tv-nG-xfv" userLabel="First Responder" sceneMemberID="firstResponder"/>

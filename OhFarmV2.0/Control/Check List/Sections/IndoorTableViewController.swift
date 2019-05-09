@@ -113,33 +113,51 @@ extension IndoorTableViewController {
     @objc private func checkButton(_ sender: UIButton) {
         
         //Check if user reach the planting part
-        if sender.tag == 3 && sender.isSelected == false {
-            startConfirmation(sender)
-        } else if sender.tag == 6 && sender.isSelected == false {
-            startConfirmation(sender)
-        }
-        
-        //Check for selection
-        if sender.tag == count {
-            sender.isSelected = !sender.isSelected
-            listTracking[count] = 1
-            count += 1
-        } else if (plantStyle == styleID.indoor.rawValue && (sender.tag < 3 || sender.tag > 3)) || (plantStyle == styleID.outdoor.rawValue && (sender.tag < 6 || sender.tag > 6)) {
-            sender.isSelected = !sender.isSelected
-            listTracking[count-1] = 0
+        if sender.tag == listTracking.count-1 && sender.isSelected {
+            listTracking[sender.tag] = 0
             count -= 1
+            sender.isSelected = !sender.isSelected
         } else if sender.tag > count {
             uiAlert(0)
-        } else if sender.tag < count-1 {
+        } else if sender.tag < count && listTracking[sender.tag+1] != 0 {
             uiAlert(1)
+        } else if sender.tag == count && !sender.isSelected {
+            listTracking[count] = 1
+            count += 1
+            sender.isSelected = !sender.isSelected
+            
+            //Notfiy user if they want to start seeding
+            if (plantStyle == "indoor" && sender.tag == 3) || (plantStyle == "outdoor" && sender.tag == 6 && plant.plantStyle.lowercased() != "both") {
+                startConfirmation(sender)
+            }
+            
+            //Notify ser if they want to move plant out
+            if plantStyle == "indoor" && sender.tag == 9 {
+                moveOutConfirmation(sender)
+            }
+            
+        } else if sender.tag == count-1 && listTracking[sender.tag+1] == 0 {
+            
+            if (plantStyle == "indoor" && sender.tag != 3 && sender.tag != 9) || (plantStyle == "outdoor" && sender.tag != 6) {
+                listTracking[sender.tag] = 0
+                count -= 1
+                sender.isSelected = !sender.isSelected
+            } else {
+                uiAlert(2)
+            }
+            
         }
         
-        //Keep count to local
-        if plantStyle == styleID.indoor.rawValue {
+        if plantStyle == "indoor" {
             plant.indoorList = count
+            print(plant.indoorList)
+            print(count)
         } else {
             plant.outdoorList = count
+            print(plant.outdoorList)
+            print(count)
         }
+        
     }
     
 }
@@ -151,6 +169,7 @@ extension IndoorTableViewController {
     private func uiAlert(_ index: Int)  {
         switch index {
         case 0:
+            //Clicked future task
             let alert = UIAlertController(title: "", message: "Please finish the task before this task", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
@@ -159,7 +178,17 @@ extension IndoorTableViewController {
             
             present(alert, animated: true, completion: nil)
         case 1:
+            //Clicked completed task
             let alert = UIAlertController(title: "", message: "You have completed this task", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        case 2:
+            //Mistake clicked plant seed
+            let alert = UIAlertController(title: "You have planted seed", message: "If you have checked this task by mistake, use rest button to rest.", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                 //Cancel Action
@@ -171,6 +200,7 @@ extension IndoorTableViewController {
         
     }
     
+    //Confirmation for starting planting seed
     private func startConfirmation(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Ready to plant", message: "Have you finished all preparation tasks ?", preferredStyle: UIAlertController.Style.alert)
@@ -182,14 +212,40 @@ extension IndoorTableViewController {
             print(self.plant.harvestDate)
         }))
         
+        //Not yet solution if user dont want to plant now
         alert.addAction(UIAlertAction(title: "Not yet", style: UIAlertAction.Style.destructive, handler: { _ in
+            //deselect check box and update the tracker and counter
             sender.isSelected = !sender.isSelected
             self.listTracking[self.count-1] = 0
             self.count -= 1
+            
+            //Set plant counter to sync with count
+            if self.plantStyle == "indoor" {
+                self.plant.indoorList = self.count
+            } else {
+                self.plant.outdoorList = self.count
+            }
         }))
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    //Confirmation if user want to move plant outside
+    private func moveOutConfirmation(_ sender: UIButton) {
         
+        let alert = UIAlertController(title: "Move outdoor or keep indoor", message: "Do you want to move your plant to outdoor or keep it indoor ?", preferredStyle: UIAlertController.Style.actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Indoor", style: UIAlertAction.Style.default, handler: { _ in
+            
+        }))
+        
+        //Not yet solution if user dont want to plant now
+        alert.addAction(UIAlertAction(title: "Outdoor", style: UIAlertAction.Style.default, handler: { _ in
+            self.plant.outdoorList = 0
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
     
 }

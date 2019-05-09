@@ -26,7 +26,6 @@ class CheckListViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarMinimumLineSpacing = 10
         settings.style.selectedBarBackgroundColor = color
         
-        
         super.viewDidLoad()
     }
     
@@ -38,18 +37,36 @@ class CheckListViewController: ButtonBarPagerTabStripViewController {
         let child_2 = IndoorTableViewController(style: .plain, itemInfo: "Outdoor", checkList: outdoorList, plant: plant)
         
         guard isReload else {
-            if plant.plantStyle == "Outdoor" {
-                return [child_1]
+            if plant.plantStyle.lowercased() == "both" {
+                
+                if plant.indoorList >= 0 && plant.outdoorList < 0 {
+                    return [child_1]
+                } else if plant.indoorList < 0 && plant.outdoorList >= 0 {
+                    return [child_2]
+                }
+                
             } else if plant.plantStyle == "Indoor" {
+                return [child_1]
+            } else if plant.plantStyle == "Outdoor" {
                 return [child_2]
             }
             return [child_1, child_2]
         }
         
         var childViewControllers = [child_1, child_2]
-        if plant.plantStyle == "Outdoor" {
-            childViewControllers = [child_1]
+        
+        //Return the checklist user choosed
+        if plant.plantStyle.lowercased() == "both" {
+            
+            if plant.indoorList >= 0 && plant.outdoorList < 0 {
+                childViewControllers = [child_1]
+            } else if plant.indoorList < 0 && plant.outdoorList >= 0 {
+                childViewControllers = [child_2]
+            }
+            
         } else if plant.plantStyle == "Indoor" {
+            childViewControllers = [child_1]
+        } else if plant.plantStyle == "Outdoor" {
             childViewControllers = [child_2]
         }
         
