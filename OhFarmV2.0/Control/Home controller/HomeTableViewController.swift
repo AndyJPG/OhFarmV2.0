@@ -144,8 +144,16 @@ class HomeTableViewController: UITableViewController {
             choiceConfirmation(sender)
         } else {
             //Inital check list
-            plant.indoorList = 0
-            plant.outdoorList = 0
+            if plant.plantStyle.lowercased() != "both" {
+                if plant.indoorList < 0 {
+                    plant.indoorList = 0
+                }
+                
+                if plant.outdoorList < 0 {
+                    plant.outdoorList = 0
+                }
+            }
+            
             performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
         }
     }

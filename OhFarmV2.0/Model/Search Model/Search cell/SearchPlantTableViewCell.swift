@@ -33,11 +33,11 @@ class SearchPlantTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
         if selected {
-            UIView.animate(withDuration: 1.0) {
-                self.cellBackground.backgroundColor = .lightGray
+            UIView.animate(withDuration: 0.5) {
+                self.cellBackground.backgroundColor = .groupTableViewBackground
             }
         } else {
-            UIView.animate(withDuration: 1.0) {
+            UIView.animate(withDuration: 0.5) {
                 self.cellBackground.backgroundColor = .white
             }
         }
