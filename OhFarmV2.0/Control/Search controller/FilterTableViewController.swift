@@ -47,7 +47,7 @@ class FilterTableViewController: UITableViewController {
         
         //Track orginal filter for cancel button action
         if orginFilter == nil {
-            orginFilter = Filter([[filter.category],[filter.location],filter.minSpacing,filter.maxSpacing,filter.minHarvest,filter.maxHarvest,filter.month])
+            orginFilter = Filter([filter.category,filter.location,filter.minSpacing,filter.maxSpacing,filter.minHarvest,filter.maxHarvest,filter.month])
         }
         
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 55))
@@ -282,6 +282,7 @@ extension FilterTableViewController {
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         filter = orginFilter
         performSegue(withIdentifier: "filterUnwindSegue", sender: self)
+//        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func resetAction(_ sender: UIBarButtonItem) {

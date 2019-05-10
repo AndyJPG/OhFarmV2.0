@@ -23,7 +23,24 @@ class HomeUI: UIViewController {
         plantCell.cellBackground.layer.shadowOffset = CGSize.zero
         
         plantCell.plantNameLabel.text = plant.cropName
-        plantCell.categoryLabel.text = plant.plantCategory
+        
+        //Progress day
+        //Calculate progress
+        let calendar = Calendar.current
+        let current = Date()
+        
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDay(for: current)
+        let date2 = calendar.startOfDay(for: plant.harvestDate)
+        
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        guard let days = components.day else {fatalError()}
+        
+        if plant.indoorList >= 3 || plant.outdoorList >= 6 {
+            plantCell.categoryLabel.text = "\(days) days to go"
+        } else {
+            plantCell.categoryLabel.text = ""
+        }
         
         if plant.plantCategory == "vegetable" {
             plantCell.categoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)

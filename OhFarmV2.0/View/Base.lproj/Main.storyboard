@@ -62,6 +62,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nso-P0-xfB">
+                                                    <rect key="frame" x="338.33333333333331" y="90.666666666666671" width="33.666666666666686" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Nso-P0-xfB" secondAttribute="height" multiplier="1:1" id="tOX-YE-JuE"/>
+                                                    </constraints>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -69,8 +75,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="RJM-p1-qZF" secondAttribute="bottom" id="3SM-sm-7dt"/>
                                                 <constraint firstAttribute="trailing" secondItem="LxV-fy-2lx" secondAttribute="trailing" id="5dN-ux-lhG"/>
                                                 <constraint firstItem="54e-Ty-qdg" firstAttribute="leading" secondItem="RJM-p1-qZF" secondAttribute="trailing" constant="16" id="8h5-aA-b3i"/>
+                                                <constraint firstAttribute="trailing" secondItem="Nso-P0-xfB" secondAttribute="trailing" constant="10" id="ARF-Hm-vv3"/>
                                                 <constraint firstItem="RJM-p1-qZF" firstAttribute="top" secondItem="s1M-qH-yeI" secondAttribute="top" id="FBf-mk-d6O"/>
                                                 <constraint firstItem="LxV-fy-2lx" firstAttribute="leading" secondItem="6M7-8H-lfh" secondAttribute="trailing" constant="16" id="L1w-w8-PDA"/>
+                                                <constraint firstItem="Nso-P0-xfB" firstAttribute="top" secondItem="s1M-qH-yeI" secondAttribute="top" constant="90.670000000000002" id="Lhm-sM-EgJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="Nso-P0-xfB" secondAttribute="bottom" constant="10" id="O0Q-Lj-VS1"/>
                                                 <constraint firstAttribute="height" constant="134.5" id="PlR-Ju-15C"/>
                                                 <constraint firstAttribute="bottom" secondItem="6M7-8H-lfh" secondAttribute="bottom" constant="13" id="U1N-fn-jsI"/>
                                                 <constraint firstItem="RJM-p1-qZF" firstAttribute="leading" secondItem="s1M-qH-yeI" secondAttribute="leading" id="b3p-dv-Xph"/>
@@ -92,6 +101,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cellBackground" destination="s1M-qH-yeI" id="yjC-ey-mS1"/>
+                                    <outlet property="compareCheck" destination="Nso-P0-xfB" id="UFG-Oc-JJh"/>
                                     <outlet property="plantHarvestLabel" destination="54e-Ty-qdg" id="41g-cY-W07"/>
                                     <outlet property="plantImage" destination="RJM-p1-qZF" id="8z7-2v-aBJ"/>
                                     <outlet property="plantNameLabel" destination="R3Q-fx-qte" id="NGl-2M-jXK"/>
@@ -132,12 +142,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="wbV-pS-oVs">
+                        <barButtonItem key="leftBarButtonItem" title="Compare" id="DTE-5O-K0F">
+                            <connections>
+                                <action selector="compareAction:" destination="Scq-QI-33i" id="Yok-9S-q2d"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="oLJ-ze-UXo">
                             <connections>
-                                <segue destination="hc0-B1-2GL" kind="presentation" identifier="filterSegue" id="k0k-xb-bg4"/>
+                                <action selector="filterAction:" destination="Scq-QI-33i" id="zU7-1y-aKu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="compareButton" destination="DTE-5O-K0F" id="mc2-VR-VHw"/>
+                        <outlet property="filterButton" destination="oLJ-ze-UXo" id="6Rw-tb-nTy"/>
+                        <segue destination="hc0-B1-2GL" kind="presentation" identifier="filterSegue" id="i3F-IL-Sun"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0u-Lk-KfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -642,7 +662,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ni9-br-px4">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NaD-fm-8nJ">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="NaD-fm-8nJ">
                             <connections>
                                 <action selector="cancelAction:" destination="SQA-L8-0hH" id="fls-wL-3LR"/>
                             </connections>
@@ -1632,7 +1652,7 @@
         <image name="user" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sZ9-NW-KyD"/>
+        <segue reference="0tJ-ZS-aag"/>
         <segue reference="1cL-xF-cZA"/>
     </inferredMetricsTieBreakers>
 </document>

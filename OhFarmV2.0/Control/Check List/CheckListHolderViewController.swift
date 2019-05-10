@@ -33,12 +33,6 @@ class CheckListHolderViewController: UIViewController {
         
         print(plant.indoorList)
         print(plant.outdoorList)
-        
-        //Inital check list
-        if plant.plantStyle.lowercased() != "both" {
-            plant.indoorList = 0
-            plant.outdoorList = 0
-        }
     }
     
 

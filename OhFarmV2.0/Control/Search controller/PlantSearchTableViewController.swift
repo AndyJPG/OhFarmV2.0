@@ -41,6 +41,16 @@ class PlantSearchTableViewController: UITableViewController {
     let searchController = UISearchController(searchResultsController: nil)
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
+    //Check if is compare mode
+    var compareMode = false
+    var compareList = [Plant]()
+    
+    //Compare button
+    @IBOutlet weak var compareButton: UIBarButtonItem!
+    
+    //Filter button
+    @IBOutlet weak var filterButton: UIBarButtonItem!
+    
     //Plants properites to handle change
     var plants: [Plant] {
         if isFiltering() {
@@ -103,6 +113,31 @@ class PlantSearchTableViewController: UITableViewController {
             
             uiCell.plusButton.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
             uiCell.plusButton.tag =  indexPath.row
+            
+            uiCell.compareCheck.addTarget(self, action: #selector(checkAction(_:)), for: .touchUpInside)
+            uiCell.compareCheck.tag = indexPath.row
+            
+            //Change plus button if is compare mode
+            if compareMode {
+                uiCell.plusButton.isHidden = true
+                uiCell.compareCheck.isHidden = false
+            } else {
+                uiCell.compareCheck.isHidden = true
+                uiCell.plusButton.isHidden = false
+            }
+            
+            //Update check box selection
+            if compareMode {
+                let names = compareList.map({ (plant) -> String in
+                    return plant.cropName
+                })
+
+                if names.contains(plant.cropName) {
+                    uiCell.compareCheck.isSelected = true
+                } else {
+                    uiCell.compareCheck.isSelected = false
+                }
+            }
             
             cell = uiCell
         }
@@ -184,6 +219,7 @@ class PlantSearchTableViewController: UITableViewController {
     
     // MARK: Action handle functions
     @objc private func addPlant(_ sender: UIButton) {
+        
         let plant = plants[sender.tag]
         var exist = false
         
@@ -204,6 +240,87 @@ class PlantSearchTableViewController: UITableViewController {
         }
     }
     
+    //Comparison check box
+    @objc private func checkAction(_ sender: UIButton) {
+        if !sender.isSelected {
+            //Check if list is full
+            if compareList.count < 3 {
+                sender.isSelected = true
+                compareList.append(plants[sender.tag])
+                
+                //Testing code
+                print("add to checklist")
+                print(compareList.map({ (plant) -> String in
+                    return plant.cropName
+                }))
+                
+            } else {
+                comparisonAlert(1)
+            }
+            
+        } else {
+            sender.isSelected = false
+            let deselectPlant = plants[sender.tag].cropName
+            
+            //Search for the plant to remove
+            var position = 0
+            for (index,plant) in compareList.enumerated() {
+                if plant.cropName == deselectPlant {
+                    position = index
+                }
+            }
+            
+            compareList.remove(at: position)
+            
+            //Testing code
+            print("remove from checklist")
+            print(compareList.map({ (plant) -> String in
+                return plant.cropName
+            }))
+        }
+        
+        //Update the compare button appearance
+        if compareList.count == 3 {
+            compareButton.tintColor = .white
+        } else {
+            compareButton.tintColor = .lightText
+        }
+    }
+    
+    //Compare button action
+    @IBAction func compareAction(_ sender: Any) {
+        //check if is compare mode
+        if !compareMode {
+            compareMode = true
+            compareButton.title = "Comparing"
+            compareButton.tintColor = .lightText
+            //Set filter button to be cancel button
+            filterButton.title = "Cancel"
+            tableView.reloadData()
+        } else if compareList.count != 3 {
+            comparisonAlert(0)
+        }
+        
+    }
+    
+    @IBAction func filterAction(_ sender: Any) {
+        //check if is under compare mode
+        if compareMode {
+            compareMode = false
+            compareButton.title = "Compare"
+            compareButton.tintColor = .white
+            filterButton.title = "Filter"
+            compareList = []
+            tableView.reloadData()
+        } else {
+            performSegue(withIdentifier: SegueID.filterSegue.rawValue, sender: self)
+        }
+    }
+    
+}
+
+//MARK: Navigations
+extension PlantSearchTableViewController {
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -233,6 +350,7 @@ class PlantSearchTableViewController: UITableViewController {
             applyFilter()
         }
     }
+    
     
 }
 
@@ -268,6 +386,31 @@ extension PlantSearchTableViewController {
             
             present(alert, animated: true, completion: nil)
         }
+    }
+    
+    //MARK: Alert for comparison
+    private func comparisonAlert(_ index: Int) {
+        
+        switch index {
+        case 0:
+            let alert = UIAlertController(title: "", message: "Please choose 3 plants to compare", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        case 1:
+            let alert = UIAlertController(title: "", message: "Please only choose 3 plants to compare", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        default: break
+        }
+        
     }
     
 }

@@ -201,7 +201,7 @@ extension PlantDetailViewController: UIScrollViewDelegate {
         
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
-        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.pageIndicatorTintColor = .lightText
         view.bringSubviewToFront(pageControl)
     }
 }

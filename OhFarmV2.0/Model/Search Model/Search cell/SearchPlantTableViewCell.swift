@@ -17,10 +17,15 @@ class SearchPlantTableViewCell: UITableViewCell {
     @IBOutlet weak var plantHarvestLabel: UILabel!
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var cellBackground: UIView!
+    @IBOutlet weak var compareCheck: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        compareCheck.setImage(UIImage(named: "check"), for: .selected)
+        compareCheck.setImage(UIImage(named: "uncheck"), for: .normal)
+        compareCheck.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

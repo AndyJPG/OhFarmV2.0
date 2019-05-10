@@ -70,8 +70,6 @@ class FilterMonthTableViewCell: UITableViewCell {
             return month.prefix(3).lowercased()
         }
         
-        print(monthsPrefix)
-        
         for (index,button) in buttons.enumerated() {
             button?.setTitleColor(.lightGray, for: .normal)
             button?.setTitleColor(color, for: .selected)

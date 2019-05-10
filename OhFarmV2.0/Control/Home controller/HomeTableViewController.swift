@@ -72,9 +72,11 @@ class HomeTableViewController: UITableViewController {
         let progress = progressTracker[indexPath.row]
         guard let plantCell = homeTableUI.homePlantCellStyle(cell, plant: plant) as? HomeFarmTableViewCell else {fatalError()}
         
+        //Check list button and action
         plantCell.checkListButton.tag = indexPath.row
         plantCell.checkListButton.addTarget(self, action: #selector(checkListButton(_:)), for: .touchUpInside)
         
+        //Progress bar
         plantCell.progressBar.progress = progress
         
         return plantCell
@@ -141,6 +143,9 @@ class HomeTableViewController: UITableViewController {
         if plant.plantStyle.lowercased() == "both" && plant.indoorList < 0 && plant.outdoorList < 0 {
             choiceConfirmation(sender)
         } else {
+            //Inital check list
+            plant.indoorList = 0
+            plant.outdoorList = 0
             performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
         }
     }
