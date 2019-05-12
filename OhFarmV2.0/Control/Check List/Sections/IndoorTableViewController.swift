@@ -12,6 +12,7 @@ import XLPagerTabStrip
 class IndoorTableViewController: UITableViewController, IndicatorInfoProvider {
     
     //MARK: variable
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     let cellIdentifier = "CheckListTableViewCell"
     var blackTheme = false
     var itemInfo = IndicatorInfo(title: "View")
@@ -19,6 +20,11 @@ class IndoorTableViewController: UITableViewController, IndicatorInfoProvider {
     //Checklist track
     var checkList = [String]()
     var listTracking = [Int]()
+    
+    //Plant point
+    let indoorPlantPoint = 3
+    let indoorMoveOut = 8
+    let outdoorPlantPoint = 4
     
     //User and plant Index
     var plant: Plant!
@@ -127,18 +133,18 @@ extension IndoorTableViewController {
             sender.isSelected = !sender.isSelected
             
             //Notfiy user if they want to start seeding
-            if (plantStyle == "indoor" && sender.tag == 3) || (plantStyle == "outdoor" && sender.tag == 6 && plant.plantStyle.lowercased() != "both") {
+            if (plantStyle == "indoor" && sender.tag == indoorPlantPoint) || (plantStyle == "outdoor" && sender.tag == outdoorPlantPoint && plant.plantStyle.lowercased() != "both") {
                 startConfirmation(sender)
             }
             
             //Notify ser if they want to move plant out
-            if plantStyle == "indoor" && sender.tag == 9 {
+            if plantStyle == "indoor" && sender.tag == indoorMoveOut {
                 moveOutConfirmation(sender)
             }
             
         } else if sender.tag == count-1 && listTracking[sender.tag+1] == 0 {
             
-            if (plantStyle == "indoor" && sender.tag != 3 && sender.tag != 9) || (plantStyle == "outdoor" && sender.tag != 6) {
+            if (plantStyle == "indoor" && sender.tag != indoorPlantPoint && sender.tag != indoorMoveOut) || (plantStyle == "outdoor" && sender.tag != outdoorPlantPoint) {
                 listTracking[sender.tag] = 0
                 count -= 1
                 sender.isSelected = !sender.isSelected
@@ -216,13 +222,16 @@ extension IndoorTableViewController {
             print("Next watering date")
             print(self.plant.nextWateringDate)
             
-            //For Show in notification
-            self.plant.nextWateringDate = Date()
-            self.plant.harvestDate = Date()
-            print("For show notification")
-            print(self.plant.harvestDate)
-            print("Next watering date")
-            print(self.plant.nextWateringDate)
+            //ADD FIRST NOTIFICATION FOR NEW PLANT
+            //Date formater
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            let nextWaterString = dateFormatter.string(from: Date())
+            
+            if self.delegate.user!.wateringNotif {
+                self.delegate.user?.notificationList.append("Please water the \(self.plant.cropName).;\(nextWaterString)")
+            }
+            
         }))
         
         //Not yet solution if user dont want to plant now

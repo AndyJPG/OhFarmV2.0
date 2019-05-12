@@ -19,6 +19,7 @@ class PlantCheckBoxCollectionViewCell: UICollectionViewCell {
         checkBox.setImage(UIImage(named: "check"), for: .selected)
         checkBox.setImage(UIImage(named: "uncheck"), for: .normal)
         topBar.backgroundColor = .lightGray
+        self.backgroundColor = .white
     }
     
 }

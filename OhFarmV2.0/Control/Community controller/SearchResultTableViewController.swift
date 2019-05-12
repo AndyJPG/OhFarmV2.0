@@ -114,6 +114,7 @@ class SearchResultTableViewController: UITableViewController {
         image.contentMode = .scaleAspectFill
         tableView.backgroundView = image
         
+        performSegue(withIdentifier: SegueID.showAll.rawValue, sender: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {

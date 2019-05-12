@@ -16,7 +16,6 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
         
         let image = UIImage(named: "back")
-        
         self.navigationBar.backIndicatorImage = image
         self.navigationBar.backIndicatorTransitionMaskImage = image
         

@@ -16,6 +16,7 @@ class PlantPhotoCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         plantImage.layer.cornerRadius = 24
         plantImage.contentMode = .scaleAspectFill
+        self.backgroundColor = .white
     }
     
 }

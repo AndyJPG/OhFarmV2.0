@@ -159,7 +159,7 @@ class Plant: NSObject, NSCoding {
         print((Float(daysToHavest)-Float(components.day!)+20)/Float(daysToHavest))
         print("need change here")
         
-        return Float((Float(daysToHavest)-Float(components.day!)+20)/Float(daysToHavest))
+        return Float(Float(daysToHavest)-Float(components.day!)+5.0/Float(daysToHavest))
     }
     
     

@@ -58,7 +58,7 @@ class FavouriteTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "favouriteToDetailSegue" {
-            guard let nv = segue.destination as? UINavigationController, let detailVC = nv.topViewController as? PlantDetailViewController, let indexPath = sender as? IndexPath else {fatalError()}
+            guard let detailVC = segue.destination as? PlantDetailViewController, let indexPath = sender as? IndexPath else {fatalError()}
             detailVC.plant = user.favoritePlants[indexPath.row]
             detailVC.user = user
         }
@@ -87,6 +87,10 @@ class FavouriteTableViewController: UITableViewController {
         let image = UIImageView(image: UIImage(named: "background"))
         image.contentMode = .scaleAspectFill
         tableView.backgroundView = image
+        
+        // Provide an empty backBarButton to hide the 'Back' text present by default in the back button.
+        let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtton
     }
 
 }

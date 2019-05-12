@@ -47,6 +47,11 @@ class ComparisonViewController: UIViewController {
         setupAddPlantButton()
         
         navigationItem.title = "Comparison"
+        
+        //Back ground
+        let background = UIImageView(image: UIImage(named: "background"))
+        background.contentMode = .scaleAspectFill
+        collection.backgroundView = background
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,12 +73,15 @@ class ComparisonViewController: UIViewController {
     //MARK: Actions
     @objc private func checkBox(_ sender: UIButton) {
         
-        if !sender.isSelected {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
             checkTracker[sender.tag] = 1
         } else {
             checkTracker[sender.tag] = 0
         }
-        sender.isSelected = !sender.isSelected
+        
+        print(checkTracker)
+        
     }
     
     //add plant button
@@ -83,6 +91,8 @@ class ComparisonViewController: UIViewController {
         if !checkTracker.contains(1) {
             notPlantAlert()
         } else {
+            var existList = [0,0,0]
+            
             let farmPlants = userFarm.map { (plant) -> String in
                 return plant.cropName
             }
@@ -93,7 +103,9 @@ class ComparisonViewController: UIViewController {
             //Check if there is any plant exist in the user farm
             for name in farmPlants {
                 if let index = comparePlants.firstIndex(of: name) {
-                    checkTracker[index] = 2
+                    if checkTracker[index] == 1 {
+                        existList[index] = 2
+                    }
                 }
             }
             
@@ -103,23 +115,21 @@ class ComparisonViewController: UIViewController {
             var addPlantsList = [Plant]()
             
             for (index,value) in checkTracker.enumerated() {
-                if value == 2 {
+                if existList[index] == 2 {
                     existPlants += "\(compareList[index].cropName), "
                 }
                 
-                if value == 1 {
+                if value == 1 && existList[index] != 2 {
                     addPlants += "\(compareList[index].cropName), "
                     addPlantsList.append(compareList[index])
                 }
             }
             
-            compareList = addPlantsList
-            
             //Perform alert
-            addPlantAlert(existPlants, addPlants)
+            addPlantAlert(existPlants, addPlants, plantList: addPlantsList)
         }
         
-        
+        print(checkTracker)
     }
 
 }
@@ -285,7 +295,7 @@ extension ComparisonViewController: UICollectionViewDelegateFlowLayout {
 extension ComparisonViewController {
     
     //notify when add plant
-    private func addPlantAlert(_ existPlants: String, _ addPlants: String) {
+    private func addPlantAlert(_ existPlants: String, _ addPlants: String, plantList: [Plant]) {
         var alert = UIAlertController()
         
         if addPlants.isEmpty && !existPlants.isEmpty {
@@ -307,6 +317,7 @@ extension ComparisonViewController {
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                 //Cancel Action
+                self.compareList = plantList
                 self.performSegue(withIdentifier: segueID.compareToSearchSegue.rawValue, sender: self)
             }))
             

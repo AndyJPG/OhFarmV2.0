@@ -18,6 +18,7 @@ class PlantValueCollectionViewCell: UICollectionViewCell {
         rightBar.backgroundColor = .lightGray
         topBar.backgroundColor = .lightGray
         value.sizeToFit()
+        self.backgroundColor = .white
     }
     
 }

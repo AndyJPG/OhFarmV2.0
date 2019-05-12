@@ -23,7 +23,7 @@ class NetworkHandler {
             guard let checkListName = dic["checkListType"] else {fatalError()}
             checkList[checkListName] = []
             
-            for index in 1..<13 {
+            for index in 1..<dic.count {
                 guard let value = dic[String(index)] else {fatalError()}
                 if !value.isEmpty {
                     checkList[checkListName]?.append(value)

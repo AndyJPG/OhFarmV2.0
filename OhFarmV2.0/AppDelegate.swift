@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         plants = netWork.fetchPlantData()
         plants = netWork.completeData(plants)
         checkList = netWork.fetchCheckListData()
+        
+        print(checkList)
         myGroup.leave()
         
         myGroup.notify(queue: .main) {
@@ -69,10 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         searchTableVC.originalPlants = plants
                     } else if let profileTableVC = navigationController.topViewController as? ProfileTableViewController {
                         profileTableVC.user = user
-                        
-                        if !(user?.notificationList.isEmpty)! {
-                            navigationController.tabBarItem.badgeValue = String(user?.notificationList.count ?? 0)
-                        }
                     }
                 }
             }

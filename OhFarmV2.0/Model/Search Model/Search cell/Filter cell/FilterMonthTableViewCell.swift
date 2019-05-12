@@ -43,6 +43,7 @@ class FilterMonthTableViewCell: UITableViewCell {
     @IBOutlet weak var NovTag: UIView!
     @IBOutlet weak var DecTag: UIView!
     
+    @IBOutlet weak var allTag: UIView!
     
     let color = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
     
@@ -63,11 +64,15 @@ class FilterMonthTableViewCell: UITableViewCell {
     func setButton(_ months: [String]) {
         let buttons = [janButton,febButton,marButton,aprButton,mayButton,junButton,julButton,augButton,sepButton,octButton,novButton,decButton,anyButton]
         
-        let tags = [JanTag,FebTag,MarTag,AprTag,MayTag,JunTag,JulTag,AugTag,SepTag,OctTag,NovTag,DecTag]
+        let tags = [JanTag,FebTag,MarTag,AprTag,MayTag,JunTag,JulTag,AugTag,SepTag,OctTag,NovTag,DecTag,allTag]
         let monthsText = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","All"]
         
         let monthsPrefix = months.map { (month) -> String in
             return month.prefix(3).lowercased()
+        }
+        
+        if months[0] == "All" {
+            
         }
         
         for (index,button) in buttons.enumerated() {
@@ -77,14 +82,11 @@ class FilterMonthTableViewCell: UITableViewCell {
             
             if monthsPrefix.contains(button?.title(for: .normal)?.lowercased() ?? "") {
                 button?.isSelected = true
-                if button?.title(for: .normal) != "All" {
-                    tags[index]?.backgroundColor = color
-                }
+                tags[index]?.backgroundColor = color
+                
             } else {
                 button?.isSelected = false
-                if button?.title(for: .normal) != "All" {
-                    tags[index]?.backgroundColor = .white
-                }
+                tags[index]?.backgroundColor = .white
             }
         }
             

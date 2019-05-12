@@ -32,9 +32,10 @@ class CheckListViewController: ButtonBarPagerTabStripViewController {
     // MARK: - PagerTabStripDataSource
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        guard let indoorList = checkList["indoor"], let outdoorList = checkList["outdoor"] else {fatalError()}
+        guard let indoorList = checkList["indoor"], let outdoorList = checkList["outdoor"] , let indoorToOutdoor = checkList["outdoorFromIndoor"] else {fatalError()}
         let child_1 = IndoorTableViewController(style: .plain, itemInfo: "Indoor", checkList: indoorList, plant: plant)
         let child_2 = IndoorTableViewController(style: .plain, itemInfo: "Outdoor", checkList: outdoorList, plant: plant)
+        let child_3 = IndoorTableViewController(style: .plain, itemInfo: "Outdoor", checkList: indoorToOutdoor, plant: plant)
         
         guard isReload else {
             if plant.plantStyle.lowercased() == "both" {
@@ -50,7 +51,8 @@ class CheckListViewController: ButtonBarPagerTabStripViewController {
             } else if plant.plantStyle == "Outdoor" {
                 return [child_2]
             }
-            return [child_1, child_2]
+            
+            return [child_1, child_3]
         }
         
         var childViewControllers = [child_1, child_2]

@@ -19,11 +19,19 @@ class HomeTableViewController: UITableViewController {
     var addPlantImage = UIView()
     var progressTracker = [Float]()
     
+    //Notification button
+    let notificationButton = SSBadgeButton()
+    
+    //Welcome label and image
+    var welcomeIamage = UIImageView()
+    var welcomeLabel = UILabel()
+    
     enum segueID: String {
         case HomeToDetailSegue
         case checkListSegue
         case unwindToHomeSegue
         case unwindFromCheckList
+        case homeToNotificationSegue
     }
     
     var plants: [Plant] {
@@ -50,9 +58,9 @@ class HomeTableViewController: UITableViewController {
             navigationItem.title = "\(user.userName)'s farm"
         }
         
+        updateNotification()
         updateAppearance()
         updateProgressTracker()
-        updateNotification()
         tableView.reloadData()
     }
 
@@ -89,7 +97,7 @@ class HomeTableViewController: UITableViewController {
     
     //give click feedback
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: segueID.HomeToDetailSegue.rawValue, sender: indexPath)
     }
     
     // Override to support conditional editing of the table view.
@@ -138,36 +146,12 @@ class HomeTableViewController: UITableViewController {
             }
         }
     }
-
-    @objc private func addPlantTap(_ sender: UITapGestureRecognizer) {
-        self.tabBarController?.selectedIndex = 3
-    }
-    
-    @objc private func checkListButton(_ sender: UIButton) {
-        let plant = plants[sender.tag]
-        if plant.plantStyle.lowercased() == "both" && plant.indoorList < 0 && plant.outdoorList < 0 {
-            choiceConfirmation(sender)
-        } else {
-            //Inital check list
-            if plant.plantStyle.lowercased() != "both" {
-                if plant.indoorList < 0 {
-                    plant.indoorList = 0
-                }
-                
-                if plant.outdoorList < 0 {
-                    plant.outdoorList = 0
-                }
-            }
-            
-            performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
-        }
-    }
     
     //Update the progress tracking array
     private func updateProgressTracker() {
         var progresses = [Float]()
         for plant in plants {
-            if plant.progress <= 1 && (plant.indoorList > 3 || plant.outdoorList > 6) {
+            if plant.progress <= 1 && (plant.indoorList > 3 || plant.outdoorList > 4) {
                 progresses.append(plant.progress)
             } else {
                 progresses.append(0.0)
@@ -192,7 +176,7 @@ class HomeTableViewController: UITableViewController {
         if user.wateringNotif && user.harvestNotif {
             for plant in user.farmPlants {
                 //Check if plant started planting
-                if (plant.indoorList > 3 || plant.outdoorList > 6) && !plant.harvested {
+                if (plant.indoorList > 3 || plant.outdoorList > 4) && !plant.harvested {
                     //Check Harvest time and watering
                     let harvestDate = plant.harvestDate
                     
@@ -232,7 +216,7 @@ class HomeTableViewController: UITableViewController {
         } else if user.wateringNotif {
             for plant in user.farmPlants {
                 //Check if plant started planting
-                if (plant.indoorList > 3 || plant.outdoorList > 6) && !plant.harvested {
+                if (plant.indoorList > 3 || plant.outdoorList > 4) && !plant.harvested {
                     //Check watering
                     let waterString = "Please water the"
                     
@@ -261,7 +245,7 @@ class HomeTableViewController: UITableViewController {
         } else if user.harvestNotif {
             for plant in user.farmPlants {
                 //Check if plant started planting
-                if (plant.indoorList > 3 || plant.outdoorList > 6) && !plant.harvested {
+                if (plant.indoorList > 3 || plant.outdoorList > 4) && !plant.harvested {
                     //Check Harvest time
                     let harvestDate = plant.harvestDate
                     let harvestDateString = dateFormatter.string(from: plant.harvestDate)
@@ -277,8 +261,55 @@ class HomeTableViewController: UITableViewController {
             }
         }
         
+        if !user.notificationList.isEmpty {
+            notificationButton.badge = "\(user.notificationList.count)"
+            notificationButton.badgeBackgroundColor = UIColor(red: 242/255, green: 48/255, blue: 48/255, alpha: 1)
+        } else {
+            notificationButton.badgeBackgroundColor = .clear
+            notificationButton.badge = ""
+        }
+        
         print(user.notificationList)
         localData.saveUserInfo(user)
+    }
+    
+}
+
+//MARK: Actions
+extension HomeTableViewController {
+    
+    @objc private func addPlantTap(_ sender: UITapGestureRecognizer) {
+        self.tabBarController?.selectedIndex = 3
+    }
+    
+    @objc private func checkListButton(_ sender: UIButton) {
+        let plant = plants[sender.tag]
+        if plant.plantStyle.lowercased() == "both" && plant.indoorList < 0 && plant.outdoorList < 0 {
+            choiceConfirmation(sender)
+        } else {
+            //Inital check list
+            if plant.plantStyle.lowercased() != "both" {
+                if plant.indoorList < 0 {
+                    plant.indoorList = 0
+                }
+                
+                if plant.outdoorList < 0 {
+                    plant.outdoorList = 0
+                }
+            }
+            
+            performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
+        }
+    }
+    
+    @objc private func notificationAction(_ sender: UIButton) {
+        performSegue(withIdentifier: segueID.homeToNotificationSegue.rawValue, sender: self)
+    }
+    
+    //Add button gestrue
+    @objc private func addMeAction(_ sender: UIGestureRecognizer) {
+        print("add me")
+        tabBarController?.selectedIndex = 0
     }
     
 }
@@ -290,16 +321,23 @@ extension HomeTableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueID.HomeToDetailSegue.rawValue {
-            guard let nv = segue.destination as? UINavigationController, let detailVC = nv.topViewController as? PlantDetailViewController, let selectedCell = sender as? HomeFarmTableViewCell, let indexPath = tableView.indexPath(for: selectedCell) else {fatalError()}
+            guard let detailVC = segue.destination as? PlantDetailViewController, let indexPath = sender as? IndexPath else {fatalError()}
             detailVC.plant = plants[indexPath.row]
             detailVC.isFromHome = true
             detailVC.user = user
+            detailVC.hidesBottomBarWhenPushed = true
         }
         
         if segue.identifier == segueID.checkListSegue.rawValue {
             guard let nv = segue.destination as? UINavigationController, let vc = nv.topViewController as? CheckListHolderViewController, let button = sender as? UIButton else {fatalError()}
             vc.plant = plants[button.tag]
             vc.checkList = delegate.checkList
+        }
+        
+        if segue.identifier == segueID.homeToNotificationSegue.rawValue {
+            guard let nv = segue.destination as? NotificationViewController else {fatalError()}
+            nv.user = user
+            nv.hidesBottomBarWhenPushed = true
         }
     }
     
@@ -395,18 +433,53 @@ extension HomeTableViewController {
         tableView.separatorStyle = .none
         navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .white
+        
+        // Provide an empty backBarButton to hide the 'Back' text present by default in the back button.
+        let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtton
+        
+        //Set up bar button for notfication
+        notificationButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        notificationButton.setImage(UIImage(named: "notification")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        notificationButton.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 15)
+        notificationButton.badge = "\(user.notificationList.count)"
+        notificationButton.addTarget(self, action: #selector(notificationAction(_:)), for: .touchUpInside)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: notificationButton)
+        
+        //Add welcome image and label
+        welcomeIamage = UIImageView(frame: CGRect(x: view.frame.width*0.5 - 120, y: view.frame.height*0.2, width: 250, height: 250))
+        welcomeIamage.image = UIImage(named: "addMe")
+        welcomeIamage.contentMode = .scaleAspectFit
+        
+        //Add tap recognizer
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(addMeAction(_:)))
+        welcomeIamage.addGestureRecognizer(imageTap)
+        welcomeIamage.isUserInteractionEnabled = true
+        tableView.addSubview(welcomeIamage)
+        
+        //Add label
+        welcomeLabel = UILabel(frame: CGRect(x: view.frame.width*0.5-120, y: welcomeIamage.frame.height*1.5, width: 240, height: 100))
+        welcomeLabel.numberOfLines = 0
+        welcomeLabel.text = "You haven't got any plant in your farm.\nTap the search button below to add a new plant!"
+        welcomeLabel.font = UIFont(name: "Helvetica", size: 15)
+        welcomeLabel.textColor = .darkGray
+        welcomeLabel.textAlignment = .center
+        tableView.addSubview(welcomeLabel)
     }
     
     private func updateAppearance() {
         let image = UIImageView(image: UIImage(named: "background"))
-        let image2 = UIImageView(image: UIImage(named: "background1"))
         image.contentMode = .scaleAspectFill
-        image2.contentMode = .scaleAspectFill
+        tableView.backgroundView = image
+        
         if plants.isEmpty {
-            tableView.backgroundView = image2
             navigationItem.rightBarButtonItem?.title = "Manage"
+            welcomeIamage.isHidden = false
+            welcomeLabel.isHidden = false
         } else {
-            tableView.backgroundView = image
+            welcomeIamage.isHidden = true
+            welcomeLabel.isHidden = true
         }
         
     }

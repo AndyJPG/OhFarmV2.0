@@ -16,6 +16,10 @@ class PlantDetailViewController: UIViewController {
         case favouriteFill
     }
     
+    enum segueID: String {
+        case detailToSearchSegue
+    }
+    
     // MARK: Variable
     var plant: Plant!
     var user: User!
@@ -49,11 +53,6 @@ class PlantDetailViewController: UIViewController {
         if !isFromHome {
             addPlantButtonUI()
         }
-        
-        //Create edge gesture for cancel action
-        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-        edgePan.edges = .left
-        view.addGestureRecognizer(edgePan)
         
         setUpAppearance()
         
@@ -228,10 +227,7 @@ extension PlantDetailViewController {
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                 //cancel
-                self.dismiss(animated: true, completion: nil)
-                if let tabBarController = self.presentingViewController as? UITabBarController {
-                    tabBarController.selectedIndex = 1
-                }
+                self.performSegue(withIdentifier: segueID.detailToSearchSegue.rawValue, sender: self)
             }))
             
             present(alert, animated: true, completion: nil)

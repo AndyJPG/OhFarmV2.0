@@ -53,12 +53,6 @@ class ProfileTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if !user.notificationList.isEmpty {
-            self.navigationController?.tabBarItem.badgeValue = String(user.notificationList.count)
-        } else {
-            self.navigationController?.tabBarItem.badgeValue = nil
-        }
-        
         tableView.reloadData()
     }
 
@@ -171,13 +165,20 @@ class ProfileTableViewController: UITableViewController {
             guard let settingVC = sender.source as? SettingTableViewController else {return}
             print("back from setting")
             if settingVC.restore {
+//                delegate.user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? UIImage(), farm: [], favourite: [], watering: false, harvest: false, notificationList: [])
+                
                 user.userName = "First User"
-                user.userImage = UIImage(named: "userProfile")!
+                user.userImage = UIImage(named: "userProfile") ?? UIImage()
                 user.farmPlants = []
                 user.favoritePlants = []
+                user.wateringNotif = false
+                user.harvestNotif = false
+                user.notificationList = []
+                
                 localData.saveUserInfo(user)
                 tableView.reloadData()
             }
+            tabBarController?.selectedIndex = 1
         }
         
     }
@@ -193,7 +194,7 @@ class ProfileTableViewController: UITableViewController {
         let myGarden = Option(optionName: "My Garden", icon: "farm")
         let favourite = Option(optionName: "Favourites", icon: "heart")
         let setting = Option(optionName: "Settings", icon: "setting")
-        let notification = Option(optionName: "Notifications", icon: "notification")
+        let notification = Option(optionName: "Notifications", icon: "profileNotification")
         options = [[Option(optionName: "Profile", icon: "heart")],[myGarden,favourite],[notification],[setting]]
     }
     
@@ -295,7 +296,7 @@ extension ProfileTableViewController {
         tableViewFooter.backgroundColor = .clear
         let version = UILabel(frame: CGRect(x: 0, y: 10, width: tableView.frame.width, height: 14))
         version.font = version.font.withSize(12)
-        version.text = "Version 2.0"
+        version.text = "Version 3.0"
         version.tintColor = .lightGray
         version.textAlignment = .center
         

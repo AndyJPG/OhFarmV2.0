@@ -27,6 +27,7 @@ class PlantSearchTableViewController: UITableViewController {
         case viewDetailFromSearch
         case ComparisonSegue
         case compareToSearchSegue
+        case detailToSearchSegue
     }
     
     //MARK: Variable
@@ -59,13 +60,15 @@ class PlantSearchTableViewController: UITableViewController {
     
     //Plants properites to handle change
     var plants: [Plant] {
-        if isFiltering() {
+        
+        if showSelectedCompareList {
+            return compareList
+        } else if isFiltering() {
             return searchPlants
         } else if filterApplied {
             return filterPlants
-        } else if showSelectedCompareList {
-            return compareList
         }
+        
         return originalPlants
     }
     
@@ -88,28 +91,11 @@ class PlantSearchTableViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "Plants search"
-        
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if compareMode {
             showCompareListButton.isHidden = false
         }
-        navigationItem.title = "Plants search"
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationItem.title = ""
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        navigationItem.title = ""
     }
     
 
@@ -334,16 +320,13 @@ class PlantSearchTableViewController: UITableViewController {
             comparisonAlert(2)
         } else if !showSelectedCompareList {
             showSelectedCompareList = true
-            
-            //change title for button
-            showCompareListButton.setTitle("Cancel", for: .normal)
-            showCompareListButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: view.frame.height*0.85), size: CGSize(width: view.frame.width*0.25, height: view.frame.height*0.06))
+            showSelectedList(showSelectedCompareList)
             
             tableView.reloadData()
         } else {
             showSelectedCompareList = false
-            showCompareListButton.setTitle("Show selected plants", for: .normal)
-            showCompareListButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: view.frame.height*0.85), size: CGSize(width: view.frame.width*0.42, height: view.frame.height*0.06))
+            showSelectedList(showSelectedCompareList)
+            
             tableView.reloadData()
         }
         
@@ -355,10 +338,12 @@ class PlantSearchTableViewController: UITableViewController {
         //check if is compare mode
         if !compareMode {
             compareMode = true
-            compareButton.title = "Comparing"
+            compareButton.title = "Compare Now"
             compareButton.tintColor = .lightText
             //Set filter button to be cancel button
             filterButton.title = "Cancel"
+            
+            navigationItem.title = ""
             
             //Show compare list button
             UIView.animate(withDuration: 0.5) {
@@ -383,7 +368,19 @@ class PlantSearchTableViewController: UITableViewController {
         if compareMode {
             endCompareMode()
         } else {
-            performSegue(withIdentifier: SegueID.filterSegue.rawValue, sender: self)
+            performSegue(withIdentifier: "testSegue", sender: self)
+//            performSegue(withIdentifier: SegueID.filterSegue.rawValue, sender: self)
+        }
+    }
+    
+    //Appearance for show selected list button
+    private func showSelectedList(_ on: Bool) {
+        if on {
+            showCompareListButton.setTitle("Cancel", for: .normal)
+            showCompareListButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: view.frame.height*0.85), size: CGSize(width: view.frame.width*0.25, height: view.frame.height*0.06))
+        } else {
+            showCompareListButton.setTitle("Show selected plants", for: .normal)
+            showCompareListButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: view.frame.height*0.85), size: CGSize(width: view.frame.width*0.42, height: view.frame.height*0.06))
         }
     }
     
@@ -395,12 +392,16 @@ class PlantSearchTableViewController: UITableViewController {
         filterButton.title = "Filter"
         compareList = []
         
+        navigationItem.title = "Plant search"
+        
         //Hiddent compare list button
         UIView.animate(withDuration: 0.5) {
-            self.showCompareListButton.alpha = 1
             self.showCompareListButton.alpha = 0
         }
         self.showCompareListButton.isHidden = true
+        
+        self.showSelectedCompareList = false
+        showSelectedList(showSelectedCompareList)
         
         tableView.reloadData()
     }
@@ -418,11 +419,12 @@ extension PlantSearchTableViewController {
         switch segue.identifier {
             
         case SegueID.filterSegue.rawValue:
-            guard let nv = segue.destination as? UINavigationController, let filterVC = nv.topViewController as? FilterTableViewController else {return}
+            guard let filterVC = segue.destination as? FilterTableViewController else {return}
             filterVC.filter = filter
+            filterVC.hidesBottomBarWhenPushed = true
             
         case SegueID.viewDetailFromSearch.rawValue:
-            guard let nv = segue.destination as? UINavigationController, let detailVC = nv.topViewController as? PlantDetailViewController, let indexPath = sender as? IndexPath else {fatalError()}
+            guard let detailVC = segue.destination as? PlantDetailViewController, let indexPath = sender as? IndexPath else {fatalError()}
             detailVC.user = user
             
             let selectedPlant = plants[indexPath.row]
@@ -435,19 +437,26 @@ extension PlantSearchTableViewController {
             nv.compareList = compareList
             nv.userFarm = user.farmPlants
             nv.hidesBottomBarWhenPushed = true
+            
+        case "testSegue":
+            guard let nv = segue.destination as? FilterViewController else {fatalError()}
+            nv.filter = filter
+            nv.hidesBottomBarWhenPushed = true
+            
         default: break
         }
     }
     
     // Pass back filter object
     @IBAction func unwindToPlantSearch(sender: UIStoryboardSegue) {
-        if sender.identifier == SegueID.filterUnwindSegue.rawValue {
-            guard let filterVC = sender.source as? FilterTableViewController else {return}
+        
+        switch sender.identifier {
+        case SegueID.filterUnwindSegue.rawValue:
+            guard let filterVC = sender.source as? FilterViewController else {return}
             filter = filterVC.filter
             applyFilter()
-        }
-        
-        if sender.identifier == SegueID.compareToSearchSegue.rawValue {
+            
+        case SegueID.compareToSearchSegue.rawValue:
             guard let vc = sender.source as? ComparisonViewController else {fatalError()}
             guard let plants = vc.compareList else {fatalError()}
             
@@ -458,6 +467,11 @@ extension PlantSearchTableViewController {
             localData.saveUserInfo(user)
             endCompareMode()
             tabBarController?.selectedIndex = 1
+            
+        case SegueID.detailToSearchSegue.rawValue:
+            tabBarController?.selectedIndex = 1
+            
+        default: break
         }
     }
     
@@ -569,6 +583,10 @@ extension PlantSearchTableViewController {
         showCompareListButton.isHidden = true
         showCompareListButton.addTarget(self, action: #selector(showSelectedPlants(_:)), for: .touchUpInside)
         navigationController?.view.addSubview(showCompareListButton)
+        
+        // Provide an empty backBarButton to hide the 'Back' text present by default in the back button.
+        let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtton
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
