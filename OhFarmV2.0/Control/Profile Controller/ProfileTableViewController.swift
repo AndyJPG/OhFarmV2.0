@@ -55,6 +55,8 @@ class ProfileTableViewController: UITableViewController {
         
         if !user.notificationList.isEmpty {
             self.navigationController?.tabBarItem.badgeValue = String(user.notificationList.count)
+        } else {
+            self.navigationController?.tabBarItem.badgeValue = nil
         }
         
         tableView.reloadData()
@@ -83,16 +85,13 @@ class ProfileTableViewController: UITableViewController {
             guard let profileTopCell = tableView.dequeueReusableCell(withIdentifier: cellID.PofileCell.rawValue, for: indexPath) as? ProfileTopTableViewCell else {fatalError()}
             profileTopCell.configCell(user)
             
-            let tap = UITapGestureRecognizer(target: self, action: #selector(changeName(_:)))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(editButton(_:)))
             profileTopCell.userName.isUserInteractionEnabled = true
             profileTopCell.userName.addGestureRecognizer(tap)
             
             let imageTap = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(_:)))
             profileTopCell.profileImage.addGestureRecognizer(imageTap)
-            //Need change camera button action
-            profileTopCell.camera.addGestureRecognizer(imageTap)
             
-            profileTopCell.edit.addTarget(self, action: #selector(editButton(_:)), for: .touchUpInside)
             
             cell = profileTopCell
         case 2:
@@ -104,6 +103,9 @@ class ProfileTableViewController: UITableViewController {
                 optionCell.badgeBackground.isHidden = false
                 optionCell.badgeValue.isHidden = false
                 optionCell.badgeValue.text = "\(user.notificationList.count)"
+            } else {
+                optionCell.badgeBackground.isHidden = true
+                optionCell.badgeValue.isHidden = true
             }
             
             cell = optionCell
@@ -145,17 +147,20 @@ class ProfileTableViewController: UITableViewController {
         
         switch segue.identifier {
         case segueID.favouritePlantSegue.rawValue:
-            guard let nc = segue.destination as? UINavigationController, let favouriteVC = nc.topViewController as? FavouriteTableViewController else {fatalError()}
+            guard let favouriteVC = segue.destination as? FavouriteTableViewController else {fatalError()}
             favouriteVC.user = user
+            favouriteVC.hidesBottomBarWhenPushed = true
             
         case segueID.settingSegue.rawValue:
-            guard let nc = segue.destination as? UINavigationController, let settingVC = nc.topViewController as? SettingTableViewController else {fatalError()}
+            guard let settingVC = segue.destination as? SettingTableViewController else {fatalError()}
             settingVC.user = user
+            settingVC.hidesBottomBarWhenPushed = true
         
         case segueID.NotificationSegue.rawValue:
             guard let vc = segue.destination as? NotificationViewController else {fatalError()}
             vc.user = user
             vc.hidesBottomBarWhenPushed = true
+            
         default: break
         }
     }
@@ -178,11 +183,7 @@ class ProfileTableViewController: UITableViewController {
     }
     
     //MAKR: Action
-    @objc private func changeName(_ sender: UITapGestureRecognizer) {
-        changeNameAlert()
-    }
-    
-    @objc private func editButton(_ sender: UIButton) {
+    @objc private func editButton(_ sender: Any) {
         changeNameAlert()
     }
     
@@ -202,7 +203,7 @@ class ProfileTableViewController: UITableViewController {
 //MARK: UI image picker delegate
 extension ProfileTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @objc private func profileImageTapped(_ sender: UITapGestureRecognizer) {
+    @objc private func profileImageTapped(_ sender: Any) {
         
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             
@@ -279,17 +280,6 @@ extension ProfileTableViewController {
     //Set up the back button style
     private func setupBackStyle() {
         
-        var backButtonBackgroundImage = UIImage(named: "back")!
-        
-        backButtonBackgroundImage =
-            backButtonBackgroundImage.resizableImage(withCapInsets:
-                UIEdgeInsets(top: 0, left: backButtonBackgroundImage.size.width - 1, bottom: 0, right: 0))
-        
-        let barAppearance =
-            UINavigationBar.appearance(whenContainedInInstancesOf: [NavigationController.self])
-        barAppearance.backIndicatorImage = backButtonBackgroundImage
-        barAppearance.backIndicatorTransitionMaskImage = backButtonBackgroundImage
-        
         // Provide an empty backBarButton to hide the 'Back' text present by default in the back button.
         let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButtton
@@ -322,6 +312,12 @@ extension ProfileTableViewController {
         
         navigationItem.title =  "Profile"
         
+        //Add camera button
+        let cameraButton = UIBarButtonItem(image: UIImage(named: "camera"), style: .plain, target: self, action: #selector(profileImageTapped(_:)))
+        navigationItem.rightBarButtonItem = cameraButton
+        
+        let editButton = UIBarButtonItem(image: UIImage(named: "edit"), style: .plain, target: self, action: #selector(editButton(_:)))
+        navigationItem.leftBarButtonItem = editButton
     }
     
 }

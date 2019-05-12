@@ -18,6 +18,7 @@ class NotificationSettingsTableViewCell: UITableViewCell {
         // Initialization code
         
         switchButton.setOn(false, animated: true)
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

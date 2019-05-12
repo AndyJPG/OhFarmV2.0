@@ -37,6 +37,8 @@ class NotificationSettingsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
+        
         setData()
         setupAppreance()
     }

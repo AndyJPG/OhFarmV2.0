@@ -15,6 +15,11 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let image = UIImage(named: "back")
+        
+        self.navigationBar.backIndicatorImage = image
+        self.navigationBar.backIndicatorTransitionMaskImage = image
+        
         self.navigationBar.tintColor = .white
         self.navigationBar.barTintColor = color
         self.navigationBar.barStyle = .black
