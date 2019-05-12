@@ -36,7 +36,7 @@ class HomeFarmTableViewCell: UITableViewCell {
         // Animated select
         if selected {
             UIView.animate(withDuration: 1.0) {
-                self.cellBackground.backgroundColor = .lightGray
+                self.cellBackground.backgroundColor = .groupTableViewBackground
             }
         } else {
             UIView.animate(withDuration: 1.0) {

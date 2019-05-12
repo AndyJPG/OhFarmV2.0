@@ -18,12 +18,18 @@ class SettingTableViewController: UITableViewController {
     //MARK: Variable
     var restore = false
     var cells: [[Cell]] = []
+    var user: User!
     
     //Enum for cell name
     enum cellName: String {
         case lastLogin = "Last login day"
         case timeZone = "Time zone"
         case restore = "Reset"
+        case notification = "Notification settings"
+    }
+    
+    enum segueID: String {
+        case notificationSegue
     }
 
     override func viewDidLoad() {
@@ -40,6 +46,12 @@ class SettingTableViewController: UITableViewController {
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         view.addGestureRecognizer(edgePan)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(user.wateringNotif)
+        print(user.harvestNotif)
     }
 
     // MARK: - Table view data source
@@ -70,21 +82,31 @@ class SettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        
+        switch indexPath.section {
+        case 1:
+            performSegue(withIdentifier: segueID.notificationSegue.rawValue, sender: self)
+        case cells.count-1:
             restoreConfirmation()
+        default: break
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == segueID.notificationSegue.rawValue {
+            guard let vc = segue.destination as? NotificationSettingsViewController else {fatalError()}
+            vc.user = user
+        }
     }
-    */
+    
     
     //MARK: Functions
     private func getCurrentDate() -> String {
@@ -107,8 +129,9 @@ class SettingTableViewController: UITableViewController {
         let cell1 = Cell(cellName: cellName.lastLogin.rawValue, cellValue: String(getCurrentDate().prefix(11)))
         let cell2 = Cell(cellName: cellName.timeZone.rawValue, cellValue: getCurrentDate())
         let cell3 = Cell(cellName: cellName.restore.rawValue, cellValue: "")
+        let cell4 = Cell(cellName: cellName.notification.rawValue, cellValue: "")
         
-        cells = [[cell1,cell2],[cell3]]
+        cells = [[cell1,cell2],[cell4],[cell3]]
     }
     
     //MARK: Action

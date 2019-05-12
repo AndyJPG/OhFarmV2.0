@@ -36,17 +36,21 @@ class HomeUI: UIViewController {
         let components = calendar.dateComponents([.day], from: date1, to: date2)
         guard let days = components.day else {fatalError()}
         
-        if plant.indoorList >= 3 || plant.outdoorList >= 6 {
+        if plant.harvested {
+            plantCell.categoryLabel.text = "Ready for harvest"
+        } else if plant.indoorList >= 3 || plant.outdoorList >= 6 {
             plantCell.categoryLabel.text = "\(days) days to go"
         } else {
             plantCell.categoryLabel.text = ""
         }
         
-        if plant.plantCategory == "vegetable" {
-            plantCell.categoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        } else {
-            plantCell.categoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-        }
+//        if plant.plantCategory == "vegetable" {
+//            plantCell.categoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+//        } else {
+//            plantCell.categoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+//        }
+        
+        plantCell.categoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
         
         plantCell.plantImage.image = plant.plantImage
         plantCell.plantImage.contentMode = .scaleAspectFill

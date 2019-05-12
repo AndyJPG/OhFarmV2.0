@@ -9,12 +9,15 @@
 import UIKit
 
 class NavigationController: UINavigationController {
+    
+    let color = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(contentsOfFile: "back"), style: .plain, target: nil, action: nil)
+        
+        self.navigationBar.tintColor = .white
+        self.navigationBar.barTintColor = color
+        self.navigationBar.barStyle = .black
     }
     
 

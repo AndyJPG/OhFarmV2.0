@@ -208,8 +208,21 @@ extension IndoorTableViewController {
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { _ in
             let currentDate = Date()
             let harvestDate = Calendar.current.date(byAdding: .weekOfYear, value: self.plant.maxHarvestTime, to: currentDate)!
+            let nextWateringDate = Calendar.current.date(byAdding: .day, value: 2, to: currentDate)!
+            
             self.plant.harvestDate = harvestDate
+            self.plant.nextWateringDate = nextWateringDate
             print(self.plant.harvestDate)
+            print("Next watering date")
+            print(self.plant.nextWateringDate)
+            
+            //For Show in notification
+            self.plant.nextWateringDate = Date()
+            self.plant.harvestDate = Date()
+            print("For show notification")
+            print(self.plant.harvestDate)
+            print("Next watering date")
+            print(self.plant.nextWateringDate)
         }))
         
         //Not yet solution if user dont want to plant now

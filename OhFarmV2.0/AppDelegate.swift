@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let userInfo = localData.loadUser() {
             user = userInfo[0]
         } else {
-            user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? UIImage(), farm: [], favourite: [])
+            user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? UIImage(), farm: [], favourite: [], watering: false, harvest: false, notificationList: [])
         }
         
         let myGroup = DispatchGroup()
@@ -67,10 +67,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     } else if let searchTableVC = navigationController.topViewController as? PlantSearchTableViewController {
                         searchTableVC.user = user
                         searchTableVC.originalPlants = plants
+                    } else if let profileTableVC = navigationController.topViewController as? ProfileTableViewController {
+                        profileTableVC.user = user
+                        
+                        if !(user?.notificationList.isEmpty)! {
+                            navigationController.tabBarItem.badgeValue = String(user?.notificationList.count ?? 0)
+                        }
                     }
-                }
-                if let profileTableVC = viewController as? ProfileTableViewController {
-                    profileTableVC.user = user
                 }
             }
             

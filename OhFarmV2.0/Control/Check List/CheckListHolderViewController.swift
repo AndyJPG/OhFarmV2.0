@@ -78,6 +78,7 @@ extension CheckListHolderViewController {
             self.plant.indoorList = -1
             self.plant.outdoorList = -1
             self.plant.harvestDate = Date()
+            self.plant.nextWateringDate = Date()
             self.dismiss(animated: true, completion: nil)
         }))
         

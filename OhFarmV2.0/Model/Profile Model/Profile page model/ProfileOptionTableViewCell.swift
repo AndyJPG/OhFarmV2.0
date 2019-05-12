@@ -12,10 +12,20 @@ class ProfileOptionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var optionIcon: UIImageView!
     @IBOutlet weak var optionName: UILabel!
-
+    @IBOutlet weak var badgeBackground: UIView!
+    @IBOutlet weak var badgeValue: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        badgeBackground.isHidden = true
+        badgeValue.isHidden = true
+        
+        badgeBackground.layer.cornerRadius = badgeBackground.frame.height/2
+        badgeBackground.backgroundColor = UIColor(red: 242/255, green: 48/255, blue: 48/255, alpha: 1)
+        badgeValue.textColor = .white
+        badgeValue.sizeToFit()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

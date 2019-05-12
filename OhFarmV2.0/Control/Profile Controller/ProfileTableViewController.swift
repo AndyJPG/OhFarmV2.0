@@ -18,6 +18,7 @@ class ProfileTableViewController: UITableViewController {
     enum segueID: String {
         case settingSegue
         case favouritePlantSegue
+        case NotificationSegue
         case unwindToProfileSegue
     }
 
@@ -45,10 +46,18 @@ class ProfileTableViewController: UITableViewController {
         
         setTableFooter()
         setupOptionsArry()
+        setupAppearance()
+        setupBackStyle()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let backgroundImage = UIImageView(image: UIImage(named: "background"))
-        backgroundImage.contentMode = .scaleAspectFill
-        tableView.backgroundView = backgroundImage
+        if !user.notificationList.isEmpty {
+            self.navigationController?.tabBarItem.badgeValue = String(user.notificationList.count)
+        }
+        
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -80,15 +89,23 @@ class ProfileTableViewController: UITableViewController {
             
             let imageTap = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(_:)))
             profileTopCell.profileImage.addGestureRecognizer(imageTap)
+            //Need change camera button action
             profileTopCell.camera.addGestureRecognizer(imageTap)
             
             profileTopCell.edit.addTarget(self, action: #selector(editButton(_:)), for: .touchUpInside)
             
             cell = profileTopCell
-        case 1:
+        case 2:
             guard let optionCell = tableView.dequeueReusableCell(withIdentifier: cellID.OptionCell.rawValue, for: indexPath) as? ProfileOptionTableViewCell else {fatalError()}
             let option = options[indexPath.section][indexPath.row]
             optionCell.configCell(option.optionName, icon: option.icon)
+            
+            if !user.notificationList.isEmpty {
+                optionCell.badgeBackground.isHidden = false
+                optionCell.badgeValue.isHidden = false
+                optionCell.badgeValue.text = "\(user.notificationList.count)"
+            }
+            
             cell = optionCell
         default:
             guard let optionCell = tableView.dequeueReusableCell(withIdentifier: cellID.OptionCell.rawValue, for: indexPath) as? ProfileOptionTableViewCell else {fatalError()}
@@ -101,17 +118,22 @@ class ProfileTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        
+        //Perform segue for different section
+        switch indexPath.section {
+        case 1:
             if indexPath.row == 0 {
                 self.tabBarController?.selectedIndex = 1
             } else {
                 performSegue(withIdentifier: segueID.favouritePlantSegue.rawValue, sender: self)
             }
+        case 2:
+            performSegue(withIdentifier: segueID.NotificationSegue.rawValue, sender: self)
+        case options.count-1:
+            performSegue(withIdentifier: segueID.settingSegue.rawValue, sender: self)
+        default: break
         }
         
-        if indexPath.section == 2 {
-            performSegue(withIdentifier: segueID.settingSegue.rawValue, sender: self)
-        }
     }
     
 
@@ -120,9 +142,21 @@ class ProfileTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueID.favouritePlantSegue.rawValue {
+        
+        switch segue.identifier {
+        case segueID.favouritePlantSegue.rawValue:
             guard let nc = segue.destination as? UINavigationController, let favouriteVC = nc.topViewController as? FavouriteTableViewController else {fatalError()}
             favouriteVC.user = user
+            
+        case segueID.settingSegue.rawValue:
+            guard let nc = segue.destination as? UINavigationController, let settingVC = nc.topViewController as? SettingTableViewController else {fatalError()}
+            settingVC.user = user
+        
+        case segueID.NotificationSegue.rawValue:
+            guard let vc = segue.destination as? NotificationViewController else {fatalError()}
+            vc.user = user
+            vc.hidesBottomBarWhenPushed = true
+        default: break
         }
     }
     
@@ -158,26 +192,10 @@ class ProfileTableViewController: UITableViewController {
         let myGarden = Option(optionName: "My Garden", icon: "farm")
         let favourite = Option(optionName: "Favourites", icon: "heart")
         let setting = Option(optionName: "Settings", icon: "setting")
-        options = [[Option(optionName: "Profile", icon: "heart")],[myGarden,favourite],[setting]]
+        let notification = Option(optionName: "Notifications", icon: "notification")
+        options = [[Option(optionName: "Profile", icon: "heart")],[myGarden,favourite],[notification],[setting]]
     }
     
-    // MARK: Appearance
-    private func setTableFooter() {
-        
-        tableView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-        
-        let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
-        tableViewFooter.backgroundColor = .clear
-        let version = UILabel(frame: CGRect(x: 0, y: 10, width: tableView.frame.width, height: 14))
-        version.font = version.font.withSize(12)
-        version.text = "Version 2.0"
-        version.tintColor = .lightGray
-        version.textAlignment = .center
-
-        tableViewFooter.addSubview(version)
-
-        tableView.tableFooterView  = tableViewFooter
-    }
 
 }
 
@@ -251,6 +269,59 @@ extension ProfileTableViewController {
             //Cancel Action
         }))
         present(alert, animated: true, completion: nil)
+    }
+    
+}
+
+//MARK: Appearance
+extension ProfileTableViewController {
+    
+    //Set up the back button style
+    private func setupBackStyle() {
+        
+        var backButtonBackgroundImage = UIImage(named: "back")!
+        
+        backButtonBackgroundImage =
+            backButtonBackgroundImage.resizableImage(withCapInsets:
+                UIEdgeInsets(top: 0, left: backButtonBackgroundImage.size.width - 1, bottom: 0, right: 0))
+        
+        let barAppearance =
+            UINavigationBar.appearance(whenContainedInInstancesOf: [NavigationController.self])
+        barAppearance.backIndicatorImage = backButtonBackgroundImage
+        barAppearance.backIndicatorTransitionMaskImage = backButtonBackgroundImage
+        
+        // Provide an empty backBarButton to hide the 'Back' text present by default in the back button.
+        let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtton
+        
+    }
+    
+    // MARK: Appearance
+    private func setTableFooter() {
+        
+        tableView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+        
+        let tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
+        tableViewFooter.backgroundColor = .clear
+        let version = UILabel(frame: CGRect(x: 0, y: 10, width: tableView.frame.width, height: 14))
+        version.font = version.font.withSize(12)
+        version.text = "Version 2.0"
+        version.tintColor = .lightGray
+        version.textAlignment = .center
+        
+        tableViewFooter.addSubview(version)
+        
+        tableView.tableFooterView  = tableViewFooter
+    }
+    
+    private func setupAppearance() {
+        
+        let backgroundImage = UIImageView(image: UIImage(named: "background"))
+        backgroundImage.contentMode = .scaleAspectFill
+        tableView.backgroundView = backgroundImage
+        
+        navigationItem.title =  "Profile"
+        
     }
     
 }

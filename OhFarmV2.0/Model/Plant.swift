@@ -26,8 +26,12 @@ class Plant: NSObject, NSCoding {
     let plantingTechnique: String
     let fertilizer: String
     
-    //Variable for harvest date
+    //Variable for harvest date and watering
     var harvestDate = Date()
+    var nextWateringDate = Date()
+    
+    //Value for if harvested
+    var harvested = false
     
     //Variable for check list
     var indoorList = 0
@@ -181,15 +185,19 @@ class Plant: NSObject, NSCoding {
         static let compPlantList = "compatiblePlant"
         static let avoidPlantList = "avoidPlantList"
         
-        //Harvest time
+        //Harvest time and waterig
         static let harvestTime = "harvestTime"
+        static let nextWateringDate = "nextWateringDate"
         
         //Check list
         static let indoorList = "indoorList"
         static let outdoorList = "outdoorList"
+        
+        //Check for if harvested
+        static let harvested = "harvested"
     }
     
-    init(cropName: String, plantCategory: String, suitableMonth: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String, compPlantList: [String]?, avoidPlantList: [String]?, harvestTime: Date, indoorList: Int, outdoorList: Int) {
+    init(cropName: String, plantCategory: String, suitableMonth: String, minSpacing: Int, maxSpacing: Int, minHarvestTime: Int, maxHarvestTime: Int, compatiblePlants: String, avoidInstructions: String, culinaryHints: String, plantStyle: String, plantingTechnique: String, fertilizer: String, compPlantList: [String]?, avoidPlantList: [String]?, harvestTime: Date,nextWateringDate: Date , indoorList: Int, outdoorList: Int, harvested: Bool) {
         self.cropName = cropName
         self.plantCategory = plantCategory
         self.suitableMonth = suitableMonth
@@ -208,10 +216,14 @@ class Plant: NSObject, NSCoding {
         
         //Harvest time
         self.harvestDate = harvestTime
+        self.nextWateringDate = nextWateringDate
         
         //Check list
         self.indoorList = indoorList
         self.outdoorList = outdoorList
+        
+        //Harvest
+        self.harvested = harvested
     }
     
     //MARK: NSCoding
@@ -233,12 +245,16 @@ class Plant: NSObject, NSCoding {
         aCoder.encode(compPlantList, forKey: PropertyKey.compPlantList)
         aCoder.encode(avoidPlantList, forKey: PropertyKey.avoidPlantList)
         
-        //Encode for harvest date
+        //Encode for harvest date and watering
         aCoder.encode(harvestDate, forKey: PropertyKey.harvestTime)
+        aCoder.encode(nextWateringDate, forKey: PropertyKey.nextWateringDate)
         
         //Encode for check list
         aCoder.encode(indoorList, forKey: PropertyKey.indoorList)
         aCoder.encode(outdoorList, forKey: PropertyKey.outdoorList)
+        
+        //Harvest
+        aCoder.encode(harvested, forKey: PropertyKey.harvested)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -269,13 +285,17 @@ class Plant: NSObject, NSCoding {
         
         //Harvest time
         guard let harvestDate = aDecoder.decodeObject(forKey: PropertyKey.harvestTime) as? Date else {return nil}
+        guard let nextWateringDate = aDecoder.decodeObject(forKey: PropertyKey.nextWateringDate) as? Date else {return nil}
         
         //Check list
         let indoorList = aDecoder.decodeInteger(forKey: PropertyKey.indoorList)
         let outdoorList = aDecoder.decodeInteger(forKey: PropertyKey.outdoorList)
         
+        //Harvest
+        let harvested = aDecoder.decodeBool(forKey: PropertyKey.harvested)
+        
         // Must call designated initializer.
-        self.init(cropName: name, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTechnique, fertilizer: fertilizer, compPlantList: compPlants, avoidPlantList: avoidPlants, harvestTime: harvestDate, indoorList: indoorList, outdoorList: outdoorList)
+        self.init(cropName: name, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTechnique, fertilizer: fertilizer, compPlantList: compPlants, avoidPlantList: avoidPlants, harvestTime: harvestDate, nextWateringDate: nextWateringDate, indoorList: indoorList, outdoorList: outdoorList, harvested: harvested)
         
     }
     

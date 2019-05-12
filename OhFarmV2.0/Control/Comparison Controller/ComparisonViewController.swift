@@ -46,6 +46,12 @@ class ComparisonViewController: UIViewController {
         //setup add plant button
         setupAddPlantButton()
         
+        navigationItem.title = "Comparison"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
 

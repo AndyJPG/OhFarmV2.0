@@ -52,6 +52,7 @@ class HomeTableViewController: UITableViewController {
         
         updateAppearance()
         updateProgressTracker()
+        updateNotification()
         tableView.reloadData()
     }
 
@@ -77,7 +78,11 @@ class HomeTableViewController: UITableViewController {
         plantCell.checkListButton.addTarget(self, action: #selector(checkListButton(_:)), for: .touchUpInside)
         
         //Progress bar
-        plantCell.progressBar.progress = progress
+        if plant.harvested {
+            plantCell.progressBar.progress = 1.0
+        } else {
+            plantCell.progressBar.progress = progress
+        }
         
         return plantCell
     }
@@ -171,6 +176,109 @@ class HomeTableViewController: UITableViewController {
         progressTracker = progresses
         tableView.reloadData()
         
+    }
+    
+    //Update notification
+    private func updateNotification() {
+        //Date formater
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        let currentDate = Date()
+        
+        //Date calender
+        let calendar = Calendar.current
+        
+        if user.wateringNotif && user.harvestNotif {
+            for plant in user.farmPlants {
+                //Check if plant started planting
+                if (plant.indoorList > 3 || plant.outdoorList > 6) && !plant.harvested {
+                    //Check Harvest time and watering
+                    let harvestDate = plant.harvestDate
+                    
+                    let harvestDateString = dateFormatter.string(from: plant.harvestDate)
+                    
+                    let harvestString = "is ready to harvest!"
+                    let waterString = "Please water the"
+                    
+                    //If harvest date is today push notificaiton
+                    if harvestDate <= currentDate {
+                        user.notificationList.append("\(plant.cropName) \(harvestString);\(harvestDateString)")
+                        plant.harvested = true
+                    }
+                    
+                    //Check of watering
+                    if calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedDescending {
+                        
+                        while calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedDescending {
+                            let nextWaterString = dateFormatter.string(from: plant.nextWateringDate)
+                            
+                            user.notificationList.append("\(waterString) \(plant.cropName).;\(nextWaterString)")
+                            plant.nextWateringDate = calendar.date(byAdding: .day, value: 2, to: plant.nextWateringDate)!
+                        }
+                        
+                    }
+                    
+                    //If the watering date is today
+                    if calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedSame {
+                        let nextWaterString = dateFormatter.string(from: plant.nextWateringDate)
+                        
+                        user.notificationList.append("\(waterString) \(plant.cropName).;\(nextWaterString)")
+                        plant.nextWateringDate = calendar.date(byAdding: .day, value: 2, to: plant.nextWateringDate)!
+                    }
+                    
+                }
+            }
+        } else if user.wateringNotif {
+            for plant in user.farmPlants {
+                //Check if plant started planting
+                if (plant.indoorList > 3 || plant.outdoorList > 6) && !plant.harvested {
+                    //Check watering
+                    let waterString = "Please water the"
+                    
+                    //Check of watering
+                    if calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedDescending {
+                        
+                        while calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedDescending {
+                            let nextWaterString = dateFormatter.string(from: plant.nextWateringDate)
+                            
+                            user.notificationList.append("\(waterString) \(plant.cropName).;\(nextWaterString)")
+                            plant.nextWateringDate = calendar.date(byAdding: .day, value: 2, to: plant.nextWateringDate)!
+                        }
+                        
+                    }
+                    
+                    //If the watering date is today
+                    if calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedSame {
+                        let nextWaterString = dateFormatter.string(from: plant.nextWateringDate)
+                        
+                        user.notificationList.append("\(waterString) \(plant.cropName).;\(nextWaterString)")
+                        plant.nextWateringDate = calendar.date(byAdding: .day, value: 2, to: plant.nextWateringDate)!
+                    }
+                    
+                }
+            }
+        } else if user.harvestNotif {
+            for plant in user.farmPlants {
+                //Check if plant started planting
+                if (plant.indoorList > 3 || plant.outdoorList > 6) && !plant.harvested {
+                    //Check Harvest time
+                    let harvestDate = plant.harvestDate
+                    let harvestDateString = dateFormatter.string(from: plant.harvestDate)
+                    let harvestString = "is ready to harvest!"
+                    
+                    //If harvest date is today push notificaiton
+                    if harvestDate <= currentDate {
+                        user.notificationList.append("\(plant.cropName) \(harvestString);\(harvestDateString)")
+                        plant.harvested = true
+                    }
+                    
+                }
+            }
+        }
+        
+        print(user.notificationList)
+        localData.saveUserInfo(user)
     }
     
 }

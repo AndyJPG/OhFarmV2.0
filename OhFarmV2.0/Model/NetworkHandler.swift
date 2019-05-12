@@ -56,7 +56,7 @@ class NetworkHandler {
             guard let plantingTech = dic["plantingTechnique"] as? String else {fatalError()}
             guard let fertilizer = dic["fertilizerName"] as? String else {fatalError()}
 
-            plants.append(Plant(cropName: cropName, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpacing, maxSpacing: maxSpacing, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTech, fertilizer: fertilizer, compPlantList: [], avoidPlantList: [], harvestTime: Date(), indoorList: -1, outdoorList: -1))
+            plants.append(Plant(cropName: cropName, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpacing, maxSpacing: maxSpacing, minHarvestTime: minHarvest, maxHarvestTime: maxHarvest, compatiblePlants: compatiblePlants, avoidInstructions: avoidInstructions, culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: plantingTech, fertilizer: fertilizer, compPlantList: [], avoidPlantList: [], harvestTime: Date(), nextWateringDate: Date(), indoorList: -1, outdoorList: -1, harvested: false))
         }
         return plants
     }

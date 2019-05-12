@@ -37,6 +37,10 @@
 		008F0A0A22858C8000B5946C /* PlantValueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008F0A0922858C8000B5946C /* PlantValueCollectionViewCell.swift */; };
 		008F0A0C22858C8B00B5946C /* PlantCheckBoxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008F0A0B22858C8B00B5946C /* PlantCheckBoxCollectionViewCell.swift */; };
 		008F0A102285C2A600B5946C /* ComparisonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008F0A0F2285C2A600B5946C /* ComparisonViewController.swift */; };
+		008F0A132286C23D00B5946C /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008F0A122286C23D00B5946C /* NotificationSettingsViewController.swift */; };
+		008F0A152286C61800B5946C /* NotificationSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008F0A142286C61800B5946C /* NotificationSettingsTableViewCell.swift */; };
+		008F0A182286F41600B5946C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008F0A172286F41600B5946C /* NotificationViewController.swift */; };
+		008F0A1A2286F4F000B5946C /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008F0A192286F4F000B5946C /* NotificationTableViewCell.swift */; };
 		00A77AF922700D940033ED8A /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77AF822700D940033ED8A /* PlantDetailViewController.swift */; };
 		00A77AFC22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */; };
 		00A77AFE22702B8E0033ED8A /* DefaultPlantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */; };
@@ -130,6 +134,10 @@
 		008F0A0922858C8000B5946C /* PlantValueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantValueCollectionViewCell.swift; sourceTree = "<group>"; };
 		008F0A0B22858C8B00B5946C /* PlantCheckBoxCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCheckBoxCollectionViewCell.swift; sourceTree = "<group>"; };
 		008F0A0F2285C2A600B5946C /* ComparisonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonViewController.swift; sourceTree = "<group>"; };
+		008F0A122286C23D00B5946C /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
+		008F0A142286C61800B5946C /* NotificationSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		008F0A172286F41600B5946C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		008F0A192286F4F000B5946C /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		00A77AF822700D940033ED8A /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
 		00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPlantInfoTableViewCell.swift; sourceTree = "<group>"; };
 		00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultPlantCell.xib; sourceTree = "<group>"; };
@@ -317,6 +325,24 @@
 				008F0A0B22858C8B00B5946C /* PlantCheckBoxCollectionViewCell.swift */,
 			);
 			path = "Comparison Model";
+			sourceTree = "<group>";
+		};
+		008F0A162286D4F600B5946C /* Notification Controller */ = {
+			isa = PBXGroup;
+			children = (
+				008F0A122286C23D00B5946C /* NotificationSettingsViewController.swift */,
+				008F0A172286F41600B5946C /* NotificationViewController.swift */,
+			);
+			path = "Notification Controller";
+			sourceTree = "<group>";
+		};
+		008F0A1B228793D700B5946C /* Profile page model */ = {
+			isa = PBXGroup;
+			children = (
+				00FCC0882271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift */,
+				00FCC0862271F52700CD3D20 /* ProfileTopTableViewCell.swift */,
+			);
+			path = "Profile page model";
 			sourceTree = "<group>";
 		};
 		00A77AF722700D6E0033ED8A /* Plant Detail Controller */ = {
@@ -548,6 +574,7 @@
 				00FCC0832271F49D00CD3D20 /* ProfileTableViewController.swift */,
 				00A79F28227309A0008D4424 /* SettingTableViewController.swift */,
 				00395DB52274326A00EC9293 /* FavouriteTableViewController.swift */,
+				008F0A162286D4F600B5946C /* Notification Controller */,
 			);
 			path = "Profile Controller";
 			sourceTree = "<group>";
@@ -555,10 +582,11 @@
 		00FCC0852271F4F600CD3D20 /* Profile Model */ = {
 			isa = PBXGroup;
 			children = (
-				00FCC0862271F52700CD3D20 /* ProfileTopTableViewCell.swift */,
-				00FCC0882271FAAA00CD3D20 /* ProfileOptionTableViewCell.swift */,
-				00A79F2A2273164D008D4424 /* SettingTableViewCell.swift */,
+				008F0A1B228793D700B5946C /* Profile page model */,
 				00395DB32274322F00EC9293 /* FavouriteTableViewCell.swift */,
+				008F0A142286C61800B5946C /* NotificationSettingsTableViewCell.swift */,
+				008F0A192286F4F000B5946C /* NotificationTableViewCell.swift */,
+				00A79F2A2273164D008D4424 /* SettingTableViewCell.swift */,
 			);
 			path = "Profile Model";
 			sourceTree = "<group>";
@@ -778,10 +806,12 @@
 			files = (
 				00A77B0C22709E690033ED8A /* TabBarViewController.swift in Sources */,
 				00395DB62274326A00EC9293 /* FavouriteTableViewController.swift in Sources */,
+				008F0A182286F41600B5946C /* NotificationViewController.swift in Sources */,
 				00C71386226DE7E500E1EA36 /* HomeTableViewController.swift in Sources */,
 				00C7136D226B4CC600E1EA36 /* FilterLocationTableViewCell.swift in Sources */,
 				00C71366226AFF5F00E1EA36 /* FilterTableViewController.swift in Sources */,
 				00395DF42278163100EC9293 /* CACellTableViewCell.swift in Sources */,
+				008F0A152286C61800B5946C /* NotificationSettingsTableViewCell.swift in Sources */,
 				00C71383226DE6E100E1EA36 /* HomeFarmTableViewCell.swift in Sources */,
 				00395DBD22756A5000EC9293 /* MonthTableViewCell.swift in Sources */,
 				00C71374226BF56500E1EA36 /* RangeSeekSlider.swift in Sources */,
@@ -815,6 +845,7 @@
 				00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */,
 				00A77B02227032CD0033ED8A /* PlantInfoOneTableViewController.swift in Sources */,
 				00A77AF922700D940033ED8A /* PlantDetailViewController.swift in Sources */,
+				008F0A1A2286F4F000B5946C /* NotificationTableViewCell.swift in Sources */,
 				00395DC82275896300EC9293 /* NoResultTableViewCell.swift in Sources */,
 				00395DF92278203A00EC9293 /* CACollectionViewCell.swift in Sources */,
 				00C71380226DDCF200E1EA36 /* User.swift in Sources */,
@@ -826,6 +857,7 @@
 				008874942279BEA500475095 /* IntroductionViewController.swift in Sources */,
 				00A77B23227181860033ED8A /* LocalData.swift in Sources */,
 				008F0A0A22858C8000B5946C /* PlantValueCollectionViewCell.swift in Sources */,
+				008F0A132286C23D00B5946C /* NotificationSettingsViewController.swift in Sources */,
 				006065882282A84F00742147 /* IndoorTableViewController.swift in Sources */,
 				00C7136B226B4CB700E1EA36 /* FilterCategoryTableViewCell.swift in Sources */,
 				00C7135C226ADD6700E1EA36 /* SearchPlantUI.swift in Sources */,
