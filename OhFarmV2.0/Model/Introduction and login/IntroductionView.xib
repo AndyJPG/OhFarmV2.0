@@ -51,7 +51,7 @@
                     <state key="normal" title="Button"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlD-i2-5WJ">
-                    <rect key="frame" x="349" y="360" width="30" height="30"/>
+                    <rect key="frame" x="349" y="419" width="30" height="30"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -70,10 +70,10 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YgW-c4-XGX" secondAttribute="trailing" constant="107" id="NGW-Mx-3db"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XTn-cO-ZGq" secondAttribute="bottom" constant="140" id="Ph1-bw-6eq"/>
                 <constraint firstItem="YgW-c4-XGX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="107" id="SN0-TA-8Qo"/>
-                <constraint firstItem="lLa-l6-3hT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="-20" id="WB8-Oq-LoF"/>
+                <constraint firstItem="lLa-l6-3hT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WB8-Oq-LoF"/>
+                <constraint firstItem="YBW-R4-b9U" firstAttribute="top" secondItem="HlD-i2-5WJ" secondAttribute="bottom" constant="60" id="X62-o3-WkN"/>
                 <constraint firstItem="YBW-R4-b9U" firstAttribute="top" secondItem="lLa-l6-3hT" secondAttribute="bottom" constant="32" id="X8P-R9-2cl"/>
                 <constraint firstItem="kfs-xW-UEG" firstAttribute="top" secondItem="YgW-c4-XGX" secondAttribute="bottom" constant="30" id="a6Y-cN-PpB"/>
-                <constraint firstItem="HlD-i2-5WJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="340" id="d02-KJ-V1t"/>
                 <constraint firstItem="lLa-l6-3hT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eDz-aN-E5F"/>
                 <constraint firstItem="YgW-c4-XGX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="143" id="fOn-Kz-3OZ"/>
                 <constraint firstItem="En3-Qe-ARe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="48" id="ig7-Bz-Rkm"/>

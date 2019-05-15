@@ -13,14 +13,15 @@ class ComparisonViewController: UIViewController {
     //MARK: Variable
     var compareList: [Plant]!
     var userFarm: [Plant]!
-    let itemsPerRow: CGFloat = 4
+    var itemsPerRow: CGFloat = 4
     let color = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
     
     //Check box tracking
-    var checkTracker = [0,0,0]
+    var checkTracker = [Int]()
     
     //Get button for add plant
     let button = SearchPlantUI().filterBottomButton()
+    let buttonBackground = SearchPlantUI().filterBottomButtonBackground()
     
     //Cell id
     enum cellID: String {
@@ -38,7 +39,10 @@ class ComparisonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        checkTracker = Array(repeating: 0, count: Int(itemsPerRow)-1)
+        itemsPerRow = CGFloat(compareList.count+1)
+        
         // Set up collection view delegate
         collection.delegate = self
         collection.dataSource = self
@@ -59,16 +63,6 @@ class ComparisonViewController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //MARK: Actions
     @objc private func checkBox(_ sender: UIButton) {
@@ -91,7 +85,7 @@ class ComparisonViewController: UIViewController {
         if !checkTracker.contains(1) {
             notPlantAlert()
         } else {
-            var existList = [0,0,0]
+            var existList = Array(repeating: 0, count: Int(itemsPerRow)-1)
             
             let farmPlants = userFarm.map { (plant) -> String in
                 return plant.cropName
@@ -205,7 +199,7 @@ extension ComparisonViewController: UICollectionViewDelegate, UICollectionViewDa
                     if plant.minSpacing == plant.maxSpacing {
                         valueCell.value.text = "\(plant.minSpacing) cm"
                     } else {
-                        valueCell.value.text = "\(plant.minSpacing) cm\nto\n\(plant.maxSpacing)"
+                        valueCell.value.text = "\(plant.minSpacing) cm\nto\n\(plant.maxSpacing) cm"
                     }
                 case 2:
                     //Plant harvest time information
@@ -289,6 +283,30 @@ extension ComparisonViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == 5 {
+            return CGSize(width: 0, height: 60)
+        } else {
+            return CGSize(width: 0, height: 0)
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView,   viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionView.elementKindSectionFooter:
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footerView", for: indexPath as IndexPath)
+
+            return footer
+            
+        default:
+            
+            print("anything")
+        }
+        
+        return UICollectionReusableView()
+    }
+    
 }
 
 //MARK: UI aler
@@ -345,12 +363,14 @@ extension ComparisonViewController {
     private func setupAddPlantButton() {
         button.setTitle("Add plants", for: .normal)
         button.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
+        view.addSubview(buttonBackground)
         view.addSubview(button)
         
         UIView.animate(withDuration: 0.5) {
             self.button.alpha = 0
             self.button.alpha = 1
         }
+        
     }
     
 }

@@ -30,6 +30,7 @@ class HomeUI: UIViewController {
         //Progress day
         //Calculate progress
         let calendar = Calendar.current
+//        guard let current = calendar.date(byAdding: .weekOfYear, value: 10, to: Date()) else {fatalError()}
         let current = Date()
         
         // Replace the hour (time) of both dates with 00:00

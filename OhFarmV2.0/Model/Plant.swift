@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class Plant: NSObject, NSCoding {
+class Plant: NSObject, NSCoding, NSCopying {
     
     //MARK: Variable
     let cropName: String
@@ -145,6 +145,7 @@ class Plant: NSObject, NSCoding {
     var progress: Float {
         //Calculate progress
         let calendar = Calendar.current
+//        guard let current = calendar.date(byAdding: .weekOfYear, value: 10, to: Date()) else {fatalError()}
         let current = Date()
         
         // Replace the hour (time) of both dates with 00:00
@@ -154,18 +155,25 @@ class Plant: NSObject, NSCoding {
         let components = calendar.dateComponents([.day], from: date1, to: date2)
         let daysToHavest = maxHarvestTime * 7
         
+        print("in plant object class")
         print(daysToHavest-components.day!)
         print(daysToHavest)
-        print((Float(daysToHavest)-Float(components.day!)+20)/Float(daysToHavest))
+        print((Float(daysToHavest)-Float(components.day!)+5.0)/Float(daysToHavest))
         print("need change here")
         
-        return Float(Float(daysToHavest)-Float(components.day!)+5.0/Float(daysToHavest))
+        return Float((Float(daysToHavest)-Float(components.day!)+5.0)/Float(daysToHavest))
     }
     
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("plants")
+    
+    //MARK: For make copy
+    func copy(with zone: NSZone? = nil) -> Any {
+        let plant = Plant(cropName: self.cropName, plantCategory: self.plantCategory, suitableMonth: self.suitableMonth, minSpacing: self.minSpacing, maxSpacing: self.maxSpacing, minHarvestTime: self.minHarvestTime, maxHarvestTime: self.maxHarvestTime, compatiblePlants: self.compatiblePlants, avoidInstructions: self.avoidInstructions, culinaryHints: self.culinaryHints, plantStyle: self.plantStyle, plantingTechnique: self.plantingTechnique, fertilizer: self.fertilizer, compPlantList: self.compPlantList, avoidPlantList: self.avoidPlantList, harvestTime: self.harvestDate, nextWateringDate: self.nextWateringDate, indoorList: self.indoorList, outdoorList: self.outdoorList, harvested: self.harvested)
+        return plant
+    }
     
     //MARK: Types
     struct PropertyKey {

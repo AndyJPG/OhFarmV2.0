@@ -12,6 +12,8 @@ class NotificationViewController: UIViewController {
     
     //MARK: Variable
     var user: User!
+    var notifiMassage = UILabel()
+    var welcomeIamage = UIImageView()
     var notification: [String] {
         return user.notificationList
     }
@@ -29,7 +31,15 @@ class NotificationViewController: UIViewController {
         
         tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
         
+        navigationItem.title = "Notification"
+        
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateView()
+        tableView.reloadData()
     }
     
 
@@ -73,6 +83,7 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             user.notificationList.remove(at: indexPath.row)
+            updateView()
             tableView.reloadData()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -88,6 +99,51 @@ extension NotificationViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearNotification(_:)))
         
         tableView.tableFooterView = UIView()
+        
+        //Set up the image
+        //Add welcome image and label
+        welcomeIamage = UIImageView(frame: CGRect(x: view.frame.width*0.5 - 130, y: view.frame.height*0.3, width: 250, height: 250))
+        welcomeIamage.image = UIImage(named: "notificationImage")
+        welcomeIamage.contentMode = .scaleAspectFit
+        
+        
+        view.addSubview(welcomeIamage)
+        
+        //Set up the label
+        let text = "We will notify you when your plant needs water\nor is ready for harvest"
+        
+        notifiMassage = UILabel(frame: CGRect(x: view.frame.width*0.5-120, y: view.frame.height*0.3+250, width: 240, height: 100))
+        notifiMassage.numberOfLines = 0
+        notifiMassage.font = UIFont(name: "Helvetica", size: 15)
+        notifiMassage.textColor = .darkGray
+        
+        let attributedString = NSMutableAttributedString(string: text)
+        
+        // *** Create instance of `NSMutableParagraphStyle`
+        let paragraphStyle = NSMutableParagraphStyle()
+        
+        // *** set LineSpacing property in points ***
+        paragraphStyle.lineSpacing = 5 // Whatever line spacing you want in points
+        paragraphStyle.alignment = .center
+        
+        // *** Apply attribute to string ***
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        
+        // *** Set Attributed String to your label ***
+        notifiMassage.attributedText = attributedString
+        
+        view.addSubview(notifiMassage)
+    }
+    
+    private func updateView() {
+        
+        if notification.isEmpty {
+            notifiMassage.isHidden = false
+            welcomeIamage.isHidden = false
+        } else {
+            notifiMassage.isHidden = true
+            welcomeIamage.isHidden = true
+        }
     }
     
 }

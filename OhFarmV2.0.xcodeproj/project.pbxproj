@@ -62,7 +62,6 @@
 		00C7135C226ADD6700E1EA36 /* SearchPlantUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */; };
 		00C7135F226ADE3400E1EA36 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7135E226ADE3400E1EA36 /* Plant.swift */; };
 		00C71364226AFC2C00E1EA36 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71363226AFC2C00E1EA36 /* Filter.swift */; };
-		00C71366226AFF5F00E1EA36 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71365226AFF5F00E1EA36 /* FilterTableViewController.swift */; };
 		00C71368226AFF8900E1EA36 /* PlantSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C71367226AFF8900E1EA36 /* PlantSearchTableViewController.swift */; };
 		00C7136B226B4CB700E1EA36 /* FilterCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7136A226B4CB600E1EA36 /* FilterCategoryTableViewCell.swift */; };
 		00C7136D226B4CC600E1EA36 /* FilterLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7136C226B4CC600E1EA36 /* FilterLocationTableViewCell.swift */; };
@@ -160,7 +159,6 @@
 		00C7135B226ADD6700E1EA36 /* SearchPlantUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlantUI.swift; sourceTree = "<group>"; };
 		00C7135E226ADE3400E1EA36 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		00C71363226AFC2C00E1EA36 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
-		00C71365226AFF5F00E1EA36 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		00C71367226AFF8900E1EA36 /* PlantSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantSearchTableViewController.swift; sourceTree = "<group>"; };
 		00C7136A226B4CB600E1EA36 /* FilterCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		00C7136C226B4CC600E1EA36 /* FilterLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterLocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -360,12 +358,12 @@
 		00A77AFA227027DC0033ED8A /* Plant Detail Model */ = {
 			isa = PBXGroup;
 			children = (
-				00395DF0227815DB00EC9293 /* Photo slide */,
-				00395DEF227815C100EC9293 /* month table cell */,
-				00395DF1227815F200EC9293 /* Avoid and Compatible cell */,
 				00A77AFB22702B5F0033ED8A /* DefaultPlantInfoTableViewCell.swift */,
 				00A77AFD22702B8E0033ED8A /* DefaultPlantCell.xib */,
 				00A77B1822713E670033ED8A /* Avoid and companion cell */,
+				00395DF1227815F200EC9293 /* Avoid and Compatible cell */,
+				00395DEF227815C100EC9293 /* month table cell */,
+				00395DF0227815DB00EC9293 /* Photo slide */,
 			);
 			path = "Plant Detail Model";
 			sourceTree = "<group>";
@@ -395,7 +393,6 @@
 		00C7135D226ADDB400E1EA36 /* Search controller */ = {
 			isa = PBXGroup;
 			children = (
-				00C71365226AFF5F00E1EA36 /* FilterTableViewController.swift */,
 				00C71367226AFF8900E1EA36 /* PlantSearchTableViewController.swift */,
 				008F0A1C2287BE8500B5946C /* FilterViewController.swift */,
 			);
@@ -505,6 +502,8 @@
 		00DA86462264555400049557 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				008F0A042285886F00B5946C /* NavigationController.swift */,
+				00A77B0B22709E690033ED8A /* TabBarViewController.swift */,
 				0060658222829F4300742147 /* Check List */,
 				00DA864922646C9F00049557 /* Community controller */,
 				008F09FF22854E1400B5946C /* Comparison Controller */,
@@ -513,8 +512,6 @@
 				00A77AF722700D6E0033ED8A /* Plant Detail Controller */,
 				00FCC0822271F46B00CD3D20 /* Profile Controller */,
 				00C7135D226ADDB400E1EA36 /* Search controller */,
-				00A77B0B22709E690033ED8A /* TabBarViewController.swift */,
-				008F0A042285886F00B5946C /* NavigationController.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -812,7 +809,6 @@
 				008F0A182286F41600B5946C /* NotificationViewController.swift in Sources */,
 				00C71386226DE7E500E1EA36 /* HomeTableViewController.swift in Sources */,
 				00C7136D226B4CC600E1EA36 /* FilterLocationTableViewCell.swift in Sources */,
-				00C71366226AFF5F00E1EA36 /* FilterTableViewController.swift in Sources */,
 				00395DF42278163100EC9293 /* CACellTableViewCell.swift in Sources */,
 				008F0A152286C61800B5946C /* NotificationSettingsTableViewCell.swift in Sources */,
 				00C71383226DE6E100E1EA36 /* HomeFarmTableViewCell.swift in Sources */,

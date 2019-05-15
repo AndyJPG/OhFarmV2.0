@@ -259,7 +259,8 @@ class PlantSearchTableViewController: UITableViewController {
         if exist {
             uiAlert(plant.cropName, alertIndex: 0)
         } else {
-            user.farmPlants.insert(plant, at: 0)
+            let newPlant = plant.copy() as! Plant
+            user.farmPlants.insert(newPlant, at: 0)
             localData.saveUserInfo(user)
             uiAlert(plant.cropName, alertIndex: 1)
         }
@@ -267,9 +268,11 @@ class PlantSearchTableViewController: UITableViewController {
     
     //Comparison check box
     @objc private func checkAction(_ sender: UIButton) {
+        let maxPlant = 3
+        
         if !sender.isSelected {
             //Check if list is full
-            if compareList.count < 3 {
+            if compareList.count < maxPlant {
                 sender.isSelected = true
                 compareList.append(plants[sender.tag])
                 
@@ -305,7 +308,7 @@ class PlantSearchTableViewController: UITableViewController {
         }
         
         //Update the compare button appearance
-        if compareList.count == 3 {
+        if compareList.count > 1 {
             compareButton.tintColor = .white
         } else {
             compareButton.tintColor = .lightText
@@ -353,9 +356,9 @@ class PlantSearchTableViewController: UITableViewController {
             self.showCompareListButton.isHidden = false
             
             tableView.reloadData()
-        } else if compareList.count != 3 {
+        } else if compareList.count <= 1 {
             comparisonAlert(0)
-        } else if compareList.count == 3 {
+        } else if compareList.count > 1 {
             //If comparison list got 3 plant compare
             showCompareListButton.isHidden = true
             performSegue(withIdentifier: SegueID.ComparisonSegue.rawValue, sender: self)
@@ -368,7 +371,7 @@ class PlantSearchTableViewController: UITableViewController {
         if compareMode {
             endCompareMode()
         } else {
-            performSegue(withIdentifier: "testSegue", sender: self)
+            performSegue(withIdentifier: SegueID.filterSegue.rawValue, sender: self)
 //            performSegue(withIdentifier: SegueID.filterSegue.rawValue, sender: self)
         }
     }
@@ -377,10 +380,8 @@ class PlantSearchTableViewController: UITableViewController {
     private func showSelectedList(_ on: Bool) {
         if on {
             showCompareListButton.setTitle("Cancel", for: .normal)
-            showCompareListButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: view.frame.height*0.85), size: CGSize(width: view.frame.width*0.25, height: view.frame.height*0.06))
         } else {
             showCompareListButton.setTitle("Show selected plants", for: .normal)
-            showCompareListButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: view.frame.height*0.85), size: CGSize(width: view.frame.width*0.42, height: view.frame.height*0.06))
         }
     }
     
@@ -419,7 +420,7 @@ extension PlantSearchTableViewController {
         switch segue.identifier {
             
         case SegueID.filterSegue.rawValue:
-            guard let filterVC = segue.destination as? FilterTableViewController else {return}
+            guard let filterVC = segue.destination as? FilterViewController else {return}
             filterVC.filter = filter
             filterVC.hidesBottomBarWhenPushed = true
             
@@ -436,11 +437,6 @@ extension PlantSearchTableViewController {
             guard let nv = segue.destination as? ComparisonViewController else {fatalError()}
             nv.compareList = compareList
             nv.userFarm = user.farmPlants
-            nv.hidesBottomBarWhenPushed = true
-            
-        case "testSegue":
-            guard let nv = segue.destination as? FilterViewController else {fatalError()}
-            nv.filter = filter
             nv.hidesBottomBarWhenPushed = true
             
         default: break
@@ -478,6 +474,7 @@ extension PlantSearchTableViewController {
     
 }
 
+
 // MARK: UI Search bar controller extension
 extension PlantSearchTableViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
@@ -485,6 +482,7 @@ extension PlantSearchTableViewController: UISearchResultsUpdating {
         filterContentForSearchText(searchController.searchBar.text!)
     }
 }
+
 
 // MARK: Extension for ui Alert
 extension PlantSearchTableViewController {
@@ -517,7 +515,7 @@ extension PlantSearchTableViewController {
         
         switch index {
         case 0:
-            let alert = UIAlertController(title: "", message: "Please choose 3 plants to compare", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "", message: "Please choose more than 1 plants to compare", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                 //Cancel Action
@@ -577,7 +575,13 @@ extension PlantSearchTableViewController {
         tableView.backgroundView = image
         
         //Add show compare list button
-        showCompareListButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: view.frame.height*0.85), size: CGSize(width: view.frame.width*0.42, height: view.frame.height*0.06))
+        let y = (view.frame.height - (tabBarController?.tabBar.frame.height)!)-(view.frame.height*0.06+10)
+        
+        print(view.frame.height)
+        print((tabBarController?.tabBar.frame.height)!)
+        print(y)
+        
+        showCompareListButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: y), size: CGSize(width: view.frame.width*0.42, height: view.frame.height*0.06))
         showCompareListButton.layer.cornerRadius = showCompareListButton.frame.height/2
         showCompareListButton.setTitle("Show selected plants", for: .normal)
         showCompareListButton.isHidden = true

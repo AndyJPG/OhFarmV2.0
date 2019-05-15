@@ -76,7 +76,8 @@ class PlantDetailViewController: UIViewController {
         if isExist(user.farmPlants) {
             uiAlert(plant.cropName, alertIndex: 0)
         } else {
-            user.farmPlants.insert(plant, at: 0)
+            let newPlant = plant.copy() as! Plant
+            user.farmPlants.insert(newPlant, at: 0)
             localData.saveUserInfo(user)
             uiAlert(plant.cropName, alertIndex: 1)
         }

@@ -133,7 +133,7 @@ extension IndoorTableViewController {
             sender.isSelected = !sender.isSelected
             
             //Notfiy user if they want to start seeding
-            if (plantStyle == "indoor" && sender.tag == indoorPlantPoint) || (plantStyle == "outdoor" && sender.tag == outdoorPlantPoint && plant.plantStyle.lowercased() != "both") {
+            if (plantStyle == "indoor" && sender.tag == indoorPlantPoint) || (plantStyle == "outdoor" && sender.tag == outdoorPlantPoint && plant.indoorList < 0) {
                 startConfirmation(sender)
             }
             
@@ -265,6 +265,10 @@ extension IndoorTableViewController {
         alert.addAction(UIAlertAction(title: "Outdoor", style: UIAlertAction.Style.default, handler: { _ in
             self.plant.outdoorList = 0
             self.dismiss(animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+            print("Delete dimiss")
         }))
         
         present(alert, animated: true, completion: nil)

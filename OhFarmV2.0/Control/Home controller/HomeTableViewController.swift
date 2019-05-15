@@ -61,6 +61,9 @@ class HomeTableViewController: UITableViewController {
         updateNotification()
         updateAppearance()
         updateProgressTracker()
+        print("progress tracker")
+        print(progressTracker)
+        
         tableView.reloadData()
     }
 
@@ -88,7 +91,7 @@ class HomeTableViewController: UITableViewController {
         //Progress bar
         if plant.harvested {
             plantCell.progressBar.progress = 1.0
-        } else {
+        } else  {
             plantCell.progressBar.progress = progress
         }
         
@@ -151,7 +154,11 @@ class HomeTableViewController: UITableViewController {
     private func updateProgressTracker() {
         var progresses = [Float]()
         for plant in plants {
-            if plant.progress <= 1 && (plant.indoorList > 3 || plant.outdoorList > 4) {
+            print("in progress tracker")
+            print(plant.indoorList)
+            print(plant.outdoorList)
+            print(plant.progress)
+            if plant.progress <= 1.0 && (plant.indoorList >= 3 || plant.outdoorList >= 4) {
                 progresses.append(plant.progress)
             } else {
                 progresses.append(0.0)
@@ -289,11 +296,10 @@ extension HomeTableViewController {
         } else {
             //Inital check list
             if plant.plantStyle.lowercased() != "both" {
-                if plant.indoorList < 0 {
-                    plant.indoorList = 0
-                }
                 
-                if plant.outdoorList < 0 {
+                if plant.plantStyle.lowercased() == "indoor" {
+                    plant.indoorList = 0
+                } else {
                     plant.outdoorList = 0
                 }
             }
@@ -419,6 +425,10 @@ extension HomeTableViewController {
             self.performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
         }))
         
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+            print("Delete dimiss")
+        }))
+        
         present(alert, animated: true, completion: nil)
         
     }
@@ -448,7 +458,7 @@ extension HomeTableViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: notificationButton)
         
         //Add welcome image and label
-        welcomeIamage = UIImageView(frame: CGRect(x: view.frame.width*0.5 - 120, y: view.frame.height*0.2, width: 250, height: 250))
+        welcomeIamage = UIImageView(frame: CGRect(x: tableView.frame.width*0.5 - 120, y: tableView.frame.height*0.2, width: 250, height: 250))
         welcomeIamage.image = UIImage(named: "addMe")
         welcomeIamage.contentMode = .scaleAspectFit
         
@@ -459,12 +469,26 @@ extension HomeTableViewController {
         tableView.addSubview(welcomeIamage)
         
         //Add label
-        welcomeLabel = UILabel(frame: CGRect(x: view.frame.width*0.5-120, y: welcomeIamage.frame.height*1.5, width: 240, height: 100))
+        welcomeLabel = UILabel(frame: CGRect(x: tableView.frame.width*0.5-120, y: tableView.frame.height*0.2+250, width: 240, height: 100))
         welcomeLabel.numberOfLines = 0
-        welcomeLabel.text = "You haven't got any plant in your farm.\nTap the search button below to add a new plant!"
         welcomeLabel.font = UIFont(name: "Helvetica", size: 15)
         welcomeLabel.textColor = .darkGray
-        welcomeLabel.textAlignment = .center
+        
+        let attributedString = NSMutableAttributedString(string: "You haven't got any plant in your farm.\nTap the search button below to add a new plant!")
+        
+        // *** Create instance of `NSMutableParagraphStyle`
+        let paragraphStyle = NSMutableParagraphStyle()
+        
+        // *** set LineSpacing property in points ***
+        paragraphStyle.lineSpacing = 5 // Whatever line spacing you want in points
+        paragraphStyle.alignment = .center
+        
+        // *** Apply attribute to string ***
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        
+        // *** Set Attributed String to your label ***
+        welcomeLabel.attributedText = attributedString
+        
         tableView.addSubview(welcomeLabel)
     }
     
