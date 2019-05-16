@@ -45,5 +45,9 @@ class HomeFarmTableViewCell: UITableViewCell {
         }
         
     }
+    
+    func configWithData() {
+        
+    }
 
 }

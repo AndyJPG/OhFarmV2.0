@@ -294,14 +294,18 @@ extension HomeTableViewController {
         if plant.plantStyle.lowercased() == "both" && plant.indoorList < 0 && plant.outdoorList < 0 {
             choiceConfirmation(sender)
         } else {
-            //Inital check list
+            //Initial check list
             if plant.plantStyle.lowercased() != "both" {
                 
-                if plant.plantStyle.lowercased() == "indoor" {
+                //Initial for indoor and outdoor plant
+                if plant.plantStyle.lowercased() == "indoor" && plant.indoorList < 0 {
                     plant.indoorList = 0
-                } else {
+                }
+                
+                if plant.plantStyle.lowercased() == "outdoor" && plant.outdoorList < 0 {
                     plant.outdoorList = 0
                 }
+                
             }
             
             performSegue(withIdentifier: segueID.checkListSegue.rawValue, sender: sender)
@@ -335,9 +339,10 @@ extension HomeTableViewController {
         }
         
         if segue.identifier == segueID.checkListSegue.rawValue {
-            guard let nv = segue.destination as? UINavigationController, let vc = nv.topViewController as? CheckListHolderViewController, let button = sender as? UIButton else {fatalError()}
+            guard let vc = segue.destination as? CheckListHolderViewController, let button = sender as? UIButton else {fatalError()}
             vc.plant = plants[button.tag]
             vc.checkList = delegate.checkList
+            vc.hidesBottomBarWhenPushed = true
         }
         
         if segue.identifier == segueID.homeToNotificationSegue.rawValue {

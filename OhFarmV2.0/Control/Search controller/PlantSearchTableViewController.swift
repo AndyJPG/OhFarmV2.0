@@ -98,6 +98,11 @@ class PlantSearchTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -130,6 +135,13 @@ class PlantSearchTableViewController: UITableViewController {
             let plant = plants[indexPath.row]
             
             guard let uiCell = plantTableUI.searchPlantCell(cell, plant: plant) as? SearchPlantTableViewCell else {fatalError()}
+            
+            //Update plus button to show exist
+            if plantIsExist(plant) {
+                uiCell.plusButton.setImage(UIImage(named: "inFarm"), for: .normal)
+            } else {
+                uiCell.plusButton.setImage(UIImage(named: "plus"), for: .normal)
+            }
             
             uiCell.plusButton.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
             uiCell.plusButton.tag =  indexPath.row
@@ -241,11 +253,8 @@ class PlantSearchTableViewController: UITableViewController {
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    
-    // MARK: Action handle functions
-    @objc private func addPlant(_ sender: UIButton) {
-        
-        let plant = plants[sender.tag]
+    //Private function check if plant exist in my farm
+    private func plantIsExist(_ plant: Plant) -> Bool {
         var exist = false
         
         if !user.farmPlants.isEmpty {
@@ -256,7 +265,15 @@ class PlantSearchTableViewController: UITableViewController {
             }
         }
         
-        if exist {
+        return exist
+    }
+    
+    // MARK: Action handle functions
+    @objc private func addPlant(_ sender: UIButton) {
+        
+        let plant = plants[sender.tag]
+        
+        if plantIsExist(plant) {
             uiAlert(plant.cropName, alertIndex: 0)
         } else {
             let newPlant = plant.copy() as! Plant
@@ -338,6 +355,24 @@ class PlantSearchTableViewController: UITableViewController {
     
     //Compare button action
     @IBAction func compareAction(_ sender: Any) {
+        //Show compare selected list
+        //check if compare list has any plant
+//        if compareList.isEmpty {
+//            comparisonAlert(2)
+//        } else if !showSelectedCompareList {
+//            showSelectedCompareList = true
+//            showSelectedList(showSelectedCompareList)
+//
+//            tableView.reloadData()
+//        } else {
+//            showSelectedCompareList = false
+//            showSelectedList(showSelectedCompareList)
+//
+//            tableView.reloadData()
+//        }
+//
+//        print("show selected plants")
+        
         //check if is compare mode
         if !compareMode {
             compareMode = true
@@ -383,6 +418,32 @@ class PlantSearchTableViewController: UITableViewController {
         } else {
             showCompareListButton.setTitle("Show selected plants", for: .normal)
         }
+        
+        //check if is compare mode
+//        if !compareMode {
+//            compareMode = true
+//            compareButton.title = "Compare Now"
+//            compareButton.tintColor = .lightText
+//            //Set filter button to be cancel button
+//            filterButton.title = "Cancel"
+//            
+//            navigationItem.title = ""
+//            
+//            //Show compare list button
+//            UIView.animate(withDuration: 0.5) {
+//                self.showCompareListButton.alpha = 0
+//                self.showCompareListButton.alpha = 1
+//            }
+//            self.showCompareListButton.isHidden = false
+//            
+//            tableView.reloadData()
+//        } else if compareList.count <= 1 {
+//            comparisonAlert(0)
+//        } else if compareList.count > 1 {
+//            //If comparison list got 3 plant compare
+//            showCompareListButton.isHidden = true
+//            performSegue(withIdentifier: SegueID.ComparisonSegue.rawValue, sender: self)
+//        }
     }
     
     //End compare mode method
@@ -420,7 +481,7 @@ extension PlantSearchTableViewController {
         switch segue.identifier {
             
         case SegueID.filterSegue.rawValue:
-            guard let filterVC = segue.destination as? FilterViewController else {return}
+            guard let nv = segue.destination as? UINavigationController, let filterVC = nv.topViewController as? FilterViewController  else {return}
             filterVC.filter = filter
             filterVC.hidesBottomBarWhenPushed = true
             
@@ -490,7 +551,7 @@ extension PlantSearchTableViewController {
     // MARK: Alert functions
     private func uiAlert(_ plant: String, alertIndex: Int)  {
         if alertIndex == 0 {
-            let alert = UIAlertController(title: "Oops!", message: "\(plant) is already in your farm", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "", message: "\(plant) is already in your farm", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                 //Cancel Action
@@ -585,6 +646,7 @@ extension PlantSearchTableViewController {
         showCompareListButton.layer.cornerRadius = showCompareListButton.frame.height/2
         showCompareListButton.setTitle("Show selected plants", for: .normal)
         showCompareListButton.isHidden = true
+//        showCompareListButton.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
         showCompareListButton.addTarget(self, action: #selector(showSelectedPlants(_:)), for: .touchUpInside)
         navigationController?.view.addSubview(showCompareListButton)
         

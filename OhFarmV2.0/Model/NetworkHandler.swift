@@ -103,3 +103,38 @@ class NetworkHandler {
     }
     
 }
+
+//MARK: For cache image
+let imageCache = NSCache<NSString, UIImage>()
+
+//MARK: Extension for uiimageView download
+extension UIImageView {
+    
+    //MARK: Image download function
+    func downloaded(from stringURL: String, contentMode mode: UIView.ContentMode = .scaleAspectFill) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+        guard let url = URL(string: stringURL) else {fatalError()}
+        contentMode = mode
+        
+        image = UIImage(named: "default")
+        
+        if let imageFromCache = imageCache.object(forKey: stringURL as NSString) {
+            self.image = imageFromCache
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() {
+                imageCache.setObject(image, forKey: stringURL as NSString)
+                self.image = image
+            }
+            }.resume()
+    }
+    
+    
+}

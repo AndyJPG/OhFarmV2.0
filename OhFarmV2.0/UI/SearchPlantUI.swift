@@ -123,23 +123,9 @@ class SearchPlantUI: UIViewController {
         plantCell.plantHarvestLabel.attributedText = attributedString
         plantCell.plantSpacingLabel.attributedText = spacingString
         
-        
-        
-//        if plant.plantCategory == "vegetable" {
-//            plantCell.plantHarvestLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-//        } else {
-//            plantCell.plantHarvestLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-//        }
-        
-//        plantCell.plantSpacingLabel.numberOfLines = 2
-//        if plant.plantStyle == "Both" {
-//            plantCell.plantStyleLabel.text = "Suitable for\nIndoor and Outdoor"
-//            plantCell.plantStyleLabel.sizeToFit()
-//        } else {
-//            plantCell.plantStyleLabel.text = "Suitable for \(plant.plantStyle)"
-//        }
-        
-        plantCell.plantImage.image = plant.plantImage
+//        plantCell.plantImage.image = plant.plantImage
+        let imageURL = plant.plantImageURL
+        plantCell.plantImage.downloaded(from: imageURL[0])
         plantCell.plantImage.contentMode = .scaleAspectFill
         plantCell.plantImage.layer.cornerRadius = 24
         

@@ -22,7 +22,7 @@ class CheckListHolderViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationItem.title = plant.cropName
+        navigationItem.title = "\(plant.cropName) Checklist"
         
         //Appearance
         navigationController?.navigationBar.barTintColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)

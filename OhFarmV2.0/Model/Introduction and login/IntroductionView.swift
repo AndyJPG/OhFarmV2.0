@@ -47,7 +47,7 @@ class IntroductionView: UIView {
         title.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         detail.textColor = .darkGray
         
-        if data[1] == "Last" {
+        if data[1] == "Last" || data[1] == "First" {
             lastPageImage.isHidden = false
             lastPageLabel.isHidden = false
             button.isHidden = false

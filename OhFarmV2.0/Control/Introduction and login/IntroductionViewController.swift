@@ -38,12 +38,15 @@ class IntroductionViewController: UIViewController {
     }
     */
     //MARK: Actions
-    @objc private func getStart(_ sender: UIButton) {
-        performSegue(withIdentifier: segueID.LoginSegue.rawValue, sender: self)
-    }
-    
-    @objc private func skipButton(_ sender: UIButton) {
-        performSegue(withIdentifier: segueID.LoginSegue.rawValue, sender: self)
+    @objc private func buttonAction(_ sender: UIButton) {
+        
+        switch sender.tag {
+        case 0,1:
+            performSegue(withIdentifier: segueID.LoginSegue.rawValue, sender: self)
+        case 2:
+            scrollView.setContentOffset(CGPoint(x: scrollView.frame.width, y: 0), animated: true)
+        default: break
+        }
     }
     
     //MARK: Appearance
@@ -67,15 +70,22 @@ extension IntroductionViewController: UIScrollViewDelegate {
     func createSlides() -> [IntroductionView] {
         var introSlides = [IntroductionView]()
         
-        let slidesData = [["introSearch","Live Sustainably","Oh! Farm helps you to use the free space in your home and live sustainably"],["introSow","Grow Your Own Plant","Select a plant, Know the techniques and grow your own plant in your garden regardless of space and time"],["introPlanting","Grow Your Own Plant","Select a plant, Know the techniques and grow your own plant in your garden regardless of space and time"],["introMap","Access the community","Search for a nearby community farm and meet people who share your interests"],["notificationTutorial","Set the Notification", "Switch on/off the notification to be informed about when to water and harvest."],["introLike","Last","Welcome to Oh! Farm.\nTap the button below to start your journey."]]
+        let slidesData = [["introLeaf","First","Welcome to Oh! Farm.\nWe would like to give you a quick tour about our application, and you are welcome to skip at any time."],["introSearch","Live Sustainably","Oh! Farm helps you to use the free space in your home and live sustainably"],["introSow","Grow Your Own Plant","Select a plant, Know the techniques and grow your own plant in your garden regardless of space and time"],["introPlanting","Grow Your Own Plant","Select a plant, Know the techniques and grow your own plant in your garden regardless of space and time"],["introMap","Access the community","Search for a nearby community farm and meet people who share your interests"],["notificationTutorial","Set the Notification", "Switch on/off the notification to be informed about when to water and harvest."],["introLike","Last","Well done.\nTap the button below to start your journey."]]
         
         for data in slidesData {
             guard let slide: IntroductionView = Bundle.main.loadNibNamed("IntroductionView", owner: self, options: nil)?.first as? IntroductionView else {fatalError()}
             slide.configWithData(data)
             introSlides.append(slide)
-            slide.skipButton.addTarget(self, action: #selector(skipButton(_:)), for: .touchUpInside)
+            slide.skipButton.tag = 0
+            slide.skipButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
             if data[1] == "Last" {
-                slide.button.addTarget(self, action: #selector(getStart(_:)), for: .touchUpInside)
+                slide.button.tag = 1
+                slide.button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+            }
+            if data[1] == "First" {
+                slide.button.tag = 2
+                slide.button.setTitle("Start tour", for: .normal)
+                slide.button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
             }
         }
         

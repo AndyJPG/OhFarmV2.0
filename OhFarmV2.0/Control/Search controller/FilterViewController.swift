@@ -88,7 +88,8 @@ class FilterViewController: UIViewController {
         view.addSubview(back)
         view.addSubview(button)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetAction(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetAction(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction(_:)))
         
     }
 
@@ -248,11 +249,11 @@ extension FilterViewController {
             }
             
             if cell.bothButton.isSelected || (cell.vegetableButton.isSelected && cell.herbButton.isSelected) {
-                orginFilter.category = [CategoryID.vegetable.rawValue,CategoryID.herb.rawValue]
+                filter.category = [CategoryID.vegetable.rawValue,CategoryID.herb.rawValue]
             } else if cell.vegetableButton.isSelected {
-                orginFilter.category = [CategoryID.vegetable.rawValue]
+                filter.category = [CategoryID.vegetable.rawValue]
             } else {
-                orginFilter.category = [CategoryID.herb.rawValue]
+                filter.category = [CategoryID.herb.rawValue]
             }
         }
         
@@ -269,11 +270,11 @@ extension FilterViewController {
             }
             
             if cell.bothButton.isSelected || (cell.indoorButton.isSelected && cell.outdoorButton.isSelected) {
-                orginFilter.location = [PlantLocationID.indoor.rawValue, PlantLocationID.outdoor.rawValue]
+                filter.location = [PlantLocationID.indoor.rawValue, PlantLocationID.outdoor.rawValue]
             } else if cell.indoorButton.isSelected {
-                orginFilter.location = [PlantLocationID.indoor.rawValue]
+                filter.location = [PlantLocationID.indoor.rawValue]
             } else {
-                orginFilter.location = [PlantLocationID.outdoor.rawValue]
+                filter.location = [PlantLocationID.outdoor.rawValue]
             }
         }
     }
@@ -287,17 +288,36 @@ extension FilterViewController {
                 filterMonths.append(month)
             }
         }
-        orginFilter.month = filterMonths
-        
-        filter = orginFilter
+        filter.month = filterMonths
         performSegue(withIdentifier: "filterUnwindSegue", sender: self)
     }
     
+    //Cancel button action
+    @objc private func cancelAction(_ sender: UIBarButtonItem) {
+        filter.category = orginFilter.category
+        filter.location = orginFilter.location
+        filter.minSpacing = orginFilter.minSpacing
+        filter.maxSpacing = orginFilter.maxSpacing
+        filter.minHarvest = orginFilter.minHarvest
+        filter.maxHarvest = orginFilter.maxHarvest
+        filter.month = orginFilter.month
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //Reset button action
     @objc private func resetAction(_ sender: UIBarButtonItem) {
-        filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200,["All"]])
-        orginFilter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200,["All"]])
+        
+        filter.category = [CategoryID.vegetable.rawValue,CategoryID.herb.rawValue]
+        filter.location = [PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue]
+        filter.minSpacing = 0
+        filter.maxSpacing = 200
+        filter.minHarvest = 0
+        filter.maxHarvest = 200
+        filter.month = ["All"]
         
         selectedMonth = ["Jan": 0, "Feb": 0, "Mar": 0, "Apr": 0,"May": 0, "Jun": 0, "Jul": 0, "Aug": 0, "Sep": 0, "Oct": 0, "Nov": 0, "Dec": 0, "All": 1]
+        
         tableView.reloadData()
     }
     
@@ -429,13 +449,13 @@ extension FilterViewController: RangeSeekSliderDelegate {
         if slider.tag == 0 {
             let min = Int(slider.selectedMinValue)
             let max = Int(slider.selectedMaxValue)
-            (orginFilter.minSpacing, orginFilter.maxSpacing) = (min, max)
+            (filter.minSpacing, filter.maxSpacing) = (min, max)
         }
         
         if slider.tag == 1 {
             let min = Int(slider.selectedMinValue)
             let max = Int(slider.selectedMaxValue)
-            (orginFilter.minHarvest, orginFilter.maxHarvest) = (min, max)
+            (filter.minHarvest, filter.maxHarvest) = (min, max)
         }
     }
     

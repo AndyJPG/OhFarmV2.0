@@ -46,6 +46,15 @@ class Plant: NSObject, NSCoding, NSCopying {
         return UIImage(named: cropName) ?? UIImage()
     }
     
+    var plantImageURL: [String] {
+        let name = cropName.replacingOccurrences(of: " ", with: "+")
+        let imageUrl = "https://s3.amazonaws.com/ohfarmimages/\(name).jpg"
+        let imageUrl1 = "https://s3.amazonaws.com/ohfarmimages/\(name)1.jpg"
+        let imageUrl2 = "https://s3.amazonaws.com/ohfarmimages/\(name)3.jpg"
+        
+        return [imageUrl,imageUrl1,imageUrl2]
+    }
+    
     var getSpacingString: String {
         return "Spacing:\n\(minSpacing) cm - \(maxSpacing) cm"
     }

@@ -176,16 +176,27 @@ extension PlantDetailViewController: UIScrollViewDelegate {
     
     // Plant Photo gallery view
     func createSlides() -> [PhotoSlide] {
-        let slide1: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
-        slide1.configureWithData(plant.cropName)
+        var newSlides = [PhotoSlide]()
         
-        let slide2: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
-        slide2.configureWithData("\(plant.cropName)1")
+        if let image = UIImage(named: "\(plant.cropName)") {
+            let slide1: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
+            slide1.configureWithData(image)
+            newSlides.append(slide1)
+        }
         
-        let slide3: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
-        slide3.configureWithData("\(plant.cropName)3")
+        if let image2 = UIImage(named: "\(plant.cropName)1") {
+            let slide: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
+            slide.configureWithData(image2)
+            newSlides.append(slide)
+        }
         
-        return [slide1, slide2, slide3]
+        if let image3 = UIImage(named: "\(plant.cropName)3") {
+            let slide: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
+            slide.configureWithData(image3)
+            newSlides.append(slide)
+        }
+        
+        return newSlides
     }
     
     // Set up slide scroll view for segmented section
