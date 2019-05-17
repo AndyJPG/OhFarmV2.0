@@ -20,8 +20,8 @@ class PhotoSlide: UIView {
     }
     */
     
-    func configureWithData(_ image: UIImage) {
-        plantImage.image = image
+    func configureWithData(_ url: String) {
+        plantImage.downloaded(from: url)
         plantImage.contentMode = .scaleAspectFill
     }
 }

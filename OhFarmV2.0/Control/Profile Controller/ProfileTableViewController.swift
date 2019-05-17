@@ -165,7 +165,6 @@ class ProfileTableViewController: UITableViewController {
             guard let settingVC = sender.source as? SettingTableViewController else {return}
             print("back from setting")
             if settingVC.restore {
-//                delegate.user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? UIImage(), farm: [], favourite: [], watering: false, harvest: false, notificationList: [])
                 
                 user.userName = "First User"
                 user.userImage = UIImage(named: "userProfile") ?? UIImage()
@@ -205,14 +204,7 @@ class ProfileTableViewController: UITableViewController {
 extension ProfileTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @objc private func profileImageTapped(_ sender: Any) {
-        
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            
-            imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = false
-            
-            present(imagePicker, animated: true, completion: nil)
-        }
+        uiAlert(2)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -262,14 +254,49 @@ extension ProfileTableViewController {
         switch alertCase {
         case 0:
             alert = UIAlertController(title: "Error", message: "Your name can not be empty", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
         case 1:
             alert = UIAlertController(title: "Error", message: "Name can only have characters or number", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                //Cancel Action
+            }))
+        case 2:
+            alert = UIAlertController(title: "", message: "How do you want to setup your profile image?", preferredStyle: UIAlertController.Style.actionSheet)
+            
+            alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {_ in
+                
+                if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+                    
+                    self.imagePicker.sourceType = .savedPhotosAlbum
+                    self.imagePicker.allowsEditing = false
+                    
+                    self.present(self.imagePicker, animated: true, completion: nil)
+                }
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {_ in
+                
+                if UIImagePickerController.isSourceTypeAvailable(.camera){
+                    
+                    self.imagePicker.sourceType = .camera
+                    self.imagePicker.allowsEditing = false
+                    
+                    self.present(self.imagePicker, animated: true, completion: nil)
+                }
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: {_ in
+                print("Dismiss")
+            }))
         default: break
         }
         
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-            //Cancel Action
-        }))
         present(alert, animated: true, completion: nil)
     }
     

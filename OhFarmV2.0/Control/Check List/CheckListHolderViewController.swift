@@ -80,7 +80,7 @@ extension CheckListHolderViewController {
             self.plant.harvestDate = Date()
             self.plant.nextWateringDate = Date()
             self.plant.harvested = false
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }))
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.cancel, handler: { (_) in

@@ -177,22 +177,11 @@ extension PlantDetailViewController: UIScrollViewDelegate {
     // Plant Photo gallery view
     func createSlides() -> [PhotoSlide] {
         var newSlides = [PhotoSlide]()
+        let plantImageURL = plant.plantImageURL
         
-        if let image = UIImage(named: "\(plant.cropName)") {
-            let slide1: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
-            slide1.configureWithData(image)
-            newSlides.append(slide1)
-        }
-        
-        if let image2 = UIImage(named: "\(plant.cropName)1") {
-            let slide: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
-            slide.configureWithData(image2)
-            newSlides.append(slide)
-        }
-        
-        if let image3 = UIImage(named: "\(plant.cropName)3") {
-            let slide: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as! PhotoSlide
-            slide.configureWithData(image3)
+        for url in plantImageURL {
+            guard let slide: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as? PhotoSlide else {fatalError()}
+            slide.configureWithData(url)
             newSlides.append(slide)
         }
         

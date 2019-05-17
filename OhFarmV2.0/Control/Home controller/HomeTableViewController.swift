@@ -61,10 +61,14 @@ class HomeTableViewController: UITableViewController {
         updateNotification()
         updateAppearance()
         updateProgressTracker()
-        print("progress tracker")
-        print(progressTracker)
         
         tableView.reloadData()
+    }
+    
+    //Keep user perference save
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        localData.saveUserInfo(user)
     }
 
     // MARK: - Table view data source
@@ -362,10 +366,6 @@ extension HomeTableViewController {
             }
             localData.saveUserInfo(user)
             tableView.reloadData()
-        }
-        
-        if sender.identifier == segueID.unwindFromCheckList.rawValue {
-            localData.saveUserInfo(user)
         }
     }
     

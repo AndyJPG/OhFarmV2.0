@@ -12,8 +12,8 @@ class HomeUI: UIViewController {
     
     // MARK: Home plant cell style
     func homePlantCellStyle(_ cell: UITableViewCell, plant: Plant) -> UITableViewCell {
-        let indoorPlantPoint = 3
-        let outdoorPlantPoint = 4
+        let indoorPlantPoint = 4
+        let outdoorPlantPoint = 5
         
         guard let plantCell = cell as? HomeFarmTableViewCell else {fatalError()}
         plantCell.selectionStyle = .none
@@ -43,7 +43,7 @@ class HomeUI: UIViewController {
         if plant.harvested {
             plantCell.categoryLabel.text = "Ready for harvest"
         } else if plant.indoorList >= indoorPlantPoint || plant.outdoorList >= outdoorPlantPoint {
-            plantCell.categoryLabel.text = "\(weeks) weeks to go"
+            plantCell.categoryLabel.text = "\(weeks) weeks to harvest"
         } else {
             plantCell.categoryLabel.text = ""
         }
@@ -56,7 +56,8 @@ class HomeUI: UIViewController {
         
         plantCell.categoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
         
-        plantCell.plantImage.image = plant.plantImage
+        let imageURL = plant.plantImageURL
+        plantCell.plantImage.downloaded(from: imageURL[0])
         plantCell.plantImage.contentMode = .scaleAspectFill
         plantCell.plantImage.layer.cornerRadius = 24
         
@@ -108,8 +109,8 @@ class HomeUI: UIViewController {
         plantCell.harvestTimeLabel.attributedText = attributedString
         plantCell.spacingLabel.attributedText = spacingString
         
-        
-        plantCell.plantImage.image = plant.plantImage
+        let imageURL = plant.plantImageURL
+        plantCell.plantImage.downloaded(from: imageURL[0])
         plantCell.plantImage.contentMode = .scaleAspectFill
         plantCell.plantImage.layer.cornerRadius = 24
         

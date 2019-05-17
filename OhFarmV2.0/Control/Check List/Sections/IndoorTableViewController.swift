@@ -28,9 +28,7 @@ class IndoorTableViewController: UITableViewController, IndicatorInfoProvider {
     
     //User and plant Index
     var plant: Plant!
-    var plantStyle: String {
-        return itemInfo.title!.lowercased()
-    }
+    var plantStyle: String!
     
     enum styleID: String {
         case indoor
@@ -43,6 +41,13 @@ class IndoorTableViewController: UITableViewController, IndicatorInfoProvider {
     //Initiation for table view controller
     init(style: UITableView.Style, itemInfo: IndicatorInfo, checkList: [String], plant: Plant) {
         self.itemInfo = itemInfo
+        
+        if itemInfo.title?.lowercased() == "steps for outdoor" {
+            self.plantStyle = "outdoor"
+        } else {
+            self.plantStyle = "indoor"
+        }
+        
         self.checkList = checkList
         self.plant = plant
         super.init(style: style)
@@ -71,6 +76,9 @@ class IndoorTableViewController: UITableViewController, IndicatorInfoProvider {
             }
         }
         
+        print("indoor table view")
+        print(plant.indoorList)
+        print(plant.outdoorList)
         setupTable()
     }
     
@@ -210,30 +218,30 @@ extension IndoorTableViewController {
     private func startConfirmation(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Ready to plant", message: "Have you finished all preparation tasks ?", preferredStyle: UIAlertController.Style.alert)
-        
+
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { _ in
             let currentDate = Date()
             let harvestDate = Calendar.current.date(byAdding: .weekOfYear, value: self.plant.maxHarvestTime, to: currentDate)!
             let nextWateringDate = Calendar.current.date(byAdding: .day, value: 2, to: currentDate)!
-            
+
             self.plant.harvestDate = harvestDate
             self.plant.nextWateringDate = nextWateringDate
             print(self.plant.harvestDate)
             print("Next watering date")
             print(self.plant.nextWateringDate)
-            
+
             //ADD FIRST NOTIFICATION FOR NEW PLANT
             //Date formater
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy"
             let nextWaterString = dateFormatter.string(from: Date())
-            
+
             if self.delegate.user!.wateringNotif {
                 self.delegate.user?.notificationList.append("Please water the \(self.plant.cropName).;\(nextWaterString)")
             }
-            
+
         }))
-        
+
         //Not yet solution if user dont want to plant now
         alert.addAction(UIAlertAction(title: "Not yet", style: UIAlertAction.Style.destructive, handler: { _ in
             //deselect check box and update the tracker and counter
@@ -248,7 +256,7 @@ extension IndoorTableViewController {
                 self.plant.outdoorList = self.count
             }
         }))
-        
+
         present(alert, animated: true, completion: nil)
     }
     
@@ -264,7 +272,7 @@ extension IndoorTableViewController {
         //Not yet solution if user dont want to plant now
         alert.addAction(UIAlertAction(title: "Outdoor", style: UIAlertAction.Style.default, handler: { _ in
             self.plant.outdoorList = 0
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }))
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
@@ -283,7 +291,6 @@ extension IndoorTableViewController {
         tableView.register(UINib(nibName: "CheckListTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: cellIdentifier)
         tableView.estimatedRowHeight = 600.0
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.allowsSelection = false
         if blackTheme {
             tableView.backgroundColor = UIColor(red: 15/255.0, green: 16/255.0, blue: 16/255.0, alpha: 1.0)
         }

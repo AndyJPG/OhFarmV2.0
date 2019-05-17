@@ -504,9 +504,9 @@
 			children = (
 				008F0A042285886F00B5946C /* NavigationController.swift */,
 				00A77B0B22709E690033ED8A /* TabBarViewController.swift */,
+				008F09FF22854E1400B5946C /* Comparison Controller */,
 				0060658222829F4300742147 /* Check List */,
 				00DA864922646C9F00049557 /* Community controller */,
-				008F09FF22854E1400B5946C /* Comparison Controller */,
 				00C71384226DE75600E1EA36 /* Home controller */,
 				0088748E2279BB7A00475095 /* Introduction and login */,
 				00A77AF722700D6E0033ED8A /* Plant Detail Controller */,
