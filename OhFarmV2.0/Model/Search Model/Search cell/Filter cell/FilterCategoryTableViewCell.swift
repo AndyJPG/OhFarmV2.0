@@ -22,7 +22,8 @@ class FilterCategoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        setimage()
+        vegetableLabel.sizeToFit()
+        vegetableLabel.adjustsFontSizeToFitWidth = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,15 +32,37 @@ class FilterCategoryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    private func setimage() {
-        categoryLabel.text = "Category"
-        categoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-        bothButton.setImage(UIImage(named: "both"), for: .normal)
-        bothButton.setImage(UIImage(named: "bothFill"), for: .selected)
-        vegetableButton.setImage(UIImage(named: "veg"), for: .normal)
-        vegetableButton.setImage(UIImage(named: "vegFill"), for: .selected)
-        herbButton.setImage(UIImage(named: "herb"), for: .normal)
-        herbButton.setImage(UIImage(named: "herbFill"), for: .selected)
+    func setimage(_ type: Int) {
+        
+        if type == 0 {
+            categoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+            bothButton.setImage(UIImage(named: "both"), for: .normal)
+            bothButton.setImage(UIImage(named: "bothFill"), for: .selected)
+            vegetableButton.setImage(UIImage(named: "veg"), for: .normal)
+            vegetableButton.setImage(UIImage(named: "vegFill"), for: .selected)
+            herbButton.setImage(UIImage(named: "herb"), for: .normal)
+            herbButton.setImage(UIImage(named: "herbFill"), for: .selected)
+            
+            bothLabel.text = "Both Category"
+            vegetableLabel.text = "Vegetable"
+            herbLabel.text = "Herb"
+            categoryLabel.text = "Category"
+            
+        } else if type == 1 {
+            categoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+            bothButton.setImage(UIImage(named: "both"), for: .normal)
+            bothButton.setImage(UIImage(named: "bothFill"), for: .selected)
+            vegetableButton.setImage(UIImage(named: "veg"), for: .normal)
+            vegetableButton.setImage(UIImage(named: "vegFill"), for: .selected)
+            herbButton.setImage(UIImage(named: "herb"), for: .normal)
+            herbButton.setImage(UIImage(named: "herbFill"), for: .selected)
+            
+            bothLabel.text = "by alphabetic"
+            vegetableLabel.text = "by harvest time"
+            herbLabel.text = "by spacing"
+            categoryLabel.text = "Sorting method"
+            
+        }
         
         bothButton.imageView?.contentMode = .scaleAspectFit
         vegetableButton.imageView?.contentMode = .scaleAspectFit

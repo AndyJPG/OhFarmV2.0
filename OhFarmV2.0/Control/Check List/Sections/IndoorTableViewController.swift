@@ -112,6 +112,13 @@ class IndoorTableViewController: UITableViewController, IndicatorInfoProvider {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? CheckListTableViewCell else {fatalError()}
+        cell.checkButton.tag = indexPath.row
+        checkBoxButtonAction(cell.checkButton)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // MARK: - IndicatorInfoProvider
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -125,6 +132,10 @@ extension IndoorTableViewController {
     
     //Check list button action
     @objc private func checkButton(_ sender: UIButton) {
+        checkBoxButtonAction(sender)
+    }
+    
+    private func checkBoxButtonAction(_ sender: UIButton) {
         
         //Check if user reach the planting part
         if sender.tag == listTracking.count-1 && sender.isSelected {
@@ -237,7 +248,7 @@ extension IndoorTableViewController {
             let nextWaterString = dateFormatter.string(from: Date())
 
             if self.delegate.user!.wateringNotif {
-                self.delegate.user?.notificationList.append("Please water the \(self.plant.cropName).;\(nextWaterString)")
+                self.delegate.user?.notificationList[0].append("Please water the \(self.plant.cropName).;\(nextWaterString)")
             }
 
         }))
@@ -276,6 +287,17 @@ extension IndoorTableViewController {
         }))
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+            sender.isSelected = !sender.isSelected
+            self.count -= 1
+            self.listTracking[self.count] = 0
+            
+            //Set plant counter to sync with count
+            if self.plantStyle == "indoor" {
+                self.plant.indoorList = self.count
+            } else {
+                self.plant.outdoorList = self.count
+            }
+            
             print("Delete dimiss")
         }))
         

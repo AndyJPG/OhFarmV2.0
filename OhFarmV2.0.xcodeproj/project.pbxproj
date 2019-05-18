@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0025FAD5228FBA98000C7F1C /* NotificationNoResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025FAD4228FBA98000C7F1C /* NotificationNoResultTableViewCell.swift */; };
 		002E047C22671B27000871F5 /* communityFarmData.json in Resources */ = {isa = PBXBuildFile; fileRef = 002E047B22671B27000871F5 /* communityFarmData.json */; };
 		002E047E22671E68000871F5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E047D22671E68000871F5 /* SearchResultTableViewController.swift */; };
 		002E048022671EA8000871F5 /* SuggestionsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */; };
@@ -103,6 +104,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0025FAD4228FBA98000C7F1C /* NotificationNoResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNoResultTableViewCell.swift; sourceTree = "<group>"; };
 		002E047B22671B27000871F5 /* communityFarmData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = communityFarmData.json; path = ../communityFarmData.json; sourceTree = "<group>"; };
 		002E047D22671E68000871F5 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		002E047F22671EA8000871F5 /* SuggestionsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableTableViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0025FAD3228FB9A6000C7F1C /* Notification cell */ = {
+			isa = PBXGroup;
+			children = (
+				008F0A142286C61800B5946C /* NotificationSettingsTableViewCell.swift */,
+				008F0A192286F4F000B5946C /* NotificationTableViewCell.swift */,
+				0025FAD4228FBA98000C7F1C /* NotificationNoResultTableViewCell.swift */,
+			);
+			path = "Notification cell";
+			sourceTree = "<group>";
+		};
 		002E048122671F71000871F5 /* Community Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,11 +594,10 @@
 		00FCC0852271F4F600CD3D20 /* Profile Model */ = {
 			isa = PBXGroup;
 			children = (
-				008F0A1B228793D700B5946C /* Profile page model */,
 				00395DB32274322F00EC9293 /* FavouriteTableViewCell.swift */,
-				008F0A142286C61800B5946C /* NotificationSettingsTableViewCell.swift */,
-				008F0A192286F4F000B5946C /* NotificationTableViewCell.swift */,
 				00A79F2A2273164D008D4424 /* SettingTableViewCell.swift */,
+				0025FAD3228FB9A6000C7F1C /* Notification cell */,
+				008F0A1B228793D700B5946C /* Profile page model */,
 			);
 			path = "Profile Model";
 			sourceTree = "<group>";
@@ -818,6 +829,7 @@
 				008874902279BBD700475095 /* IntroductionView.swift in Sources */,
 				008F0A102285C2A600B5946C /* ComparisonViewController.swift in Sources */,
 				00C7137C226CBD2100E1EA36 /* NetworkHandler.swift in Sources */,
+				0025FAD5228FBA98000C7F1C /* NotificationNoResultTableViewCell.swift in Sources */,
 				00C71388226DE83000E1EA36 /* HomeUI.swift in Sources */,
 				00C71371226B4CF400E1EA36 /* FilterSpacingTableViewCell.swift in Sources */,
 				00FCC0842271F49D00CD3D20 /* ProfileTableViewController.swift in Sources */,

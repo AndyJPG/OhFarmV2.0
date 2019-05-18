@@ -157,7 +157,8 @@ extension ComparisonViewController: UICollectionViewDelegate, UICollectionViewDa
                 photoCell.plantName.textColor = color
             } else {
                 let plant = compareList[indexPath.row-1]
-                photoCell.plantImage.image = plant.plantImage
+                let imageURL = plant.plantImageURL
+                photoCell.plantImage.downloaded(from: imageURL[0])
                 photoCell.plantName.text = plant.cropName
             }
             

@@ -30,6 +30,12 @@ class PlantSearchTableViewController: UITableViewController {
         case detailToSearchSegue
     }
     
+    enum sortMethod: String {
+        case alphabetic
+        case harvestTime
+        case spacing
+    }
+    
     //MARK: Variable
     var filter: Filter?
     var originalPlants = [Plant]()
@@ -40,7 +46,7 @@ class PlantSearchTableViewController: UITableViewController {
     let localData = LocalData()
     
     //Button for comparison
-    let showCompareListButton = SearchPlantUI().filterBottomButton()
+    let compareButton = SearchPlantUI().filterBottomButton()
     var showSelectedCompareList = false
     
     //Search bar properites
@@ -52,8 +58,8 @@ class PlantSearchTableViewController: UITableViewController {
     var compareMode = false
     var compareList = [Plant]()
     
-    //Compare button
-    @IBOutlet weak var compareButton: UIBarButtonItem!
+    //Show selected list button
+    @IBOutlet weak var showSelected: UIBarButtonItem!
     
     //Filter button
     @IBOutlet weak var filterButton: UIBarButtonItem!
@@ -78,7 +84,7 @@ class PlantSearchTableViewController: UITableViewController {
         super.viewDidLoad()
 
         if filter == nil {
-            filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200,["All"]])
+            filter = Filter([[CategoryID.vegetable.rawValue,CategoryID.herb.rawValue],[PlantLocationID.indoor.rawValue,PlantLocationID.outdoor.rawValue],0,200,0,200,["All"],sortMethod.alphabetic.rawValue])
         }
         
         if user == nil {
@@ -93,14 +99,17 @@ class PlantSearchTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if compareMode {
-            showCompareListButton.isHidden = false
-        }
+        compareButtonAppear()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        compareButton.isHidden = true
     }
     
 
@@ -129,12 +138,21 @@ class PlantSearchTableViewController: UITableViewController {
             if searchText.isEmpty {
                 noResultCell.noResultLabel.text = "Sorry we can't find anything with the input filter"
             }
+            
+            if showSelectedCompareList && compareList.isEmpty{
+                noResultCell.noResultLabel.text = "You didn't select any plants for compare yet"
+            }
+            
             cell = noResultCell
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
             let plant = plants[indexPath.row]
             
             guard let uiCell = plantTableUI.searchPlantCell(cell, plant: plant) as? SearchPlantTableViewCell else {fatalError()}
+            
+            //Add long press gesture recognizer
+            let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressCompare(_:)))
+            uiCell.addGestureRecognizer(recognizer)
             
             //Update plus button to show exist
             if plantIsExist(plant) {
@@ -182,6 +200,9 @@ class PlantSearchTableViewController: UITableViewController {
             performSegue(withIdentifier: SegueID.viewDetailFromSearch.rawValue, sender: indexPath)
             tableView.deselectRow(at: indexPath, animated: true)
         } else {
+            guard let cell = tableView.cellForRow(at: indexPath) as? SearchPlantTableViewCell else {fatalError()}
+            cell.compareCheck.tag = indexPath.row
+            checkAction(cell.compareCheck)
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
@@ -189,7 +210,7 @@ class PlantSearchTableViewController: UITableViewController {
     //MARK: Main functions
     //MARK: Filter functions
     private func applyFilter() {
-        guard let category = filter?.category, let location = filter?.location, let minSpacing = filter?.minSpacing, let maxSpacing = filter?.maxSpacing, let minHarvest = filter?.minHarvest, let maxHarvest = filter?.maxHarvest, let months = filter?.month else {return}
+        guard let category = filter?.category, let location = filter?.location, let minSpacing = filter?.minSpacing, let maxSpacing = filter?.maxSpacing, let minHarvest = filter?.minHarvest, let maxHarvest = filter?.maxHarvest, let months = filter?.month, let sort = filter?.sort else {return}
         
         filterPlants = originalPlants.filter({ (plant : Plant) -> Bool in
             return (category.contains(plant.plantCategory.lowercased()) || plant.plantCategory.lowercased() == "both") && (location.contains(plant.plantStyle.lowercased()) || plant.plantStyle.lowercased() == "both") && minSpacing <= plant.maxSpacing && plant.maxSpacing <= maxSpacing && minHarvest <= plant.maxHarvestTime && plant.maxHarvestTime <= maxHarvest
@@ -224,6 +245,33 @@ class PlantSearchTableViewController: UITableViewController {
             filterPlants = monthFilterPlants
         }
         
+        //Sort plants list
+        switch sort {
+        case sortMethod.alphabetic.rawValue:
+            filterPlants.sort { (plant1, plant2) -> Bool in
+                return plant1.cropName < plant2.cropName
+            }
+            
+        case sortMethod.harvestTime.rawValue:
+            filterPlants.sort { (plant1, plant2) -> Bool in
+                if plant1.minHarvestTime == plant2.minHarvestTime {
+                    return plant1.maxHarvestTime <= plant2.maxHarvestTime
+                }
+                return plant1.minHarvestTime <= plant2.minHarvestTime
+            }
+            
+        case sortMethod.spacing.rawValue:
+            filterPlants.sort { (plant1, plant2) -> Bool in
+                if plant1.minSpacing == plant2.minSpacing {
+                    return plant1.maxSpacing <= plant2.maxSpacing
+                }
+                return plant1.minSpacing <= plant2.minSpacing
+            }
+            
+        default: break
+        }
+        
+        print(filterPlants.count)
         filterApplied = true
         tableView.reloadData()
     }
@@ -268,7 +316,24 @@ class PlantSearchTableViewController: UITableViewController {
         return exist
     }
     
+    //Button animation
+    private func compareButtonAppear() {
+        UIView.animate(withDuration: 0.5) {
+            self.compareButton.isHidden = false
+            self.compareButton.alpha = 0
+            self.compareButton.alpha = 1
+        }
+    }
+    
     // MARK: Action handle functions
+    // Long press gesture action
+    @objc private func longPressCompare(_ sender: UILongPressGestureRecognizer) {
+        if !compareMode {
+            compareAction(sender)
+        }
+    }
+    
+    //Add lant action
     @objc private func addPlant(_ sender: UIButton) {
         
         let plant = plants[sender.tag]
@@ -285,8 +350,23 @@ class PlantSearchTableViewController: UITableViewController {
     
     //Comparison check box
     @objc private func checkAction(_ sender: UIButton) {
+        selectForComparison(sender)
+    }
+    
+    //Select plants for comparison action
+    private func selectForComparison(_ sender: UIButton) {
+        
         let maxPlant = 3
         
+        if showSelectedCompareList {
+            
+            compareList.remove(at: sender.tag)
+            tableView.reloadData()
+            return
+            
+        }
+        
+        //Happen when it is not show selected plants mode
         if !sender.isSelected {
             //Check if list is full
             if compareList.count < maxPlant {
@@ -330,72 +410,53 @@ class PlantSearchTableViewController: UITableViewController {
         } else {
             compareButton.tintColor = .lightText
         }
+        
     }
     
-    //Show select list action
-    @objc private func showSelectedPlants(_ sender: UIButton) {
+    //Show selected plants
+    @IBAction func showSelectedPlants(_ sender: UIBarButtonItem) {
+        
+        print("show selected plants")
         
         //check if compare list has any plant
-        if compareList.isEmpty {
+        if showSelectedCompareList {
+            showSelectedCompareList = false
+            showSelected.title = "Show selected plants"
+            
+            tableView.reloadData()
+        } else if compareList.isEmpty {
             comparisonAlert(2)
         } else if !showSelectedCompareList {
             showSelectedCompareList = true
-            showSelectedList(showSelectedCompareList)
-            
-            tableView.reloadData()
-        } else {
-            showSelectedCompareList = false
-            showSelectedList(showSelectedCompareList)
+            showSelected.title = "Back to search"
             
             tableView.reloadData()
         }
         
         print("show selected plants")
+        
     }
     
     //Compare button action
-    @IBAction func compareAction(_ sender: Any) {
+    @objc func compareAction(_ sender: Any) {
         //Show compare selected list
-        //check if compare list has any plant
-//        if compareList.isEmpty {
-//            comparisonAlert(2)
-//        } else if !showSelectedCompareList {
-//            showSelectedCompareList = true
-//            showSelectedList(showSelectedCompareList)
-//
-//            tableView.reloadData()
-//        } else {
-//            showSelectedCompareList = false
-//            showSelectedList(showSelectedCompareList)
-//
-//            tableView.reloadData()
-//        }
-//
-//        print("show selected plants")
-        
         //check if is compare mode
         if !compareMode {
             compareMode = true
-            compareButton.title = "Compare Now"
-            compareButton.tintColor = .lightText
+            compareButton.setTitle("Compare Now", for: .normal)
             //Set filter button to be cancel button
             filterButton.title = "Cancel"
             
             navigationItem.title = ""
-            
-            //Show compare list button
-            UIView.animate(withDuration: 0.5) {
-                self.showCompareListButton.alpha = 0
-                self.showCompareListButton.alpha = 1
-            }
-            self.showCompareListButton.isHidden = false
+            showSelected.title = "Show selected plants"
+            showSelected.isEnabled = true
             
             tableView.reloadData()
         } else if compareList.count <= 1 {
             comparisonAlert(0)
         } else if compareList.count > 1 {
             //If comparison list got 3 plant compare
-            showCompareListButton.isHidden = true
+            compareButton.isHidden = true
             performSegue(withIdentifier: SegueID.ComparisonSegue.rawValue, sender: self)
         }
         
@@ -407,63 +468,25 @@ class PlantSearchTableViewController: UITableViewController {
             endCompareMode()
         } else {
             performSegue(withIdentifier: SegueID.filterSegue.rawValue, sender: self)
-//            performSegue(withIdentifier: SegueID.filterSegue.rawValue, sender: self)
         }
-    }
-    
-    //Appearance for show selected list button
-    private func showSelectedList(_ on: Bool) {
-        if on {
-            showCompareListButton.setTitle("Cancel", for: .normal)
-        } else {
-            showCompareListButton.setTitle("Show selected plants", for: .normal)
-        }
-        
-        //check if is compare mode
-//        if !compareMode {
-//            compareMode = true
-//            compareButton.title = "Compare Now"
-//            compareButton.tintColor = .lightText
-//            //Set filter button to be cancel button
-//            filterButton.title = "Cancel"
-//            
-//            navigationItem.title = ""
-//            
-//            //Show compare list button
-//            UIView.animate(withDuration: 0.5) {
-//                self.showCompareListButton.alpha = 0
-//                self.showCompareListButton.alpha = 1
-//            }
-//            self.showCompareListButton.isHidden = false
-//            
-//            tableView.reloadData()
-//        } else if compareList.count <= 1 {
-//            comparisonAlert(0)
-//        } else if compareList.count > 1 {
-//            //If comparison list got 3 plant compare
-//            showCompareListButton.isHidden = true
-//            performSegue(withIdentifier: SegueID.ComparisonSegue.rawValue, sender: self)
-//        }
     }
     
     //End compare mode method
     private func endCompareMode() {
         compareMode = false
-        compareButton.title = "Compare"
-        compareButton.tintColor = .white
+        compareButton.setTitle("Compare plants", for: .normal)
+        
         filterButton.title = "Filter"
         compareList = []
         
+        print("Change")
         navigationItem.title = "Plant search"
         
-        //Hiddent compare list button
-        UIView.animate(withDuration: 0.5) {
-            self.showCompareListButton.alpha = 0
-        }
-        self.showCompareListButton.isHidden = true
+        //Change show selected button title
+        showSelected.title = ""
+        showSelected.isEnabled = false
         
-        self.showSelectedCompareList = false
-        showSelectedList(showSelectedCompareList)
+        showSelectedCompareList = false
         
         tableView.reloadData()
     }
@@ -634,6 +657,7 @@ extension PlantSearchTableViewController {
         let image = UIImageView(image: UIImage(named: "background"))
         image.contentMode = .scaleAspectFill
         tableView.backgroundView = image
+        tableView.showsVerticalScrollIndicator = false
         
         //Add show compare list button
         let y = (view.frame.height - (tabBarController?.tabBar.frame.height)!)-(view.frame.height*0.06+10)
@@ -642,13 +666,16 @@ extension PlantSearchTableViewController {
         print((tabBarController?.tabBar.frame.height)!)
         print(y)
         
-        showCompareListButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: y), size: CGSize(width: view.frame.width*0.42, height: view.frame.height*0.06))
-        showCompareListButton.layer.cornerRadius = showCompareListButton.frame.height/2
-        showCompareListButton.setTitle("Show selected plants", for: .normal)
-        showCompareListButton.isHidden = true
-//        showCompareListButton.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        showCompareListButton.addTarget(self, action: #selector(showSelectedPlants(_:)), for: .touchUpInside)
-        navigationController?.view.addSubview(showCompareListButton)
+        //Set up compare button
+        compareButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: y), size: CGSize(width: view.frame.width*0.40, height: view.frame.height*0.06))
+        compareButton.layer.cornerRadius = compareButton.frame.height/2
+        compareButton.setTitle("Compare plants", for: .normal)
+        
+        compareButton.addTarget(self, action: #selector(compareAction(_:)), for: .touchUpInside)
+        navigationController?.view.addSubview(compareButton)
+        
+        //Setup left bar button item
+        showSelected.isEnabled = false
         
         // Provide an empty backBarButton to hide the 'Back' text present by default in the back button.
         let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

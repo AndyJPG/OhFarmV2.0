@@ -115,7 +115,8 @@ extension UIImageView {
         guard let url = URL(string: stringURL) else {fatalError()}
         contentMode = mode
         
-        image = UIImage(named: "default")
+        image = nil
+        self.backgroundColor = .groupTableViewBackground
         
         if let imageFromCache = imageCache.object(forKey: stringURL as NSString) {
             self.image = imageFromCache
@@ -131,7 +132,13 @@ extension UIImageView {
                 else { return }
             DispatchQueue.main.async() {
                 imageCache.setObject(image, forKey: stringURL as NSString)
-                self.image = image
+                
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.alpha = 0
+                    self.alpha = 1
+                    self.image = image
+                })
+                
             }
             }.resume()
     }

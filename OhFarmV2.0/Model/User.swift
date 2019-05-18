@@ -22,7 +22,7 @@ class User: NSObject, NSCoding {
     var harvestNotif: Bool = false
 
     // Notification for display
-    var notificationList: [String] = []
+    var notificationList: [[String]] = []
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -41,7 +41,7 @@ class User: NSObject, NSCoding {
         static let notificationList = "notificationList"
     }
     
-    init(name: String, userImage: UIImage, farm: [Plant], favourite: [Plant], watering: Bool, harvest: Bool, notificationList: [String]) {
+    init(name: String, userImage: UIImage, farm: [Plant], favourite: [Plant], watering: Bool, harvest: Bool, notificationList: [[String]]) {
         self.userName = name
         self.userImage = userImage
         self.farmPlants = farm
@@ -85,7 +85,7 @@ class User: NSObject, NSCoding {
         let wateringNotif = aDecoder.decodeBool(forKey: PropertyKey.wateringNotif)
         let harvestNotif = aDecoder.decodeBool(forKey: PropertyKey.harvestNotif)
         
-        guard let notificationList = aDecoder.decodeObject(forKey: PropertyKey.notificationList) as? [String] else {return nil}
+        guard let notificationList = aDecoder.decodeObject(forKey: PropertyKey.notificationList) as? [[String]] else {return nil}
         
         // Must call designated initializer.
         self.init(name: userName, userImage: image, farm: farmPlants, favourite: favouritePlants, watering: wateringNotif, harvest: harvestNotif, notificationList: notificationList)

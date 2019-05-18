@@ -32,6 +32,13 @@ class FilterViewController: UIViewController {
         case monthCell
     }
     
+    //Sorting methods
+    enum sortMethod: String {
+        case alphabetic
+        case harvestTime
+        case spacing
+    }
+    
     //MARK: Variable
     
     var orginFilter: Filter!
@@ -53,7 +60,7 @@ class FilterViewController: UIViewController {
         
         //Track orginal filter for cancel button action
         if orginFilter == nil {
-            orginFilter = Filter([filter.category,filter.location,filter.minSpacing,filter.maxSpacing,filter.minHarvest,filter.maxHarvest,filter.month])
+            orginFilter = Filter([filter.category,filter.location,filter.minSpacing,filter.maxSpacing,filter.minHarvest,filter.maxHarvest,filter.month,filter.sort])
         }
         
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 55))
@@ -105,7 +112,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     //Form every filter cell
@@ -116,6 +123,8 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.categoryCell.rawValue, for: indexPath)
             guard let categoryCell = searchUi.filterCellStyle(cell) as? FilterCategoryTableViewCell else {fatalError()}
+            
+            categoryCell.setimage(0)
             
             (categoryCell.bothButton.tag, categoryCell.vegetableButton.tag, categoryCell.herbButton.tag) = (0,1,1)
             categoryCell.bothButton.addTarget(self, action: #selector(filterButton(_:)), for: .touchUpInside)
@@ -155,7 +164,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             
             return locationCell
             
-        case 2:
+        case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.monthCell.rawValue, for: indexPath) as? FilterMonthTableViewCell else {fatalError()}
             
             cell.setButton(filter.month)
@@ -177,7 +186,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
             
-        case 3:
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.spacingCell.rawValue, for: indexPath)
             guard let spacingCell = searchUi.filterCellStyle(cell) as? FilterSpacingTableViewCell else {fatalError()}
             
@@ -194,7 +203,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             
             return spacingCell
             
-        case 4:
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.harvestCell.rawValue, for: indexPath)
             guard let harvestCell = searchUi.filterCellStyle(cell) as? FilterHarvestTableViewCell else {fatalError()}
             
@@ -211,6 +220,33 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return harvestCell
+        
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: FilterCellID.categoryCell.rawValue, for: indexPath)
+            guard let sortingCell = searchUi.filterCellStyle(cell) as? FilterCategoryTableViewCell else {fatalError()}
+            
+            sortingCell.setimage(1)
+            
+            (sortingCell.bothButton.tag, sortingCell.vegetableButton.tag, sortingCell.herbButton.tag) = (4,5,6)
+            sortingCell.bothButton.addTarget(self, action: #selector(filterButton(_:)), for: .touchUpInside)
+            sortingCell.vegetableButton.addTarget(self, action: #selector(filterButton(_:)), for: .touchUpInside)
+            sortingCell.herbButton.addTarget(self, action: #selector(filterButton(_:)), for: .touchUpInside)
+            
+            sortingCell.bothButton.isSelected = false
+            sortingCell.vegetableButton.isSelected = false
+            sortingCell.herbButton.isSelected = false
+            
+            switch filter.sort {
+            case sortMethod.alphabetic.rawValue:
+                sortingCell.bothButton.isSelected = true
+            case sortMethod.harvestTime.rawValue:
+                sortingCell.vegetableButton.isSelected = true
+            case sortMethod.spacing.rawValue:
+                sortingCell.herbButton.isSelected = true
+            default: break
+            }
+            
+            return sortingCell
             
         default: break
         }
@@ -235,7 +271,8 @@ extension FilterViewController {
             sender.isSelected = true
         }
         
-        if sender.tag == 0 || sender.tag == 1 {
+        switch sender.tag {
+        case 0,1:
             guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? FilterCategoryTableViewCell else {fatalError()}
             
             if sender.tag == 0 {
@@ -255,9 +292,8 @@ extension FilterViewController {
             } else {
                 filter.category = [CategoryID.herb.rawValue]
             }
-        }
-        
-        if sender.tag == 2 || sender.tag == 3 {
+            
+        case 2,3:
             guard let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? FilterLocationTableViewCell else {fatalError()}
             if sender.tag == 2 {
                 cell.bothButton.isSelected = true
@@ -276,7 +312,30 @@ extension FilterViewController {
             } else {
                 filter.location = [PlantLocationID.outdoor.rawValue]
             }
+            
+        case 4,5,6:
+            guard let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? FilterCategoryTableViewCell else {fatalError()}
+            
+            cell.bothButton.isSelected = false
+            cell.vegetableButton.isSelected = false
+            cell.herbButton.isSelected = false
+            
+            switch sender.tag {
+            case 4:
+                cell.bothButton.isSelected = true
+                filter.sort = sortMethod.alphabetic.rawValue
+            case 5:
+                cell.vegetableButton.isSelected = true
+                filter.sort = sortMethod.harvestTime.rawValue
+            case 6:
+                cell.herbButton.isSelected = true
+                filter.sort = sortMethod.spacing.rawValue
+            default: break
+            }
+        
+        default: break
         }
+        
     }
     
     //apply filter action
@@ -301,6 +360,7 @@ extension FilterViewController {
         filter.minHarvest = orginFilter.minHarvest
         filter.maxHarvest = orginFilter.maxHarvest
         filter.month = orginFilter.month
+        filter.sort = orginFilter.sort
         
         dismiss(animated: true, completion: nil)
     }
@@ -315,6 +375,7 @@ extension FilterViewController {
         filter.minHarvest = 0
         filter.maxHarvest = 200
         filter.month = ["All"]
+        filter.sort = sortMethod.alphabetic.rawValue
         
         selectedMonth = ["Jan": 0, "Feb": 0, "Mar": 0, "Apr": 0,"May": 0, "Jun": 0, "Jul": 0, "Aug": 0, "Sep": 0, "Oct": 0, "Nov": 0, "Dec": 0, "All": 1]
         
@@ -422,7 +483,7 @@ extension FilterViewController: RangeSeekSliderDelegate {
     //Tracking value change
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
         if slider.tag == 0 {
-            guard let cell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? FilterSpacingTableViewCell else {fatalError()}
+            guard let cell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? FilterSpacingTableViewCell else {fatalError()}
             let min = Int(slider.selectedMinValue)
             let max = Int(slider.selectedMaxValue)
             if min == 0 && max == 200 {
@@ -433,7 +494,7 @@ extension FilterViewController: RangeSeekSliderDelegate {
         }
         
         if slider.tag == 1 {
-            guard let cell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? FilterHarvestTableViewCell else {fatalError()}
+            guard let cell = tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? FilterHarvestTableViewCell else {fatalError()}
             let min = Int(slider.selectedMinValue)
             let max = Int(slider.selectedMaxValue)
             if min == 0 && max == 200 {

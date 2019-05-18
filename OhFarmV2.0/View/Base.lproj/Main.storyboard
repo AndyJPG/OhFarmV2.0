@@ -141,9 +141,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="wbV-pS-oVs">
-                        <barButtonItem key="leftBarButtonItem" title="Compare" id="DTE-5O-K0F">
+                        <barButtonItem key="leftBarButtonItem" id="r3N-vT-XHh">
                             <connections>
-                                <action selector="compareAction:" destination="Scq-QI-33i" id="Yok-9S-q2d"/>
+                                <action selector="showSelectedPlants:" destination="Scq-QI-33i" id="kdw-Ia-L8g"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="oLJ-ze-UXo">
@@ -153,8 +153,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="compareButton" destination="DTE-5O-K0F" id="mc2-VR-VHw"/>
                         <outlet property="filterButton" destination="oLJ-ze-UXo" id="6Rw-tb-nTy"/>
+                        <outlet property="showSelected" destination="r3N-vT-XHh" id="1Y5-vq-b9Y"/>
                         <segue destination="v7f-4y-VZs" kind="show" identifier="ComparisonSegue" id="ajV-l3-6ly"/>
                         <segue destination="01p-US-HuA" kind="show" identifier="viewDetailFromSearch" id="xjA-wk-d1T"/>
                         <segue destination="48J-aW-4M1" kind="presentation" identifier="filterSegue" id="zTT-qN-T6M"/>
@@ -169,11 +169,11 @@
             <objects>
                 <viewController id="GUl-GJ-S9V" customClass="FilterViewController" customModule="OhFarmV2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SFJ-ns-nVz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="830"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LMD-8T-Yqr">
-                                <rect key="frame" x="0.0" y="64" width="414" height="766"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="936"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="160" id="J8r-rp-fBh" customClass="FilterLocationTableViewCell" customModule="OhFarmV2_0" customModuleProvider="target">
@@ -312,7 +312,10 @@
                                                             </constraints>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vegetable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiW-II-5ap">
-                                                            <rect key="frame" x="28.333333333333346" y="88" width="54.333333333333343" height="14"/>
+                                                            <rect key="frame" x="5.3333333333333428" y="88" width="100" height="14"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="MdW-My-55A"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -684,7 +687,7 @@
                         <viewLayoutGuide key="safeArea" id="Boc-Ma-Npk"/>
                     </view>
                     <navigationItem key="navigationItem" id="xq1-KQ-kjE"/>
-                    <size key="freeformSize" width="414" height="830"/>
+                    <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="tableView" destination="LMD-8T-Yqr" id="Goq-5Z-HV4"/>
                         <segue destination="FJB-Kv-atY" kind="unwind" identifier="filterUnwindSegue" unwindAction="unwindToPlantSearchWithSender:" id="MSz-Rt-tlF"/>
@@ -693,7 +696,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SA1-71-mBH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FJB-Kv-atY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6128" y="1655"/>
+            <point key="canvasLocation" x="6123" y="1765"/>
         </scene>
         <!--Home Table View Controller-->
         <scene sceneID="ECD-RN-QVL">
@@ -1089,6 +1092,29 @@
                                             <outlet property="iconImage" destination="nEB-QQ-TTG" id="U2P-ZJ-lt5"/>
                                             <outlet property="label" destination="1gU-Dp-8D3" id="XfW-vc-29A"/>
                                             <outlet property="timeLabel" destination="r44-F2-8R4" id="MjB-OM-1PS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noNotificationCell" rowHeight="60" id="h9u-xr-fjr" customClass="NotificationNoResultTableViewCell" customModule="OhFarmV2_0" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h9u-xr-fjr" id="bmK-Rz-f7h">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9x-2A-I9M">
+                                                    <rect key="frame" x="189.33333333333334" y="21.333333333333332" width="35.333333333333343" height="16.999999999999996"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="W9x-2A-I9M" firstAttribute="centerX" secondItem="bmK-Rz-f7h" secondAttribute="centerX" id="XSp-MS-BDJ"/>
+                                                <constraint firstItem="W9x-2A-I9M" firstAttribute="centerY" secondItem="bmK-Rz-f7h" secondAttribute="centerY" id="iVc-A1-ZtA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="W9x-2A-I9M" id="YsB-P4-74A"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1923,7 +1949,7 @@
         <image name="user" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4xE-pH-fng"/>
+        <segue reference="xjA-wk-d1T"/>
         <segue reference="1cL-xF-cZA"/>
         <segue reference="24k-XX-co3"/>
     </inferredMetricsTieBreakers>

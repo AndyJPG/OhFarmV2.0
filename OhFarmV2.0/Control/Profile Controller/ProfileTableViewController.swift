@@ -53,6 +53,11 @@ class ProfileTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tableView.reloadData()
     }
 
@@ -93,10 +98,10 @@ class ProfileTableViewController: UITableViewController {
             let option = options[indexPath.section][indexPath.row]
             optionCell.configCell(option.optionName, icon: option.icon)
             
-            if !user.notificationList.isEmpty {
+            if !user.notificationList[0].isEmpty {
                 optionCell.badgeBackground.isHidden = false
                 optionCell.badgeValue.isHidden = false
-                optionCell.badgeValue.text = "\(user.notificationList.count)"
+                optionCell.badgeValue.text = "\(user.notificationList[0].count)"
             } else {
                 optionCell.badgeBackground.isHidden = true
                 optionCell.badgeValue.isHidden = true
@@ -170,9 +175,9 @@ class ProfileTableViewController: UITableViewController {
                 user.userImage = UIImage(named: "userProfile") ?? UIImage()
                 user.farmPlants = []
                 user.favoritePlants = []
-                user.wateringNotif = false
-                user.harvestNotif = false
-                user.notificationList = []
+                user.wateringNotif = true
+                user.harvestNotif = true
+                user.notificationList = [[],[]]
                 
                 localData.saveUserInfo(user)
                 tableView.reloadData()

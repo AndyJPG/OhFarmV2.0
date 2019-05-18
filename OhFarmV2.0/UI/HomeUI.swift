@@ -131,7 +131,7 @@ class SSBadgeButton: UIButton {
         }
     }
     
-    var badgeBackgroundColor = UIColor(red: 242/255, green: 48/255, blue: 48/255, alpha: 1) {
+    var badgeBackgroundColor = UIColor(red: 247/255, green: 81/255, blue: 77/255, alpha: 1) {
         didSet {
             badgeLabel.backgroundColor = badgeBackgroundColor
         }

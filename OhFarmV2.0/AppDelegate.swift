@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let userInfo = localData.loadUser() {
             user = userInfo[0]
         } else {
-            user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? UIImage(), farm: [], favourite: [], watering: false, harvest: false, notificationList: [])
+            user = User(name: "First User", userImage: UIImage(named: "userProfile") ?? UIImage(), farm: [], favourite: [], watering: true, harvest: true, notificationList: [[],[]])
         }
         
         let myGroup = DispatchGroup()

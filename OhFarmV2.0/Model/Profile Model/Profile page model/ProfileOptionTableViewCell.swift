@@ -23,7 +23,7 @@ class ProfileOptionTableViewCell: UITableViewCell {
         badgeValue.isHidden = true
         
         badgeBackground.layer.cornerRadius = badgeBackground.frame.height/2
-        badgeBackground.backgroundColor = UIColor(red: 242/255, green: 48/255, blue: 48/255, alpha: 1)
+        badgeBackground.backgroundColor = UIColor(red: 247/255, green: 81/255, blue: 77/255, alpha: 1)
         badgeValue.textColor = .white
         badgeValue.sizeToFit()
     }

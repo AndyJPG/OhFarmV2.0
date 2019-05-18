@@ -68,6 +68,7 @@ class HomeTableViewController: UITableViewController {
     //Keep user perference save
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        updateNotificationBadge()
         localData.saveUserInfo(user)
     }
 
@@ -198,7 +199,7 @@ class HomeTableViewController: UITableViewController {
                     
                     //If harvest date is today push notificaiton
                     if harvestDate <= currentDate {
-                        user.notificationList.append("\(plant.cropName) \(harvestString);\(harvestDateString)")
+                        user.notificationList[0].append("\(plant.cropName) \(harvestString);\(harvestDateString)")
                         plant.harvested = true
                     }
                     
@@ -208,7 +209,7 @@ class HomeTableViewController: UITableViewController {
                         while calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedDescending {
                             let nextWaterString = dateFormatter.string(from: plant.nextWateringDate)
                             
-                            user.notificationList.append("\(waterString) \(plant.cropName).;\(nextWaterString)")
+                            user.notificationList[0].append("\(waterString) \(plant.cropName).;\(nextWaterString)")
                             plant.nextWateringDate = calendar.date(byAdding: .day, value: 2, to: plant.nextWateringDate)!
                         }
                         
@@ -218,7 +219,7 @@ class HomeTableViewController: UITableViewController {
                     if calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedSame {
                         let nextWaterString = dateFormatter.string(from: plant.nextWateringDate)
                         
-                        user.notificationList.append("\(waterString) \(plant.cropName).;\(nextWaterString)")
+                        user.notificationList[0].append("\(waterString) \(plant.cropName).;\(nextWaterString)")
                         plant.nextWateringDate = calendar.date(byAdding: .day, value: 2, to: plant.nextWateringDate)!
                     }
                     
@@ -237,7 +238,7 @@ class HomeTableViewController: UITableViewController {
                         while calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedDescending {
                             let nextWaterString = dateFormatter.string(from: plant.nextWateringDate)
                             
-                            user.notificationList.append("\(waterString) \(plant.cropName).;\(nextWaterString)")
+                            user.notificationList[0].append("\(waterString) \(plant.cropName).;\(nextWaterString)")
                             plant.nextWateringDate = calendar.date(byAdding: .day, value: 2, to: plant.nextWateringDate)!
                         }
                         
@@ -247,7 +248,7 @@ class HomeTableViewController: UITableViewController {
                     if calendar.compare(currentDate, to: plant.nextWateringDate, toGranularity: .day) == .orderedSame {
                         let nextWaterString = dateFormatter.string(from: plant.nextWateringDate)
                         
-                        user.notificationList.append("\(waterString) \(plant.cropName).;\(nextWaterString)")
+                        user.notificationList[0].append("\(waterString) \(plant.cropName).;\(nextWaterString)")
                         plant.nextWateringDate = calendar.date(byAdding: .day, value: 2, to: plant.nextWateringDate)!
                     }
                     
@@ -264,7 +265,7 @@ class HomeTableViewController: UITableViewController {
                     
                     //If harvest date is today push notificaiton
                     if harvestDate <= currentDate {
-                        user.notificationList.append("\(plant.cropName) \(harvestString);\(harvestDateString)")
+                        user.notificationList[0].append("\(plant.cropName) \(harvestString);\(harvestDateString)")
                         plant.harvested = true
                     }
                     
@@ -272,16 +273,21 @@ class HomeTableViewController: UITableViewController {
             }
         }
         
-        if !user.notificationList.isEmpty {
-            notificationButton.badge = "\(user.notificationList.count)"
-            notificationButton.badgeBackgroundColor = UIColor(red: 242/255, green: 48/255, blue: 48/255, alpha: 1)
+        updateNotificationBadge()
+        
+        print(user.notificationList[0])
+        localData.saveUserInfo(user)
+    }
+    
+    //Update notification badge
+    private func updateNotificationBadge() {
+        if !user.notificationList[0].isEmpty {
+            notificationButton.badge = "\(user.notificationList[0].count)"
+            notificationButton.badgeBackgroundColor = UIColor(red: 247/255, green: 81/255, blue: 77/255, alpha: 1)
         } else {
             notificationButton.badgeBackgroundColor = .clear
             notificationButton.badge = ""
         }
-        
-        print(user.notificationList)
-        localData.saveUserInfo(user)
     }
     
 }

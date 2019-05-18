@@ -14,13 +14,19 @@ class NotificationViewController: UIViewController {
     var user: User!
     var notifiMassage = UILabel()
     var welcomeIamage = UIImageView()
-    var notification: [String] {
-        return user.notificationList
+    var notification: [[String]] {
+        return user!.notificationList
     }
+    
+    //Track if notification is empty
+    var isEmpty = false
     
     @IBOutlet weak var tableView: UITableView!
     
-    let cellID = "notificationCell"
+    enum cellID: String {
+        case noNotificationCell
+        case notificationCell
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +39,10 @@ class NotificationViewController: UIViewController {
         
         navigationItem.title = "Notification"
         
+        if notification[0].isEmpty && notification[1].isEmpty {
+            isEmpty = true
+        }
+        
         setupView()
     }
     
@@ -40,6 +50,11 @@ class NotificationViewController: UIViewController {
         super.viewWillAppear(animated)
         updateView()
         tableView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        updateNotification()
     }
     
 
@@ -55,8 +70,20 @@ class NotificationViewController: UIViewController {
     
     //MARK: Actions
     @objc private func clearNotification(_ sender: Any) {
-        user.notificationList = []
+        user.notificationList = [[],[]]
+        isEmpty = true
         tableView.reloadData()
+        updateView()
+    }
+    
+    //update notification
+    private func updateNotification() {
+        if !notification[0].isEmpty {
+            let latest = user.notificationList[0]
+            let newPrevious = latest + user.notificationList[1]
+            user.notificationList[0] = []
+            user.notificationList[1] = newPrevious
+        }
     }
 
 }
@@ -64,13 +91,35 @@ class NotificationViewController: UIViewController {
 //MARK: Table view delegate and data source
 extension NotificationViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return notification.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if notification[section].isEmpty && !isEmpty {
+            return 1
+        }
+        return notification[section].count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? NotificationTableViewCell else {fatalError()}
-        cell.configWithDate(notification[indexPath.row])
+        
+        if notification[indexPath.section].isEmpty {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID.noNotificationCell.rawValue, for: indexPath) as? NotificationNoResultTableViewCell else {fatalError()}
+
+            var text: String
+            if indexPath.section == 0 {
+                text = "No latest notification"
+            } else {
+                text = "No previous notification"
+            }
+            cell.configWithData(text)
+
+            return cell
+        }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID.notificationCell.rawValue, for: indexPath) as? NotificationTableViewCell else {fatalError()}
+        cell.configWithDate(notification[indexPath.section][indexPath.row])
         
         return cell
     }
@@ -82,12 +131,50 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            user.notificationList.remove(at: indexPath.row)
+            user.notificationList[indexPath.section].remove(at: indexPath.row)
             updateView()
             tableView.reloadData()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+    }
+    
+    //Add header view for two section
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        if !isEmpty {
+            let myLabel = UILabel()
+            myLabel.frame = CGRect(x: view.frame.width*0.5-160, y: 2, width: 320, height: 20)
+            myLabel.font = UIFont.systemFont(ofSize: 12)
+            myLabel.textColor = .darkGray
+            myLabel.textAlignment = .center
+
+            if !notification[0].isEmpty || !notification[1].isEmpty {
+                if section == 0 {
+                    myLabel.text = "Latest"
+                } else {
+                    myLabel.text = "Previous"
+                }
+            }
+
+            let headerView = UIView()
+            headerView.addSubview(myLabel)
+            headerView.backgroundColor = .groupTableViewBackground
+
+            return headerView
+        }
+
+        return nil
+    }
+    
+    //Add header height
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if isEmpty {
+            return 0
+        }
+        
+        return 25
     }
     
 }
@@ -98,7 +185,7 @@ extension NotificationViewController {
     private func setupView() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearNotification(_:)))
         
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
         
         //Set up the image
         //Add welcome image and label
@@ -137,7 +224,7 @@ extension NotificationViewController {
     
     private func updateView() {
         
-        if notification.isEmpty {
+        if isEmpty {
             notifiMassage.isHidden = false
             welcomeIamage.isHidden = false
         } else {
