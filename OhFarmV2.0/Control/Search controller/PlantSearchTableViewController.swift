@@ -45,6 +45,9 @@ class PlantSearchTableViewController: UITableViewController {
     let plantTableUI = SearchPlantUI()
     let localData = LocalData()
     
+    //Keep tracking order
+    var ascending =  true
+    
     //Button for comparison
     let compareButton = SearchPlantUI().filterBottomButton()
     var showSelectedCompareList = false
@@ -169,9 +172,11 @@ class PlantSearchTableViewController: UITableViewController {
             
             //Change plus button if is compare mode
             if compareMode {
+                uiCell.isCompare(true)
                 uiCell.plusButton.isHidden = true
                 uiCell.compareCheck.isHidden = false
             } else {
+                uiCell.isCompare(false)
                 uiCell.compareCheck.isHidden = true
                 uiCell.plusButton.isHidden = false
             }
@@ -416,24 +421,139 @@ class PlantSearchTableViewController: UITableViewController {
     //Show selected plants
     @IBAction func showSelectedPlants(_ sender: UIBarButtonItem) {
         
-        print("show selected plants")
-        
-        //check if compare list has any plant
-        if showSelectedCompareList {
-            showSelectedCompareList = false
-            showSelected.title = "Show selected plants"
+        if compareMode {
+            print("show selected plants")
+            //check if compare list has any plant
+            if showSelectedCompareList {
+                showSelectedCompareList = false
+                showSelected.title = "Show selected plants"
+                
+                tableView.reloadData()
+            } else if compareList.isEmpty {
+                comparisonAlert(2)
+            } else if !showSelectedCompareList {
+                showSelectedCompareList = true
+                showSelected.title = "Back to search"
+                
+                tableView.reloadData()
+            }
             
-            tableView.reloadData()
-        } else if compareList.isEmpty {
-            comparisonAlert(2)
-        } else if !showSelectedCompareList {
-            showSelectedCompareList = true
-            showSelected.title = "Back to search"
+            print("show selected plants")
+        } else {
+            print("sorting")
+            
+            //Change button icon
+            ascending = !ascending
+            if ascending {
+                showSelected.image = UIImage(named: "ascendingOrder")
+            } else {
+                showSelected.image = UIImage(named: "descendingOrder")
+            }
+            
+            //If ascending sort to descending
+            switch filter?.sort {
+            case sortMethod.alphabetic.rawValue:
+                //Sort if is ascending order with alphabetic
+                if ascending {
+                    if filterApplied {
+                        filterPlants.sort { (plant1, plant2) -> Bool in
+                            return plant1.cropName < plant2.cropName
+                        }
+                    } else {
+                        originalPlants.sort { (plant1, plant2) -> Bool in
+                            return plant1.cropName < plant2.cropName
+                        }
+                    }
+                } else {
+                    if filterApplied {
+                        filterPlants.sort { (plant1, plant2) -> Bool in
+                            return plant1.cropName > plant2.cropName
+                        }
+                    } else {
+                        originalPlants.sort { (plant1, plant2) -> Bool in
+                            return plant1.cropName > plant2.cropName
+                        }
+                    }
+                }
+                
+            case sortMethod.harvestTime.rawValue:
+                //Sort if is ascending order with harvest time
+                if ascending {
+                    if filterApplied {
+                        filterPlants.sort { (plant1, plant2) -> Bool in
+                            if plant1.minHarvestTime == plant2.minHarvestTime {
+                                return plant1.maxHarvestTime <= plant2.maxHarvestTime
+                            }
+                            return plant1.minHarvestTime <= plant2.minHarvestTime
+                        }
+                    } else {
+                        originalPlants.sort { (plant1, plant2) -> Bool in
+                            if plant1.minHarvestTime == plant2.minHarvestTime {
+                                return plant1.maxHarvestTime <= plant2.maxHarvestTime
+                            }
+                            return plant1.minHarvestTime <= plant2.minHarvestTime
+                        }
+                    }
+                } else {
+                    if filterApplied {
+                        filterPlants.sort { (plant1, plant2) -> Bool in
+                            if plant1.minHarvestTime == plant2.minHarvestTime {
+                                return plant1.maxHarvestTime >= plant2.maxHarvestTime
+                            }
+                            return plant1.minHarvestTime >= plant2.minHarvestTime
+                        }
+                    } else {
+                        originalPlants.sort { (plant1, plant2) -> Bool in
+                            if plant1.minHarvestTime == plant2.minHarvestTime {
+                                return plant1.maxHarvestTime >= plant2.maxHarvestTime
+                            }
+                            return plant1.minHarvestTime >= plant2.minHarvestTime
+                        }
+                    }
+                }
+                
+                
+            case sortMethod.spacing.rawValue:
+                //Sort if is ascending with spacing
+                if ascending {
+                    if filterApplied {
+                        filterPlants.sort { (plant1, plant2) -> Bool in
+                            if plant1.minSpacing == plant2.minSpacing {
+                                return plant1.maxSpacing <= plant2.maxSpacing
+                            }
+                            return plant1.minSpacing <= plant2.minSpacing
+                        }
+                    } else {
+                        originalPlants.sort { (plant1, plant2) -> Bool in
+                            if plant1.minSpacing == plant2.minSpacing {
+                                return plant1.maxSpacing <= plant2.maxSpacing
+                            }
+                            return plant1.minSpacing <= plant2.minSpacing
+                        }
+                    }
+                } else {
+                    if filterApplied {
+                        filterPlants.sort { (plant1, plant2) -> Bool in
+                            if plant1.minSpacing == plant2.minSpacing {
+                                return plant1.maxSpacing >= plant2.maxSpacing
+                            }
+                            return plant1.minSpacing >= plant2.minSpacing
+                        }
+                    } else {
+                        originalPlants.sort { (plant1, plant2) -> Bool in
+                            if plant1.minSpacing == plant2.minSpacing {
+                                return plant1.maxSpacing >= plant2.maxSpacing
+                            }
+                            return plant1.minSpacing >= plant2.minSpacing
+                        }
+                    }
+                }
+                
+            default: break
+            }
             
             tableView.reloadData()
         }
-        
-        print("show selected plants")
         
     }
     
@@ -446,10 +566,14 @@ class PlantSearchTableViewController: UITableViewController {
             compareButton.setTitle("Compare Now", for: .normal)
             //Set filter button to be cancel button
             filterButton.title = "Cancel"
+            filterButton.image = nil
             
+            //Set navbar title
             navigationItem.title = ""
+            
+            //Set show select button
             showSelected.title = "Show selected plants"
-            showSelected.isEnabled = true
+            showSelected.image = nil
             
             tableView.reloadData()
         } else if compareList.count <= 1 {
@@ -476,7 +600,8 @@ class PlantSearchTableViewController: UITableViewController {
         compareMode = false
         compareButton.setTitle("Compare plants", for: .normal)
         
-        filterButton.title = "Filter"
+        filterButton.title = ""
+        filterButton.image = UIImage(named: "filterIcon")
         compareList = []
         
         print("Change")
@@ -484,7 +609,7 @@ class PlantSearchTableViewController: UITableViewController {
         
         //Change show selected button title
         showSelected.title = ""
-        showSelected.isEnabled = false
+        showSelected.image = UIImage(named: "order")
         
         showSelectedCompareList = false
         
@@ -675,7 +800,11 @@ extension PlantSearchTableViewController {
         navigationController?.view.addSubview(compareButton)
         
         //Setup left bar button item
-        showSelected.isEnabled = false
+        showSelected.image = UIImage(named: "ascendingOrder")
+        
+        //Setup filter button
+        filterButton.image = UIImage(named: "filterIcon")
+        filterButton.title = ""
         
         // Provide an empty backBarButton to hide the 'Back' text present by default in the back button.
         let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

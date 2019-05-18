@@ -42,5 +42,19 @@ class SearchPlantTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    func isCompare(_ on: Bool) {
+        if on {
+            plusButton.alpha = 1
+            compareCheck.alpha = 0
+            UIView.animate(withDuration: 0.8) {
+                self.plusButton.alpha = 0
+                self.compareCheck.alpha = 1
+            }
+        } else {
+            plusButton.alpha = 1
+            compareCheck.alpha = 0
+        }
+    }
 
 }

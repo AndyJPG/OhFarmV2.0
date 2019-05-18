@@ -29,7 +29,6 @@ class NotificationNoResultTableViewCell: UITableViewCell {
         label.textColor = .darkGray
         label.sizeToFit()
         
-        self.backgroundColor = .clear
         self.isUserInteractionEnabled = false
     }
 
