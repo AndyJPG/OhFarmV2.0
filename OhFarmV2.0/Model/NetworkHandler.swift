@@ -139,7 +139,7 @@ extension UIImageView {
         guard let url = URL(string: stringURL) else {fatalError()}
         contentMode = mode
         
-        image = nil
+        image = UIImage(named: "loadingImage")
         self.backgroundColor = .groupTableViewBackground
         
         if let imageFromCache = imageCache.object(forKey: stringURL as NSString) {

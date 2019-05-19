@@ -386,7 +386,7 @@ extension FilterViewController {
     @objc private func monthButton(_ sender: UIButton) {
         
         //Obtain cell and buttons
-        guard let cell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as? FilterMonthTableViewCell else {fatalError()}
+        guard let cell = tableView.cellForRow(at: IndexPath.init(row: 3, section: 0)) as? FilterMonthTableViewCell else {fatalError()}
         
         //Obtain all the button from the cell
         let cellButtons = [cell.janButton,cell.febButton,cell.marButton,cell.aprButton,cell.mayButton,cell.junButton,cell.julButton,cell.augButton,cell.sepButton,cell.octButton,cell.novButton,cell.decButton]

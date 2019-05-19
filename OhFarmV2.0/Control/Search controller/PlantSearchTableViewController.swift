@@ -61,6 +61,9 @@ class PlantSearchTableViewController: UITableViewController {
     var compareMode = false
     var compareList = [Plant]()
     
+    //Store load images
+    var loadImages = [IndexPath:UIImageView]()
+    
     //Show selected list button
     @IBOutlet weak var showSelected: UIBarButtonItem!
     
@@ -843,7 +846,10 @@ extension PlantSearchTableViewController {
                 plantsData = self.networkHandler.completeData(plantsData)
                 
                 self.originalPlants = plantsData
-                self.tableView.reloadData()
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.tableView.reloadData()
+                }
                 
             } catch let parsingError {
                 print("Error", parsingError)

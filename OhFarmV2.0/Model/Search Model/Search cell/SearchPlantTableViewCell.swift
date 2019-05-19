@@ -26,6 +26,8 @@ class SearchPlantTableViewCell: UITableViewCell {
         compareCheck.setImage(UIImage(named: "check"), for: .selected)
         compareCheck.setImage(UIImage(named: "uncheck"), for: .normal)
         compareCheck.isHidden = true
+//        plantImage.image = UIImage(named: "loadingImage")
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
