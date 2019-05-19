@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var user: User?
     let localData = LocalData()
     let netWork = NetworkHandler()
-    var plants = [Plant]()
+//    var plants = [Plant]()
     var checkList = [String:[String]]()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -29,15 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let myGroup = DispatchGroup()
         
-        //Thread to fetch and complete data
+//        Thread to fetch and complete data
         myGroup.enter()
-        plants = netWork.fetchPlantData()
-        plants = netWork.completeData(plants)
+//        plants = netWork.fetchPlantData()
+//        plants = netWork.completeData(plants)
         checkList = netWork.fetchCheckListData()
-        
+
         print(checkList)
         myGroup.leave()
-        
+
         myGroup.notify(queue: .main) {
             print("Finished complete data.")
         }
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         homeTableVC.user = user
                     } else if let searchTableVC = navigationController.topViewController as? PlantSearchTableViewController {
                         searchTableVC.user = user
-                        searchTableVC.originalPlants = plants
+//                        searchTableVC.originalPlants = plants
                     } else if let profileTableVC = navigationController.topViewController as? ProfileTableViewController {
                         profileTableVC.user = user
                     }

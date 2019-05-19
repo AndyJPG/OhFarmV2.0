@@ -20,10 +20,10 @@ class Plant: NSObject, NSCoding, NSCopying {
     let minHarvestTime: Int
     let maxHarvestTime: Int
     let compatiblePlants: String
-    let avoidInstructions: String
+    var avoidInstructions: String
     let culinaryHints: String
     let plantStyle: String
-    let plantingTechnique: String
+    var plantingTechnique: String
     let fertilizer: String
     
     //Variable for harvest date and watering

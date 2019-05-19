@@ -23,7 +23,6 @@ class FilterCategoryTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         vegetableLabel.sizeToFit()
-        vegetableLabel.adjustsFontSizeToFitWidth = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,17 +49,17 @@ class FilterCategoryTableViewCell: UITableViewCell {
             
         } else if type == 1 {
             categoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-            bothButton.setImage(UIImage(named: "both"), for: .normal)
-            bothButton.setImage(UIImage(named: "bothFill"), for: .selected)
-            vegetableButton.setImage(UIImage(named: "veg"), for: .normal)
-            vegetableButton.setImage(UIImage(named: "vegFill"), for: .selected)
-            herbButton.setImage(UIImage(named: "herb"), for: .normal)
-            herbButton.setImage(UIImage(named: "herbFill"), for: .selected)
+            bothButton.setImage(UIImage(named: "alphabetic"), for: .normal)
+            bothButton.setImage(UIImage(named: "alphabeticFill"), for: .selected)
+            vegetableButton.setImage(UIImage(named: "filterHarvest"), for: .normal)
+            vegetableButton.setImage(UIImage(named: "filterHarvestFill"), for: .selected)
+            herbButton.setImage(UIImage(named: "spacing"), for: .normal)
+            herbButton.setImage(UIImage(named: "spacingFill"), for: .selected)
             
-            bothLabel.text = "by alphabetic"
-            vegetableLabel.text = "by harvest time"
-            herbLabel.text = "by spacing"
-            categoryLabel.text = "Sorting method"
+            bothLabel.text = "Alphabets"
+            vegetableLabel.text = "Harvest time"
+            herbLabel.text = "Spacing"
+            categoryLabel.text = "Sort By"
             
         }
         

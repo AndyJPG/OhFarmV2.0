@@ -21,7 +21,12 @@ class CACollectionViewCell: UICollectionViewCell {
     func configCell(_ name: String) {
         plantImage.layer.cornerRadius = 20
         plantImage.contentMode = .scaleAspectFill
-        plantImage.image = UIImage(named: name)
+        
+        //Get image
+        let plantN = name.replacingOccurrences(of: " ", with: "+")
+        let imageUrl = "https://s3.amazonaws.com/ohfarmimages/\(plantN).jpg"
+        plantImage.downloaded(from: imageUrl)
+        
         plantName.text = name
     }
 

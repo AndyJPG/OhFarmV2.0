@@ -129,6 +129,25 @@ class SearchPlantUI: UIViewController {
         plantCell.plantImage.contentMode = .scaleAspectFill
         plantCell.plantImage.layer.cornerRadius = 24
         
+        plantCell.loadingMode(false)
+        
+        return plantCell
+    }
+    
+    //Search plant cell loading style
+    func loadingSearchPlantCell(_ cell: UITableViewCell) -> UITableViewCell {
+        guard let plantCell = cell as? SearchPlantTableViewCell else {fatalError()}
+        plantCell.selectionStyle = .none
+        plantCell.backgroundColor = .clear
+        
+        plantCell.cellBackground.layer.cornerRadius = 24
+        plantCell.cellBackground.layer.shadowColor = UIColor(red: 117/255, green: 117/255, blue: 117/255, alpha: 1).cgColor
+        plantCell.cellBackground.layer.shadowRadius = 17
+        plantCell.cellBackground.layer.shadowOpacity = 0.2
+        plantCell.cellBackground.layer.shadowOffset = CGSize.zero
+        
+        plantCell.plantImage.layer.cornerRadius = 24
+        plantCell.loadingMode(true)
         return plantCell
     }
     

@@ -61,6 +61,30 @@ class NetworkHandler {
         return plants
     }
     
+    //MAARK: fill missing value
+    func getMissingValue() -> [[String]] {
+        
+        var plants = [[String]]()
+        guard let fileName = Bundle.main.path(forResource: "plantData", ofType: "json") else {fatalError("Can not get plant data json file")}
+        let optionalData = try? Data(contentsOf: URL(fileURLWithPath: fileName))
+        guard let data = optionalData, let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) else {fatalError("Can not get jsonResponse")}
+        guard let jsonArray = jsonResponse as? [[String: Any]] else {fatalError()}
+        for dic in jsonArray {
+            guard let cropName = dic["cropName"] as? String else {fatalError()}
+            guard let avoidInstructions = dic["avoidInstructions"] as? String else {fatalError()}
+            guard let plantingTech = dic["plantingTechnique"] as? String else {fatalError()}
+            
+            plants.append([cropName,avoidInstructions,plantingTech])
+        }
+        
+        plants.sort { (list1, list2) -> Bool in
+            return list1[0] < list2[0]
+        }
+        
+        return plants
+        
+    }
+    
     // Add compa and avoid plant
     func completeData(_ plants: [Plant]) -> [Plant] {
                 

@@ -40,21 +40,17 @@ class HomeUI: UIViewController {
         let components = calendar.dateComponents([.weekOfYear], from: date1, to: date2)
         guard let weeks = components.weekOfYear else {fatalError()}
         
+        //Change text color and text display
+        plantCell.categoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        
         if plant.harvested {
             plantCell.categoryLabel.text = "Ready for harvest"
         } else if plant.indoorList >= indoorPlantPoint || plant.outdoorList >= outdoorPlantPoint {
             plantCell.categoryLabel.text = "\(weeks) weeks to harvest"
         } else {
-            plantCell.categoryLabel.text = ""
+            plantCell.categoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
+            plantCell.categoryLabel.text = plant.plantCategory.capitalized
         }
-        
-//        if plant.plantCategory == "vegetable" {
-//            plantCell.categoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-//        } else {
-//            plantCell.categoryLabel.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
-//        }
-        
-        plantCell.categoryLabel.textColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
         
         let imageURL = plant.plantImageURL
         plantCell.plantImage.downloaded(from: imageURL[0])

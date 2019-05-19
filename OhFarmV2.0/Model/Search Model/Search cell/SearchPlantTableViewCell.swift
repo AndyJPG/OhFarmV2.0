@@ -43,6 +43,26 @@ class SearchPlantTableViewCell: UITableViewCell {
         }
     }
     
+    func loadingMode(_ on: Bool) {
+        if on {
+            plusButton.isHidden = true
+            compareCheck.isHidden = true
+            plantNameLabel.text = "                    "
+            plantNameLabel.backgroundColor = .groupTableViewBackground
+            plantSpacingLabel.text = "        "
+            plantSpacingLabel.backgroundColor = .groupTableViewBackground
+            plantHarvestLabel.text = "        "
+            plantHarvestLabel.backgroundColor = .groupTableViewBackground
+            plantImage.backgroundColor = .groupTableViewBackground
+        } else {
+            plusButton.isHidden = false
+            plantNameLabel.backgroundColor = .clear
+            plantSpacingLabel.backgroundColor = .clear
+            plantHarvestLabel.backgroundColor = .clear
+            plantImage.backgroundColor = .clear
+        }
+    }
+    
     func isCompare(_ on: Bool) {
         if on {
             plusButton.alpha = 1

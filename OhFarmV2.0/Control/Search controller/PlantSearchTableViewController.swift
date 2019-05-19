@@ -92,7 +92,11 @@ class PlantSearchTableViewController: UITableViewController {
         
         if user == nil {
             user = delegate.user
-            originalPlants = delegate.plants
+//            originalPlants = delegate.plants
+        }
+        
+        if originalPlants.isEmpty {
+            requestPlantData()
         }
         
         setUpAppearance()
@@ -122,9 +126,14 @@ class PlantSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if originalPlants.isEmpty {
+            return 10
+        }
+        
         if plants.count == 0 {
             return 1
         }
+        
         return plants.count
     }
 
@@ -132,7 +141,13 @@ class PlantSearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         
-        if plants.count == 0 {
+        //Loading plant
+        if originalPlants.isEmpty {
+            cell = tableView.dequeueReusableCell(withIdentifier: "SearchPlantCell", for: indexPath)
+            guard let uiCell = plantTableUI.loadingSearchPlantCell(cell) as? SearchPlantTableViewCell else {fatalError()}
+            
+            return uiCell
+        } else if plants.isEmpty {
             guard let noResultCell = tableView.dequeueReusableCell(withIdentifier: "NoResultCell", for: indexPath) as? NoResultTableViewCell else {fatalError()}
             let searchText = searchController.searchBar.text ?? "the plant"
             noResultCell.selectionStyle = .none
@@ -609,7 +624,11 @@ class PlantSearchTableViewController: UITableViewController {
         
         //Change show selected button title
         showSelected.title = ""
-        showSelected.image = UIImage(named: "order")
+        if ascending {
+            showSelected.image = UIImage(named: "ascendingOrder")
+        } else {
+            showSelected.image = UIImage(named: "descendingOrder")
+        }
         
         showSelectedCompareList = false
         
@@ -751,6 +770,86 @@ extension PlantSearchTableViewController {
             
         default: break
         }
+        
+    }
+    
+}
+
+//MARK: Networking
+extension PlantSearchTableViewController {
+    
+    //Request for data
+    func requestPlantData() {
+        
+        guard let url = URL(string: "http://ec2-52-91-229-118.compute-1.amazonaws.com/allPlantData1.php") else {fatalError()}
+        //        guard let url = URL(string: "http://ec2-52-91-229-118.compute-1.amazonaws.com/FertilizerData.php") else {return}
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return }
+            do{
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    dataResponse, options: [])
+                print(jsonResponse) //Response result
+                
+                //Convert json response to dictionary
+                guard let jsonArray = jsonResponse as? [[String: Any]] else {
+                    return
+                }
+                print(jsonArray)
+                
+                //Create data
+                var plantsData = [Plant]()
+                
+                for dic in jsonArray {
+                    
+                    //Data formate
+                    let cropName = dic["cropName"] as? String ?? ""
+                    let suitableMonth = dic["suitableMonth"] as? String ?? ""
+                    let plantCategory = dic["plantCategory"] as? String ?? ""
+                    
+                    //Config value
+                    guard let minSpaceString = dic["minSpace"] as? String, let minSpace = Int(minSpaceString) else {fatalError()}
+                    guard let maxSpaceString = dic["maxSpace"] as? String, let maxSpace = Int(maxSpaceString) else {fatalError()}
+                    guard let minHarvestTimeString = dic["minHarvestTime"] as? String, let minHarvestTime = Int(minHarvestTimeString) else {fatalError()}
+                    guard let maxHarvestTimeString = dic["maxHarvestTime"] as? String, let maxHarvestTime = Int(maxHarvestTimeString) else {fatalError()}
+                    
+                    let plantStyle = dic["plantStyle"] as? String ?? ""
+                    let compatiblePlants = dic["compatiblePlants"] as? String ?? ""
+                    let culinaryHints = dic["culinaryHints"] as? String ?? ""
+                    let fertilizerName = dic["fertilizerName"] as? String ?? ""
+                    
+                    plantsData.append(Plant(cropName: cropName, plantCategory: plantCategory, suitableMonth: suitableMonth, minSpacing: minSpace, maxSpacing: maxSpace, minHarvestTime: minHarvestTime, maxHarvestTime: maxHarvestTime, compatiblePlants: compatiblePlants, avoidInstructions: "", culinaryHints: culinaryHints, plantStyle: plantStyle, plantingTechnique: "", fertilizer: fertilizerName, compPlantList: [], avoidPlantList: [], harvestTime: Date(), nextWateringDate: Date(), indoorList: -1, outdoorList: -1, harvested: false))
+                }
+                
+                //get missing value
+                var missingValue = self.networkHandler.getMissingValue()
+                
+                //Fill out avoid instructions and planting technique
+                plantsData.sort(by: { (plant1, plant2) -> Bool in
+                    return plant1.cropName < plant2.cropName
+                })
+                
+                for (index,plant) in plantsData.enumerated() {
+                    if plant.cropName == missingValue[index][0] {
+                        plant.avoidInstructions = missingValue[index][1]
+                        plant.plantingTechnique = missingValue[index][2]
+                    }
+                }
+                
+                //Complete data
+                plantsData = self.networkHandler.completeData(plantsData)
+                
+                self.originalPlants = plantsData
+                self.tableView.reloadData()
+                
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+        }
+        task.resume()
         
     }
     

@@ -40,8 +40,8 @@ class ComparisonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkTracker = Array(repeating: 0, count: Int(itemsPerRow)-1)
         itemsPerRow = CGFloat(compareList.count+1)
+        checkTracker = Array(repeating: 0, count: Int(itemsPerRow)-1)
         
         // Set up collection view delegate
         collection.delegate = self

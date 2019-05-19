@@ -96,27 +96,10 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if notification[section].isEmpty && !isEmpty {
-            return 1
-        }
         return notification[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if notification[indexPath.section].isEmpty {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID.noNotificationCell.rawValue, for: indexPath) as? NotificationNoResultTableViewCell else {fatalError()}
-
-            var text: String
-            if indexPath.section == 0 {
-                text = "No latest notification"
-            } else {
-                text = "No previous notification"
-            }
-            cell.configWithData(text)
-
-            return cell
-        }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID.notificationCell.rawValue, for: indexPath) as? NotificationTableViewCell else {fatalError()}
         cell.configWithDate(notification[indexPath.section][indexPath.row])
@@ -142,7 +125,7 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
     //Add header view for two section
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
-        if !isEmpty {
+        if !notification[section].isEmpty {
             let myLabel = UILabel()
             myLabel.frame = CGRect(x: view.frame.width*0.5-160, y: 2, width: 320, height: 20)
             myLabel.font = UIFont.systemFont(ofSize: 12)
@@ -170,11 +153,11 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
     //Add header height
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        if isEmpty {
-            return 0
+        if !notification[section].isEmpty {
+            return 25
         }
         
-        return 25
+        return 0
     }
     
 }
