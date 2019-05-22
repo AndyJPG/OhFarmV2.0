@@ -18,6 +18,7 @@ class PlantDetailViewController: UIViewController {
     
     enum segueID: String {
         case detailToSearchSegue
+        case detailToChecklistSegue
     }
     
     // MARK: Variable
@@ -27,6 +28,9 @@ class PlantDetailViewController: UIViewController {
     var slides: [PhotoSlide] = []
     let buttonUI = SearchPlantUI()
     let localData = LocalData()
+    
+    //For checklist
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
     //Photo slide variable
     @IBOutlet weak var scrollView: UIScrollView!
@@ -50,12 +54,16 @@ class PlantDetailViewController: UIViewController {
         slides = createSlides()
         setupSlideScrollView(slides: slides)
         
-        if !isFromHome {
-            addPlantButtonUI()
-        }
-        
+        addPlantButtonUI()
         setUpAppearance()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isFromHome {
+            localData.saveUserInfo(user)
+        }
     }
     
     // MARK: - Navigation
@@ -68,18 +76,51 @@ class PlantDetailViewController: UIViewController {
             containerVC.plant = plant
             containerVC.isFromHome = isFromHome
         }
+        
+        if segue.identifier == segueID.detailToChecklistSegue.rawValue {
+            guard let checklistVC = segue.destination as? CheckListHolderViewController else {fatalError()}
+            checklistVC.checkList = delegate.checkList
+            checklistVC.plant = plant
+        }
     }
     
     // MARK: Action
     //Add plant functions for add plant button
     @objc private func addPlant(_ sender: UIButton) {
-        if isExist(user.farmPlants) {
-            uiAlert(plant.cropName, alertIndex: 0)
+        
+        //If from home
+        if isFromHome {
+//            performSegue(withIdentifier: segueID.detailToChecklistSegue.rawValue, sender: self)
+            if plant.plantStyle.lowercased() == "both" && plant.indoorList < 0 && plant.outdoorList < 0 {
+                choiceConfirmation()
+            } else {
+                //Initial check list
+                if plant.plantStyle.lowercased() != "both" {
+                    
+                    //Initial for indoor and outdoor plant
+                    if plant.plantStyle.lowercased() == "indoor" && plant.indoorList < 0 {
+                        plant.indoorList = 0
+                    }
+                    
+                    if plant.plantStyle.lowercased() == "outdoor" && plant.outdoorList < 0 {
+                        plant.outdoorList = 0
+                    }
+                    
+                }
+                
+                performSegue(withIdentifier: segueID.detailToChecklistSegue.rawValue, sender: sender)
+            }
+            
         } else {
-            let newPlant = plant.copy() as! Plant
-            user.farmPlants.insert(newPlant, at: 0)
-            localData.saveUserInfo(user)
-            uiAlert(plant.cropName, alertIndex: 1)
+            if isExist(user.farmPlants) {
+                uiAlert(plant.cropName, alertIndex: 0)
+            } else {
+                let newPlant = plant.copy() as! Plant
+                user.farmPlants.insert(newPlant, at: 0)
+                localData.saveUserInfo(user)
+                uiAlert(plant.cropName, alertIndex: 1)
+            }
+            
         }
     }
     
@@ -145,6 +186,10 @@ class PlantDetailViewController: UIViewController {
             favouriteButton.image = UIImage(named: imageID.favouriteFill.rawValue)
             favourite = true
         }
+        
+        // Provide an empty backBarButton to hide the 'Back' text present by default in the back button.
+        let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtton
     }
     
     // Set status bar style
@@ -155,7 +200,13 @@ class PlantDetailViewController: UIViewController {
     // Add plant button ui
     private func addPlantButtonUI() {
         let button = buttonUI.filterBottomButton()
-        button.setTitle("Add to My Farm", for: .normal)
+        
+        if isFromHome {
+            button.setTitle("Checklist", for: .normal)
+        } else {
+            button.setTitle("Add to My Farm", for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(addPlant(_:)), for: .touchUpInside)
         view.addSubview(buttonUI.filterBottomButtonBackground())
         view.addSubview(button)
@@ -179,9 +230,18 @@ extension PlantDetailViewController: UIScrollViewDelegate {
         var newSlides = [PhotoSlide]()
         let plantImageURL = plant.plantImageURL
         
-        for url in plantImageURL {
+        for (index,url) in plantImageURL.enumerated() {
             guard let slide: PhotoSlide = Bundle.main.loadNibNamed("PhotoSlide", owner: self, options: nil)?.first as? PhotoSlide else {fatalError()}
-            slide.configureWithData(url)
+            if index == 0 {
+                if let image = UIImage(named: plant.cropName) {
+                    slide.plantImage.image = image
+                } else {
+                    slide.configureWithData(url)
+                }
+                slide.plantImage.contentMode = .scaleAspectFill
+            } else {
+                slide.configureWithData(url)
+            }
             newSlides.append(slide)
         }
         
@@ -258,4 +318,26 @@ extension PlantDetailViewController {
         }
     }
     
+    //Check list style confirmation
+    private func choiceConfirmation() {
+        
+        let alert = UIAlertController(title: "Ready to plant?", message: "\(plant.cropName) can be grow in both indoor and outdoor, choose one option to start.", preferredStyle: UIAlertController.Style.actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Indoor", style: UIAlertAction.Style.default, handler: { _ in
+            self.plant.indoorList = 0
+            self.performSegue(withIdentifier: segueID.detailToChecklistSegue.rawValue, sender: self)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Outdoor", style: UIAlertAction.Style.default, handler: { _ in
+            self.plant.outdoorList = 0
+            self.performSegue(withIdentifier: segueID.detailToChecklistSegue.rawValue, sender: self)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+            print("Delete dimiss")
+        }))
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
 }

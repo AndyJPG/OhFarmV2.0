@@ -76,9 +76,9 @@ class IndoorTableViewController: UITableViewController, IndicatorInfoProvider {
             }
         }
         
-        print("indoor table view")
-        print(plant.indoorList)
-        print(plant.outdoorList)
+//        print("indoor table view")
+//        print(plant.indoorList)
+//        print(plant.outdoorList)
         setupTable()
     }
     
@@ -175,12 +175,12 @@ extension IndoorTableViewController {
         
         if plantStyle == "indoor" {
             plant.indoorList = count
-            print(plant.indoorList)
-            print(count)
+//            print(plant.indoorList)
+//            print(count)
         } else {
             plant.outdoorList = count
-            print(plant.outdoorList)
-            print(count)
+//            print(plant.outdoorList)
+//            print(count)
         }
         
     }
@@ -237,9 +237,9 @@ extension IndoorTableViewController {
 
             self.plant.harvestDate = harvestDate
             self.plant.nextWateringDate = nextWateringDate
-            print(self.plant.harvestDate)
-            print("Next watering date")
-            print(self.plant.nextWateringDate)
+//            print(self.plant.harvestDate)
+//            print("Next watering date")
+//            print(self.plant.nextWateringDate)
 
             //ADD FIRST NOTIFICATION FOR NEW PLANT
             //Date formater

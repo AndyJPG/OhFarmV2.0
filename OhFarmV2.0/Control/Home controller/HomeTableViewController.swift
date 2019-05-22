@@ -159,10 +159,10 @@ class HomeTableViewController: UITableViewController {
     private func updateProgressTracker() {
         var progresses = [Float]()
         for plant in plants {
-            print("in progress tracker")
-            print(plant.indoorList)
-            print(plant.outdoorList)
-            print(plant.progress)
+//            print("in progress tracker")
+//            print(plant.indoorList)
+//            print(plant.outdoorList)
+//            print(plant.progress)
             if plant.progress <= 1.0 && (plant.indoorList >= 3 || plant.outdoorList >= 4) {
                 progresses.append(plant.progress)
             } else {
@@ -275,7 +275,7 @@ class HomeTableViewController: UITableViewController {
         
         updateNotificationBadge()
         
-        print(user.notificationList[0])
+//        print(user.notificationList[0])
         localData.saveUserInfo(user)
     }
     
@@ -421,8 +421,8 @@ extension HomeTableViewController {
     private func choiceConfirmation(_ sender: UIButton) {
         let plant = self.user.farmPlants[sender.tag]
         
-        print(plant.indoorList)
-        print(plant.outdoorList)
+//        print(plant.indoorList)
+//        print(plant.outdoorList)
         
         let alert = UIAlertController(title: "Ready to plant?", message: "\(plant.cropName) can be grow in both indoor and outdoor, choose one option to start.", preferredStyle: UIAlertController.Style.actionSheet)
         

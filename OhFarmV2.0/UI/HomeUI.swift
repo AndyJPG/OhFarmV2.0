@@ -52,8 +52,14 @@ class HomeUI: UIViewController {
             plantCell.categoryLabel.text = plant.plantCategory.capitalized
         }
         
-        let imageURL = plant.plantImageURL
-        plantCell.plantImage.downloaded(from: imageURL[0])
+        if let image = UIImage(named: plant.cropName) {
+            plantCell.plantImage.image = image
+        } else {
+            //Asscess online image
+            let imageURL = plant.plantImageURL
+            plantCell.plantImage.downloaded(from: imageURL[0])
+        }
+        
         plantCell.plantImage.contentMode = .scaleAspectFill
         plantCell.plantImage.layer.cornerRadius = 24
         

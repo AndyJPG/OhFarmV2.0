@@ -459,8 +459,8 @@ extension FilterViewController {
             selectedMonth["All"] = 1
         }
         
-        print(selectedMonth)
-        print(count)
+//        print(selectedMonth)
+//        print(count)
         
     }
     

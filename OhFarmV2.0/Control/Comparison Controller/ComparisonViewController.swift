@@ -74,8 +74,7 @@ class ComparisonViewController: UIViewController {
             checkTracker[sender.tag] = 0
         }
         
-        print(checkTracker)
-        
+//        print(checkTracker)
     }
     
     //add plant button
@@ -123,7 +122,7 @@ class ComparisonViewController: UIViewController {
             addPlantAlert(existPlants, addPlants, plantList: addPlantsList)
         }
         
-        print(checkTracker)
+//        print(checkTracker)
     }
 
 }
@@ -157,8 +156,7 @@ extension ComparisonViewController: UICollectionViewDelegate, UICollectionViewDa
                 photoCell.plantName.textColor = color
             } else {
                 let plant = compareList[indexPath.row-1]
-                let imageURL = plant.plantImageURL
-                photoCell.plantImage.downloaded(from: imageURL[0])
+                photoCell.plantImage.image = plant.plantImage
                 photoCell.plantName.text = plant.cropName
             }
             

@@ -50,8 +50,8 @@ class SettingTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(user.wateringNotif)
-        print(user.harvestNotif)
+//        print(user.wateringNotif)
+//        print(user.harvestNotif)
     }
 
     // MARK: - Table view data source

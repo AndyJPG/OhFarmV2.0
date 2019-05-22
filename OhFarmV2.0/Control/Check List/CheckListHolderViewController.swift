@@ -31,8 +31,8 @@ class CheckListHolderViewController: UIViewController {
         orignalIndoor = plant.indoorList
         orignalOutdoor = plant.outdoorList
         
-        print(plant.indoorList)
-        print(plant.outdoorList)
+//        print(plant.indoorList)
+//        print(plant.outdoorList)
     }
     
 
@@ -50,11 +50,11 @@ class CheckListHolderViewController: UIViewController {
     
     //Back button action also save the modified plant
     @IBAction func backButton(_ sender: Any) {
-        print(orignalIndoor)
-        print(orignalOutdoor)
-        
-        print(plant.indoorList)
-        print(plant.outdoorList)
+//        print(orignalIndoor)
+//        print(orignalOutdoor)
+//        
+//        print(plant.indoorList)
+//        print(plant.outdoorList)
         
         performSegue(withIdentifier: "unwindFromCheckList", sender: self)
     }

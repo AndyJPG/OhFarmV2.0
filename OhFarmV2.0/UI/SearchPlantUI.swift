@@ -123,15 +123,17 @@ class SearchPlantUI: UIViewController {
         plantCell.plantHarvestLabel.attributedText = attributedString
         plantCell.plantSpacingLabel.attributedText = spacingString
         
-        plantCell.plantImage.image = plant.plantImage
-//        if plantCell.plantImage.image == nil {
-//            let imageURL = plant.plantImageURL
-//            plantCell.plantImage.downloaded(from: imageURL[0])
-//        }
+        if let image = UIImage(named: plant.cropName) {
+            plantCell.plantImage.image = image
+        } else {
+            let imageURL = plant.plantImageURL
+            plantCell.plantImage.downloaded(from: imageURL[0])
+        }
         
         plantCell.plantImage.contentMode = .scaleAspectFill
         plantCell.plantImage.layer.cornerRadius = 24
         
+        //If loading trigger the loading mode
         plantCell.loadingMode(false)
         
         return plantCell

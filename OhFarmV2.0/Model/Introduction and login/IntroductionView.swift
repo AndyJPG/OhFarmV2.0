@@ -35,6 +35,8 @@ class IntroductionView: UIView {
         lastPageLabel.isHidden = true
         button.isHidden = true
         
+        lastPageLabel.adjustsFontSizeToFitWidth = true
+        
         //Setup for image view
         imageView.layer.cornerRadius = 24
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -43,6 +45,7 @@ class IntroductionView: UIView {
         imageView.layer.shadowOpacity = 0.2
         imageView.layer.shadowOffset = CGSize.zero
         imageView.contentMode = .scaleAspectFill
+        
         
         title.textColor = UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1)
         detail.textColor = .darkGray
@@ -74,6 +77,11 @@ class IntroductionView: UIView {
             title.text = data[1]
             detail.text = data[2]
         }
+        
+        //Not using skip button
+        skipButton.setTitleColor(UIColor(red: 96/255, green: 186/255, blue: 114/255, alpha: 1), for: .normal)
+        skipButton.isHidden = true
+        skipButton.isEnabled = false
         
     }
 }

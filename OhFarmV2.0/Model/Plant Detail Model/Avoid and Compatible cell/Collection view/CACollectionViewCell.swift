@@ -27,6 +27,9 @@ class CACollectionViewCell: UICollectionViewCell {
         let imageUrl = "https://s3.amazonaws.com/ohfarmimages/\(plantN).jpg"
         plantImage.downloaded(from: imageUrl)
         
+        //From local image file
+//        plantImage.image = UIImage(named: name)
+        
         plantName.text = name
     }
 

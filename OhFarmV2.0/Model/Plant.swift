@@ -56,17 +56,38 @@ class Plant: NSObject, NSCoding, NSCopying {
     }
     
     var getSpacingString: String {
+        if minSpacing == maxSpacing {
+            return "Spacing:\n\(minSpacing) cm"
+        }
         return "Spacing:\n\(minSpacing) cm - \(maxSpacing) cm"
     }
     
     var getHarvestString: String {
+        if minHarvestTime == maxHarvestTime {
+            return "Harvest Time:\n\(minHarvestTime) weeks"
+        }
         return "Harvest Time:\n\(minHarvestTime) weeks - \(maxHarvestTime) weeks"
     }
     
     var plantInfoOne: [[String]] {
         let month = getSuitableMonth
-        let spacing = ["Spacing","\(minSpacing) cm - \(maxSpacing) cm"]
-        let harvest = ["Harvest Time","\(minHarvestTime) weeks - \(maxHarvestTime) weeks"]
+        
+        //For spacing
+        var spacing = [String]()
+        if minSpacing == maxSpacing {
+            spacing = ["Spacing","\(minSpacing) cm"]
+        } else {
+            spacing = ["Spacing","\(minSpacing) cm - \(maxSpacing) cm"]
+        }
+        
+        //For harvest time
+        var harvest = [String]()
+        if minHarvestTime == maxHarvestTime {
+            harvest = ["Harvest Time","\(minHarvestTime) weeks"]
+        } else {
+            harvest = ["Harvest Time","\(minHarvestTime) weeks - \(maxHarvestTime) weeks"]
+        }
+        
         return [month,spacing,harvest]
     }
     
@@ -99,7 +120,7 @@ class Plant: NSObject, NSCoding, NSCopying {
         let plantC: [String] = compatiblePlants.components(separatedBy: ", ")
         
         var cpText = ""
-        if plantC[0].lowercased() == "none" {
+        if plantC[0].lowercased() == "none" || compPlantList.isEmpty {
             cpText = "None"
         } else {
             for cp in plantC {
@@ -111,7 +132,7 @@ class Plant: NSObject, NSCoding, NSCopying {
         let plantA: [String] = avoidInstructions.components(separatedBy: ", ")
         
         var apText = ""
-        if plantA[0].lowercased() == "none" {
+        if plantA[0].lowercased() == "none" || avoidPlantList.isEmpty {
             apText = "None"
         } else {
             for ap in plantA {
@@ -163,12 +184,6 @@ class Plant: NSObject, NSCoding, NSCopying {
         
         let components = calendar.dateComponents([.day], from: date1, to: date2)
         let daysToHavest = maxHarvestTime * 7
-        
-        print("in plant object class")
-        print(daysToHavest-components.day!)
-        print(daysToHavest)
-        print((Float(daysToHavest)-Float(components.day!)+5.0)/Float(daysToHavest))
-        print("need change here")
         
         return Float((Float(daysToHavest)-Float(components.day!)+5.0)/Float(daysToHavest))
     }

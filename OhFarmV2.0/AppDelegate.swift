@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        plants = netWork.completeData(plants)
         checkList = netWork.fetchCheckListData()
 
-        print(checkList)
         myGroup.leave()
 
         myGroup.notify(queue: .main) {

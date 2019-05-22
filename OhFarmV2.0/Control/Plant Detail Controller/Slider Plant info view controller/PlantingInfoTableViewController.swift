@@ -111,11 +111,9 @@ class PlantingInfoTableViewController: UITableViewController, IndicatorInfoProvi
         tableView.register(UINib(nibName: "DefaultPlantCell", bundle: Bundle.main), forCellReuseIdentifier: cellID.defaultPlantInfoCell.rawValue)
         tableView.register(UINib(nibName: "CACellTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: cellID.CACell.rawValue)
         
-        if isFromHome {
-            tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
-        } else {
-            tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 55))
-        }
+ 
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 55))
+        
         tableView.showsVerticalScrollIndicator = false
         tableView.estimatedRowHeight = 600.0
         tableView.rowHeight = UITableView.automaticDimension

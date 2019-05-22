@@ -294,7 +294,7 @@ class PlantSearchTableViewController: UITableViewController {
         default: break
         }
         
-        print(filterPlants.count)
+//        print(filterPlants.count)
         filterApplied = true
         tableView.reloadData()
     }
@@ -397,10 +397,10 @@ class PlantSearchTableViewController: UITableViewController {
                 compareList.append(plants[sender.tag])
                 
                 //Testing code
-                print("add to checklist")
-                print(compareList.map({ (plant) -> String in
-                    return plant.cropName
-                }))
+//                print("add to checklist")
+//                print(compareList.map({ (plant) -> String in
+//                    return plant.cropName
+//                }))
                 
             } else {
                 comparisonAlert(1)
@@ -421,10 +421,10 @@ class PlantSearchTableViewController: UITableViewController {
             compareList.remove(at: position)
             
             //Testing code
-            print("remove from checklist")
-            print(compareList.map({ (plant) -> String in
-                return plant.cropName
-            }))
+//            print("remove from checklist")
+//            print(compareList.map({ (plant) -> String in
+//                return plant.cropName
+//            }))
         }
         
         //Update the compare button appearance
@@ -456,7 +456,7 @@ class PlantSearchTableViewController: UITableViewController {
                 tableView.reloadData()
             }
             
-            print("show selected plants")
+//            print("show selected plants")
         } else {
             print("sorting")
             
@@ -622,7 +622,7 @@ class PlantSearchTableViewController: UITableViewController {
         filterButton.image = UIImage(named: "filterIcon")
         compareList = []
         
-        print("Change")
+//        print("Change")
         navigationItem.title = "Plant search"
         
         //Change show selected button title
@@ -795,13 +795,13 @@ extension PlantSearchTableViewController {
                 //here dataResponse received from a network request
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     dataResponse, options: [])
-                print(jsonResponse) //Response result
+//                print(jsonResponse) //Response result
                 
                 //Convert json response to dictionary
                 guard let jsonArray = jsonResponse as? [[String: Any]] else {
                     return
                 }
-                print(jsonArray)
+//                print(jsonArray)
                 
                 //Create data
                 var plantsData = [Plant]()
@@ -892,9 +892,6 @@ extension PlantSearchTableViewController {
         //Add show compare list button
         let y = (view.frame.height - (tabBarController?.tabBar.frame.height)!)-(view.frame.height*0.06+10)
         
-        print(view.frame.height)
-        print((tabBarController?.tabBar.frame.height)!)
-        print(y)
         
         //Set up compare button
         compareButton.frame = CGRect(origin: CGPoint(x:view.frame.width*0.04, y: y), size: CGSize(width: view.frame.width*0.40, height: view.frame.height*0.06))
