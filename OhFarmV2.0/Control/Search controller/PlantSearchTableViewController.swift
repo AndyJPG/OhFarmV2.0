@@ -99,7 +99,22 @@ class PlantSearchTableViewController: UITableViewController {
         }
         
         if originalPlants.isEmpty {
-            requestPlantData()
+//            requestPlantData()
+            
+            let myGroup = DispatchGroup()
+            
+//          Thread to fetch and complete data
+            myGroup.enter()
+            
+            let fetchPlants = networkHandler.fetchPlantData()
+            originalPlants = networkHandler.completeData(fetchPlants)
+            
+            myGroup.leave()
+            
+            myGroup.notify(queue: .main) {
+                print("Finished complete data.")
+            }
+            
         }
         
         setUpAppearance()

@@ -28,7 +28,7 @@ class CACollectionViewCell: UICollectionViewCell {
         plantImage.downloaded(from: imageUrl)
         
         //From local image file
-//        plantImage.image = UIImage(named: name)
+        plantImage.image = UIImage(named: name)
         
         plantName.text = name
     }
